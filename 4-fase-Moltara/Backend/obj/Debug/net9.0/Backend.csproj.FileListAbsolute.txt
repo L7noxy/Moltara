@@ -1,0 +1,15 @@
+C:\Users\batis\OneDrive\Documentos\Moltara\4-fase-Moltara\Backend\bin\Debug\net9.0\Backend.exe
+C:\Users\batis\OneDrive\Documentos\Moltara\4-fase-Moltara\Backend\bin\Debug\net9.0\Backend.deps.json
+C:\Users\batis\OneDrive\Documentos\Moltara\4-fase-Moltara\Backend\bin\Debug\net9.0\Backend.runtimeconfig.json
+C:\Users\batis\OneDrive\Documentos\Moltara\4-fase-Moltara\Backend\bin\Debug\net9.0\Backend.dll
+C:\Users\batis\OneDrive\Documentos\Moltara\4-fase-Moltara\Backend\bin\Debug\net9.0\Backend.pdb
+C:\Users\batis\OneDrive\Documentos\Moltara\4-fase-Moltara\Backend\obj\Debug\net9.0\Backend.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\batis\OneDrive\Documentos\Moltara\4-fase-Moltara\Backend\obj\Debug\net9.0\Backend.AssemblyInfoInputs.cache
+C:\Users\batis\OneDrive\Documentos\Moltara\4-fase-Moltara\Backend\obj\Debug\net9.0\Backend.AssemblyInfo.cs
+C:\Users\batis\OneDrive\Documentos\Moltara\4-fase-Moltara\Backend\obj\Debug\net9.0\Backend.csproj.CoreCompileInputs.cache
+C:\Users\batis\OneDrive\Documentos\Moltara\4-fase-Moltara\Backend\obj\Debug\net9.0\Backend.sourcelink.json
+C:\Users\batis\OneDrive\Documentos\Moltara\4-fase-Moltara\Backend\obj\Debug\net9.0\Backend.dll
+C:\Users\batis\OneDrive\Documentos\Moltara\4-fase-Moltara\Backend\obj\Debug\net9.0\refint\Backend.dll
+C:\Users\batis\OneDrive\Documentos\Moltara\4-fase-Moltara\Backend\obj\Debug\net9.0\Backend.pdb
+C:\Users\batis\OneDrive\Documentos\Moltara\4-fase-Moltara\Backend\obj\Debug\net9.0\Backend.genruntimeconfig.cache
+C:\Users\batis\OneDrive\Documentos\Moltara\4-fase-Moltara\Backend\obj\Debug\net9.0\ref\Backend.dll
