@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\Backend\\Backend.csproj": {}
+    "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\backend\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\Backend\\Backend.csproj": {
+    "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\Backend\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\Backend\\Backend.csproj",
+        "projectPath": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\backend\\Backend.csproj",
         "packagesPath": "C:\\Users\\batis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\Backend\\obj\\",
+        "outputPath": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\batis\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -44,6 +44,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[3.4.2, )"
@@ -61,6 +65,9 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

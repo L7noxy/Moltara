@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "WU3uuWcsgvk=",
+  "dgSpecHash": "zrgv0XyiagI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\Backend\\Backend.csproj",
+  "projectFilePath": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\backend\\Backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\batis\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\Users\\batis\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.6\\microsoft.aspnetcore.openapi.9.0.6.nupkg.sha512",
     "C:\\Users\\batis\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
     "C:\\Users\\batis\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\batis\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512",
     "C:\\Users\\batis\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\batis\\.nuget\\packages\\mongodb.bson\\3.4.2\\mongodb.bson.3.4.2.nupkg.sha512",
     "C:\\Users\\batis\\.nuget\\packages\\mongodb.driver\\3.4.2\\mongodb.driver.3.4.2.nupkg.sha512",
