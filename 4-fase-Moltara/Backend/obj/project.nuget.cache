@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zrgv0XyiagI=",
+  "dgSpecHash": "7pEtv1Vb0cs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\backend\\Backend.csproj",
+  "projectFilePath": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\Backend\\Backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\batis\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\batis\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.6\\microsoft.aspnetcore.openapi.9.0.6.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\backend\\Backend.csproj": {}
+    "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\Backend\\Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\backend\\Backend.csproj": {
+    "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\backend\\Backend.csproj",
+        "projectUniqueName": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\backend\\Backend.csproj",
+        "projectPath": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\Backend\\Backend.csproj",
         "packagesPath": "C:\\Users\\batis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\backend\\obj\\",
+        "outputPath": "C:\\Users\\batis\\OneDrive\\Documentos\\Moltara\\4-fase-Moltara\\Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\batis\\AppData\\Roaming\\NuGet\\NuGet.Config"
