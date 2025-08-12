@@ -5,11 +5,9 @@
 
 O **Moltara** é um web-site de vendas de computadores
 
-O site possui diversas funcionalidades, como um chat para comunicação direta entre os usuários, possibilitando uma troca rápida e eficiente de informações. Cada usuário pode criar, editar e excluir seu perfil pessoal, onde será possível compartilhar informações sobre sua experiência e interesses profissionais. Junto com o perfil, há um portfólio para divulgar os projetos realizados e os serviços prestados, além de permitir a adição de feedbacks sobre os trabalhos executados.
+O site possui diversas funcionalidades, personalização das peças, possibilitando uma troca rápida e eficiente de informações. Cada usuário pode criar, editar e excluir seu perfil pessoal, onde será possível compartilhar informações sobre sua experiência e interesses profissionais. Junto com o perfil, há um portfólio para divulgar os projetos realizados e os serviços prestados, além de permitir a adição de feedbacks sobre os trabalhos executados.
 
 Para encontrar outros profissionais e investidores, há uma aba de pesquisa, onde os usuários podem procurar por projetos e ideias de projetos. E, ao clicar no botão “Especialização”, o usuário ou investidor será direcionado para questionários que ajudarão a definir a área em que deseja negociar, trabalhar e investir, facilitando a conexão com os profissionais e negociadores mais qualificados.
-
-Siga-nos no Instagram para acompanhar as novidades: [@dexes_project](https://www.instagram.com/dexes_project?igsh=MXg1NzM1cG9icDRwMA==).
 
 ## Requisitos do Sistema
 
@@ -17,7 +15,7 @@ Siga-nos no Instagram para acompanhar as novidades: [@dexes_project](https://www
 
 
 | Código      | Requisito Funcional                                                                 | Descrição                                                                                      |
-|-------------|--------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+|-------------|-------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
 | **RF 001**  | O sistema deve permitir que o usuário realize seu cadastro perfeitamente.           | Página de cadastro para novos usuários.                                                       |
 | **RF 002**  | O sistema deve permitir que o usuário investidor realize seu cadastro.              | Página de cadastro para novos investidores.                                                   |
 | **RF 003**  | O sistema deve permitir login via Gmail.                                            | Integração com a API de login do Google.                                                      |
