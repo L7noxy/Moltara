@@ -1,2 +1,5 @@
 # Moltara
-Repositório para guardar arquivos desenvolvimentos para a quarta S.A (situação de aprendizagem) do SESI/SENAI
+
+Moltara é um Web-site de vendas de peças de computadores
+
+
