@@ -1,0 +1,37 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Urbanist", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+}
+
+#root {
+    --color1: #263238;
+    --color2: #37474F;
+    --color3: #A71111;
+    --color4: #BB252F;
+    --color5: #F5F5F5;
+    --color6: #FFFFFF;
+    --color7: #111111;
+}
+
+.container-home {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-home {
+    width: 100vw;
+    height: 10vh;
+    background-color: var(--color1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
