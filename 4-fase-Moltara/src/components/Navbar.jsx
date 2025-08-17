@@ -8,9 +8,10 @@ export default function Navbar() {
                 <div className='navbar'>
                     <nav>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Sobre</a></li>
-                            <li><a href="#">Contato</a></li>
+                            <li><a to={"/login"}>Entre</a></li>
+                            <p>ou</p>
+                            <li><a>Cadastre-se</a></li>
+                            <li><a>Contato</a></li>
                         </ul>
                     </nav>
                 </div>
