@@ -3,10 +3,33 @@
     height: 10vh;
     background-color: var(--color1);
     display: flex;
-    justify-content: end;
     align-items: center;
     top: 0px;   
     position: fixed;
     z-index: 1;
-    text-align: center;
+}
+
+.navbar {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2em;
+    position: absolute;
+}
+
+.buttons-container {
+    text-decoration: none;
+    display: flex;
+    gap: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    padding: 4px;
+    border: 1px solid white;
+    cursor: pointer;
+    border-radius: 5px;
 }
