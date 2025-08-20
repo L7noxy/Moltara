@@ -1,35 +1,69 @@
-.container-navbar {
-    width: 100vw;
-    height: 10vh;
-    background-color: var(--color1);
-    display: flex;
-    align-items: center;
-    top: 0px;   
-    position: fixed;
-    z-index: 1;
-}
-
 .navbar {
     width: 100%;
-    height: 50px;
+    background-color:  var(--color5);
+    padding: 10px 20px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 2em;
-    position: absolute;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    position: fixed;
+    top: 0;
 }
 
-.buttons-container {
-    text-decoration: none;
+.logo {
+    color: rgb(0, 0, 0);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search-bar {
     display: flex;
-    gap: 15px;
+    gap: 5px;
+    border: 1px solid #000000;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0);
+    overflow: hidden
 }
 
-a {
-    text-decoration: none;
-    color: white;
-    padding: 4px;
-    border: 1px solid white;
-    cursor: pointer;
+.search-bar input {
+    background-color: #0057b300;
+    color: rgb(0, 0, 0);
+    outline: none;
+    padding-left: 13px;
+    font-size: 15px;
+    width: 300px;
+    border: none;
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 20px;
+    background-color: rgba(245, 222, 179, 0);
+}
+
+.buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.buttons a {
+    color: var(--color3);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
+.login-btn {
+    background-color: var(--color5);
+}
+
+.signup-btn {
+    background-color: var(--color5);
 }

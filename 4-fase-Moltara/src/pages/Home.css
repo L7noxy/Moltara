@@ -21,7 +21,7 @@
 .container-home {
     width: 100vw;
     height: 100vh;
-    background-color: var(--color5);
+    background-color: var(--color6);
     display: flex;
     justify-content: center;
     align-items: center;
