@@ -12,7 +12,7 @@ export default function Navbar() {
 
                 <div className="search-bar">
                     <input type="text" placeholder="Pesquisar..." />
-                    <button type="submit"><IoSearchOutline /></button>
+                    <button type="submit"><IoSearchOutline size={20}/></button>
                 </div>
 
                 <div className="buttons">
