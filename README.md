@@ -16,18 +16,10 @@ Para encontrar outros profissionais e investidores, há uma aba de pesquisa, ond
 
 | Código      | Requisito Funcional                                                                 | Descrição                                                                                      |
 |-------------|-------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
-| **RF 001**  | O sistema deve permitir que o usuário realize seu cadastro perfeitamente.           | Página de cadastro para novos usuários.                                                       |
-| **RF 002**  | O sistema deve permitir que o usuário investidor realize seu cadastro.              | Página de cadastro para novos investidores.                                                   |
-| **RF 003**  | O sistema deve permitir login via Gmail.                                            | Integração com a API de login do Google.                                                      |
-| **RF 004**  | O sistema deve permitir modificação do perfil.                                      | Funcionalidades para editar foto, nome, biografia, entre outros.                              |
-| **RF 005**  | O sistema deve permitir o cadastro de projetos.                                     | Citação da proposta e informações do projeto, como nome, logo, participantes, etc.            |
-| **RF 006**  | O sistema deve permitir edição e exclusão de projetos.                              | Edição da logo, nome, descrição, proposta, participantes da equipe, entre outros.             |
-| **RF 007**  | O sistema deve ter um chat.                                                         | Chat para comunicação entre usuários, com envio de vídeos, imagens e links.                   |
-| **RF 008**  | O sistema deve ter uma aba de pesquisa.                                             | Pesquisa de projetos e ideias de projetos.                                                    |
-| **RF 009**  | O sistema deve exibir projetos feitos pelo profissional.                            | No perfil do usuário profissional, mostrar os projetos criados.                               |
-| **RF 010**  | O sistema deve ter uma função de especificação de projetos procurados.              | Questionários para recomendar projetos ou ideias com base nas respostas.                      |
-| **RF 011**  | O sistema permitirá postagens na comunidade e perfil.                               | Postagens relacionadas a imagens e links.                                                     |
-| **RF 012**  | O sistema deve permitir feedbacks.                                                  | Avaliação de projetos e usuários, com comentários.                                            |
+| **RF 001**  | O sistema deve permitir que o usuário realize seu cadastro perfeitamente.           | Página de cadastro para novos usuários.                                                       |                                                                                               
+| **RF 004**  | O sistema deve permitir modificação do perfil.                                      | Funcionalidades para editar foto, nome, biografia, entre outros.                              |        
+| **RF 009**  | O sistema deve exibir projetos feitos pelo profissional.                            | No perfil do usuário profissional, mostrar os projetos criados.                               |                                               
+                                      |
 ## Colaboradores do Projeto e as funções que irão exercer
 
 | Integrantes da equipe | Requisitos Funcionais (RF)                |
