@@ -19,56 +19,19 @@ Para encontrar outros profissionais e investidores, há uma aba de pesquisa, ond
 | **RF 001**  | O sistema deve permitir que o usuário realize seu cadastro perfeitamente.           | Página de cadastro para novos usuários.                                                       |                                                                                               
 | **RF 004**  | O sistema deve permitir modificação do perfil.                                      | Funcionalidades para editar foto, nome, biografia, entre outros.                              |        
 | **RF 009**  | O sistema deve exibir projetos feitos pelo profissional.                            | No perfil do usuário profissional, mostrar os projetos criados.                               |                                               
-                                      |
+
 ## Colaboradores do Projeto e as funções que irão exercer
 
 | Integrantes da equipe | Requisitos Funcionais (RF)                |
 |-----------------------|-------------------------------------------|
-| Ana Carolina          | [RF 002], [RF 005], [RF 007], [RF 008]    |
-| Gabriel Castanhel     | [RF 001], [RF 003], [RF 004], [RF 012]    |
-| Pedro Henrique        | [RF 006], [RF 009], [RF 010], [RF 011]    |
+| Ana Carolina          |                                           |
+| Gabriel Castanhel     |                                           |
+| Pedro Henrique        |                                           |
 ## Protótipo das Telas de Login e Cadastro
 
 ### Tela de Login
 ![Login](./3-fase-sa/public/img/Login.png)
 
-### Tela de Cadastro  Investidor
-![Cadastro_investidor](./3-fase-sa/public/img/Tela_cadastro_investidor.png)
-
 ### Tela de Cadastro  Profissional (Parte 1)
 ![Cadastro](./3-fase-sa/public/img/Tela_cadastro_profissional_1.png)
 
-### Tela de Cadastro (Parte 2 - Seleção de Experiência e Área)
-![Cadastro 2](./3-fase-sa/public/img/Tela_cadastro_profissional_2.png)
-
-### Tela de Cadastro (Parte 3 - Seleção de softwares e Linguagens de programação)
-![Cadastro 3](./3-fase-sa/public/img/Tela_cadastro_prossional_3.png)
-
-### Instalações e configurações das bibliotecas do Python
-
-
-
-
-# Passo 1:
-
-instale o python em: https://www.python.org/downloads/
-
-após ir para a tela de instalação procure pela versão 3.12.10 que é a versão mais instavel e atual do python, depois clique em download
-
-![Captura de tela 2025-06-28 114846](https://github.com/user-attachments/assets/cc11915a-699f-4c49-a4b6-ffe2302f451d)
-
-# Passo 2:
-
-depois role para baixo e baixe a versão do **Windows installer (64 bits)**
-
-![Captura de tela 2025-06-28 115147](https://github.com/user-attachments/assets/b9cdfccd-f074-4063-a2a7-e4e202c7b824)
-
-# Passo 3:
-Adicionar o python.exe ao PATH e depois clicar em baixar
-
-![Captura de tela 2025-06-28 212844](https://github.com/user-attachments/assets/15043e46-8c73-4602-8d56-608c337e276b)
-
-
-```bash
-pip install flask python-dotenv flask-cors flask-socketio pymongo bcrypt requests google-auth werkzeug
-```
