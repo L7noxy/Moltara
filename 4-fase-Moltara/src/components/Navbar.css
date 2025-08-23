@@ -1,6 +1,6 @@
 .navbar {
     width: 100%;
-    background-color: var(--color4);
+    background-color: var(--color5);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -19,7 +19,7 @@
 .search-bar {
     display: flex;
     gap: 5px;
-    border: 1px solid #fffcfc;  
+    border: 1px solid #000000;  
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0);
     overflow: hidden;
@@ -50,7 +50,7 @@
 }
 
 .buttons a {
-    color: var(--color6);
+    color: var(--color4);
     border: none;
     border-radius: 5px;
     cursor: pointer;
