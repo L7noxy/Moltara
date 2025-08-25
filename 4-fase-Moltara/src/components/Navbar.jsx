@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { IoSearchOutline } from "react-icons/io5"; //icone de pesquisa
-import { LuCircleUserRound } from "react-icons/lu"; //icone do usuario
+import { IoSearchOutline } from "react-icons/io5"; 
+import { LuCircleUserRound } from "react-icons/lu";
 import './Navbar.css'
 
 export default function Navbar() {
@@ -17,7 +17,7 @@ export default function Navbar() {
 
                 <div className="buttons">
                     <LuCircleUserRound size={20}/>
-                    <Link to="/login" className="login-btn">Entrar</Link>
+                    <Link to={"/login"} className="login-btn">Entrar</Link>
                     <p>ou</p>
                     <Link className="signup-btn">Cadastrar-se</Link>
                 </div>
