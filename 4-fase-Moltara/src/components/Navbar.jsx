@@ -19,7 +19,7 @@ export default function Navbar() {
                     <LuCircleUserRound size={20}/>
                     <Link to={"/login"} className="login-btn">Entrar</Link>
                     <p>ou</p>
-                    <Link className="signup-btn">Cadastrar-se</Link>
+                    <Link to={"/cadastro"} className="signup-btn">Cadastrar-se</Link>
                 </div>
             </nav>
         </>
