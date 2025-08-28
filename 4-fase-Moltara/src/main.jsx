@@ -1,10 +1,12 @@
-import { BrowserRouter } from "react-router-dom";
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
+import { createRoot } from 'react-dom/client';
+import { GlobalContextProvider } from './context/GlobalContext.jsx'
+import router from './router/routes.jsx'
+import {  RouterProvider } from 'react-router-dom';
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+
+createRoot(document.getElementById('root')).render(
+  <GlobalContextProvider>
+      <RouterProvider router={router}>
+      </RouterProvider>
+  </GlobalContextProvider>  
 );
