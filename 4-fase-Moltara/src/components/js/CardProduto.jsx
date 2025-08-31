@@ -27,10 +27,14 @@ export default function CardProduto() {
                 {produtos.map((produto) => (
                     <div key={produto.id} className="card-produto">
                         <div className='image-produto'>
-                            <img src="" alt="" srcset="" />
+                            <img src="./img/cadeira.png" />
                         </div>
                         <p>{produto.descricao}</p>
-                        <p>{produto.preco}</p>
+
+                        <div className='preco-card'>
+                            <p>{produto.preco}</p>
+                        </div>
+
                     </div>
                 ))}
             </div>

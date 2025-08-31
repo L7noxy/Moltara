@@ -48,6 +48,7 @@
     font-size: 16px;
     border-radius: 20px;
     background-color: rgba(255, 255, 255, 0);
+    overflow: hidden;
 }
 
 .buttons {
