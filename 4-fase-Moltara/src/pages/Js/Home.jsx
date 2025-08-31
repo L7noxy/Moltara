@@ -1,8 +1,8 @@
 import React from 'react'
 import '../Css/Home.css'
-import Navbar from '../../components/js/Navbar'
-import CardProduto from '../../components/js/CardProduto'
-// import Carrosel from '../../components/js/Carrosel'
+import Navbar from '../../components/Js/Navbar'
+import CardProduto from '../../components/Js/CardProduto'
+import Carrosel from '../../components/Js/carrosel'
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaArrowRightLong } from "react-icons/fa6";
 
@@ -20,7 +20,7 @@ export default function Home() {
             </div>
 
             
-              {/* <Carrosel /> */}
+              <Carrosel />
           </div>
           <CardProduto />
         </div>

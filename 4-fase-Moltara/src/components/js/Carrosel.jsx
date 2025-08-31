@@ -1,64 +1,68 @@
 import React, { useState, useEffect } from "react";
-import "../Css/Carrosel.css";
+import { HiOutlineArrowSmallLeft } from "react-icons/hi2";
+import { HiOutlineArrowSmallRight } from "react-icons/hi2";
+
+import "../../components/Css/Carrosel.css";
 
 const slides = [
   {
-    img: "https://picsum.photos/id/1018/900/500",
-    title: "Tecnologia",
-    desc: "Inovações que transformam o futuro.",
+    img: "./img/banner.webp",
+    title: "Mega Oferta Tech",
+    caption: "Descontos incríveis por tempo limitado!",
+    cta: "Ver Oferta"
   },
   {
-    img: "https://picsum.photos/id/1015/900/500",
-    title: "Natureza",
-    desc: "A beleza simples da vida ao ar livre.",
+    img: "./img/banner2.webp",
+    title: "Hardware Gamer",
+    caption: "Potência e desempenho pra você dominar o jogo.",
+    cta: "Confira"
   },
   {
-    img: "https://picsum.photos/id/1019/900/500",
-    title: "Exploração",
-    desc: "Descubra novos horizontes todos os dias.",
-  },
+    img: "./img/banner3.webp  ",
+    title: "Lançamento Notebook",
+    caption: "Leve, rápido e moderno — começando agora!",
+    cta: "Saiba Mais"
+  }
 ];
 
 export default function Carousel() {
   const [index, setIndex] = useState(0);
 
-  const nextSlide = () => setIndex((prev) => (prev + 1) % slides.length);
-  const prevSlide = () => setIndex((prev) => (prev - 1 + slides.length) % slides.length);
+  const next = () => setIndex((prev) => (prev + 1) % slides.length);
+  const prev = () => setIndex((prev) => (prev - 1 + slides.length) % slides.length);
 
-  // autoplay
+  // Autoplay
   useEffect(() => {
-    const timer = setInterval(nextSlide, 5000);
+    const timer = setInterval(next, 6000);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="carousel">
-      {/* Slides */}
-      {slides.map((slide, i) => (
+    <div className="kb-carousel">
+      {slides.map((s, i) => (
         <div
           key={i}
-          className={`carousel-slide ${i === index ? "active" : ""}`}
-          style={{ backgroundImage: `url(${slide.img})` }}
+          className={`kb-slide ${i === index ? "active" : ""}`}
+          style={{ backgroundImage: `url(${s.img})` }}
         >
-          <div className="carousel-overlay">
-            <h2>{slide.title}</h2>
-            <p>{slide.desc}</p>
+          <div className="kb-content">
+            <h2>{s.title}</h2>
+            <p>{s.caption}</p>
+            <button className="kb-cta">{s.cta}</button>
           </div>
         </div>
       ))}
 
-      {/* Botões */}
-      <button className="carousel-btn prev" onClick={prevSlide}>❮</button>
-      <button className="carousel-btn next" onClick={nextSlide}>❯</button>
+      <button className="kb-btn prev" onClick={prev}><HiOutlineArrowSmallLeft size={30}/></button>
+      <button className="kb-btn next" onClick={next}><HiOutlineArrowSmallRight size={30}/></button>
 
-      {/* Indicadores */}
-      <div className="carousel-indicators">
+      <div className="kb-indicators">
         {slides.map((_, i) => (
           <span
             key={i}
-            className={`dot ${i === index ? "active" : ""}`}
+            className={`kb-dot ${i === index ? "active" : ""}`}
             onClick={() => setIndex(i)}
-          ></span>
+          />
         ))}
       </div>
     </div>
