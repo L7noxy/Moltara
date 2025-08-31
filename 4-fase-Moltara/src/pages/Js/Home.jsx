@@ -1,7 +1,7 @@
 import React from 'react'
 import '../Css/Home.css'
-import Navbar from '../../components/Navbar'
-import CardProduto from '../../components/CardProduto'
+import Navbar from '../../components/js/Navbar'
+import CardProduto from '../../components/js/CardProduto'
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaArrowRightLong } from "react-icons/fa6";
 

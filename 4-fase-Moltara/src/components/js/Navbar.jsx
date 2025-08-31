@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { IoSearchOutline } from "react-icons/io5"; 
+import { IoSearchOutline } from "react-icons/io5";
 import { LuCircleUserRound } from "react-icons/lu";
-import './Navbar.css'
+import { HiShoppingCart } from "react-icons/hi";
+
+import '../Css/Navbar.css'
 
 export default function Navbar() {
     return (
@@ -12,14 +14,20 @@ export default function Navbar() {
 
                 <div className="search-bar">
                     <input type="text" placeholder="Pesquisar..." />
-                    <button type="submit"><IoSearchOutline size={20}/></button>
+                    <button type="submit"><IoSearchOutline size={20} color='#ffffffff' /></button>
                 </div>
 
                 <div className="buttons">
-                    <LuCircleUserRound size={20}/>
+                    <LuCircleUserRound size={25} color='#ffffffff' />
                     <Link to={"/login"} className="login-btn">Entrar</Link>
                     <p>ou</p>
                     <Link to={"/cadastro"} className="signup-btn">Cadastrar-se</Link>
+
+                    <div className='carrinho'>  
+                        <Link to={"/carrinho"}>
+                            <HiShoppingCart color='#ffffffff'/>
+                        </Link>
+                    </div>
                 </div>
             </nav>
         </>
