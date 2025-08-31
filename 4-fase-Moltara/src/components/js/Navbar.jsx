@@ -18,14 +18,17 @@ export default function Navbar() {
                 </div>
 
                 <div className="buttons">
-                    <LuCircleUserRound size={25} color='#ffffffff' />
+                    <Link to={"/perfil"}>
+                        <LuCircleUserRound size={25} color='#ffffffff' />
+                    </Link>
+
                     <Link to={"/login"} className="login-btn">Entrar</Link>
                     <p>ou</p>
                     <Link to={"/cadastro"} className="signup-btn">Cadastrar-se</Link>
 
-                    <div className='carrinho'>  
+                    <div className='carrinho'>
                         <Link to={"/carrinho"}>
-                            <HiShoppingCart color='#ffffffff'/>
+                            <HiShoppingCart color='#ffffffff' />
                         </Link>
                     </div>
                 </div>

@@ -7,20 +7,20 @@ import "../../components/Css/Carrosel.css";
 const slides = [
   {
     img: "./img/banner.webp",
-    title: "Mega Oferta Tech",
+    title: "Promo do Dia Gamer",
     caption: "Descontos incríveis por tempo limitado!",
     cta: "Ver Oferta"
   },
   {
     img: "./img/banner2.webp",
-    title: "Hardware Gamer",
-    caption: "Potência e desempenho pra você dominar o jogo.",
+    title: "Promoções gamer",
+    caption: "Potência e desempenho pra você dominar o jogo!",
     cta: "Confira"
   },
   {
     img: "./img/banner3.webp  ",
-    title: "Lançamento Notebook",
-    caption: "Leve, rápido e moderno — começando agora!",
+    title: "Intel Gamer Days",
+    caption: "Ganhe o Battlefield 6 ao compar produtos da Intel!",
     cta: "Saiba Mais"
   }
 ];
@@ -33,9 +33,9 @@ export default function Carousel() {
 
   // Autoplay
   useEffect(() => {
-    const timer = setInterval(next, 6000);
+    const timer = setInterval(next, 90000000000000000000000);
     return () => clearInterval(timer);
-  }, []);
+  }, []);  
 
   return (
     <div className="kb-carousel">
