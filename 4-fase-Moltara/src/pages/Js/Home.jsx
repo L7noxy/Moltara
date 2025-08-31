@@ -1,0 +1,28 @@
+import React from 'react'
+import '../Css/Home.css'
+import Navbar from '../../components/Navbar'
+import CardProduto from '../../components/CardProduto'
+import { FaArrowLeftLong } from "react-icons/fa6";
+import { FaArrowRightLong } from "react-icons/fa6";
+
+export default function Home() {
+  return (
+    <>
+      <div className='container-home'>
+
+        <Navbar />
+        <div>
+          <div className='carrosel-home'>
+            <div className='botoes-carrosel'>
+              <button className='botao-carrosel-esquerdo'><FaArrowLeftLong color='#ffffffff' size={20}/></button>
+              <button className='botao-carrosel-direito'><FaArrowRightLong color='#ffffffff' size={20}/></button>
+            </div>
+
+          </div>
+          <CardProduto />
+        </div>
+
+      </div>
+    </>
+  )
+}

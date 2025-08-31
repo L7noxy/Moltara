@@ -1,5 +1,5 @@
 import React from 'react'
-import './EstoqueProduto.css'
+import '../Css/EstoqueProduto.css'
 
 export default function EstoqueProduto() {
   return (
