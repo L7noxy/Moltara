@@ -26,11 +26,9 @@ export default function Navbar() {
                     <p>ou</p>
                     <Link to={"/cadastro"} className="signup-btn">Cadastrar-se</Link>
 
-                    <div className='carrinho'>
-                        <Link to={"/carrinho"}>
-                            <HiShoppingCart color='#ffffffff' />
-                        </Link>
-                    </div>
+                    <Link to={"/carrinho"}>
+                        <HiShoppingCart color='#ffffffff' size={20} />
+                    </Link>
                 </div>
             </nav>
         </>

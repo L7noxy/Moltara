@@ -33,9 +33,9 @@ export default function Carousel() {
 
   // Autoplay
   useEffect(() => {
-    const timer = setInterval(next, 90000000000000000000000);
+    const timer = setInterval(next, 5000);
     return () => clearInterval(timer);
-  }, []);  
+  }, []);
 
   return (
     <div className="kb-carousel">
@@ -53,8 +53,8 @@ export default function Carousel() {
         </div>
       ))}
 
-      <button className="kb-btn prev" onClick={prev}><HiOutlineArrowSmallLeft size={30}/></button>
-      <button className="kb-btn next" onClick={next}><HiOutlineArrowSmallRight size={30}/></button>
+      <button className="kb-btn prev" onClick={prev}><HiOutlineArrowSmallLeft size={30} /></button>
+      <button className="kb-btn next" onClick={next}><HiOutlineArrowSmallRight size={30} /></button>
 
       <div className="kb-indicators">
         {slides.map((_, i) => (
