@@ -58,7 +58,7 @@ export default function CardProduto() {
         track.style.transform = `translateX(-${offset}px)`;
     }
 
-    nextBtn('click', () => {
+        nextBtn('click', () => {
         currentIndex++;
         if (currentIndex > totalImages - visibleImages) {
             currentIndex = 0;
