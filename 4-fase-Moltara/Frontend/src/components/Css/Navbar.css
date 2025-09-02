@@ -34,6 +34,7 @@
     font-size: 15px;
     width: 300px;
     border: none;
+    color: #ffffff;
 }
 
 .search-bar input::placeholder {

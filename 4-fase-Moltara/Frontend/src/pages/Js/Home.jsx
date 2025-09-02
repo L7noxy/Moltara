@@ -19,7 +19,6 @@ export default function Home() {
               <button className='botao-carrosel-direito'><FaArrowRightLong color='#ffffffff' size={20} /></button>
             </div>
 
-            
               <Carrosel />
           </div>
           <CardProduto />

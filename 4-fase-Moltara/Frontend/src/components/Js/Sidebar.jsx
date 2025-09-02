@@ -15,7 +15,7 @@ function Sidebar() {
   const [rodar, setRodar] = useState(false);
   const [girado, setGirado] = useState(false);
   const userId = localStorage.getItem('userId');
-  const userType = localStorage.getItem('userType'); // Pega o tipo de usuário: 'investidor' ou 'profissional'
+  const userType = localStorage.getItem('userType');
 
   const girar = () => {
     setRodar(true);
@@ -24,12 +24,11 @@ function Sidebar() {
       setRodar(false);
       setGirado(!girado);
     }, 300)
-  };
+  }; 
 
   useEffect(() => {
     const checkProfessionalProjects = async () => {
-      // AQUI: A condição é para o 'profissional' que cria projetos
-      if (userType === 'profissional' && userId) { 
+      if (userType === 'profissional' && userId) {
         try {
           const response = await fetch(`http://localhost:5000/api/projetos/${userId}`);
           const data = await response.json();
@@ -49,7 +48,7 @@ function Sidebar() {
     };
 
     checkProfessionalProjects();
-  }, [userId, userType]); 
+  }, [userId, userType]);
 
   return (
     <>
@@ -75,7 +74,6 @@ function Sidebar() {
                     : ""
               }
             />
-
           </button>
 
           <Link to={'/'} className="icon-text "><HiMiniHome color="white" fontSize={18} /><span className="link-text">Home </span></Link>
