@@ -19,11 +19,15 @@ export default function Home() {
               <button className='botao-carrosel-direito'><FaArrowRightLong color='#ffffffff' size={20} /></button>
             </div>
 
-              <Carrosel />
+            <Carrosel />
           </div>
           <CardProduto />
-        </div>
 
+          <div className='banner-produto-home'>
+            <img src="./img/Banner_900x100.png" alt="" srcset="" />
+            <img src="./img/Zowie.jpg" alt="" />
+          </div>
+        </div>
       </div>
     </>
   )

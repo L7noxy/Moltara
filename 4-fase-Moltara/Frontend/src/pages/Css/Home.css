@@ -58,3 +58,11 @@
     border-style: solid;
     border-width: 2px;
 }
+
+.banner-produto-home{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 20px;
+}

@@ -34,12 +34,7 @@ export default function CardProduto() {
             id: 6,
             descricao: 'Headset Gamer Sem Fio Logitech G PRO X Wireless LIGHTSPEED 7.1 Dolby Surround, Blue VOICE, Drivers PRO-G 50 mm - 981-000906',
             preco: 19.99
-        },
-        {
-            id: 7,
-            descricao: 'Headset Gamer Sem Fio Logitech G PRO X Wireless LIGHTSPEED 7.1 Dolby Surround, Blue VOICE, Drivers PRO-G 50 mm - 981-000906',
-            preco: 19.99
-        },
+        }
     ]
 
     return (
@@ -58,6 +53,8 @@ export default function CardProduto() {
 
                     </div>
                 ))}
+
+
             </div>
         </div>
 
