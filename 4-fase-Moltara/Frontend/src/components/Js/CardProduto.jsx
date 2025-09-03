@@ -8,7 +8,7 @@ export default function CardProduto() {
         {
             id: 1,
             descricao: 'Cadeira Gamer KBM! GAMING Tempest CG500 Preta e Roxa, Com Almofadas, Descanso Para Pernas Retrátil, Reclinável - KGCG500PTRX',
-            preco: 9.99
+            preco: 19.99
         },
         {
             id: 2,
@@ -53,8 +53,6 @@ export default function CardProduto() {
 
                     </div>
                 ))}
-
-
             </div>
         </div>
 

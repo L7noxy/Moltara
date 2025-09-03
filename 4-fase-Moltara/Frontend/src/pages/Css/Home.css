@@ -44,7 +44,8 @@
     align-items: center;
 }
 
-.botao-carrosel-direito, .botao-carrosel-esquerdo {
+.botao-carrosel-direito,
+.botao-carrosel-esquerdo {
     width: 50px;
     height: 50px;
     background-color: transparent;
@@ -59,10 +60,14 @@
     border-width: 2px;
 }
 
-.banner-produto-home{
-    display:flex;
+.banner-produto-home {
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 30px;
-    padding: 20px;
+    margin: 30px;
+}
+
+.banner-produto-home img{
+    height: 90px;
 }
