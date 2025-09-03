@@ -1,19 +1,8 @@
 import React, { useState } from 'react'
 import '../Css/CardProduto.css'
-import { HiOutlineArrowSmallLeft } from "react-icons/hi2";
-import { HiOutlineArrowSmallRight } from "react-icons/hi2";
 
 export default function CardProduto() {
-    const [carouselTrack, setCarouselTrack] = useState("");
-    const [prevBtn, setPrevBtn] = useState("");
-    const [nextBtn, useNextBtn] = useState("");
 
-    const totalImages = 10;
-    const visibleImages = 5;
-    const itemWidth = 200;
-    const itemGap = 10;
-
-    let currentIndex = 0;
 
     const produtos = [
         {
@@ -53,31 +42,9 @@ export default function CardProduto() {
         },
     ]
 
-    function updateCarousel() {
-        const offset = currentIndex * (itemWidth + itemGap);
-        track.style.transform = `translateX(-${offset}px)`;
-    }
-
-        nextBtn('click', () => {
-        currentIndex++;
-        if (currentIndex > totalImages - visibleImages) {
-            currentIndex = 0;
-        }
-        updateCarousel();
-    });
-
-    prevBtn('click', () => {
-        currentIndex--;
-        if (currentIndex < 0) {
-            currentIndex = totalImages - visibleImages;
-        }
-        updateCarousel();
-    });
-
     return (
         <div>
             <div className='container-produtos-home'>
-                <button class="seta" id="prevBtn"><HiOutlineArrowSmallLeft size={30} /></button>
                 {produtos.map((produto) => (
                     <div key={produto.id} className="card-produto">
                         <div className='image-produto'>
@@ -91,7 +58,6 @@ export default function CardProduto() {
 
                     </div>
                 ))}
-                <button class="seta" id="nextBtn"><HiOutlineArrowSmallRight size={30} /></button>
             </div>
         </div>
 
