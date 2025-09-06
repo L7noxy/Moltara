@@ -50,7 +50,6 @@ export default function CardProduto() {
                         <div className='preco-card'>
                             <p>{produto.preco}</p>
                         </div>
-
                     </div>
                 ))}
             </div>
