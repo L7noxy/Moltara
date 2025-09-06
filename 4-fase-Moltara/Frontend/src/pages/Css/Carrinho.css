@@ -1,0 +1,47 @@
+.container-carrinho {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.itens-carrinho {
+    border: 1px solid #263238;
+    height: 80vh;
+    width: 80vw;
+    margin: 1px;
+}
+
+.nav-carrinho {
+    border: 1px solid #263238;
+    height: 10vh;
+    width: 80vw;
+    margin: 1px;
+}
+
+.itens-da-compra {
+    border: 1px solid #ff0404;
+    display: flex;
+    margin: 1px;
+    height: 60vh;
+    width: 80vw;
+    overflow: hidden;
+}
+
+.lista-produtos {
+    border: 1px solid #00aaff;
+    height:auto;
+    width: 100vw;
+    margin: 1px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.resumo-da-compra {
+    border: 1px solid #00ff04;
+    height: 60vh;
+    width: 50vw;
+    margin: 1px;
+}
+
