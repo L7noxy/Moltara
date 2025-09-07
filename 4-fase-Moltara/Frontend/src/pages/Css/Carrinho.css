@@ -41,14 +41,13 @@
 .resumo-da-compra {
     border: 1px solid #00ff04;
     height: 60vh;
-    width: 50vw;
+    width: 40vw;
     margin: 1px;
 }
 
 .produto {
-    border: 1px solid #00ff04;
     height: 25vh;
-    width: 100vw;
+    width: 85%;
     margin: 1px;
     overflow: hidden;
 }
@@ -56,4 +55,21 @@
 .produto img {
     height: 120px;
     width: 120px;
+}
+
+.produto hr{
+    height: 1px;
+    border: none;
+    background-color: #263238;
+    margin-top: 15px;
+}
+
+.produtos{
+    border: 1px solid #ff00ea;
+    background-color: #ffffff;
+    border-radius: 10px;
+    height: 60vh;
+    width: 50vw;
+    overflow: scroll;
+    overflow-x: hidden;
 }
