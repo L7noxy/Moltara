@@ -11,10 +11,10 @@ A plataforma conta com recursos como carrinho de compras, avaliações de produt
 ### Requisitos Funcionais (RF)
 
 
-| Código      | Requisito Funcional                                                          | Descrição                                                                                   |             |                                                                              |
+| Código      | Requisito Funcional                                                          | Descrição                                                                                   
 |-------------|------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-| **RF 001**  | O sistema deve permitir que o usuário realize seu cadastro perfeitamente.    | tela de cadastro para novos usuários.                                               |       |             |                                                                                              
-| **RF 002**  | O sistema deve permitir modificação do perfil.                               | Funcionalidades para editar foto, nome, biografia, entre outros.                    |      |        
+| **RF 001**  | O sistema deve permitir que o usuário realize seu cadastro perfeitamente.    | tela de cadastro para novos usuários.                                               |       
+| **RF 002**  | O sistema deve permitir modificação do perfil.                               | Funcionalidades para editar foto, nome, biografia, entre outros.                    |      
 | **RF 003**  | O sistema deve ter uma aba de pesquisa                                       | No perfil do usuário profissional, mostrar os projetos criados.                     |                                               
 
 ## Colaboradores do Projeto e as funções que irão exercer
