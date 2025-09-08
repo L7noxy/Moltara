@@ -1,6 +1,10 @@
 import React from 'react'
 import "../Css/Carrinho.css"
 import Navbar from '../../components/Js/Navbar'
+import Nav_carrinho from '../../components/Js/Nav_carrinho';
+
+
+
 
 export default function Carrinho() {
 
@@ -36,24 +40,24 @@ export default function Carrinho() {
       descricao: "Descrição do produto",
     },
   ];
+
   return (
     <div>
       <Navbar />
       <div className='container-carrinho'>
         <div className='itens-carrinho'>
-          <div className='nav-carrinho'>
-
-          </div>
           <div className='itens-da-compra'>
-
-            <div className='produtos'>
+            <Nav_carrinho />
+            <div className='container-produtos'>
               <div className='lista-produtos'>
                 <div className='produtos-carrinho'>
                   {produtos_carrinho.map((produtos) => (
                     <div className='produto'>
                       <img src="./img/cadeira.png" alt="" />
+                      <button className='deletar-produto'>Remover</button>
                       <p>{produtos.nome}</p>
                       <p>{produtos.preco}</p>
+
                       <hr />
                     </div>
                   ))}
@@ -63,7 +67,17 @@ export default function Carrinho() {
             </div>
 
             <div className='resumo-da-compra'>
-
+              <div className='infos-resumo-compra'>
+                <h2>Resumo da compra </h2>
+                <p>Quantidade de produtos:  4</p>
+                <p>Valor do subtotal: $723,24 </p>
+                <p>valor total:  $723,24</p>
+                <p></p>
+              </div>
+              <div className='botoes-resumo-compra'>
+                <button className='cupom'>Adicionar cupom</button>
+                <button className='comprar'>Confirmar compra</button>
+              </div>
             </div>
           </div>
         </div>

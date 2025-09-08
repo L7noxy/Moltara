@@ -1,0 +1,20 @@
+.nav-carrinho {
+    border: 1px solid #263238;
+    height: 10vh;
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav-carrinho p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.container-nav-carrinho {
+    width: 100%;
+    position: absolute;
+}

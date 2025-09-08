@@ -7,50 +7,61 @@
 }
 
 .itens-carrinho {
-    border: 1px solid #263238;
     height: 80vh;
     width: 80vw;
-    margin: 1px;
     overflow: hidden;
-}
-
-.nav-carrinho {
-    border: 1px solid #263238;
-    height: 10vh;
-    width: 80vw;
-    margin: 1px;
 }
 
 .itens-da-compra {
     display: flex;
-    margin: 1px;
+    padding: 20px;
     height: 80vh;
     width: 80vw;
     overflow: hidden;
+    gap: 20px;
 }
 
 .lista-produtos {
     padding: 20px;
-    height: auto;
-    width: 50vw;
+    height: max-content;
+    width: 60vw;
+    height: 100vh;
     margin: 1px;
 
 }
 
 .produtos-carrinho {
     margin: 1px;
-    height: 80vh;
-    width: 80vw;
+    height: 485px;
+    width: 820px;
     overflow-x: hidden;
-    height: 53vh;
-    width: 40vw;
 }
 
 .resumo-da-compra {
-    border: 1px solid #00ff04;
-    height: 60vh;
-    width: 40vw;
-    margin: 1px;
+    height: 250px;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-top: 80px;
+}
+
+.infos-resumo-compra {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.infos-resumo-compra h2 {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .produto {
@@ -72,11 +83,44 @@
     margin-top: 15px;
 }
 
-.produtos {
-    border: 1px solid #ff00ea;
+.container-produtos {
+    margin-top: 80px;
     background-color: #ffffff;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
-    height: 60vh;
-    width: 50vw;
+    height: 530px;
+    width: 55vw;
+    overflow: hidden;
+}
+
+.deletar-produto {
+    color: #e00000;
+    font-weight: 700;
+}
+
+.botoes-resumo-compra {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.cupom {
+    background-color: #FF3535;
+    width: 190px;
+    color: #fff;
+    font-size: 17px;
+    padding: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.comprar {
+    background-color: #e00000;
+    color: #fff;
+    font-size: 17px;
+    width: 250px;
+    padding: 10px;
+    border-radius: 5px;
     overflow: hidden;
 }
