@@ -3,20 +3,19 @@
 
 ## Descrição do Projeto
 
-O **Moltara** é um web-site de vendas de computadores
+O Moltara é um website de venda de computadores e peças de hardware, focado em oferecer personalização e praticidade. O usuário pode montar sua máquina escolhendo cada componente, além de criar e gerenciar seu perfil pessoal.
 
-O site possui diversas funcionalidades, personalização das peças, possibilitando uma troca rápida e eficiente de informações. Cada usuário pode criar, editar e excluir seu perfil pessoal.
-
+A plataforma conta com recursos como carrinho de compras, avaliações de produtos, comparador de peças, recomendações inteligentes e suporte integrado. Com filtros avançados e lista de desejos, o Moltara garante uma experiência de compra rápida, eficiente e adaptada às necessidades de cada cliente.
 ## Requisitos do Sistema
 
 ### Requisitos Funcionais (RF)
 
 
-| Código      | Requisito Funcional                                                                 | Descrição                                                                                      |
-|-------------|-------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
-| **RF 001**  | O sistema deve permitir que o usuário realize seu cadastro perfeitamente.           | Página de cadastro para novos usuários.                                                       |                                                                                               
-| **RF 004**  | O sistema deve permitir modificação do perfil.                                      | Funcionalidades para editar foto, nome, biografia, entre outros.                              |        
-| **RF 009**  | O sistema deve exibir projetos feitos pelo profissional.                            | No perfil do usuário profissional, mostrar os projetos criados.                               |                                               
+| Código      | Requisito Funcional                                                          | Descrição                                                                                   |             |                                                                              |
+|-------------|------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| **RF 001**  | O sistema deve permitir que o usuário realize seu cadastro perfeitamente.    | tela de cadastro para novos usuários.                                               |       |             |                                                                                              
+| **RF 002**  | O sistema deve permitir modificação do perfil.                               | Funcionalidades para editar foto, nome, biografia, entre outros.                    |      |        
+| **RF 003**  | O sistema deve ter uma aba de pesquisa                                       | No perfil do usuário profissional, mostrar os projetos criados.                     |                                               
 
 ## Colaboradores do Projeto e as funções que irão exercer
 
