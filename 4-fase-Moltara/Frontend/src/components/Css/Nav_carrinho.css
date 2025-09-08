@@ -1,5 +1,4 @@
 .nav-carrinho {
-    border: 1px solid #263238;
     height: 10vh;
     width: 80vw;
     display: flex;
@@ -7,7 +6,7 @@
     justify-content: space-around;
 }
 
-.nav-carrinho p{
+.nav-carrinho p {
     display: flex;
     justify-content: center;
     align-items: center;
