@@ -48,14 +48,17 @@ export default function Carrinho() {
 
             <div className='produtos'>
               <div className='lista-produtos'>
-                {produtos_carrinho.map((produtos) => (
-                  <div className='produto'>
-                    <img src="./img/cadeira.png" alt="" />
-                    <p>{produtos.nome}</p>
-                    <p>{produtos.preco}</p>
-                    <hr />
-                  </div>
-                ))}
+                <div className='produtos-carrinho'>
+                  {produtos_carrinho.map((produtos) => (
+                    <div className='produto'>
+                      <img src="./img/cadeira.png" alt="" />
+                      <p>{produtos.nome}</p>
+                      <p>{produtos.preco}</p>
+                      <hr />
+                    </div>
+                  ))}
+                </div>
+
               </div>
             </div>
 

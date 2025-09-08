@@ -34,8 +34,16 @@
     height: auto;
     width: 50vw;
     margin: 1px;
-    overflow: scroll;
+
+}
+
+.produtos-carrinho {
+    margin: 1px;
+    height: 80vh;
+    width: 80vw;
     overflow-x: hidden;
+    height: 53vh;
+    width: 40vw;
 }
 
 .resumo-da-compra {
@@ -57,19 +65,18 @@
     width: 120px;
 }
 
-.produto hr{
+.produto hr {
     height: 1px;
     border: none;
     background-color: #263238;
     margin-top: 15px;
 }
 
-.produtos{
+.produtos {
     border: 1px solid #ff00ea;
     background-color: #ffffff;
     border-radius: 10px;
     height: 60vh;
     width: 50vw;
-    overflow: scroll;
-    overflow-x: hidden;
+    overflow: hidden;
 }
