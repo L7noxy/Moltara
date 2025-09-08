@@ -1,21 +1,25 @@
 # Moltara
 
-
 ## Descrição do Projeto
 
-O Moltara é um website de venda de computadores e peças de hardware, focado em oferecer personalização e praticidade. O usuário pode montar sua máquina escolhendo cada componente, além de criar e gerenciar seu perfil pessoal.
+O Moltara é um website e-commerce de venda de computadores e peças de hardware, focado em oferecer personalização e praticidade. O usuário pode montar sua máquina escolhendo cada componente, além de criar e gerenciar seu perfil pessoal.
 
-A plataforma conta com recursos como carrinho de compras, avaliações de produtos, comparador de peças, recomendações inteligentes e suporte integrado. Com filtros avançados e lista de desejos, o Moltara garante uma experiência de compra rápida, eficiente e adaptada às necessidades de cada cliente.
+A plataforma conta com recursos como carrinho de compras, avaliações de produtos, filtros, lista de desejos, gestor de estoque sendo responsabilizado pelo admnistrador, edição de perfil tanto do cliente e do admnistrador e entre outros. Moltara garante uma experiência de compra rápida, eficiente e adaptada às necessidades de cada cliente.
 ## Requisitos do Sistema
 
 ### Requisitos Funcionais (RF)
 
+| Código    | Requisito Funcional                                                        | Descrição                                                                                   |
+|-----------|----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| **RF 01** |O sistema deve permitir que o usuário realize seu cadastro perfeitamente.   |Tela de cadastro para novos usuários.                                                        |
+| **RF 02** |O sistema deve permitir que o usuário realize seu login perfeitamente.      |Tela de login após novos usuários se cadastrar.                                              | 
+| **RF 03** |O sistema deve permitir modificação do perfil.                              |Funcionalidades para editar foto, nome, biografia, entre outros.                             | 
+| **RF 04** |O sistema deve exibir uma aba de pesquisa.                                  |Na home do usuário cliente, quando for pesquisar um produto, exibe os produtos na tela.      |  | **RF 05** |O sistema deve oferecer um filtro que possa seleciona produtos específicos. |Ao pesquisar algum produto, terá um filtro avançado, podendo específicar ainda mais a busca. |   | **RF 06** | O sistema deve mostrar os produtos adicionados no carrinho do cliente.     |No Carrinho do usuário cliente, exibe os produtos adicionados na tela. Podendo remover,      |                                                                                             adicionar, confirmar e finalizar a compra.
+| **RF 07** |O sistema deve fornecer cupoms de desconto antes de finalizar a compra.     |Na página de carrinho, terá uma função que possa adicionar cupoms no valor total da compra.  |
+| **RF 08** |O sistema deve possuir a tela com as informações detalhadas do produto.     |Na página de produto detalhada, contém descrição aprofundada do produto, imagens e preço.    |
+| **RF 09** |O sistema deve ter a possibilidade do cliente avaliar os produtos.          |Na avaliação, existe duas possibilidades, comentando e preenchendo as estrelas de 0 a 5 .    | 
+| **RF 10** |                                                                            |                                                                                             | 
 
-| Código      | Requisito Funcional                                                          | Descrição                                                                                   
-|-------------|------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-| **RF 001**  | O sistema deve permitir que o usuário realize seu cadastro perfeitamente.    | tela de cadastro para novos usuários.                                               |       
-| **RF 002**  | O sistema deve permitir modificação do perfil.                               | Funcionalidades para editar foto, nome, biografia, entre outros.                    |      
-| **RF 003**  | O sistema deve ter uma aba de pesquisa                                       | No perfil do usuário profissional, mostrar os projetos criados.                     |                                               
 
 ## Colaboradores do Projeto e as funções que irão exercer
 
@@ -24,11 +28,7 @@ A plataforma conta com recursos como carrinho de compras, avaliações de produt
 | Ana Carolina          |                                           |
 | Gabriel Castanhel     |                                           |
 | Pedro Henrique        |                                           |
-## Protótipo das Telas de Login e Cadastro
 
-### Tela de Login
-![Login](./3-fase-sa/public/img/Login.png)
 
-### Tela de Cadastro  Profissional (Parte 1)
-![Cadastro](./3-fase-sa/public/img/Tela_cadastro_profissional_1.png)
+## Protótipo das Telas
 
