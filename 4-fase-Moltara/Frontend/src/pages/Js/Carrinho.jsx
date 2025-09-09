@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 import "../Css/Carrinho.css";
 import Navbar from "../../components/Js/Navbar";
 import Nav_carrinho from "../../components/Js/Nav_carrinho";
@@ -64,14 +65,14 @@ export default function Carrinho() {
             <div className="resumo-da-compra">
               <div className="infos-resumo-compra">
                 <h2>Resumo da compra </h2>
-                <p>Quantidade de produtos: 4</p>
+                <p>Quantidade de produtos: 4 </p> 
                 <p>Valor do subtotal: $723,24 </p>
-                <p>valor total: $723,24</p>
+                <p>valor total: $723,24 </p>
                 <p></p>
               </div>
               <div className="botoes-resumo-compra">
                 <button className="cupom">Adicionar cupom</button>
-                <button className="comprar">Confirmar compra</button>
+                <Link to={'/confirmacao'}><button className="comprar"> Confirmar compra</button></Link>
               </div>
             </div>
           </div>
