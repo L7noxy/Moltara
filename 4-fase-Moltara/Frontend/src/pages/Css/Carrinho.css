@@ -7,7 +7,7 @@
 }
 
 .itens-carrinho {
-    height: 80vh;
+    height: 90vh;
     width: 80vw;
     overflow: hidden;
 }
@@ -15,7 +15,7 @@
 .itens-da-compra {
     display: flex;
     padding: 20px;
-    height: 80vh;
+    height: 90vh;
     width: 80vw;
     overflow: hidden;
     gap: 20px;
