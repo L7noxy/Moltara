@@ -23,15 +23,29 @@
     margin: 20px;
     padding: 20px;
     background-color: #ffffff;
+    h2{
+        display: flex;
+        gap: 10px;
+    }
+
 }
 
+
+
 .lista-compras {
+    display: flex;
+    flex-direction: column;
     border: 1px solid rgb(0, 255, 0);
     margin: 20px;
     padding: 20px;
     background-color: #ffffff;
     height: 350px;
     overflow-y: auto;
+    gap: 10px;
+    h2 {
+        display: flex;
+        gap: 10px;
+    }
 }
 
 .total-compra {
@@ -42,7 +56,6 @@
     background-color: #ffffff;
     height: 200px;
 }
-
 
 .resumo-compra {
     margin: 20px;
@@ -56,7 +69,6 @@
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
     background-color: #fff;
     border-radius: 10px;
-
 }
 
 .infos-compra {
