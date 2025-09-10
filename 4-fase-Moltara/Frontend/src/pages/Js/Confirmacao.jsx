@@ -7,6 +7,29 @@ import { Link } from "react-router";
 
 export default function Confirmacao() {
 
+  const produtos_confirmacao = [
+    { 
+      id: 1, 
+      nome: "Produto 1", 
+      preco: 100.00 
+    },
+    { 
+      id: 2, 
+      nome: "Produto 2", 
+      preco: 200.00 
+    },
+    { 
+      id: 3, 
+      nome: "Produto 3", 
+      preco: 150.00 
+    },
+    { 
+      id: 4, 
+      nome: "Produto 4", 
+      preco: 273.24 
+    }
+  ]
+
   return (
     <div>
       <Navbar />
@@ -24,7 +47,21 @@ export default function Confirmacao() {
               </div>
 
               <div className="lista-compras">
-                <h2><BsBasket2Fill color="#BB2630"/>Lista de Compras</h2> 
+                <h2><BsBasket2Fill color="#BB2630" />Lista de Compras</h2>
+                <div className="itens-compras">
+                  <ul>
+                    {produtos_confirmacao.map((produtos) => (
+                      <div className="produto">
+                        <img src="./img/cadeira.png" alt="" />
+                        <button className="deletar-produto">Remover</button>
+                        <p>{produtos.nome}</p>
+                        <p>{produtos.preco}</p>
+
+                        <hr />
+                      </div>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
             </div>
@@ -37,7 +74,7 @@ export default function Confirmacao() {
                 <p></p>
               </div>
               <div className="botoes-compra">
-                <button className="pagamento">Forma de pagamento</button>
+                <Link to="/pagamento"><button className="pagamento">Forma de pagamento</button></Link>
               </div>
             </div>
           </div>
