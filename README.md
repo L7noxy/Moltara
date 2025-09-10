@@ -46,8 +46,8 @@ A plataforma conta com recursos como carrinho de compras, avaliações de produt
 
 ## Tipográfias Utilizadas
 
-# Primária: Urbanist
-# Segundaria: Albert Sans
+ Primária: Urbanist
+ Segundaria: Albert Sans
 
 
 
