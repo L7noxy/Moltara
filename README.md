@@ -44,10 +44,10 @@ A plataforma conta com recursos como carrinho de compras, avaliações de produt
 ![Paleta de cores do projeto](../img/paletaMoltara.png)
 
 
-##Tipográfias Utilizadas
+## Tipográfias Utilizadas
 
-#Primária: Urbanist
-#Segundaria: Albert Sans
+# Primária: Urbanist
+# Segundaria: Albert Sans
 
 
 
