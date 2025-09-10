@@ -5,9 +5,8 @@
 O Moltara é um website e-commerce de venda de computadores e peças de hardware, focado em oferecer personalização e praticidade. O usuário pode montar sua máquina escolhendo cada componente, além de criar e gerenciar seu perfil pessoal.
 
 A plataforma conta com recursos como carrinho de compras, avaliações de produtos, filtros, lista de desejos, gestor de estoque sendo responsabilizado pelo admnistrador, edição de perfil tanto do cliente e do admnistrador e entre outros. Moltara garante uma experiência de compra rápida, eficiente e adaptada às necessidades de cada cliente.
-## Requisitos do Sistema
 
-### Requisitos Funcionais (RF)
+## Requisitos Funcionais (RF)
 
 | Código    | Requisito Funcional                                                          | Descrição                                                                                   |
 |-----------|------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
@@ -37,5 +36,17 @@ A plataforma conta com recursos como carrinho de compras, avaliações de produt
 | Pedro Henrique        |RF01, RF02, RF03, RF04, RF05  |
 
 
-## Protótipo das Telas
+## [Protótipo das Telas](https://www.figma.com/design/XxQfi2UJ4np4bW0mrFN4KB/Moltara?node-id=0-1&t=lDdFtcTyhz01arJj-1)
+
+
+## Paleta de cores utilizada
+![Paleta de cores do projeto](../img/paletaMoltara.png)
+
+
+## Tipográfias Utilizadas
+
+### Primária: Urbanist
+### Segundaria: Albert Sans
+
+
 

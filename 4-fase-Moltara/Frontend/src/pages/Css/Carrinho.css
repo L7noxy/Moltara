@@ -45,7 +45,7 @@
     flex-direction: column;
     padding: 20px;
     overflow: hidden;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);    
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
     background-color: #fff;
     border-radius: 10px;
     margin-top: 80px;
@@ -106,7 +106,7 @@
     overflow: hidden;
 }
 
-.botoes-resumo-compra  a{
+.botoes-resumo-compra a {
     background-color: #e00000;
     color: #fff;
     font-size: 17px;
