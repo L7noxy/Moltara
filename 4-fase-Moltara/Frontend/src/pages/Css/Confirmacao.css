@@ -24,3 +24,13 @@
     width: 80vw;
 }
 
+.dados-pessoais {
+    border: 1px solid black;
+    margin: 2px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
+    display: flex;
+    height: 600px;
+    width: 80vw;
+}
+
