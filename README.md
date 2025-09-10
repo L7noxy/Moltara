@@ -41,6 +41,7 @@ A plataforma conta com recursos como carrinho de compras, avaliações de produt
 
 
 ## Paleta de cores utilizada
+![Paleta de cores do projeto](./palette.png)
 
 
 
