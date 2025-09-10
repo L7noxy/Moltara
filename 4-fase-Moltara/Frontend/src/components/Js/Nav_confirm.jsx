@@ -6,7 +6,7 @@ import { BsCreditCard } from "react-icons/bs";
 
 export default function Nav_confirm() {
   return (
-    <div className='container-nav-confirm'>
+    <div>
       <div className='nav-confirm'>
         <p className='meu-carrinho'><IoCartOutline color='BB252F' size={20} />Meu carrinho</p>
         <p><FaCheck color='BB252F' size={20} />Confirmação</p>

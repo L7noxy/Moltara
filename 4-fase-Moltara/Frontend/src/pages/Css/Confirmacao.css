@@ -1,36 +1,88 @@
-.container-confirmacao {
+.container-confirm {
+    background-color: #f5f5f5;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100vh;
 }
 
-.itens-confirmacao {
-    border: 1px solid black;
+.container-itens-produtos-confirm {
+    border: 1px solid rgb(0, 0, 0);
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    height: 570px;
+}
+
+.itens-confirm {
+    border: 1px solid rgb(255, 0, 0);
+    width: 70%;
+    height: 100%;
+}
+
+.dados-cliente {
+    border: 1px solid rgb(0, 0, 255);
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.lista-compras {
+    border: 1px solid rgb(0, 255, 0);
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    height: 350px;
+    overflow-y: auto;
+}
+
+.total-compra {
+    border: 1px solid rgb(255, 165, 0);
+    width: 30%;
+    margin: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    height: 200px;
+}
+
+
+.resumo-compra {
+    margin: 20px;
+    height: 250px;
+    width: 350px;
+    display: flex;
     justify-content: center;
-}
-
-.confirmacao {
-    border: 1px solid black;
-    margin: 2px;
-    border-radius: 10px;
+    flex-direction: column;
+    padding: 20px;
+    overflow: hidden;
     box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
-    display: flex;
-    height: 600px;
-    width: 80vw;
-}
-
-.dados-pessoais {
-    border: 1px solid black;
-    margin: 2px;
+    background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
-    display: flex;
-    height: 600px;
-    width: 80vw;
+
 }
 
+.infos-compra {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.infos-compra h2 {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.pagamento {
+    background-color: #EB3743;
+    border-radius: 8px;
+    color: #f5f5f5;
+    font-size: 15px;
+    padding: 10px;
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
