@@ -6,6 +6,7 @@ import Perfil from "../pages/Js/Perfil";
 import Carrinho from "../pages/Js/Carrinho";
 import Confirmacao from "../pages/Js/Confirmacao";
 import ProdutoDetalhada from "../pages/Js/ProdutoDetalhada";
+import Pagamento from "../pages/Js/Pagamento";
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
     { path: "/carrinho", element: <Carrinho /> },
     { path: "/confirmacao", element: <Confirmacao /> },
     { path: "/produtoDetalhada", element: <ProdutoDetalhada /> },
+    { path: "/pagamento", element: <Pagamento /> },
 
 ])
 
