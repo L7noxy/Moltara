@@ -5,7 +5,6 @@
 O Moltara é um website e-commerce de venda de computadores e peças de hardware, focado em oferecer personalização e praticidade. O usuário pode montar sua máquina escolhendo cada componente, além de criar e gerenciar seu perfil pessoal.
 
 A plataforma conta com recursos como carrinho de compras, avaliações de produtos, filtros, lista de desejos, gestor de estoque sendo responsabilizado pelo admnistrador, edição de perfil tanto do cliente e do admnistrador e entre outros. Moltara garante uma experiência de compra rápida, eficiente e adaptada às necessidades de cada cliente.
-## Requisitos do Sistema
 
 ### Requisitos Funcionais (RF)
 
@@ -28,7 +27,7 @@ A plataforma conta com recursos como carrinho de compras, avaliações de produt
 | **RF 15** |O  sistema deve permitir que o admnistrador adicione cupons de desconto.      |O  ADM vaii manusear e acresentar novos cupoms para serem utilizados na compra.              | 
 
 
-## Colaboradores do Projeto e as funções que irão exercer
+### Colaboradores do Projeto e as funções que irão exercer
 
 | Integrantes da equipe | Requisitos Funcionais (RF)   |
 |-----------------------|------------------------------|
