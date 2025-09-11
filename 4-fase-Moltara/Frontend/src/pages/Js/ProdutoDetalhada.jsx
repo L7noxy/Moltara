@@ -33,11 +33,6 @@ export default function ProdutoDetalhada() {
               <input type="checkbox" id='check3' />
               <label>Cor: Roxo</label>
               </div>
- 
-              <div className='check-item'>
-              <input type="checkbox" id='check3' />
-              <label>Cor: Roxo</label>
-              </div>
 
               <div className='check-item'>
               <input type="checkbox" id='check3' />

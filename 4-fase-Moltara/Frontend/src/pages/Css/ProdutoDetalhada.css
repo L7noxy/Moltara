@@ -1,5 +1,5 @@
 .alinhamento-geral{
-     margin-top: 10%;
+ margin-top: 10%;
  margin-left: 40%;
 
  background-color: #ffffff ;
@@ -9,6 +9,11 @@
  border-radius: 8px;
  width: 430px;
  height: 443px;
+}
+
+.container-produto{
+  height: 100vh;
+  background-color: #f5f5f5;
 }
 
 .alinhamento-2{
@@ -39,13 +44,12 @@
 }
 
 .alinhamento-checkbox{
- flex-direction: column;
+ display: flex;
+  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha se não couberem */
+  gap: 16px;
  color: #263238;
 }
 
-.check-item{
-  margin-bottom: 8px;
-}
 
 .checkbox-inline .checkbox-item {
   margin-right: 12px;

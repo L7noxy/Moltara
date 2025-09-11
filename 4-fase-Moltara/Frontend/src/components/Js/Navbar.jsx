@@ -30,7 +30,7 @@ export default function Navbar() {
                         <HiShoppingCart color='#ffffffff' size={20} />
                     </Link>
 
-                    {/* Meu bem isso é provisório!! não excluí favorzinho =D */}
+                    {/* Meu bem isso é provisório!! não excluí por enquanto favorzinho =D */}
                     <Link to={"/produtoDetalhada"}>
                       <p>Página produto</p>
                     </Link>
