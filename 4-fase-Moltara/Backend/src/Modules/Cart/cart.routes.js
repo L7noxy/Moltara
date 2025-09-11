@@ -1,11 +1,12 @@
 // src/modules/cart/cart.routes.js
+
 const express = require('express');
 const router = express.Router();
 const cartController = require('./cart.controller');
-const authMiddleware = require('../../middlewares/authMiddleware'); // Exemplo de middleware de autenticação
+const authMiddleware = require('../../middlewares/authMiddleware');
 
-router.get('/', authMiddleware, cartController.getCart);
-router.post('/add', authMiddleware, cartController.addItem);
-router.delete('/:productId', authMiddleware, cartController.removeItem);
+router.get('/', authMiddleware, (req, res) => cartController.getCart(req, res));
+router.post('/add', authMiddleware, (req, res) => cartController.addItem(req, res));
+router.delete('/:productId', authMiddleware, (req, res) => cartController.removeItem(req, res));
 
 module.exports = router;

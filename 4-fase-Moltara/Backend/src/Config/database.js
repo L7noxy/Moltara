@@ -1,15 +1,16 @@
-import { MongoClient } from "mongodb";
+const mongoose = require('mongoose');
 
-let db;
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('Connected to MongoDB');
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error.message);
+    process.exit(1);
+  }
+};
 
-export async function connectDB(uri, dbName) {
-  const client = new MongoClient(uri);
-  await client.connect();
-  db = client.db(dbName);
-  console.log("✅ Conectado ao MongoDB:", dbName);
-}
-
-export function getDb() {
-  if (!db) throw new Error("❌ Banco de dados não conectado!");
-  return db;
-}
+module.exports = connectDB;
