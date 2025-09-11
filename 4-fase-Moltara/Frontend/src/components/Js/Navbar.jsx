@@ -29,6 +29,11 @@ export default function Navbar() {
                     <Link to={"/carrinho"}>
                         <HiShoppingCart color='#ffffffff' size={20} />
                     </Link>
+
+                    {/* Meu bem isso é provisório!! não excluí favorzinho =D */}
+                    <Link to={"/produtoDetalhada"}>
+                      <p>Página produto</p>
+                    </Link>
                 </div>
             </nav>
         </>
