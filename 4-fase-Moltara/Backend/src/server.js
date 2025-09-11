@@ -1,0 +1,17 @@
+require('dotenv').config();
+
+const mongoose = require('mongoose');
+const app = require('./app');
+const connectDB = require('./config/database');
+
+const PORT = process.env.PORT || 3000;
+
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+  });
+}).catch(err => {
+  console.error('Falha ao iniciar o servidor:', err);
+});
+
+console.log('MONGODB_URI:', process.env.MONGODB_URI);
