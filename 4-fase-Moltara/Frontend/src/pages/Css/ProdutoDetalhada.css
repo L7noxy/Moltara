@@ -1,19 +1,63 @@
-.alinhamento-geral{
- margin-top: 10%;
- margin-left: 40%;
-
- background-color: #ffffff ;
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
- transition: box-shadow 0.3s ease-in-out;
-
- border-radius: 8px;
- width: 430px;
- height: 443px;
-}
-
 .container-produto{
   height: 100vh;
   background-color: #f5f5f5;
+}
+
+.alinhamento-geral{
+  display: flex; 
+  margin-left: 43%;
+  align-items: flex-start; 
+  gap:30px;
+  margin-top:8%;
+}
+
+.container-valor{
+ background-color: #ffffff ;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ transition: box-shadow 0.3s ease-in-out;
+ border-radius: 8px;
+
+ width:380px; 
+ height: 140px;
+}
+
+.button-confirmar{
+  width: 120px;
+  height: 38px;
+  border-radius: 4px;
+  background-color: #fc2243;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: 'Albert sans', sans-serif;
+}
+
+.button-adicionar{
+  width: 120px;
+  height: 38px;
+  border-radius: 4px;
+  background-color: hwb(0 32% 0%);
+  color: #ffffff;
+
+  font-family: 'Albert sans', sans-serif;
+  font-weight: bold;
+
+}
+
+.titulo-valor{
+ color: #1E2327;
+ font-weight: bold;
+ font-family: 'Urbanist', sans-serif;
+ margin-left: 3%;
+ margin-top: 3%;
+}
+
+.alinhamento-1{
+ background-color: #ffffff ;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ transition: box-shadow 0.3s ease-in-out;
+ border-radius: 8px;
+ width: 420px;
+ height: 480px;
 }
 
 .alinhamento-2{
@@ -22,15 +66,17 @@
 
 .titulo{
  color: #1E2327;
- text-align: center;
  font-weight: bold;
-
+ font-family: 'Urbanist', sans-serif;
+ 
  margin-top: 4%;
+ margin-left: 5%;
 }
 
 .sub-titulo{
  color: #263238;
  font-weight: bold;
+ font-family: 'Albert Sans',sans-serif;
 
  margin-top: 3%;
  margin-bottom: 3%;
@@ -41,17 +87,32 @@
  font-weight: bold;
 
  margin-top: 7%;
-}
+}   
 
 .alinhamento-checkbox{
+ font-family: 'Albert Sans',sans-serif;
  display: flex;
-  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha se não couberem */
-  gap: 16px;
+ flex-wrap: wrap; 
+ gap: 16px;
  color: #263238;
 }
-
 
 .checkbox-inline .checkbox-item {
   margin-right: 12px;
   margin-bottom: 0;
+}
+
+.descricao h4{
+ font-family: 'Albert Sans',sans-serif;
+ font-weight: bold;
+ color: #263238;
+
+ margin-top: 4%
+}
+
+.descricao p{
+ font-family: 'Albert Sans',sans-serif;
+ color: #263238;
+
+ margin-top: 1%; 
 }

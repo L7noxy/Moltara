@@ -7,16 +7,14 @@ export default function ProdutoDetalhada() {
  
     <div className='container-produto'>
      <Navbar />
+      <div className='alinhamento-geral'>
 
-        <div className='container-descricao'>
+        <div className='alinhamento-1'>
+         <h3 className='titulo'>Exemplo produto</h3>
 
-          <div className='alinhamento-geral'>
-
-           <h2 className='titulo'>Mouse Gamer</h2>
-
-           <div className='alinhamento-2'>
-            <h4 className='valor'>Preço: xxx</h4>
-            <p className='sub-titulo'>Personalização do produto:</p>
+          <div className='alinhamento-2'>
+           <h4 className='valor'>Preço: xxx</h4>
+           <p className='sub-titulo'>Personalização do produto:</p>
 
             <div className='alinhamento-checkbox'>
               <div className='check-item'>
@@ -24,47 +22,49 @@ export default function ProdutoDetalhada() {
                <label>Cor: Preto</label>
               </div>
 
-             <div className='check-item'>
-              <input type="checkbox" id='check2' />
-              <label>Cor: Rosa</label>
+              <div className='check-item'>
+               <input type="checkbox" id='check2' />
+               <label>Cor: Branco</label>
               </div>
 
               <div className='check-item'>
-              <input type="checkbox" id='check3' />
-              <label>Cor: Roxo</label>
+               <input type="checkbox" id='check3' />
+               <label>Cor: Rosa</label>
               </div>
 
               <div className='check-item'>
-              <input type="checkbox" id='check3' />
-              <label>Tamanho: Pequeno</label>
+               <input type="checkbox" id='check3' />
+               <label>Tamanho: Pequeno</label>
               </div>
 
               <div className='check-item'>
-              <input type="checkbox" id='check3' />
-              <label>Tamanho: Médio</label>
-             </div>
+               <input type="checkbox" id='check3' />
+               <label>Tamanho: Médio</label>
+              </div>
  
-             <div className='check-item'>
-              <input type="checkbox" id='check3' />
-              <label>Tamanho: Grande</label>
+              <div className='check-item'>
+               <input type="checkbox" id='check3' />
+               <label>Tamanho: Grande</label>
               </div>
             </div>
 
-           <h3>Descrição do produto</h3>
-           <p>Descrição aprofundada do mouse gamer...</p>
+            <div className='descricao'>
+             <h4>Descrição do produto:</h4>
+             <p>Descrição aprofundada do Exemplo produto...</p>
+            </div>
 
           </div>
+
         </div>
     
         <div className='container-valor'>
-         <h2>Preço total: xxx</h2>
-         <button>Confirmar compra</button>
-         <button>Adicionar ao Carrinnho</button>
+         <h3 className='titulo-valor'>Preço total: xxx</h3>
+         <button className='button-confirmar'>Confirmar compra</button>
+         <button className='button-adicionar'>Adicionar ao Carrinnho</button>
         </div>
-      </div>
-     
 
-    
+      </div>
+
     </div>
   )
 }
