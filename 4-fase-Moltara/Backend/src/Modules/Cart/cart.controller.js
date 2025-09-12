@@ -1,9 +1,8 @@
-// src/modules/cart/cart.controller.js
 const cartService = require("./cart.service");
 
 exports.getCart = async (req, res) => {
   try {
-    const userId = req.user.id; // Supondo que você obtém o ID do usuário do token de autenticação
+    const userId = req.user.id;
     const cart = await cartService.getCart(userId);
     res.status(200).json(cart);
   } catch (error) {
@@ -14,7 +13,7 @@ exports.getCart = async (req, res) => {
 exports.addItem = async (req, res) => {
   try {
     const { productId, quantity } = req.body;
-    const userId = req.user.id; // Supondo que você obtém o ID do usuário do token de autenticação
+    const userId = req.user.id;
 
     const updatedCart = await cartService.addItem(userId, productId, quantity);
     res.status(200).json(updatedCart);

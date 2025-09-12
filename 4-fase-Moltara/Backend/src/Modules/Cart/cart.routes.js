@@ -1,5 +1,3 @@
-// src/modules/cart/cart.routes.js
-
 const express = require('express');
 const router = express.Router();
 const cartController = require('./cart.controller');
