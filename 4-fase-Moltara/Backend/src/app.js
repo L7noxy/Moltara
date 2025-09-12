@@ -1,6 +1,6 @@
 
 const express = require('express');
-const cors = require('cors'); // Para permitir requisições de outras origens
+const cors = require('cors');
 const cartRoutes = require('./modules/cart/cart.routes');
 
 const app = express();
