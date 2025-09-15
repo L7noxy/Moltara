@@ -8,7 +8,6 @@ import Confirmacao from "../pages/Js/Confirmacao";
 import ProdutoDetalhada from "../pages/Js/ProdutoDetalhada";
 import Pagamento from "../pages/Js/Pagamento";
 
-
 const router = createBrowserRouter([
 
     { path: "/", element: <Home /> },
@@ -16,9 +15,9 @@ const router = createBrowserRouter([
     { path: "/login", element: <Login /> },
     { path: "/perfil", element: <Perfil /> },
     { path: "/carrinho", element: <Carrinho /> },
-    { path: "/confirmacao", element: <Confirmacao /> },
-    { path: "/produtoDetalhada", element: <ProdutoDetalhada /> },
+    { path: "/confirmacao", element: <Confirmacao /> },    
     { path: "/pagamento", element: <Pagamento /> },
+    { path: "/produtoDetalhada", element: <ProdutoDetalhada /> },
 
 ])
 

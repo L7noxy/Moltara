@@ -1,4 +1,5 @@
 import React from 'react'
+import { Navigate, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import { IoSearchOutline } from "react-icons/io5";
 import { LuCircleUserRound } from "react-icons/lu";
@@ -7,9 +8,11 @@ import { HiShoppingCart } from "react-icons/hi";
 import '../Css/Navbar.css'
 
 export default function Navbar() {
+    const navigate = useNavigate();
     return (
         <>
             <nav className="navbar">
+                <div><button onClick={() => navigate(-1)}>Menu</button></div>
                 <div className="logo">Logo</div>
 
                 <div className="search-bar">

@@ -17,12 +17,12 @@ export default function Perfil() {
               </div>
               <div className='container-infos-perfil'>
                 <div className='infos-perfil'>
-                  <div>
-                    <p>Nome:</p>
+                  <ul>
+                    <li>Nome:</li>
                     <p>Endereço:</p>
                     <p>Telefone:</p>
                     <p>Email:</p>
-                  </div>
+                  </ul>
                 </div>
               </div>
             </div>
