@@ -34,6 +34,7 @@ export default function Navbar() {
                     </Link>
 
                     {/* Meu bem isso é provisório!! não excluí por enquanto favorzinho =D */}
+                    {/* Tá bom amor, mas tente melhorar isso quando tiver um tempo ;)*/}
                     <Link to={"/produtoDetalhada"}>
                       <p>Página produto</p>
                     </Link>

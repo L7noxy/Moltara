@@ -7,7 +7,7 @@ app.delete("/cart/:id", async(req, res) => {
     }
 })
 
-app.delete("/cart/:id", async(req, res) => {
-    await Cart.deleteAll();
-    res.json({ message: "Carrinho excluido" });
+app.delete("/cart", async(req, res) => {
+    await Cart.deleteMany();
+    res.json({ message: "Todos os itens do carrinho foram excluídos" });
 })

@@ -1,6 +1,6 @@
-app.post("/cart", async(req, res) => {
+app.post("/usuario", async(req, res) => {
     try {
-        const item = new Cart(req.body);
+        const item = new Usuario(req.body);
         await item.save();
         res.status(201).json(item);
     }catch (error) {
