@@ -1,5 +1,5 @@
 // src/middlewares/validationMiddleware.js
-const Joi = require('joi'); // Você precisaria instalar o 'joi'
+const Joi = require('joi'); 
 
 const itemSchema = Joi.object({
   productId: Joi.string().required(),
