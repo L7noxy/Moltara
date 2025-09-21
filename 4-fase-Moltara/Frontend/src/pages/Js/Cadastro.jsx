@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Css/Cadastro.css";
 import Navbar from "../../components/Js/Navbar";
 import { FaEye, FaEyeSlash, FaEnvelope, FaUser, FaIdCard, FaQuestionCircle } from "react-icons/fa";
@@ -24,8 +24,20 @@ export default function Cadastro() {
     }
 
     alert("Conta criada com sucesso!");
-    
   };
+
+  useEffect(() => {
+    try {
+      const storedSenha = localStorage.getItem("senha");
+      if (storedSenha) {
+        setSenha(storedSenha);
+      }
+    } catch (error) {
+      console.error("Erro ao obter senha do localStorage:", error);
+    }
+  }, []);
+
+
 
   return (
     <div>
