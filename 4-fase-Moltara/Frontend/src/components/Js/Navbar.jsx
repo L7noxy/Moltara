@@ -38,6 +38,7 @@ export default function Navbar() {
                     <Link to={"/produtoDetalhada"}>
                       <p>Página produto</p>
                     </Link>
+
                 </div>
             </nav>
         </>

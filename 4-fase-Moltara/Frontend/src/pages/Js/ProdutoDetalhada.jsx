@@ -17,34 +17,36 @@ export default function ProdutoDetalhada() {
            <p className='sub-titulo'>Personalização do produto:</p>
 
             <div className='alinhamento-checkbox'>
+             <h3 className='text-personalizacao'>Cores</h3>
               <div className='check-item'>
                <input type="checkbox" id='check1' />
-               <label>Cor: Preto</label>
+               <label>Preto</label>
               </div>
 
               <div className='check-item'>
                <input type="checkbox" id='check2' />
-               <label>Cor: Branco</label>
+               <label>Branco</label>
               </div>
 
               <div className='check-item'>
                <input type="checkbox" id='check3' />
-               <label>Cor: Rosa</label>
+               <label>Rosa</label>
+              </div>
+
+              <h3 className='text-personalizacao'>Tamanhos</h3>
+              <div className='check-item'>
+               <input type="checkbox" id='check3' />
+               <label>Pequeno</label>
               </div>
 
               <div className='check-item'>
                <input type="checkbox" id='check3' />
-               <label>Tamanho: Pequeno</label>
-              </div>
-
-              <div className='check-item'>
-               <input type="checkbox" id='check3' />
-               <label>Tamanho: Médio</label>
+               <label>Médio</label>
               </div>
  
               <div className='check-item'>
                <input type="checkbox" id='check3' />
-               <label>Tamanho: Grande</label>
+               <label>Grande</label>
               </div>
             </div>
 
