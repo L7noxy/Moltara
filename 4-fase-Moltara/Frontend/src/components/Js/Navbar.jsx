@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { IoSearchOutline } from "react-icons/io5";
 import { LuCircleUserRound } from "react-icons/lu";
 import { HiShoppingCart } from "react-icons/hi";
+import { IoIosArrowRoundBack } from "react-icons/io";
+
 
 import '../Css/Navbar.css'
 
@@ -12,7 +14,7 @@ export default function Navbar() {
     return (
         <>
             <nav className="navbar">
-                <div><button onClick={() => navigate(-1)}>Menu</button></div>
+                <div><button onClick={() => navigate(-1)}><IoIosArrowRoundBack size={40} color='#ffffffff'/></button></div>
                 <div className="logo">Logo</div>
 
                 <div className="search-bar">
@@ -36,7 +38,7 @@ export default function Navbar() {
                     {/* Meu bem isso é provisório!! não excluí por enquanto favorzinho =D */}
                     {/* Tá bom amor, mas tente melhorar isso quando tiver um tempo ;)*/}
                     <Link to={"/produtoDetalhada"}>
-                      <p>Página produto</p>
+                        <p>Página produto</p>
                     </Link>
 
                 </div>
