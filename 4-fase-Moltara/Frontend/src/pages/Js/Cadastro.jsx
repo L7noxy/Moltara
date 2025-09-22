@@ -37,25 +37,21 @@ export default function Cadastro() {
             Informe seus dados para continuar a compra
           </div>
 
-          {/* Nome */}
           <div className="input-icon">
             <input type="text" placeholder="Nome" required />
             <FaUser className="icon" />
           </div>
 
-          {/* CPF */}
           <div className="input-icon">
             <input type="text" placeholder="CPF" required />
             <FaIdCard className="icon" />
           </div>
 
-          {/* Email */}
           <div className="input-icon">
             <input type="email" placeholder="Insira seu email" required />
             <FaEnvelope className="icon" />
           </div>
 
-          {/* Senha */}
           <div className="input-icon">
             <input
               type={showSenha ? "text" : "password"}
@@ -71,7 +67,6 @@ export default function Cadastro() {
             )}
           </div>
 
-          {/* Confirmar senha */}
           <div className="input-icon confirm-password">
             <input
               type={showConfirma ? "text" : "password"}
@@ -106,13 +101,12 @@ export default function Cadastro() {
             />
             <label htmlFor="termos">
               Li e aceito os{" "}
-              <a href="/termos" target="_blank" rel="noopener noreferrer">
+              <a rel="noopener noreferrer">
                 Termos de Uso
               </a>
             </label>
           </div>
 
-          {/* Botão */}
           <button type="submit" className="botao-cadastro">
             CONTINUAR
           </button>
