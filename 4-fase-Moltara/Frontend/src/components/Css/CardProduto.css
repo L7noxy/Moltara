@@ -29,3 +29,8 @@
     font-weight: bold;
     color: #333;
 }
+
+.btn-curtir {
+    cursor: pointer;
+
+}

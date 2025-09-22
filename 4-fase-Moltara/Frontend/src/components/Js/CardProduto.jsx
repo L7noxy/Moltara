@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
+import { FaHeart } from "react-icons/fa6";
+import { FaRegHeart } from "react-icons/fa6";
+
+
 import '../Css/CardProduto.css'
 
 export default function CardProduto() {
+
+    const [curtir, setCurtir] = useState({})
 
 
     const produtos = [
@@ -37,6 +43,12 @@ export default function CardProduto() {
             <div className='container-produtos-home'>
                 {produtos.map((produto) => (
                     <div key={produto.id} className="card-produto">
+                        <button className='btn-curtir' onClick={() => setCurtir(!curtir)}>{curtir ? (
+                            <FaHeart />
+                        ) : (
+                            <FaRegHeart />
+
+                        )}</button>
                         <div className='image-produto'>
                             <img src="./img/cadeira.png" />
                         </div>

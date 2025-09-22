@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../Css/Cadastro.css";
 import Navbar from "../../components/Js/Navbar";
 import { FaEye, FaEyeSlash, FaEnvelope, FaUser, FaIdCard, FaQuestionCircle } from "react-icons/fa";
@@ -6,11 +6,14 @@ import { FaEye, FaEyeSlash, FaEnvelope, FaUser, FaIdCard, FaQuestionCircle } fro
 export default function Cadastro() {
   const [showSenha, setShowSenha] = useState(false);
   const [showConfirma, setShowConfirma] = useState(false);
+  const [nome, setNome] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [aceitouTermos, setAceitouTermos] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!aceitouTermos) {
@@ -23,21 +26,31 @@ export default function Cadastro() {
       return;
     }
 
-    alert("Conta criada com sucesso!");
-  };
-
-  useEffect(() => {
     try {
-      const storedSenha = localStorage.getItem("senha");
-      if (storedSenha) {
-        setSenha(storedSenha);
+      const response = await fetch("http://localhost:3000/usuario/cadastro", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome,
+          cpf,
+          email,
+          senha,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao cadastrar usuário");
       }
+
+      const data = await response.json();
+      alert("Conta criada com sucesso! ID: " + data.id);
     } catch (error) {
-      console.error("Erro ao obter senha do localStorage:", error);
+      console.error("Erro ao cadastrar usuário:", error);
+      alert("Erro ao cadastrar usuário: " + error);
     }
-  }, []);
-
-
+  };
 
   return (
     <div>
@@ -50,17 +63,35 @@ export default function Cadastro() {
           </div>
 
           <div className="input-icon">
-            <input type="text" placeholder="Nome" required />
+            <input
+              type="text"
+              placeholder="Nome"
+              required
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+            />
             <FaUser className="icon" />
           </div>
 
           <div className="input-icon">
-            <input type="text" placeholder="CPF" required />
+            <input
+              type="text"
+              placeholder="CPF"
+              required
+              value={cpf}
+              onChange={(e) => setCpf(e.target.value)}
+            />
             <FaIdCard className="icon" />
           </div>
 
           <div className="input-icon">
-            <input type="email" placeholder="Insira seu email" required />
+            <input
+              type="email"
+              placeholder="Insira seu email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
             <FaEnvelope className="icon" />
           </div>
 
@@ -94,7 +125,6 @@ export default function Cadastro() {
             )}
           </div>
 
-          {/* Pergunta adicional */}
           <div className="input-icon confirm-password">
             <input
               type="text"
@@ -113,7 +143,7 @@ export default function Cadastro() {
             />
             <label htmlFor="termos">
               Li e aceito os{" "}
-              <a rel="noopener noreferrer">
+              <a rel="noopener" href="https://www.moltara.com.br/termos-de-uso/">
                 Termos de Uso
               </a>
             </label>
