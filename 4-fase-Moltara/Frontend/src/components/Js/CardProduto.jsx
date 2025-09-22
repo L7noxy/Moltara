@@ -44,9 +44,9 @@ export default function CardProduto() {
                 {produtos.map((produto) => (
                     <div key={produto.id} className="card-produto">
                         <button className='btn-curtir' onClick={() => setCurtir(!curtir)}>{curtir ? (
-                            <FaHeart />
+                            <FaHeart color='#BB252F'/>
                         ) : (
-                            <FaRegHeart />
+                            <FaRegHeart  />
 
                         )}</button>
                         <div className='image-produto'>
