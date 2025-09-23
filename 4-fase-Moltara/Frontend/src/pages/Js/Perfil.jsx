@@ -30,8 +30,23 @@ export default function Perfil() {
             </div>
 
             <div className='container-botoes-perfil'>
-              <button className='editar-perfil' onClick={() => {}}><HiPencil />Editar Perfil</button>
+              <button className='editar-perfil' onClick={() => { }}><HiPencil />Editar Perfil</button>
             </div>
+          </div>
+          <div className='container-dados-perfil'>
+            <div className='dados-user-perfil'>
+              <h2>Meus Pedidos</h2>
+            </div>
+            <div className='dados-user-perfil'>
+              <h2>Meus Pedidos</h2>
+            </div>
+            <div className='dados-user-perfil'>
+              <h2>Meus Pedidos</h2>
+            </div>
+            <div className='dados-user-perfil'>
+              <h2>Meus Pedidos</h2>
+            </div>
+
           </div>
 
         </div>
