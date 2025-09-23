@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const productController = require('./product.controller');
-const authMiddleware = require('../../middlewares/authMiddleware');
+const productController = require('../Modules/Product/product.controller');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 router.get('/', authMiddleware, (req, res) => productController.getProduto(req, res));
 router.post('/add', authMiddleware, (req, res) => productController.addProduto(req, res));
