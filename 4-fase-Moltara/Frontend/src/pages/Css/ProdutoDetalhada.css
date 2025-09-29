@@ -60,7 +60,7 @@
 .grupo-personalizacao {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Adiciona espaço entre o título e as checkboxes */
+  gap: 10px; 
 }
 
 .text-personalizacao {
@@ -72,8 +72,8 @@
 
 .checkbox-container {
  display: flex;
- gap: 15px; /* Espaço entre as caixas de seleção */
- flex-wrap: wrap; /* Permite que as caixas de seleção quebrem a linha se não houver espaço suficiente */
+ gap: 15px; 
+ flex-wrap: wrap; 
 }
 
 .checkbox-item {
@@ -88,18 +88,26 @@
  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
  transition: box-shadow 0.3s ease-in-out;
  border-radius: 8px;
+
  display: flex;
  flex-direction: column;
  gap: 15px;
+ overflow-x: hidden;
 
- width: 380px;
- height: 140px;
+ width: 315px;
+ height: 246px;
+}
+
+.container-valor input{
+ width: 100px;
+ height: 20px;
 }
 
 .botoes-compra {
   display: flex;
   flex-direction: column; /* Organiza os botões em coluna */
   gap: 10px; /* Adiciona uma pequena separação entre os botões */
+  margin-left: 5%;
 }
 
 .button-adicionar{

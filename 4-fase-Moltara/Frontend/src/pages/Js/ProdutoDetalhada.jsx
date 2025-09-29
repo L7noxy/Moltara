@@ -1,10 +1,17 @@
 import React from 'react'
 import Navbar from '../../components/Js/Navbar'
 import '../Css/ProdutoDetalhada.css'
+import { useState } from 'react'
 
 export default function ProdutoDetalhada() {
+
+ const [quantidade, SetQuantidade]= useState(1)
+ const aumentar = () => SetQuantidade(quantidade +1)
+  const diminuir = () =>{
+   if (quantidade >1) SetQuantidade(quantidade -1)
+  }
+
   return (
- 
     <div className='container-produto'>
      <Navbar />
       <div className='alinhamento-geral'>
@@ -66,6 +73,8 @@ export default function ProdutoDetalhada() {
       
         <div className='container-valor'>
          <h3 className='titulo-valor'>Preço total: xxx</h3>
+          <label>Quantidade do produto:</label><input type='number' value={quantidade} readOnly></input>
+          <button className='aumentar' onClick={aumentar}>+</button> <button onClick={diminuir}>-</button>
           <div className='botoes-compra'>
            <button className='button-confirmar'>Adicionar ao Carrinnho</button>
            <button className='button-adicionar'>Confirmar Compra</button>
