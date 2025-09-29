@@ -11,46 +11,6 @@
   margin-top: 8%;
 }
 
-.container-valor {
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease-in-out;
-  border-radius: 8px;
-
-  width: 380px;
-  height: 140px;
-}
-
-.button-confirmar {
-  width: 120px;
-  height: 38px;
-  border-radius: 4px;
-  background-color: #fc2243;
-  color: #ffffff;
-  font-weight: bold;
-  font-family: 'Albert sans', sans-serif;
-}
-
-.button-adicionar {
-  width: 120px;
-  height: 38px;
-  border-radius: 4px;
-  background-color: hwb(0 32% 0%);
-  color: #ffffff;
-
-  font-family: 'Albert sans', sans-serif;
-  font-weight: bold;
-
-}
-
-.titulo-valor {
-  color: #1E2327;
-  font-weight: bold;
-  font-family: 'Urbanist', sans-serif;
-  margin-left: 3%;
-  margin-top: 3%;
-}
-
 .alinhamento-1 {
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -60,16 +20,16 @@
   height: 480px;
 }
 
-.alinhamento-2 {
-  margin-left: 5%;
-}
-
 .titulo {
   color: #1E2327;
   font-weight: bold;
   font-family: 'Urbanist', sans-serif;
 
   margin-top: 4%;
+  margin-left: 5%;
+}
+
+.alinhamento-2 {
   margin-left: 5%;
 }
 
@@ -85,39 +45,105 @@
   color: #BB252F;
   font-weight: bold;
 
-  margin-top: 7%;
+  margin-top: 5%;
 }
 
-.alinhamento-checkbox {
-  font-family: 'Albert Sans', sans-serif;
+/*Todos os containers de valor total do produto */
+.opcoes-personalizacao {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+  flex-direction: column;
+  gap: 20px; 
+  font-family: 'Albert Sans', sans-serif;
   color: #263238;
+}
+
+.grupo-personalizacao {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Adiciona espaço entre o título e as checkboxes */
 }
 
 .text-personalizacao {
  font-family: 'Albert Sans', sans-serif;
- font-weight: 200;
-  color: #BB252F;
+ font-size: 16px;
+ font-weight: bold;
+ color: #BB252F;
 }
 
-.checkbox-inline .checkbox-item {
-  margin-right: 12px;
-  margin-bottom: 0;
+.checkbox-container {
+ display: flex;
+ gap: 15px; /* Espaço entre as caixas de seleção */
+ flex-wrap: wrap; /* Permite que as caixas de seleção quebrem a linha se não houver espaço suficiente */
 }
 
-.descricao h4 {
-  font-family: 'Albert Sans', sans-serif;
-  font-weight: bold;
-  color: #263238;
+.checkbox-item {
+ display: flex;
+ align-items: center;
+ gap: 5px;
+}
+
+/*Todos os containers de valor total do produto */
+.container-valor {
+ background-color: #ffffff;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ transition: box-shadow 0.3s ease-in-out;
+ border-radius: 8px;
+ display: flex;
+ flex-direction: column;
+ gap: 15px;
+
+ width: 380px;
+ height: 140px;
+}
+
+.botoes-compra {
+  display: flex;
+  flex-direction: column; /* Organiza os botões em coluna */
+  gap: 10px; /* Adiciona uma pequena separação entre os botões */
+}
+
+.button-adicionar{
+ width: 233px;
+ height: 32px;
+ border-radius: 4px;
+
+ background-color: #fc2243;
+ color: #ffffff;
+ font-weight: bold;
+ font-family: 'Albert sans', sans-serif;
+}
+
+.button-confirmar {
+ width: 160px;
+ height: 33px;
+ border-radius: 4px;
+
+ background-color: hwb(0 32% 0%);
+ color: #ffffff;
+ font-family: 'Albert sans', sans-serif;
+ font-weight: bold;
+}
+
+.titulo-valor {
+ color: #1E2327;
+ font-weight: bold;
+ font-family: 'Urbanist', sans-serif;
+ margin-left: 3%;
+ margin-top: 3%;
+}
+
+.descricao h3 {
+ font-family: 'Albert Sans', sans-serif;
+ font-weight: bold;
+ font-size: 18px;
+ color: #263238;
 
   margin-top: 4%
 }
 
 .descricao p {
-  font-family: 'Albert Sans', sans-serif;
-  color: #263238;
+ font-family: 'Albert Sans', sans-serif;
+ color: #263238;
 
-  margin-top: 1%;
+ margin-top: 1%;
 }
