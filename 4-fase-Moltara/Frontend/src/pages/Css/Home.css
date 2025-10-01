@@ -9,9 +9,11 @@
     scrollbar-color: #ffffff #263238;
 }
 
-body, html{
-    overflow-x: hidden;
-}
+html, body {
+    background-color: #FFFFFF;
+    overflow: hidden;
+}   
+
 
 #root {
     --color1: #263238;
@@ -71,6 +73,6 @@ body, html{
     margin: 30px;
 }
 
-.banner-produto-home img{
+.banner-produto-home img {
     height: 90px;
 }
