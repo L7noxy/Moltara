@@ -4,7 +4,6 @@ import '../Css/ProdutoDetalhada.css'
 import { useState } from 'react'
 
 export default function ProdutoDetalhada() {
-
  const [quantidade, SetQuantidade]= useState(1)
  const aumentar = () => SetQuantidade(quantidade +1)
   const diminuir = () =>{
@@ -15,11 +14,28 @@ export default function ProdutoDetalhada() {
     <div className='container-produto'>
      <Navbar />
       <div className='alinhamento-geral'>
-        <div className='alinhamento-1'>
+        <div className='container-item'>
+         <h1>IMG produto</h1>
+        </div>
+        
+        <div className='alinhamento-imgs'>
+          <div className='container-img'>
+           <p>Img 1</p>
+          </div>
+          <div className='container-img'>
+           <p>Img 2</p>
+          </div>
+          <div className='container-img'>
+           <p>Img 3</p>
+          </div>
+        </div>
+
+        <div className='container-info-item'>
          <h3 className='titulo'>Exemplo produto</h3>
 
-          <div className='alinhamento-2'>
+          <div className='alinhamento-1'>
            <h4 className='valor'>Preço: xxx</h4>
+           <p className='avaliacao'>Avaliação do produto:</p>
            <p className='sub-titulo'>Personalização do produto:</p>
 
             <div className='opcoes-personalizacao'>
