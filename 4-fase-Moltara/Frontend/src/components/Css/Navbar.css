@@ -1,5 +1,5 @@
 .navbar {
-    z-index: 2;
+    z-index: 1000;
     width: 100%;
     background-color: var(--color1);
     padding: 5px 15px;
@@ -9,7 +9,7 @@
     font-family: "Urbanist", sans-serif;
     position: fixed;
     top: 0;
-    height: 10vh;
+    height: auto;
 }
 
 .logo {

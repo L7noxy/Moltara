@@ -7,9 +7,15 @@ export default function Footer() {
             <div className="departamentos">
                 <h3>Departamentos</h3>
                 <ul>
-                    <li>Departamento 1</li>
-                    <li>Departamento 2</li>
-                    <li>Departamento 3</li>
+                    <li>Hardware</li>
+                    <li>Celular e Smartphone</li>
+                    <li>Periféricos</li>
+                    <li>Teclado e Mouse</li>
+                    <li>Computadores</li>
+                    <li>Monitores</li>
+                    <li>Impressoras</li>
+                    <li>Acessórios</li>
+                    <li>Outros</li>
                 </ul>
             </div>
             <div className="promocoes">
