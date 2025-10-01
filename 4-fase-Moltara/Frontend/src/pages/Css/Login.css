@@ -1,124 +1,133 @@
-
+/* Estilo geral do container */
 .container-login {
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f7f7f7, #ececec);
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f8f9fa; /* Fundo branco/cinza claro */
 }
 
-
+/* Card de Login */
 .login-wrapper {
     width: 100%;
-    max-width: 420px;
-    padding: 40px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    max-width: 360px; /* Mais compacto */
+    padding: 50px 30px;
+    background: #ffffff;
+    border-radius: 8px; /* Bordas mais sutis */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     text-align: center;
-    position: relative;
-
 }
 
-
-
-
+/* Título "Welcome" */
 .login-wrapper h2 {
-    font-size: 1.9rem;
-    font-weight: bold;
-    color: #1f2d3d;
-    margin-bottom: 8px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 20px;
 }
 
-.login-wrapper .subtitulo {
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 25px;
+/* Avatar circular */
+.login-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Transforma em círculo */
+    background-image: url('https://i.pravatar.cc/150?u=a042581f4e29026704d'); /* Imagem de placeholder. SUBSTITUA! */
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto 30px auto; /* Centraliza e adiciona espaço abaixo */
+    border: 3px solid #f1f1f1;
 }
 
-/* Inputs */
+/* Formulário */
 .login-form {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 25px; /* Espaçamento entre os campos */
 }
 
+/* Grupo de Input: Label + Input */
 .input-group {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ddd;
-    background: #fafafa;
-    border-radius: 8px;
-    padding: 12px;
-    transition: border-color 0.2s ease;
+    position: relative; /* Essencial para posicionar o ícone do olho */
+    text-align: left; /* Alinha a label à esquerda */
 }
 
-.input-group:hover {
-    border-color: #b71c1c;
-}
-
-.input-group .icon {
-    margin-right: 10px;
-    font-size: 16px;
-    color: #666;
-}
-
-.input-group input {
-    flex: 1;
-    border: none;
-    outline: none;
+.input-group label {
     font-size: 14px;
-    background: transparent;
-    color: #333;
+    color: #6c757d;
+    margin-bottom: 5px;
+    display: block; /* Garante que a label fique acima */
 }
 
-/* Botão */
+/* Estilo do input com a linha inferior */
+.input-group input {
+    width: 100%;
+    border: none; /* Remove todas as bordas */
+    border-bottom: 2px solid #dee2e6; /* Adiciona apenas a borda inferior */
+    background: transparent; /* Sem fundo */
+    padding: 8px 30px 8px 2px; /* Espaçamento: 30px à direita para o ícone */
+    font-size: 16px;
+    color: #212529;
+    outline: none; /* Remove o contorno azul ao focar */
+    transition: border-color 0.3s ease;
+}
+
+/* Efeito ao focar no input */
+.input-group input:focus {
+    border-bottom-color: #28a745; /* Cor verde de destaque */
+}
+
+/* Estilo e posicionamento do ícone de olho */
+.password-toggle-icon {
+    position: absolute;
+    right: 5px;
+    bottom: 8px; /* Alinha verticalmente com o input */
+    cursor: pointer;
+    color: #adb5bd; /* Cor cinza sutil */
+    transition: color 0.3s ease;
+}
+
+.password-toggle-icon:hover {
+    color: #495057; /* Escurece um pouco no hover */
+}
+
+/* Botão de Login */
 .btn-login {
-    background: #b71c1c;
+    background: #28a745; /* Cor verde */
     border: none;
-    padding: 14px;
-    border-radius: 8px;
-    font-weight: bold;
+    padding: 12px;
+    border-radius: 50px; /* Totalmente arredondado */
+    font-weight: 600;
     color: #fff;
     cursor: pointer;
-    font-size: 15px;
-    margin-top: 10px;
-    transition: background 0.3s ease, transform 0.2s ease;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
 }
 
 .btn-login:hover {
-    background: #8e0000;
-    transform: scale(1.03);
+    background: #218838; /* Verde mais escuro */
+    transform: translateY(-2px);
 }
 
-/* Link abaixo */
-.texto-link {
-    margin-top: 18px;
-    font-size: 14px;
-    color: #444;
+/* Links abaixo do formulário */
+.login-links {
+    margin-top: 30px;
+    text-align: center;
 }
 
-.texto-link a {
-    color: #b71c1c;
+.login-links a {
+    color: #6c757d;
+    font-size: 13px;
     text-decoration: none;
-    font-weight: bold;
+    display: block;
+    margin-top: 8px;
+    transition: color 0.3s ease;
 }
 
-.texto-link a:hover {
-    text-decoration: underline;
-}
-
-/* Detalhe visual no fundo */
-.login-background-shape {
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 150px;
-    height: 150px;
-    background: rgba(183, 28, 28, 0.1);
-    border-radius: 50%;
-    z-index: -1;
+.login-links a:hover {
+    color: #28a745;
 }
