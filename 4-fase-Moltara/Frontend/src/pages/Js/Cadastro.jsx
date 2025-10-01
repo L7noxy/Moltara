@@ -27,8 +27,8 @@ export default function Cadastro() {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/usuario/cadastro", {
-        method: "POST",
+      const response = await fetch("http://localhost:3000/api/usuario", {
+        method: "POST", 
         headers: {
           "Content-Type": "application/json",
         },
