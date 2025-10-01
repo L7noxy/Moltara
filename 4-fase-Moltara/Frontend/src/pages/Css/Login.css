@@ -1,4 +1,4 @@
-/* Tela inteira centralizada */
+
 .container-login {
     height: 100vh;
     width: 100vw;
@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-/* Container do login */
+
 .login-wrapper {
     width: 100%;
     max-width: 420px;
@@ -23,17 +23,8 @@
 
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+
 
 .login-wrapper h2 {
     font-size: 1.9rem;

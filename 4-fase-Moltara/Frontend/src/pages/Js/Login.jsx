@@ -10,7 +10,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Login:", { email, senha });
-        // Backend será implementado depois
+       
     };
 
     return (
