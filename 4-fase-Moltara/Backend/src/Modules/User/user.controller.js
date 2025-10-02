@@ -1,6 +1,5 @@
-// user.controller.js
 const bcrypt = require('bcrypt');
-const Usuario = require('../models/User'); 
+const Usuario = require('../User/user.schema'); 
 
 const SALT_ROUNDS = 10;
 
@@ -12,7 +11,6 @@ exports.cadastrarUsuario = async (req, res) => {
         });
     }
 
-    // 3. Validação de Email e CPF já cadastrados
     try {
         const usuarioExistente = await Usuario.findOne({ $or: [{ email }, { cpf }] });
 
@@ -29,25 +27,18 @@ exports.cadastrarUsuario = async (req, res) => {
         return res.status(500).json({ message: "Erro interno do servidor ao verificar dados." });
     }
 
-    // --- Fim das Validações ---
-
-    // 4. Criptografia da Senha (Segurança!)
     try {
         const hashSenha = await bcrypt.hash(senha, SALT_ROUNDS);
 
-        // 5. Criação do Novo Usuário (Salvando no DB)
         const novoUsuario = new Usuario({
             nome,
             cpf,
             email,
-            senha: hashSenha, // Salva o hash, NUNCA a senha pura
-            // Adicione aqui outros campos como data de criação, etc.
+            senha: hashSenha,
         });
 
         const usuarioSalvo = await novoUsuario.save();
 
-        // 6. Resposta de Sucesso
-        // Retorna o novo ID e o nome, mas NUNCA a senha ou o hash.
         return res.status(201).json({
             message: "Usuário cadastrado com sucesso!",
             id: usuarioSalvo._id,
@@ -55,10 +46,21 @@ exports.cadastrarUsuario = async (req, res) => {
         });
 
     } catch (error) {
-        // 7. Tratamento de Erro ao salvar/criptografar
         console.error("Erro no cadastro:", error);
         return res.status(500).json({ 
             message: "Erro interno do servidor ao tentar finalizar o cadastro." 
+        });
+    }
+};
+
+exports.getUsuario = async (req, res) => {
+    try {
+        const usuarios = await Usuario.find();
+        return res.status(200).json(usuarios);
+    } catch (error) {
+        console.error("Erro ao buscar usuários:", error);
+        return res.status(500).json({
+            message: "Erro interno do servidor ao buscar usuários."
         });
     }
 };

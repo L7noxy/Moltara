@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// 1. Importe os ícones do olho
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../Css/Login.css";
@@ -7,7 +6,6 @@ import "../Css/Login.css";
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    // 2. Adicione o estado para controlar a visibilidade
     const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = (e) => {
@@ -33,17 +31,15 @@ const Login = () => {
                         />
                     </div>
 
-                    {/* 3. Bloco da senha modificado */}
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
                         <input
-                            type={showPassword ? "text" : "password"} // Muda o tipo dinamicamente
+                            type={showPassword ? "text" : "password"}
                             id="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
                         />
-                        {/* Ícone que alterna a visibilidade */}
                         <span
                             className="password-toggle-icon"
                             onClick={() => setShowPassword(!showPassword)}
