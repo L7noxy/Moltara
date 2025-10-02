@@ -14,19 +14,21 @@ export default function ProdutoDetalhada() {
     <div className='container-produto'>
      <Navbar />
       <div className='alinhamento-geral'>
-        <div className='container-item'>
-         <h1>IMG produto</h1>
-        </div>
-        
-        <div className='alinhamento-imgs'>
-          <div className='container-img'>
-           <p>Img 1</p>
+        <div className='container-imgs-principal'>
+          <div className='container-item'>
+           <h1>IMG produto</h1>
           </div>
-          <div className='container-img'>
-           <p>Img 2</p>
-          </div>
-          <div className='container-img'>
-           <p>Img 3</p>
+    
+          <div className='alinhamento-imgs'>
+            <div className='container-img'>
+             <p>Img 1</p>
+            </div>
+            <div className='container-img'>
+             <p>Img 2</p>
+            </div>
+            <div className='container-img'>
+             <p>Img 3</p>
+            </div>
           </div>
         </div>
 

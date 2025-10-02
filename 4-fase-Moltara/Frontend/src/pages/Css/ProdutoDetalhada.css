@@ -11,7 +11,13 @@
   margin-left: 8%;
 }
 
-.container-item{
+.container-imgs-principal {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.container-item {
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
@@ -20,26 +26,33 @@
   height: 430px;
 }
 
-.container-item h1{
+.alinhamento-imgs {
+  display: flex;
+  gap: 10px;
+}
+
+.container-item h1 {
   text-align: center;
 }
 
-.container-img{
- background-color: #ffffff;
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
- transition: box-shadow 0.3s ease-in-out;
+.container-img {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+  width: 90px;
+  height: 75px;
 }
 
-.container-img{
- background-color: #ffffff;
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
- transition: box-shadow 0.3s ease-in-out;
+.container-img {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
 }
 
-.container-img{
- background-color: #ffffff;
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
- transition: box-shadow 0.3s ease-in-out;
+.container-img {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .container-info-item {
@@ -65,26 +78,26 @@
 }
 
 .sub-titulo {
- color: #263238;
- font-weight: bold;
- font-family: 'Albert Sans', sans-serif;
+  color: #263238;
+  font-weight: bold;
+  font-family: 'Albert Sans', sans-serif;
 
- margin-top: 6%;
- margin-bottom: 3%;
+  margin-top: 6%;
+  margin-bottom: 3%;
 }
 
 .valor {
- color: #BB252F;
- font-weight: bold;
- font-family: 'Albert Sans', sans-serif;
+  color: #BB252F;
+  font-weight: bold;
+  font-family: 'Albert Sans', sans-serif;
 
- margin-top: 5%;
+  margin-top: 5%;
 }
 
-.avaliacao{
- color: #263238;
- font-weight: bold;
- font-family: 'Albert Sans', sans-serif;
+.avaliacao {
+  color: #263238;
+  font-weight: bold;
+  font-family: 'Albert Sans', sans-serif;
 
   margin-top: 5%;
 }
@@ -135,8 +148,8 @@
   gap: 15px;
   overflow-x: hidden;
 
- width: 289px;
- height: 246px;
+  width: 289px;
+  height: 246px;
 }
 
 .container-valor input {
