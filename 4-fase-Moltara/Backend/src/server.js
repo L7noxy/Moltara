@@ -1,15 +1,17 @@
-require('dotenv').config();
+require("dotenv").config();
 
-const mongoose = require('mongoose');
-const app = require('./app');
-const connectDB = require('./config/database');
+const mongoose = require("mongoose");
+const app = require("./app");
+const connectDB = require("./config/database");
 
 const PORT = process.env.PORT || 3000;
 
-connectDB().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`rodando na porta ${PORT}`);  
+    });
+  })
+  .catch((err) => {
+    console.error("Falha ao iniciar o servidor:", err);
   });
-}).catch(err => {
-  console.error('Falha ao iniciar o servidor:', err);
-});

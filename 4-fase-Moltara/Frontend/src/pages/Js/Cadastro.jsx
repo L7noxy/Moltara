@@ -1,29 +1,52 @@
 import React, { useState, useEffect } from "react";
 import "../Css/Cadastro.css";
 import Navbar from "../../components/Js/Navbar";
-import { FaEye, FaEyeSlash, FaEnvelope, FaUser, FaIdCard, FaQuestionCircle } from "react-icons/fa";
+import {
+  FaEye,
+  FaEyeSlash,
+  FaEnvelope,
+  FaUser,
+  FaIdCard,
+  FaQuestionCircle,
+} from "react-icons/fa";
 
 export default function Cadastro() {
   const [showSenha, setShowSenha] = useState(false);
   const [showConfirma, setShowConfirma] = useState(false);
   const [senha, setSenha] = useState("");
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [aceitouTermos, setAceitouTermos] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Impede o recarregamento da página
 
-    if (!aceitouTermos) {
-      alert("Você precisa aceitar os Termos de Uso para continuar.");
-      return;
+    const dados = { nome, email };
+
+    try {
+      const resposta = await fetch("https://sua-api.com/api/usuarios", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(dados),
+      });
+
+      if (!resposta.ok) {
+        throw new Error("Erro ao salvar os dados.");
+      }
+
+      const data = await resposta.json();
+      console.log("Dados salvos com sucesso:", data);
+
+      setMensagem("Dados salvos com sucesso!");
+      setNome("");
+      setEmail("");
+    } catch (erro) {
+      console.error("Ocorreu um erro:", erro);
+      setMensagem("Ocorreu um erro ao salvar os dados.");
     }
-
-    if (senha !== confirmarSenha) {
-      alert("As senhas não coincidem!");
-      return;
-    }
-
-    alert("Conta criada com sucesso!");
   };
 
   useEffect(() => {
@@ -37,8 +60,6 @@ export default function Cadastro() {
     }
   }, []);
 
-
-
   return (
     <div>
       <Navbar />
@@ -51,19 +72,37 @@ export default function Cadastro() {
 
           {/* Nome */}
           <div className="input-icon">
-            <input type="text" placeholder="Nome" required />
+            <input
+              type="text"
+              placeholder="Nome"
+              required
+              value={nome}
+              onChange={handleChange}
+            />
             <FaUser className="icon" />
           </div>
 
           {/* CPF */}
           <div className="input-icon">
-            <input type="text" placeholder="CPF" required />
+            <input
+              type="text"
+              placeholder="CPF"
+              required
+              value={cpf}
+              onChange={handleChange}
+            />
             <FaIdCard className="icon" />
           </div>
 
           {/* Email */}
           <div className="input-icon">
-            <input type="email" placeholder="Insira seu email" required />
+            <input
+              type="email"
+              placeholder="Insira seu email"
+              required
+              value={email}
+              onChange={handleChange}
+            />
             <FaEnvelope className="icon" />
           </div>
 
@@ -77,9 +116,16 @@ export default function Cadastro() {
               onChange={(e) => setSenha(e.target.value)}
             />
             {showSenha ? (
-              <FaEyeSlash className="icon" onClick={() => setShowSenha(!showSenha)} />
+              <FaEyeSlash
+                className="icon"
+                onClick={() => setShowSenha(!showSenha)}
+              />
             ) : (
-              <FaEye className="icon" onClick={() => setShowSenha(!showSenha)} />
+              <FaEye
+                className="icon"
+                onClick={() => setShowSenha(!showSenha)}
+                values={senha}
+              />
             )}
           </div>
 
@@ -93,18 +139,21 @@ export default function Cadastro() {
               onChange={(e) => setConfirmarSenha(e.target.value)}
             />
             {showConfirma ? (
-              <FaEyeSlash className="icon" onClick={() => setShowConfirma(!showConfirma)} />
+              <FaEyeSlash
+                className="icon"
+                onClick={() => setShowConfirma(!showConfirma)}
+              />
             ) : (
-              <FaEye className="icon" onClick={() => setShowConfirma(!showConfirma)} />
+              <FaEye
+                className="icon"
+                onClick={() => setShowConfirma(!showConfirma)}
+              />
             )}
           </div>
 
           {/* Pergunta adicional */}
           <div className="input-icon confirm-password">
-            <input
-              type="text"
-              placeholder="Onde você conheceu o Moltara?"
-            />
+            <input type="text" placeholder="Onde você conheceu o Moltara?" />
             <FaQuestionCircle className="icon" />
           </div>
 
