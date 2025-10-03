@@ -5,63 +5,63 @@
 
 .alinhamento-geral {
   display: flex;
-  margin-left: 43%;
   align-items: flex-start;
   gap: 30px;
-  margin-top: 8%;
+  margin-top: 6%;
+  margin-left: 8%;
 }
 
-.container-valor {
+.container-imgs-principal {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.container-item {
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
   border-radius: 8px;
-
-  width: 380px;
-  height: 140px;
+  width: 490px;
+  height: 430px;
 }
 
-.button-confirmar {
-  width: 120px;
-  height: 38px;
-  border-radius: 4px;
-  background-color: #fc2243;
-  color: #ffffff;
-  font-weight: bold;
-  font-family: 'Albert sans', sans-serif;
+.alinhamento-imgs {
+  display: flex;
+  gap: 10px;
 }
 
-.button-adicionar {
-  width: 120px;
-  height: 38px;
-  border-radius: 4px;
-  background-color: hwb(0 32% 0%);
-  color: #ffffff;
-
-  font-family: 'Albert sans', sans-serif;
-  font-weight: bold;
-
+.container-item h1 {
+  text-align: center;
 }
 
-.titulo-valor {
-  color: #1E2327;
-  font-weight: bold;
-  font-family: 'Urbanist', sans-serif;
-  margin-left: 3%;
-  margin-top: 3%;
+.container-img {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+  width: 90px;
+  height: 75px;
 }
 
-.alinhamento-1 {
+.container-img {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.container-img {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.container-info-item {
   background-color: #ffffff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
   border-radius: 8px;
-  width: 420px;
-  height: 480px;
-}
-
-.alinhamento-2 {
-  margin-left: 5%;
+  width: 335px;
+  height: 430px;
 }
 
 .titulo {
@@ -73,43 +73,133 @@
   margin-left: 5%;
 }
 
+.alinhamento-1 {
+  margin-left: 5%;
+}
+
 .sub-titulo {
   color: #263238;
   font-weight: bold;
   font-family: 'Albert Sans', sans-serif;
-  margin-top: 3%;
+
+  margin-top: 6%;
   margin-bottom: 3%;
 }
 
 .valor {
   color: #BB252F;
   font-weight: bold;
+  font-family: 'Albert Sans', sans-serif;
 
-  margin-top: 7%;
+  margin-top: 5%;
 }
 
-.alinhamento-checkbox {
+.avaliacao {
+  color: #263238;
+  font-weight: bold;
   font-family: 'Albert Sans', sans-serif;
+
+  margin-top: 5%;
+}
+
+/*Todos os containers de valor total do produto */
+.opcoes-personalizacao {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+  flex-direction: column;
+  gap: 20px;
+  font-family: 'Albert Sans', sans-serif;
   color: #263238;
 }
 
+.grupo-personalizacao {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .text-personalizacao {
- font-family: 'Albert Sans', sans-serif;
- font-weight: 200;
+  font-family: 'Albert Sans', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
   color: #BB252F;
 }
 
-.checkbox-inline .checkbox-item {
-  margin-right: 12px;
-  margin-bottom: 0;
+.checkbox-container {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-.descricao h4 {
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/*Todos os containers de valor total do produto */
+.container-valor {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-x: hidden;
+
+  width: 289px;
+  height: 246px;
+}
+
+.container-valor input {
+  width: 100px;
+  height: 20px;
+}
+
+.botoes-compra {
+  display: flex;
+  flex-direction: column;
+  /* Organiza os botões em coluna */
+  gap: 10px;
+  /* Adiciona uma pequena separação entre os botões */
+  margin-left: 5%;
+}
+
+.button-adicionar {
+  width: 233px;
+  height: 32px;
+  border-radius: 4px;
+
+  background-color: #fc2243;
+  color: #ffffff;
+  font-weight: bold;
+  font-family: 'Albert sans', sans-serif;
+}
+
+.button-confirmar {
+  width: 160px;
+  height: 33px;
+  border-radius: 4px;
+
+  background-color: hwb(0 32% 0%);
+  color: #ffffff;
+  font-family: 'Albert sans', sans-serif;
+  font-weight: bold;
+}
+
+.titulo-valor {
+  color: #1E2327;
+  font-weight: bold;
+  font-family: 'Urbanist', sans-serif;
+  margin-left: 3%;
+  margin-top: 3%;
+}
+
+.descricao h3 {
   font-family: 'Albert Sans', sans-serif;
   font-weight: bold;
+  font-size: 18px;
   color: #263238;
 
   margin-top: 4%

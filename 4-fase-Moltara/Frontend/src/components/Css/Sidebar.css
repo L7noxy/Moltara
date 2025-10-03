@@ -1,9 +1,3 @@
-
-.navbar {
-    position: fixed;
-    z-index: 102;
-}
-
 .container-sidebar {
     position: fixed; 
     top: 0px;
@@ -16,9 +10,6 @@
     gap: 20px;
     transition: 0.4s ease-in-out;
     z-index: 101;
-    border-right-color: rgb(255, 255, 255);
-    border-right-style: outset;
-    border-right-width: 0.3px;
     overflow: hidden;
 }
 

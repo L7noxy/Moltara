@@ -5,6 +5,7 @@ import CardProduto from '../../components/Js/CardProduto'
 import Carrosel from '../../components/Js/carrosel'
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaArrowRightLong } from "react-icons/fa6";
+import Footer from '../../components/Js/Footer'
 
 export default function Home() {
   return (
@@ -29,8 +30,10 @@ export default function Home() {
           </div>
 
           <CardProduto />
-
+          <Footer />
         </div>
+
+
       </div>
     </>
   )

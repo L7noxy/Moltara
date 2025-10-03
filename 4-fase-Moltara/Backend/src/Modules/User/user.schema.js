@@ -11,10 +11,18 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
 
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,
   },
 });
 
-module.exports = mongoose.model("Order", userSchema);
+const ModeloUser = mongoose.model("User", userSchema);
+module.exports = ModeloUser;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../Css/Cadastro.css";
 import Navbar from "../../components/Js/Navbar";
 import {
@@ -13,14 +13,15 @@ import {
 export default function Cadastro() {
   const [showSenha, setShowSenha] = useState(false);
   const [showConfirma, setShowConfirma] = useState(false);
+  const [cpf, setCpf] = useState("");
+  const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [aceitouTermos, setAceitouTermos] = useState(false);
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Impede o recarregamento da página
+    e.preventDefault();
 
     const dados = { nome, email };
 
@@ -47,18 +48,37 @@ export default function Cadastro() {
       console.error("Ocorreu um erro:", erro);
       setMensagem("Ocorreu um erro ao salvar os dados.");
     }
-  };
 
-  useEffect(() => {
-    try {
-      const storedSenha = localStorage.getItem("senha");
-      if (storedSenha) {
-        setSenha(storedSenha);
-      }
-    } catch (error) {
-      console.error("Erro ao obter senha do localStorage:", error);
+    if (senha !== confirmarSenha) {
+      alert("As senhas não coincidem!");
+      return;
     }
-  }, []);
+
+    try {
+      const response = await fetch("http://localhost:3000/api/usuario", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome,
+          cpf,
+          email,
+          senha,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao cadastrar usuário");
+      }
+
+      const data = await response.json();
+      alert("Conta criada com sucesso! ID: " + data.id);
+    } catch (error) {
+      console.error("Erro ao cadastrar usuário:", error);
+      alert("Erro ao cadastrar usuário: " + error);
+    }
+  };
 
   return (
     <div>
@@ -70,43 +90,39 @@ export default function Cadastro() {
             Informe seus dados para continuar a compra
           </div>
 
-          {/* Nome */}
           <div className="input-icon">
             <input
               type="text"
               placeholder="Nome"
               required
               value={nome}
-              onChange={handleChange}
+              onChange={(e) => setNome(e.target.value)}
             />
             <FaUser className="icon" />
           </div>
 
-          {/* CPF */}
           <div className="input-icon">
             <input
               type="text"
               placeholder="CPF"
               required
               value={cpf}
-              onChange={handleChange}
+              onChange={(e) => setCpf(e.target.value)}
             />
             <FaIdCard className="icon" />
           </div>
 
-          {/* Email */}
           <div className="input-icon">
             <input
               type="email"
               placeholder="Insira seu email"
               required
               value={email}
-              onChange={handleChange}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <FaEnvelope className="icon" />
           </div>
 
-          {/* Senha */}
           <div className="input-icon">
             <input
               type={showSenha ? "text" : "password"}
@@ -129,7 +145,6 @@ export default function Cadastro() {
             )}
           </div>
 
-          {/* Confirmar senha */}
           <div className="input-icon confirm-password">
             <input
               type={showConfirma ? "text" : "password"}
@@ -151,7 +166,6 @@ export default function Cadastro() {
             )}
           </div>
 
-          {/* Pergunta adicional */}
           <div className="input-icon confirm-password">
             <input type="text" placeholder="Onde você conheceu o Moltara?" />
             <FaQuestionCircle className="icon" />
@@ -167,13 +181,15 @@ export default function Cadastro() {
             />
             <label htmlFor="termos">
               Li e aceito os{" "}
-              <a href="/termos" target="_blank" rel="noopener noreferrer">
+              <a
+                rel="noopener"
+                href="https://www.moltara.com.br/termos-de-uso/"
+              >
                 Termos de Uso
               </a>
             </label>
           </div>
 
-          {/* Botão */}
           <button type="submit" className="botao-cadastro">
             CONTINUAR
           </button>

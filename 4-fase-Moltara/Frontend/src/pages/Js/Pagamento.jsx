@@ -23,8 +23,6 @@ export default function Pagamento() {
             </div>
           </div>
         </div>
-
-
       </div>
     </div>
   )

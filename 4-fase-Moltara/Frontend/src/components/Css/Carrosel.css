@@ -72,7 +72,7 @@
   cursor: pointer;
   border-radius: 50%;
   transition: background 0.3s;
-  z-index: 2;
+  z-index: 1;
 }
 
 .kb-btn:hover {
