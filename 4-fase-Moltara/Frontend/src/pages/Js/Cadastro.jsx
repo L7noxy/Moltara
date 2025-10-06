@@ -23,19 +23,27 @@ export default function Cadastro() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const dados = { nome, email };
-
     try {
-      const resposta = await fetch("https://sua-api.com/api/usuarios", {
+      const resposta = await fetch("http://localhost:3000/api/usuario", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(dados),
+        body: JSON.stringify(nome, email, senha, cpf),
       });
 
       if (!resposta.ok) {
+        let errorData;
         throw new Error("Erro ao salvar os dados.");
+        try {
+          errorData = await response.json();
+        } catch (e) {
+          // Se a resposta não for JSON (erro do servidor), use a mensagem padrão
+          throw new Error("Erro desconhecido ao processar a requisição.");
+        }
+        const detailedErrorMessage =
+          errorData.error || "Erro ao salvar os dados.";
+        throw new Error(detailedErrorMessage);
       }
 
       const data = await resposta.json();
@@ -52,31 +60,6 @@ export default function Cadastro() {
     if (senha !== confirmarSenha) {
       alert("As senhas não coincidem!");
       return;
-    }
-
-    try {
-      const response = await fetch("http://localhost:3000/api/usuario", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nome,
-          cpf,
-          email,
-          senha,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Erro ao cadastrar usuário");
-      }
-
-      const data = await response.json();
-      alert("Conta criada com sucesso! ID: " + data.id);
-    } catch (error) {
-      console.error("Erro ao cadastrar usuário:", error);
-      alert("Erro ao cadastrar usuário: " + error);
     }
   };
 
