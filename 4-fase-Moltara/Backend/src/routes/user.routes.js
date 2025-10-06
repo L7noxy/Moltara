@@ -4,7 +4,7 @@ const userController = require('../Modules/User/user.controller');
 const authMiddleware = require('../middlewares/authMiddleware');
 
 router.get('/', authMiddleware, (req, res) => userController.getUsuario(req, res));
-router.post('/add', authMiddleware, (req, res) => userController.addUsuario(req, res));
+router.post('/cadastro', userController.cadastrarUsuario);
 router.delete('/:userId', authMiddleware, (req, res) => userController.removeUsuario(req, res));
 
 module.exports = router;

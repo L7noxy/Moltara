@@ -1,4 +1,4 @@
-app.post("/usuario/cadastro", async(req, res) => {
+app.post("/usuario", async(req, res) => {
     try {
         const item = new Usuario(req.body);
         await item.save();

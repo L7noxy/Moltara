@@ -1,13 +1,13 @@
 const bcrypt = require('bcrypt');
-const Usuario = require('../User/user.schema'); 
+const Usuario = require('../User/user.schema');
 
 const SALT_ROUNDS = 10;
 
 exports.cadastrarUsuario = async (req, res) => {
     const { nome, cpf, email, senha } = req.body;
     if (!nome || !cpf || !email || !senha) {
-        return res.status(400).json({ 
-            message: "Todos os campos (nome, CPF, email, senha) são obrigatórios." 
+        return res.status(400).json({
+            message: "Todos os campos (nome, CPF, email, senha) são obrigatórios."
         });
     }
 
@@ -47,8 +47,8 @@ exports.cadastrarUsuario = async (req, res) => {
 
     } catch (error) {
         console.error("Erro no cadastro:", error);
-        return res.status(500).json({ 
-            message: "Erro interno do servidor ao tentar finalizar o cadastro." 
+        return res.status(500).json({
+            message: "Erro interno do servidor ao tentar finalizar o cadastro."
         });
     }
 };

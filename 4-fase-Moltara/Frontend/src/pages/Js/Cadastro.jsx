@@ -24,26 +24,17 @@ export default function Cadastro() {
     e.preventDefault();
 
     try {
-      const resposta = await fetch("http://localhost:3000/api/usuario", {
+      const resposta = await fetch("http://localhost:3000/api/usuario/cadastro", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(nome, email, senha, cpf),
+        body: JSON.stringify({ nome, email, senha, cpf }),
       });
 
       if (!resposta.ok) {
         let errorData;
         throw new Error("Erro ao salvar os dados.");
-        try {
-          errorData = await response.json();
-        } catch (e) {
-          // Se a resposta não for JSON (erro do servidor), use a mensagem padrão
-          throw new Error("Erro desconhecido ao processar a requisição.");
-        }
-        const detailedErrorMessage =
-          errorData.error || "Erro ao salvar os dados.";
-        throw new Error(detailedErrorMessage);
       }
 
       const data = await resposta.json();
