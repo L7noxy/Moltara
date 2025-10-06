@@ -152,17 +152,11 @@
   height: 246px;
 }
 
-.container-valor input {
-  width: 100px;
-  height: 20px;
-}
 
 .botoes-compra {
   display: flex;
   flex-direction: column;
-  /* Organiza os botões em coluna */
   gap: 10px;
-  /* Adiciona uma pequena separação entre os botões */
   margin-left: 5%;
 }
 
@@ -195,6 +189,59 @@
   margin-left: 3%;
   margin-top: 3%;
 }
+
+.alinhamento-quantidade-produto {
+
+  align-items: center;
+  /* Alinha verticalmente no centro */
+  gap: 0;
+  /* Remove o espaço padrão entre os itens */
+  width: 150px;
+  /* Define uma largura ideal para o grupo */
+  margin-bottom: 15px;
+  /* Adiciona espaço abaixo do grupo */
+}
+
+.alinhamento-quantidade-produto button {
+  border: 1px solid #BB252F;
+  background-color: #BB252F;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.alinhamento-quantidade button:hover {
+  background-color: #fc2243;
+}
+
+/* Estilização específica do botão Diminuir (Esquerda) */
+.diminuir {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+/* Estilização específica do botão Aumentar (Direita) */
+.aumentar {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.alinhamento-quantidade input {
+  width: 60px;
+  /* Largura do campo de texto */
+  height: 30px;
+  text-align: center;
+  /* Centraliza o número */
+  border: 1px solid #BB252F;
+  /* Borda da mesma cor dos botões */
+
+}
+
+
 
 .descricao h3 {
   font-family: 'Albert Sans', sans-serif;

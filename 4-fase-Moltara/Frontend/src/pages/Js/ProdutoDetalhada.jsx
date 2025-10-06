@@ -91,11 +91,13 @@ export default function ProdutoDetalhada() {
       
         <div className='container-valor'>
          <h3 className='titulo-valor'>Preço total: xxx</h3>
-          <label>Quantidade do produto:</label><input type='number' value={quantidade} readOnly></input>
-          <button className='aumentar' onClick={aumentar}>+</button> <button onClick={diminuir}>-</button>
-          <div className='botoes-compra'>
-           <button className='button-confirmar'>Adicionar ao Carrinnho</button>
-           <button className='button-adicionar'>Confirmar Compra</button>
+          <div className='alinhamento-quantidade-produto'>
+           <label>Quantidade do produto:</label><input type='number' value={quantidade} readOnly></input>
+           <button className='aumentar' onClick={aumentar}>+</button> <button className='diminuir' onClick={diminuir}>-</button>
+            <div className='botoes-compra'>
+             <button className='button-confirmar'>Adicionar ao Carrinnho</button>
+             <button className='button-adicionar'>Confirmar Compra</button>
+            </div>
           </div>
         </div>
       </div>
