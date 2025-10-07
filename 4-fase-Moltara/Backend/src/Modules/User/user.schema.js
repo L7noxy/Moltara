@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
-  name: {
+
+  nome: {
     type: String,
     required: true,
   },
@@ -16,6 +17,13 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
     lowercase: true
+  },
+
+  senha: {
+    type: String,
+    required: true,
+    minlength: 6,
+    select: false
   },
 
   createdAt: {

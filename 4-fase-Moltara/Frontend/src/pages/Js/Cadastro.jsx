@@ -23,29 +23,30 @@ export default function Cadastro() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const Id = Math.floor(Math.random() * 1000000);
+
     try {
-      const resposta = await fetch("http://localhost:3000/api/usuario/cadastro", {
+      const response = await fetch("http://localhost:3000/api/usuario/cadastro", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ nome, email, senha, cpf }),
+        body: JSON.stringify({
+          Id,
+          nome, 
+          email, 
+          senha, 
+          cpf
+        }),
       });
 
-      if (!resposta.ok) {
-        let errorData;
-        throw new Error("Erro ao salvar os dados.");
-      }
-
-      const data = await resposta.json();
+      const data = await response.json();
       console.log("Dados salvos com sucesso:", data);
 
-      setMensagem("Dados salvos com sucesso!");
       setNome("");
       setEmail("");
     } catch (erro) {
       console.error("Ocorreu um erro:", erro);
-      setMensagem("Ocorreu um erro ao salvar os dados.");
     }
 
     if (senha !== confirmarSenha) {

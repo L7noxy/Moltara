@@ -1,9 +1,9 @@
-const express = require('express');
-const cors = require('cors');
-const cartRoutes = require('./routes/cart.routes');
-const checkoutRoutes = require('./routes/checkout');
-const userRoutes = require('./routes/user.routes');
-const productRoutes = require('./routes/product.routes');
+import express from 'express';
+import cors from 'cors';
+import cartRoutes from './routes/cart.routes';
+import checkoutRoutes from './routes/checkout';
+import userRoutes from './routes/user.routes';
+import productRoutes from './routes/product.routes';
 
 const app = express();
 
@@ -16,4 +16,4 @@ app.use('/api/checkout', checkoutRoutes);
 app.use('/api/usuario', userRoutes);
 app.use('/api/produto', productRoutes);
 
-module.exports = app;
+export default app;
