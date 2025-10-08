@@ -1,6 +1,6 @@
-const cartService = require("./cart.service");
+import cartService from "./cart.service";
 
-exports.getCart = async (req, res) => {
+export const getCart = async (req, res) => {
   try {
     const userId = req.user.id;
     const cart = await cartService.getCart(userId);
@@ -10,7 +10,7 @@ exports.getCart = async (req, res) => {
   }
 };
 
-exports.addItem = async (req, res) => {
+export const addItem = async (req, res) => {
   try {
     const { productId, quantity } = req.body;
     const userId = req.user.id;
@@ -22,7 +22,7 @@ exports.addItem = async (req, res) => {
   }
 };
 
-exports.removeItem = async (req, res) => {
+export const removeItem = async (req, res) => {
   try {
     const { productId } = req.params;
     const userId = req.user.id;

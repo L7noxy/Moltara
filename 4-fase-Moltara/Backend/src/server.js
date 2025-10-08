@@ -2,17 +2,21 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const mongoose = require("mongoose");
-import app from "./app";
-import connectDB from "./config/database";
+import app from "./app.js";
+import connectDB from "./config/database.js";
 
 const PORT = process.env.PORT || 3000;
 
 connectDB()
   .then(() => {
     app.listen(PORT, () => {
-      console.log(`rodando na porta ${PORT}`);  
+      console.log(`rodando na porta ${PORT}`);
     });
   })
   .catch((err) => {
     console.error("Falha ao iniciar o servidor:", err);
   });
+
+mongoose.connection.on("error", (err) => {
+  console.error("Erro ao conectar ao banco de dados:", err);
+});

@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-import { cadastrarUsuario } from "../controllers/user.controller.js";
-const authMiddleware = require('../middlewares/authMiddleware');
+import { cadastrarUsuario } from "../Modules/User/user.controller.js";
+import authMiddleware from '../middlewares/authMiddleware.js';
 
 
 router.get('/', authMiddleware, (req, res) => userController.getUsuario(req, res));

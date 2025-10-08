@@ -1,9 +1,9 @@
-const bcrypt = require('bcrypt');
-const Usuario = require('../User/user.schema');
+import bcrypt from 'bcrypt';
+import Usuario from '../User/user.schema.js';
 
 const SALT_ROUNDS = 10;
 
-exports.cadastrarUsuario = async (req, res) => {
+export const cadastrarUsuario = async (req, res) => {
     const { nome, cpf, email, senha } = req.body;
     if (!nome || !cpf || !email || !senha) {
         return res.status(400).json({
@@ -53,7 +53,7 @@ exports.cadastrarUsuario = async (req, res) => {
     }
 };
 
-exports.getUsuario = async (req, res) => {
+export const getUsuario = async (req, res) => {
     try {
         const usuarios = await Usuario.find();
         return res.status(200).json(usuarios);

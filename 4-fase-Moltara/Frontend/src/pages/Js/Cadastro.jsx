@@ -44,6 +44,9 @@ export default function Cadastro() {
       console.log("Dados salvos com sucesso:", data);
 
       setNome("");
+      setSenha("");
+      setCpf("");
+      setConfirmarSenha("");
       setEmail("");
     } catch (erro) {
       console.error("Ocorreu um erro:", erro);

@@ -1,35 +1,70 @@
-const productService = require("./product.service");
+import { 
+    createProduct, 
+    findAllProducts, 
+    findProductById, 
+    updateProduct, 
+    deleteProduct, 
+} from "./product.service.js";
 
-exports.getCart = async (req, res) => {
-  try {
-    const productId = req.user.id; 
-    const product = await productService.getProduct(productId);
-    res.status(200).json(product);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+const ProductController = {
+    
+    // POST /api/produto
+    create: async (req, res) => {
+        try {
+            const newProduct = await createProduct(req.body);
+            res.status(201).json(newProduct);
+        } catch (error) {
+            // 400 Bad Request para erros de validação
+            res.status(400).json({ error: error.message });
+        }
+    },
+
+    // GET /api/produto
+    findAll: async (req, res) => {
+        try {
+            const products = await findAllProducts();
+            res.status(200).json(products);
+        } catch (error) {
+            res.status(500).json({ error: "Erro ao buscar a lista de produtos." });
+        }
+    },
+
+    // GET /api/produto/:id
+    findById: async (req, res) => {
+        try {
+            const product = await findProductById(req.params.id);
+            if (!product) {
+                return res.status(404).json({ error: "Produto não encontrado." });
+            }
+            res.status(200).json(product);
+        } catch (error) {
+            // 500 para erros de servidor ou 400 se o ID for inválido
+            res.status(500).json({ error: "Erro ao buscar produto." });
+        }
+    },
+
+    // PUT /api/produto/:id
+    update: async (req, res) => {
+        try {
+            const updatedProduct = await updateProduct(req.params.id, req.body);
+            res.status(200).json(updatedProduct);
+        } catch (error) {
+            // 404 se não encontrar, 400 se a validação falhar
+            const status = error.message.includes("não encontrado") ? 404 : 400;
+            res.status(status).json({ error: error.message });
+        }
+    },
+
+    // DELETE /api/produto/:id
+    delete: async (req, res) => {
+        try {
+            await deleteProduct(req.params.id);
+            res.status(204).send(); // 204 No Content para exclusão bem-sucedida
+        } catch (error) {
+            const status = error.message.includes("não encontrado") ? 404 : 400;
+            res.status(status).json({ error: error.message });
+        }
+    }
 };
 
-exports.addItem = async (req, res) => {
-  try {
-    const { productId, quantity } = req.body;
-    const userId = req.user.id;
-
-    const updatedCart = await cartService.addItem(userId, productId, quantity);
-    res.status(200).json(updatedCart);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-exports.removeItem = async (req, res) => {
-  try {
-    const { productId } = req.params;
-    const userId = req.user.id;
-
-    const updatedCart = await cartService.removeItem(userId, productId);
-    res.status(200).json(updatedCart);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+export default ProductController;

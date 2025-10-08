@@ -1,5 +1,5 @@
 // src/models/Order.js
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
   Id: {
@@ -33,4 +33,4 @@ const userSchema = new mongoose.Schema({
 });
 
 const ModeloUser = mongoose.model("User", userSchema);
-module.exports = ModeloUser;
+export default ModeloUser;
