@@ -150,36 +150,38 @@
 
   width: 289px;
   height: 246px;
+  padding: 15px
 }
 
-
 .botoes-compra {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-left: 5%;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ margin: 0;
+ width: 100%;
 }
 
 .button-adicionar {
-  width: 233px;
-  height: 32px;
-  border-radius: 4px;
+ width: 100%;
+ height: 32px;
+ border-radius: 4px;
+ border: none;
 
-  background-color: #fc2243;
-  color: #ffffff;
-  font-weight: bold;
-  font-family: 'Albert sans', sans-serif;
+ background-color: #fc2243;
+ color: #ffffff;
+ font-weight: bold;
+ font-family: 'Albert sans', sans-serif;
 }
 
 .button-confirmar {
-  width: 160px;
-  height: 33px;
-  border-radius: 4px;
-
-  background-color: hwb(0 32% 0%);
-  color: #ffffff;
-  font-family: 'Albert sans', sans-serif;
-  font-weight: bold;
+ width: 100%;
+ height: 33px;
+ border-radius: 4px;
+ border: none;
+ background-color: #fc2243;
+ color: #ffffff;
+ font-family: 'Albert sans', sans-serif;
+ font-weight: bold;
 }
 
 .titulo-valor {
@@ -191,56 +193,42 @@
 }
 
 .alinhamento-quantidade-produto {
-
+  display: flex;
   align-items: center;
-  /* Alinha verticalmente no centro */
-  gap: 0;
-  /* Remove o espaço padrão entre os itens */
-  width: 150px;
-  /* Define uma largura ideal para o grupo */
+  justify-content: space-between;
+
+  width: 100%;
   margin-bottom: 15px;
-  /* Adiciona espaço abaixo do grupo */
+}
+
+.grupo-botoes-input {
+  display: flex;
+  align-items: center;
+  gap: 0; 
 }
 
 .alinhamento-quantidade-produto button {
-  border: 1px solid #BB252F;
-  background-color: #BB252F;
-  color: #ffffff;
+  color: #BB252F;
   font-weight: bold;
   font-size: 18px;
   height: 30px;
   width: 30px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  padding: 0;
 }
 
-.alinhamento-quantidade button:hover {
-  background-color: #fc2243;
-}
 
-/* Estilização específica do botão Diminuir (Esquerda) */
-.diminuir {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-
-/* Estilização específica do botão Aumentar (Direita) */
-.aumentar {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-
-.alinhamento-quantidade input {
-  width: 60px;
-  /* Largura do campo de texto */
+.alinhamento-quantidade-produto input {
+  width: 40px;
   height: 30px;
+  border-radius: 6px;
   text-align: center;
-  /* Centraliza o número */
+
+  border-radius: none;
   border: 1px solid #BB252F;
-  /* Borda da mesma cor dos botões */
+
 
 }
-
 
 
 .descricao h3 {
