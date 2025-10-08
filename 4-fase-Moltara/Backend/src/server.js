@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 import app from "./app.js";
 import connectDB from "./config/database.js";
 
@@ -20,3 +20,5 @@ connectDB()
 mongoose.connection.on("error", (err) => {
   console.error("Erro ao conectar ao banco de dados:", err);
 });
+
+export default app;

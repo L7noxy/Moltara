@@ -1,4 +1,5 @@
-import cartService from "./cart.service";
+import cartService from "./cart.service.js";
+const cartController = {};
 
 export const getCart = async (req, res) => {
   try {
@@ -33,3 +34,5 @@ export const removeItem = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+export default cartController;

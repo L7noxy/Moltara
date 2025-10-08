@@ -1,14 +1,17 @@
-const Cart = require('./cart.schema');
+import Cart from './cart.schema.js';
+const cartRepository = {};
 
-exports.findCartByUserId = async (userId) => {
+cartRepository.findCartByUserId = async (userId) => {
   return await Cart.findOne({ userId }).populate('items.productId');
 };
 
-exports.updateCart = async (cart) => {
+cartRepository.updateCart = async (cart) => {
   return await cart.save();
 };
 
-exports.createCart = async (userId) => {
+cartRepository.createCart = async (userId) => {
   const newCart = new Cart({ userId, items: [] });
   return await newCart.save();
 };
+
+export default cartRepository;

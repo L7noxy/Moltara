@@ -17,4 +17,4 @@ app.use("/api/checkout", checkoutRoutes);
 app.use("/api/usuario", userRoutes);
 app.use("/api/produto", productRoutes);
 
-export default router;
+export default app;
