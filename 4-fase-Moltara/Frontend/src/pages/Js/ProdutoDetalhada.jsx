@@ -98,11 +98,12 @@ export default function ProdutoDetalhada() {
              <button className='diminuir' onClick={diminuir}>-</button> 
              <input type='number' value={quantidade} readOnly></input>
              <button className='aumentar' onClick={aumentar}>+</button>
-              <div className='botoes-compra'>
-               <button className='button-adicionar'>Adicionar ao Carrinnho</button>
-               <button className='button-confirmar'>Confirmar Compra</button>
-              </div>
             </div>
+          </div>
+          
+          <div className='botoes-compra'>
+           <button className='button-adicionar'>Adicionar ao Carrinnho</button>
+           <button className='button-confirmar'>Confirmar Compra</button>
           </div>
         </div>
       </div>
