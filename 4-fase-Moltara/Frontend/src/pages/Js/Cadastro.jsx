@@ -32,9 +32,8 @@ export default function Cadastro() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          Id,
           nome, 
-          email, 
+          email,
           senha, 
           cpf
         }),
@@ -149,7 +148,6 @@ export default function Cadastro() {
             <FaQuestionCircle className="icon" />
           </div>
 
-          {/* Checkbox Termos */}
           <div className="termos">
             <input
               type="checkbox"
