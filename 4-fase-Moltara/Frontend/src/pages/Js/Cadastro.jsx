@@ -10,6 +10,9 @@ import {
   FaQuestionCircle,
 } from "react-icons/fa";
 
+import { useNavigate } from 'react-router-dom';
+
+
 export default function Cadastro() {
   const [showSenha, setShowSenha] = useState(false);
   const [showConfirma, setShowConfirma] = useState(false);
@@ -22,9 +25,7 @@ export default function Cadastro() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const Id = Math.floor(Math.random() * 1000000);
-
+    
     try {
       const response = await fetch("http://localhost:3000/api/usuario/cadastro", {
         method: "POST",
@@ -37,10 +38,7 @@ export default function Cadastro() {
           senha, 
           cpf
         }),
-      });
-
-      const data = await response.json();
-      console.log("Dados salvos com sucesso:", data);
+      }); 
 
       setNome("");
       setSenha("");
