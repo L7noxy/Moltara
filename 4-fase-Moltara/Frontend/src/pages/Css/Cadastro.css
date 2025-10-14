@@ -44,14 +44,13 @@
   background: #FFFFFF;
   font-size: 0.95rem;
   color: #263238;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  transition: border-color 0.3s;
 }
 
 .input-icon input:focus {
   outline: none;
   border-color: #A71111; 
-  box-shadow: 0 0 0 3px rgba(167, 17, 17, 0.1);
-}
+  }
 
 .input-icon .icon {
   position: absolute;
@@ -96,7 +95,7 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s;
 }
 
 .botao-cadastro:hover {

@@ -19,12 +19,15 @@
 
 .container-item {
  background-color: #ffffff;
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
- transition: box-shadow 0.3s ease-in-out;
  border-radius: 8px;
 
  width: 490px;
  height: 430px;
+}
+
+.container-item:hover{
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ transition: box-shadow 0.3s ease-in-out;
 }
 
 .alinhamento-imgs {
@@ -38,33 +41,27 @@
 
 .container-img {
  background-color: #ffffff;
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
- transition: box-shadow 0.3s ease-in-out;
 
  width: 90px;
  height: 75px;
 }
 
-.container-img {
- background-color: #ffffff;
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
- transition: box-shadow 0.3s ease-in-out;
-}
-
-.container-img {
- background-color: #ffffff;
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+.container-img:hover{
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
  transition: box-shadow 0.3s ease-in-out;
 }
 
 .container-info-item {
  background-color: #ffffff;
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
- transition: box-shadow 0.3s ease-in-out;
  border-radius: 8px;
 
  width: 335px;
  height: 430px;
+}
+
+.container-info-item:hover{
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ transition: box-shadow 0.3s ease-in-out;
 }
 
 .titulo {
@@ -134,17 +131,36 @@
  flex-wrap: wrap;
 }
 
-.checkbox-item {
- display: flex;
- align-items: center;
- gap: 5px;
+.cor-button {
+ width: 30px;
+ height: 30px;
+ border-radius: 50%; /* Transforma o botão em um círculo */
+ border: 2px solid #ccc; /* Borda padrão */
+ cursor: pointer;
+ padding: 0;
+ transition: all 0.2s ease-in-out;
+}
+
+
+.cor-button.selected {
+ border: 2px solid #BB252F; /* Borda mais grossa e vermelha para indicar seleção */
+}
+
+.cor-vermelho {
+ background-color: #D5202C; /* Um vermelho vibrante */
+}
+
+.cor-azul {
+ background-color: #007bff; /* Azul clássico */
+}
+
+.cor-amarelo {
+ background-color: #ffc107; /* Amarelo ouro */
 }
 
 /*Todos os containers de valor total do produto */
 .container-valor {
  background-color: #ffffff;
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
- transition: box-shadow 0.3s ease-in-out;
  border-radius: 8px;
 
  display: flex;
@@ -154,6 +170,11 @@
  width: 289px;
  height: 240px;
  padding: 15px
+}
+
+.container-valor:hover{
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ transition: box-shadow 0.3s ease-in-out;
 }
 
 .botoes-compra {

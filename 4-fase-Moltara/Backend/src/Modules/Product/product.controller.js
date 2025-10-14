@@ -1,36 +1,32 @@
-import { 
-    createProduct, 
-    findAllProducts, 
-    findProductById, 
-    updateProduct, 
-    deleteProduct, 
+import {
+    createProduct,
+    findAllProducts,
+    findProductById,
+    updateProduct,
+    deleteProduct,
 } from "./product.service.js";
 
-const ProductController = {
-    
-    // POST /api/produto
-    create: async (req, res) => {
+export const productController = async (req, res) => {
+
+    const create = async (req, res) => {
         try {
             const newProduct = await createProduct(req.body);
             res.status(201).json(newProduct);
         } catch (error) {
-            // 400 Bad Request para erros de validação
             res.status(400).json({ error: error.message });
         }
-    },
+    }
 
-    // GET /api/produto
-    findAll: async (req, res) => {
+    const findAll = async (req, res) => {
         try {
             const products = await findAllProducts();
             res.status(200).json(products);
         } catch (error) {
             res.status(500).json({ error: "Erro ao buscar a lista de produtos." });
         }
-    },
+    }
 
-    // GET /api/produto/:id
-    findById: async (req, res) => {
+    const findById = async (req, res) => {
         try {
             const product = await findProductById(req.params.id);
             if (!product) {
@@ -41,10 +37,9 @@ const ProductController = {
             // 500 para erros de servidor ou 400 se o ID for inválido
             res.status(500).json({ error: "Erro ao buscar produto." });
         }
-    },
+    }
 
-    // PUT /api/produto/:id
-    update: async (req, res) => {
+    const update = async (req, res) => {
         try {
             const updatedProduct = await updateProduct(req.params.id, req.body);
             res.status(200).json(updatedProduct);
@@ -53,10 +48,9 @@ const ProductController = {
             const status = error.message.includes("não encontrado") ? 404 : 400;
             res.status(status).json({ error: error.message });
         }
-    },
+    }
 
-    // DELETE /api/produto/:id
-    delete: async (req, res) => {
+    const deletar = async (req, res) => {
         try {
             await deleteProduct(req.params.id);
             res.status(204).send(); // 204 No Content para exclusão bem-sucedida
@@ -67,4 +61,4 @@ const ProductController = {
     }
 };
 
-export default ProductController;
+export default productController;

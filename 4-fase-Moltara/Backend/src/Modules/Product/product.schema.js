@@ -18,25 +18,23 @@ const productSchema = new mongoose.Schema({
         required: [true, 'O preço é obrigatório.'],
         min: [0, 'O preço não pode ser negativo.']
     },
-    estoque: {
-        type: Number,
-        required: [true, 'A quantidade em estoque é obrigatória.'],
-        min: [0, 'O estoque não pode ser negativo.'],
-        default: 0
-    },
-    imagemUrl: {
-        type: String,
-        default: 'https://placehold.co/400x400/D0D0D0/333333?text=Sem+Imagem'
-    },
-    categoria: {
-        type: String,
-        trim: true,
-        default: 'Geral'
-    }
+    // estoque: {
+    //     type: Number,
+    //     required: [true, 'A quantidade em estoque é obrigatória.'],
+    //     min: [0, 'O estoque não pode ser negativo.'],
+    //     default: 0
+    // },
+    // imagemUrl: {
+    //     type: String,
+    //     default: 'https://placehold.co/400x400/D0D0D0/333333?text=Sem+Imagem'
+    // },
+    // categoria: {
+    //     type: String,
+    //     trim: true,
+    //     default: 'Geral'
+    // }
 }, {
     timestamps: true
 });
-
-// Cria o modelo e o exporta como default
 const Produto = mongoose.model('Produto', productSchema);
 export default Produto;

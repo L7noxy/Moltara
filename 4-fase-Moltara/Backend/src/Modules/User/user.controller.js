@@ -37,14 +37,6 @@ export const cadastrarUsuario = async (req, res) => {
             senha: hashSenha,
         });
 
-        const usuarioSalvo = await novoUsuario.save();
-
-        return res.status(201).json({
-            message: "Usuário cadastrado com sucesso!",
-            id: usuarioSalvo._id,
-            nome: usuarioSalvo.nome,
-        });
-
     } catch (error) {
         console.error("Erro no cadastro:", error);
         return res.status(500).json({

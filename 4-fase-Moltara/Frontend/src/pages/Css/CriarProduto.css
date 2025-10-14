@@ -5,4 +5,87 @@
     justify-content: center;
     height: 100vh;
     width: 100vw;
+    background-color: var(--color5);
+}
+
+.main-content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.criar-produto {
+    width: 100%;
+    max-width: 544px;
+    margin: 2rem 0;
+    padding: 2.5rem;
+    border-radius: 0.75rem;
+}
+
+.criar-produto h1 {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #263238;
+    margin-bottom: 4px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+form>div {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.preco[type="text"],
+.preco[type="number"],
+.descricao {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+}
+
+.preco[type="text"]:focus,
+.preco[type="number"]:focus,
+.descricao:focus {
+    outline: none;
+    border-color: #A71111;
+}
+
+.descricao {
+    min-height: 120px;
+    max-height: 300px;
+    resize: vertical;
+}
+
+
+.cadastrar-produto[type="submit"] {
+    background-color: #A71111;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.cadastrar-produto[type="submit"]:hover {
+    background-color: #A71111;
+    transform: scale(1.01);
 }
