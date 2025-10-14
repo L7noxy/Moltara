@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
 import "../Css/Carrinho.css";
 import Navbar from "../../components/Js/Navbar";
 import Nav_carrinho from "../../components/Js/Nav_carrinho";
 
 export default function Carrinho() {
-  const produtos_carrinho = [
+  const [carrinho, setCarrinho] = useState([
     {
       id: 1,
       nome: "Gabinete Gamer Mid Tower",
@@ -33,10 +33,10 @@ export default function Carrinho() {
     {
       id: 5,
       nome: "Mouse Gamer",
-      preco: 155.66,
+      preco: 153.66,
       descricao: "Descrição do produto",
     },
-  ];
+  ]);
 
   return (
     <div>
@@ -48,7 +48,7 @@ export default function Carrinho() {
             <div className="container-produtos">
               <div className="lista-produtos">
                 <div className="produtos-carrinho">
-                  {produtos_carrinho.map((produtos) => (
+                  {carrinho.map((produtos) => (
                     <div className="produto">
                       <img src="./img/cadeira.png" alt="" />
                       <button className="deletar-produto">Remover</button>
