@@ -1,0 +1,135 @@
+.container-carrinho {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.itens-carrinho {
+    height: 90vh;
+    width: 80vw;
+    overflow: hidden;
+}
+
+.itens-da-compra {
+    display: flex;
+    padding: 20px;
+    height: 90vh;
+    width: 80vw;
+    overflow: hidden;
+    gap: 20px;
+}
+
+.lista-produtos {
+    padding: 20px;
+    height: max-content;
+    width: 60vw;
+    height: 100vh;
+    margin: 1px;
+
+}
+
+.produtos-carrinho {
+    margin: 1px;
+    height: 485px;
+    width: 820px;
+    overflow-x: hidden;
+}
+
+.resumo-da-compra {
+    height: 250px;
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 80px;
+}
+
+.infos-resumo-compra {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.infos-resumo-compra h2 {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.produto {
+    height: 25vh;
+    width: 85%;
+    margin: 1px;
+    overflow: hidden;
+}
+
+.produto img {
+    height: 120px;
+    width: 120px;
+}
+
+.produto hr {
+    height: 1px;
+    border: none;
+    background-color: #263238;
+    margin-top: 15px;
+}
+
+.container-produtos {
+    margin-top: 80px;
+    background-color: #ffffff;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    height: 530px;
+    width: 55vw;
+    overflow: hidden;
+}
+
+.deletar-produto {
+    color: #e00000;
+    font-weight: 700;
+}
+
+.botoes-resumo-compra {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.botoes-resumo-compra a {
+    background-color: #e00000;
+    color: #fff;
+    font-size: 17px;
+    width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.cupom {
+    background-color: #FF3535;
+    width: 190px;
+    color: #fff;
+    font-size: 17px;
+    padding: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.comprar {
+    color: #fff;
+    font-size: 17px;
+    width: 250px;
+    border-radius: 5px;
+    overflow: hidden;
+}

@@ -1,0 +1,11 @@
+.container-footer {
+  background-color: #1E2327;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  height: auto;
+  overflow: hidden;
+  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+} 

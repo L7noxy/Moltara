@@ -1,0 +1,32 @@
+.nav-pagamento {
+    height: 10vh;
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav-pagamento p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.container-nav-pagamento {
+    width: 100%;
+    position: absolute;
+}
+
+.nav-pagamento p:nth-child(1) {
+    color: rgb(160, 160, 160);
+}
+
+.nav-pagamento p:nth-child(2) {
+    font-size: 18px;
+    color: black;
+}
+
+.nav-pagamento p:nth-child(3) {
+    color: rgb(160, 160, 160);
+}
