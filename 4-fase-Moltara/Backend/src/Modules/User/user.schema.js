@@ -2,11 +2,6 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  Id: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-  },
-
   nome: {
     type: String,
     required: true,
@@ -24,6 +19,14 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 6,
     select: false
+  },
+
+  cpf: {
+    type: String,
+    required: true,
+    minlength: 11,
+    maxlenght: 11,
+    unique: true
   },
 
   createdAt: {

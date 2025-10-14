@@ -1,13 +1,13 @@
 .container-produto {
-  height: 100vh;
-  background-color: #f5f5f5;
+ height: 100vh;
+ Background-color: #f5f5f5;
 }
 
 .alinhamento-geral {
-  display: flex;
-  align-items: flex-start;
-  gap: 30px;
-  margin-top: 6%;
+ display: flex;
+ align-items: flex-start;
+ gap: 30px;
+ margin-top: 6%;
   margin-left: 8%;
 }
 
@@ -18,243 +18,239 @@
 }
 
 .container-item {
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease-in-out;
-  border-radius: 8px;
-  width: 490px;
-  height: 430px;
+ background-color: #ffffff;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ transition: box-shadow 0.3s ease-in-out;
+ border-radius: 8px;
+
+ width: 490px;
+ height: 430px;
 }
 
 .alinhamento-imgs {
-  display: flex;
-  gap: 10px;
+ display: flex;
+ gap: 10px;
 }
 
 .container-item h1 {
-  text-align: center;
+ text-align: center;
 }
 
 .container-img {
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease-in-out;
-  width: 90px;
-  height: 75px;
+ background-color: #ffffff;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ transition: box-shadow 0.3s ease-in-out;
+
+ width: 90px;
+ height: 75px;
 }
 
 .container-img {
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease-in-out;
+ background-color: #ffffff;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ transition: box-shadow 0.3s ease-in-out;
 }
 
 .container-img {
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease-in-out;
+ background-color: #ffffff;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ transition: box-shadow 0.3s ease-in-out;
 }
 
 .container-info-item {
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease-in-out;
-  border-radius: 8px;
-  width: 335px;
-  height: 430px;
+ background-color: #ffffff;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ transition: box-shadow 0.3s ease-in-out;
+ border-radius: 8px;
+
+ width: 335px;
+ height: 430px;
 }
 
 .titulo {
-  color: #1E2327;
-  font-weight: bold;
-  font-family: 'Urbanist', sans-serif;
+ color: #1E2327;
+ font-weight: bold;
+ font-family: 'Urbanist', sans-serif;
 
-  margin-top: 4%;
-  margin-left: 5%;
+ margin-top: 4%;
+ margin-left: 5%;
 }
 
 .alinhamento-1 {
-  margin-left: 5%;
+ margin-left: 5%;
 }
 
 .sub-titulo {
-  color: #263238;
-  font-weight: bold;
-  font-family: 'Albert Sans', sans-serif;
+ color: #263238;
+ font-weight: bold;
+ font-family: 'Albert Sans', sans-serif;
 
-  margin-top: 6%;
-  margin-bottom: 3%;
+ margin-top: 6%;
+ margin-bottom: 3%;
 }
 
 .valor {
-  color: #BB252F;
-  font-weight: bold;
-  font-family: 'Albert Sans', sans-serif;
+ color: #BB252F;
+ font-weight: bold;
+ font-family: 'Albert Sans', sans-serif;
 
-  margin-top: 5%;
+ margin-top: 5%;
 }
 
 .avaliacao {
-  color: #263238;
-  font-weight: bold;
-  font-family: 'Albert Sans', sans-serif;
+ color: #263238;
+ font-weight: bold;
+ font-family: 'Albert Sans', sans-serif;
 
-  margin-top: 5%;
+ margin-top: 5%;
 }
 
 /*Todos os containers de valor total do produto */
 .opcoes-personalizacao {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  font-family: 'Albert Sans', sans-serif;
-  color: #263238;
+ display: flex;
+ flex-direction: column;
+ gap: 20px;
+
+ font-family: 'Albert Sans', sans-serif;
+ color: #263238;
 }
 
 .grupo-personalizacao {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
 }
 
 .text-personalizacao {
-  font-family: 'Albert Sans', sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-  color: #BB252F;
+ font-family: 'Albert Sans', sans-serif;
+ font-size: 16px;
+ font-weight: bold;
+ color: #BB252F;
 }
 
 .checkbox-container {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
+ display: flex;
+ gap: 15px;
+ flex-wrap: wrap;
 }
 
 .checkbox-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
+ display: flex;
+ align-items: center;
+ gap: 5px;
 }
 
 /*Todos os containers de valor total do produto */
 .container-valor {
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease-in-out;
-  border-radius: 8px;
+ background-color: #ffffff;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+ transition: box-shadow 0.3s ease-in-out;
+ border-radius: 8px;
 
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  overflow-x: hidden;
-
-  width: 289px;
-  height: 246px;
+ display: flex;
+ flex-direction: column;
+ gap: 15px;
+ overflow-x: hidden;
+ width: 289px;
+ height: 240px;
+ padding: 15px
 }
 
-
 .botoes-compra {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-left: 5%;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ margin: 0;
+ width: 100%;
 }
 
 .button-adicionar {
-  width: 233px;
-  height: 32px;
-  border-radius: 4px;
+ width: 175px;
+ height: 32px;
+ border-radius: 4px;
 
-  background-color: #fc2243;
-  color: #ffffff;
-  font-weight: bold;
-  font-family: 'Albert sans', sans-serif;
+ background-color: #FF414E;
+ color: #ffffff;
+ font-weight: bold;
+ font-family: 'Albert sans', sans-serif;
+}
+
+.button-adicionar:hover{
+ background-color: #ce254a;
+}
+
+.button-confirmar:hover{
+  background-color: #fa4c58;
 }
 
 .button-confirmar {
-  width: 160px;
-  height: 33px;
-  border-radius: 4px;
+ width: 230px;
+ height: 33px;
+ border-radius: 4px;
 
-  background-color: hwb(0 32% 0%);
-  color: #ffffff;
-  font-family: 'Albert sans', sans-serif;
-  font-weight: bold;
+ background-color: #D5202C;
+ color: #ffffff;
+ font-family: 'Albert sans', sans-serif;
+ font-weight: bold;
 }
 
 .titulo-valor {
-  color: #1E2327;
-  font-weight: bold;
-  font-family: 'Urbanist', sans-serif;
-  margin-left: 3%;
-  margin-top: 3%;
+ color: #1E2327;
+ font-weight: bold;
+ font-family: 'Urbanist', sans-serif;
+
+ margin-left: 3%;
+ margin-top: 3%;
 }
 
 .alinhamento-quantidade-produto {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ width: 100%;
+ margin-bottom: 15px;
+}
 
-  align-items: center;
-  /* Alinha verticalmente no centro */
-  gap: 0;
-  /* Remove o espaço padrão entre os itens */
-  width: 150px;
-  /* Define uma largura ideal para o grupo */
-  margin-bottom: 15px;
-  /* Adiciona espaço abaixo do grupo */
+.grupo-botoes-input {
+ display: flex;
+ align-items: center;
+ gap: 0; 
 }
 
 .alinhamento-quantidade-produto button {
-  border: 1px solid #BB252F;
-  background-color: #BB252F;
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 18px;
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
-  transition: background-color 0.2s;
+ color: #BB252F;
+ font-weight: bold;
+ font-size: 18px;
+
+ height: 30px;
+ width: 30px;
+ cursor: pointer;
+ padding: 0;
 }
 
-.alinhamento-quantidade button:hover {
-  background-color: #fc2243;
+
+.alinhamento-quantidade-produto input {
+ width: 40px;
+ height: 30px;
+ border-radius: 6px;
+ text-align: center;
+
+ border: 1px solid #BB252F;
 }
-
-/* Estilização específica do botão Diminuir (Esquerda) */
-.diminuir {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-
-/* Estilização específica do botão Aumentar (Direita) */
-.aumentar {
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-}
-
-.alinhamento-quantidade input {
-  width: 60px;
-  /* Largura do campo de texto */
-  height: 30px;
-  text-align: center;
-  /* Centraliza o número */
-  border: 1px solid #BB252F;
-  /* Borda da mesma cor dos botões */
-
-}
-
 
 
 .descricao h3 {
-  font-family: 'Albert Sans', sans-serif;
-  font-weight: bold;
-  font-size: 18px;
-  color: #263238;
+ font-family: 'Albert Sans', sans-serif;
+ font-weight: bold;
+ font-size: 18px;
+ color: #263238;
 
-  margin-top: 4%
+ margin-top: 4%
 }
 
 .descricao p {
-  font-family: 'Albert Sans', sans-serif;
-  color: #263238;
+ font-family: 'Albert Sans', sans-serif;
+ color: #263238;
 
-  margin-top: 1%;
+ margin-top: 1%;
 }

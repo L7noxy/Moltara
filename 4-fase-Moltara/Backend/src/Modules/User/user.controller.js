@@ -53,7 +53,7 @@ export const cadastrarUsuario = async (req, res) => {
     }
 };
 
-export const getUsuario = async (req, res) => {
+export const getUsuario = async (req, res) => { 
     try {
         const usuarios = await Usuario.find();
         return res.status(200).json(usuarios);
