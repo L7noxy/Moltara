@@ -10,6 +10,19 @@ export default function ProdutoDetalhada() {
    if (quantidade >1) SetQuantidade(quantidade -1)
   }
 
+  const [personalizacaoEscolhida, SetPersonalzcaoEscolhida] = useState ({
+   cor:null,
+   tamanho:null,
+   símbolo:null
+  })
+
+  const handlePersonalizacaoChange = (categoria, valor) =>{
+    SetPersonalzcaoEscolhida(prev =>({
+     ...prev,
+     [categoria]: valor
+    }))
+  }
+
   return (
     <div className='container-produto'>
      <Navbar />
@@ -20,15 +33,9 @@ export default function ProdutoDetalhada() {
           </div>
     
           <div className='alinhamento-imgs'>
-            <div className='container-img'>
-             <p>Img 1</p>
-            </div>
-            <div className='container-img'>
-             <p>Img 2</p>
-            </div>
-            <div className='container-img'>
-             <p>Img 3</p>
-            </div>
+           <div className='container-img'/>
+           <div className='container-img'/>
+           <div className='container-img'/>
           </div>
         </div>
 
@@ -44,20 +51,21 @@ export default function ProdutoDetalhada() {
               <div class="grupo-personalizacao">
                <p className='text-personalizacao'>Cores</p>
                 <div className='checkbox-container'>
-                  <div className='check-item'>
-                   <input type="checkbox" id='check1'/>
-                   <label>Preto</label>
-                  </div>
+                  <button 
+                   className={`cor-button cor-vermelho ${personalizacaoEscolhida.cor === "Vermelho" ? 'selected' : ''}`}
+                   onClick={() => handlePersonalizacaoChange('cor', 'Vermelho')}
+                    aria-label="Selecionar cor Vermelha"
+                  />
+            
+                  <button
+                   className={`cor-button cor-azul ${personalizacaoEscolhida.cor === "Azul" ? 'selected' : ''}`}
+                   onClick={() => handlePersonalizacaoChange('cor', 'Azul')}
+                  />
 
-                  <div className='check-item'>
-                   <input type="checkbox" id='check2'/>
-                   <label>Branco</label>
-                  </div>
-
-                  <div className='check-item'>
-                   <input type="checkbox" id='check3'/>
-                   <label>Rosa</label>
-                  </div>
+                  <button
+                   className={`cor-button cor-amarelo ${personalizacaoEscolhida.cor === "Amarelo" ? 'selected' : ''}`}
+                   onClick={() => handlePersonalizacaoChange('cor', 'Amarelo')}
+                  />
                 </div>
               </div>
 
@@ -77,6 +85,26 @@ export default function ProdutoDetalhada() {
                   <div className='check-item'>
                    <input type="checkbox" id='check3' />
                    <label>Grande</label>
+                  </div>
+                </div>
+
+                <div class="grupo-personalizacao">
+                 <p className='text-personalizacao'>Símbolos</p>
+                  <div className='checkbox-container'>
+                    <div className='check-item'>
+                     <input type="checkbox" id='check3' />
+                     <label>Estrela</label>
+                    </div>
+
+                    <div className='check-item'>
+                     <input type="checkbox" id='check3' />
+                     <label>Casa</label>
+                    </div>
+ 
+                    <div className='check-item'>
+                     <input type="checkbox" id='check3' />
+                     <label>Circulo</label>
+                    </div>
                   </div>
                 </div>
               </div>
