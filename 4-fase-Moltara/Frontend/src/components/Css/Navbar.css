@@ -147,3 +147,10 @@
     font-weight: midle;
     text-decoration: none;
 }
+
+.back-btn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+}

@@ -1,59 +1,44 @@
-import React from 'react'
-import '../Css/Perfil.css'
-import Navbar from '../../components/Js/Navbar'
-import Sidebar from '../../components/Js/Sidebar'
+import React from "react";
+import "../Css/Perfil.css";
+import Navbar from "../../components/Js/Navbar";
+import Sidebar from "../../components/Js/Sidebar";
 import { HiPencil } from "react-icons/hi2";
 
-import { useState } from 'react'
+import { useState } from "react";
 
 export default function Perfil() {
-
-  const [nome, setNome] = useState('Gabriel')
-  const [email, setEmail] = useState('gabriel@gmail.com')
+  const [nome, setNome] = useState("Gabriel");
+  const [email, setEmail] = useState("gabriel@gmail.com");
 
   return (
     <div>
-      <div className="container-perfil">
-        <div>
-          <Navbar />
-        </div>
-        <div className='perfil'>
-          <div className='perfil-user'>
-            <img src="./img/foto-perfil.png" alt="" srcset="" />
-            <div className='container-infos-perfil'>
-              <div className='infos-perfil'>
-                <ul>
-                  <li>Bem Vindo: {nome}!</li>
-                  <li>{email}</li>
-                </ul>
+      <div>
+        <Navbar />
+        <div className="container-perfil">
+          <Sidebar />
+          <div className="perfil">
+            <h1>Perfil</h1>
+            <div className="perfil-info">
+              <div className="perfil-info-item">
+                <label>Nome:</label>
+                <input
+                  type="text"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                />
+              </div>
+              <div className="perfil-info-item">
+                <label>Email:</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
             </div>
-
-            <div className='container-botoes-perfil'>
-              <button className='editar-perfil' onClick={() => { }}><HiPencil />Editar Perfil</button>
-            </div>
           </div>
-          <div className='container-dados-perfil'>
-            <div className='dados-user-perfil'>
-              <h2>Meus Pedidos</h2>
-            </div>
-            <div className='dados-user-perfil'>
-              <h2>Meus Pedidos</h2>
-            </div>
-            <div className='dados-user-perfil'>
-              <h2>Meus Pedidos</h2>
-            </div>
-            <div className='dados-user-perfil'>
-              <h2>Meus Pedidos</h2>
-            </div>
-
-          </div>
-
-        </div>
-        <div>
-          <Sidebar />
-        </div>
+        </div>  
       </div>
     </div>
-  )
+  );
 }
