@@ -1,13 +1,13 @@
 import cartService from "./cart.service.js";
-const cartController = {};
-
-export const getCart = async (req, res) => {
-  try {
-    const userId = req.user.id;
-    const cart = await cartService.getCart(userId);
-    res.status(200).json(cart);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+const cartController = {
+  getCart: async (req, res) => {
+    try {
+      const userId = req.user.id;
+      const cart = await cartService.getCart(userId);
+      res.status(200).json(cart);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   }
 };
 
