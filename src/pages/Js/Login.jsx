@@ -54,7 +54,7 @@ const Login = () => {
                 </form>
 
                 <div className="login-links">
-                    <Link to="/forgot-password">Esqueceuu a senha?</Link>
+                    <Link to="/forgot-password">Esqueceu a senha?</Link>
                     <Link to="/signup">Não tem conta? Cadastre-se</Link>
                 </div>
             </div>
