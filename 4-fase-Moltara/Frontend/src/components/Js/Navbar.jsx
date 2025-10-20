@@ -21,17 +21,14 @@ export default function Navbar() {
     return (
         <>
             <nav className="navbar">
-                {/* Botão de voltar */}
                 <div>
                     <button onClick={() => navigate(-1)} className="back-btn">
                         <IoIosArrowRoundBack size={40} color="#fff" />
                     </button>
                 </div>
 
-                {/* Logo */}
                 <div className="logo">Logo</div>
 
-                {/* Filtro dropdown */}
                 <div className="category-wrapper">
                     <div className="category-filter" onClick={() => setIsOpen(!isOpen)}>
                         <span>{selectedCategory}</span>

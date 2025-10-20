@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../Css/Cadastro.css";
 import Navbar from "../../components/Js/Navbar";
+import MaskedInput from 'react-text-mask'
+
 import {
   FaEye,
   FaEyeSlash,
@@ -10,8 +12,7 @@ import {
   FaQuestionCircle,
 } from "react-icons/fa";
 
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 export default function Cadastro() {
   const [showSenha, setShowSenha] = useState(false);
@@ -25,20 +26,23 @@ export default function Cadastro() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
-      const response = await fetch("http://localhost:3000/api/usuario/cadastro", {
-        method: "POST", 
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nome, 
-          email,
-          senha, 
-          cpf
-        }),
-      }); 
+      const response = await fetch(
+        "http://localhost:3000/api/usuario/cadastro",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nome,
+            email,
+            senha,
+            cpf,
+          }),
+        }
+      );
 
       setNome("");
       setSenha("");
@@ -77,12 +81,14 @@ export default function Cadastro() {
           </div>
 
           <div className="input-icon">
-            <input
+            <MaskedInput  
               type="text"
               placeholder="CPF"
               required
               value={cpf}
               onChange={(e) => setCpf(e.target.value)}
+              mask={[/\d/, /\d/, /\d/, "." , /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]}
+
             />
             <FaIdCard className="icon" />
           </div>
