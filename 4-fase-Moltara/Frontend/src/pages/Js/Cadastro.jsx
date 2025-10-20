@@ -64,7 +64,7 @@ export default function Cadastro() {
       <Navbar />
       <div className="container-cadastro">
         <form className="formulario-cadastro" onSubmit={handleSubmit}>
-          <div className="titulo-cadastro">CRIAR CONTA</div>
+          <h1 className="titulo-cadastro">CRIAR CONTA</h1>
           <div className="subtitulo-cadastro">
             Informe seus dados para continuar a compra
           </div>

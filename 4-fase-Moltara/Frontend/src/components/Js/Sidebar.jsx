@@ -11,80 +11,101 @@ import { FaUserAlt } from "react-icons/fa";
 import "../Css/Sidebar.css";
 
 function Sidebar() {
-  const [isOpen, setIsOpen] = useState(true);
-  const [rodar, setRodar] = useState(false);
-  const [girado, setGirado] = useState(false);
-  const userId = localStorage.getItem('userId');
-  const userType = localStorage.getItem('userType');
-
-  const girar = () => {
-    setRodar(true);
-
-    setTimeout(() => {
-      setRodar(false);
-      setGirado(!girado);
-    }, 300)
-  }; 
-
-  useEffect(() => {
-    const checkProfessionalProjects = async () => {
-      if (userType === 'profissional' && userId) {
-        try {
-          const response = await fetch(`http://localhost:5000/api/projetos/${userId}`);
-          const data = await response.json();
-
-          if (response.ok && data.hasProjects) {
-            setShowEditProjectLink(true);
-          } else {
-            setShowEditProjectLink(false);
-          }
-        } catch (error) {
-          console.error('Erro ao verificar projetos do profissional:', error);
-          setShowEditProjectLink(false);
-        }
-      } else {
-        setShowEditProjectLink(false);
-      }
-    };
-
-    checkProfessionalProjects();
-  }, [userId, userType]);
 
   return (
     <>
 
-      <div className={`container-sidebar ${isOpen ? "show" : ""}`}>
-        <nav className="sidebar">
-          <button
-            className="toggle-btn"
-            onClick={() => {
-              setIsOpen(!isOpen),
-                girar();
-            }} >
-            <IoCloseOutline
-              color="white"
-              fontSize={30}
-              className={
-                rodar
-                  ? girado
-                    ? "fixado"
-                    : "rotacao"
-                  : girado
-                    ? "rotacao-reversa"
-                    : ""
-              }
-            />
-          </button>
+      <div class="area"></div><nav class="main-menu">
+        <ul>
+          <li>
+            <a href="https://jbfarrow.com">
+              <i class="fa fa-home fa-2x"></i>
+              <span class="nav-text">
+                Community Dashboard
+              </span>
+            </a>
 
-          <Link to={'/'} className="icon-text "><HiMiniHome color="white" fontSize={18} /><span className="link-text">Home </span></Link>
-          <Link to={'/pessoas_chat'} className="icon-text "><FaUserFriends color="white" fontSize={18} /><span className="link-text">Usuarios</span></Link>
-          <Link to={'/criarProjeto'} className="icon-text"><CgAddR color="white" fontSize={18} /><span className="link-text">Criar Projeto</span> </Link>
-          <Link to={'/projetos'} className="icon-text"><LuChartSpline color="white" fontSize={18} /> <span className="link-text">Projetos </span> </Link>
-          <Link to={`/configs/${userId}`} className="icon-text"><FaGear color="white" fontSize={16} /><span className="link-text"> Configurações</span></Link>
-          <Link to={`/perfil/${userId}`} className="icon-text"><FaUserAlt color="white" fontSize={18} /><span className="link-text">Perfil</span></Link>
+          </li>
+          <li class="has-subnav">
+            <a href="#">
+              <i class="fa fa-globe fa-2x"></i>
+              <span class="nav-text">
+                Global Surveyors
+              </span>
+            </a>
 
-        </nav>
-      </div>
+          </li>
+          <li class="has-subnav">
+            <a href="#">
+              <i class="fa fa-comments fa-2x"></i>
+              <span class="nav-text">
+                Group Hub Forums
+              </span>
+            </a>
+
+          </li>
+          <li class="has-subnav">
+            <a href="#">
+              <i class="fa fa-camera-retro fa-2x"></i>
+              <span class="nav-text">
+                Survey Photos
+              </span>
+            </a>
+
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-film fa-2x"></i>
+              <span class="nav-text">
+                Surveying Tutorials
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-book fa-2x"></i>
+              <span class="nav-text">
+                Surveying Jobs
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-cogs fa-2x"></i>
+              <span class="nav-text">
+                Tools & Resources
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-map-marker fa-2x"></i>
+              <span class="nav-text">
+                Member Map
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-info fa-2x"></i>
+              <span class="nav-text">
+                Documentation
+              </span>
+            </a>
+          </li>
+        </ul>
+
+        <ul class="logout">
+          <li>
+            <a href="#">
+              <i class="fa fa-power-off fa-2x"></i>
+              <span class="nav-text">
+                Logout
+              </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </>
   );
 }

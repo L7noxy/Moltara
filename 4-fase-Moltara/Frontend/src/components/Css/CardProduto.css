@@ -1,36 +1,109 @@
-.container-produtos-home {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 50px;
-    justify-content: center;
-    margin-top: 50px;
+@import url("https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap");
+
+
+.card {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  background: #191919;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-.card-produto {
-    padding: 15px;
-    margin: 10px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 200px;
-    gap: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
-    font-size: 13px;
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  width: 100%;
+  height: 100%;
+  background: #ffce00;
+  transform: skewY(345deg);
+  transition: 0.5s;
 }
 
-.card-produto:hover {
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.45);
-    transition: 0.6s;
+.card:hover::before {
+  top: -70%;
+  transform: skewY(390deg);
 }
 
-.preco-card {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
+.card::after {
+  content: "CORSAIR";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-weight: 600;
+  font-size: 6em;
+  color: rgba(0, 0, 0, 0.1);
 }
 
-.btn-curtir {
-    cursor: pointer;
+.card .imgBox {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  z-index: 1;
+}
+/*
+.card .imgBox img {
+    max-width: 100%;
+    
+    transition: .5s;
+}
 
+.card:hover .imgBox img {
+    max-width: 50%;
+      
+}
+*/
+.card .contentBox {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.card .contentBox h3 {
+  font-size: 18px;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.card .contentBox .price {
+  font-size: 20px;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.card .contentBox .buy {
+  position: relative;
+  top: 100px;
+  opacity: 0;
+  padding: 10px 30px;
+  margin-top: 15px;
+  color: #000000;
+  text-decoration: none;
+  background: #ffce00;
+  border-radius: 30px;
+  letter-spacing: 4px;
+  transition: 0.5s;
+}
+
+.card:hover .contentBox .buy {
+  top: 0;
+  opacity: 1;
+  letter-spacing: 0px;
+}
+
+.mouse {
+  height: 300px;
+  width: auto;
 }

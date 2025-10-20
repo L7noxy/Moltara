@@ -1,26 +1,3 @@
-* {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: "Urbanist", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: normal;
-    scrollbar-color: #ffffff #263238;
-    overflow-x: hidden;
-}
-
-
-#root {
-    --color1: #263238;
-    --color2: #37474F;
-    --color3: #A71111;
-    --color4: #BB252F;
-    --color5: #F5F5F5;
-    --color6: #FFFFFF;
-    --color7: #111111;
-}
-
 .container-home {
     background-color: var(--color6);
     display: flex;

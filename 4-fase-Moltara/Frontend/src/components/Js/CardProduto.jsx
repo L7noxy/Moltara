@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { FaHeart } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
 
 import '../Css/CardProduto.css'
@@ -13,52 +14,68 @@ export default function CardProduto() {
     const produtos = [
         {
             id: 1,
-            descricao: 'Cadeira Gamer KBM! GAMING Tempest CG500 Preta e Roxa, Com Almofadas, Descanso Para Pernas Retrátil, Reclinável - KGCG500PTRX',
-            preco: 19.99
+            nome: "Mouse Corsair M65",
+            preco: 30.99
         },
         {
             id: 2,
-            descricao: 'Headset Gamer Sem Fio Logitech G PRO X Wireless LIGHTSPEED 7.1 Dolby Surround, Blue VOICE, Drivers PRO-G 50 mm - 981-000906',
-            preco: 19.99
+            nome: "Mouse Corsair M65",
+            preco: 30.99
         },
         {
             id: 3,
-            descricao: 'Headset Gamer Sem Fio Logitech G PRO X Wireless LIGHTSPEED 7.1 Dolby Surround, Blue VOICE, Drivers PRO-G 50 mm - 981-000906',
-            preco: 19.99
+            nome: "Mouse Corsair M65",
+            preco: 30.99
         },
         {
             id: 4,
-            descricao: 'Headset Gamer Sem Fio Logitech G PRO X Wireless LIGHTSPEED 7.1 Dolby Surround, Blue VOICE, Drivers PRO-G 50 mm - 981-000906',
-            preco: 19.99
+            nome: "Mouse Corsair M65",
+            preco: 30.99
         },
         {
             id: 5,
-            descricao: 'Headset Gamer Sem Fio Logitech G PRO X Wireless LIGHTSPEED 7.1 Dolby Surround, Blue VOICE, Drivers PRO-G 50 mm - 981-000906',
-            preco: 19.99
+            nome: "Mouse Corsair M65",
+            preco: 30.99
         },
     ]
 
     return (
         <div>
-            <div className='container-produtos-home'>
-                {produtos.map((produto) => (
-                    <div key={produto.id} className="card-produto">
-                        <button className='btn-curtir' onClick={() => setCurtir(!curtir)}>{curtir ? (
-                            <FaHeart color='#BB252F'/>
-                        ) : (
-                            <FaRegHeart  />
+            <div>
+                <div className='container-produtos-home'>
+                    {produtos.map((produto) => (
+                        <div key={produto.id} className="card">
+                            {/* <button className='btn-curtir' onClick={() => setCurtir(!curtir)}>{curtir ? (
+                                <FaHeart color='#BB252F' />
+                            ) : (
+                                <FaRegHeart />
 
-                        )}</button>
-                        <div className='image-produto'>
-                            <img src="./img/cadeira.png" />
+                            )}</button> */}
+                            <div className='imgBox'>
+                                <img src="https://www.invidcomputers.com/images/0000000000412169000440548Corsair-Mouse-M65-RGB-Elite-White-5.png" />
+                            </div>
+                            <div className='contentBox'>
+                                <h3>{produto.nome}</h3>
+                                <h2 className="price">{produto.preco} R$</h2>
+                                <Link to={""} className="buy">Comprar</Link>
+                            </div>
                         </div>
-                        <p>{produto.descricao}</p>
+                    ))}
+                </div>
+            </div>
 
-                        <div className='preco-card'>
-                            <p>{produto.preco}</p>
-                        </div>
-                    </div>
-                ))}
+            <div className="card">
+
+                <div className="imgBox">
+                    <img src="https://www.invidcomputers.com/images/0000000000412169000440548Corsair-Mouse-M65-RGB-Elite-White-5.png" alt="mouse corsair" className="mouse" />
+                </div>
+
+                <div className="contentBox">
+                    <h3>Mouse Corsair M65</h3>
+                    <h2 className="price">{produtos[0].preco} R$</h2>
+                    <Link to={""} className="buy">Comprar</Link>
+                </div>
+
             </div>
         </div>
 
