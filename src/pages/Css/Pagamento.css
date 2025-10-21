@@ -1,0 +1,39 @@
+.container-pagamento {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+.container-pagamento-itens {
+    border: 1px solid #263238;
+}
+
+.container-forma-pagamento {
+    border: 1px solid #263238;
+}
+
+.forma-pagamento-itens {
+    border: 1px solid #263238;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pix {
+    border: 1px solid #263238;
+    height: 50px;
+    width: 60%;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.cartao {
+    border: 1px solid #263238;
+    height: 50px;
+    width: 60%;
+    border-radius: 0px 0px 10px 10px;
+}
+

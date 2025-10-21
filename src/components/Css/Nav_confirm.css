@@ -1,0 +1,32 @@
+.nav-confirm {
+    height: 10vh;
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav-confirm p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.container-nav-confirm {
+    width: 100%;
+    position: absolute;
+}
+
+.nav-confirm p:nth-child(1) {
+    color: rgb(160, 160, 160);
+}
+
+.nav-confirm p:nth-child(2) {
+    font-size: 18px;
+    color: black;
+}
+
+.nav-confirm p:nth-child(3) {
+    color: rgb(160, 160, 160);
+}

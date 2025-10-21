@@ -1,0 +1,31 @@
+.nav-carrinho {
+    height: 10vh;
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav-carrinho p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.container-nav-carrinho {
+    width: 100%;
+    position: absolute;
+}
+
+.nav-carrinho p:nth-child(1) {
+    font-size: 18px;
+}
+
+.nav-carrinho p:nth-child(2){
+    color: rgb(160, 160, 160);
+}
+
+.nav-carrinho p:nth-child(3){
+    color: rgb(160, 160, 160);
+}
