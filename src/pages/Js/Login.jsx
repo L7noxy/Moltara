@@ -55,7 +55,7 @@ const Login = () => {
 
                 <div className="login-links">
                     <Link to="/forgot-password">Forgot Username / Password?</Link>
-                    <Link to="/signup">Don't have an account? Sign up</Link>
+                    <Link to="/signup">Don't have an account? Faça o cadastro</Link>
                 </div>
             </div>
         </div>
