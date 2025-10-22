@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import "../Css/CriarProduto.css";
 import Navbar from "../../components/Js/Navbar";
+import Produto from "../../../../Backend/src/Modules/Product/product.schema";
 
 export default function CriarProduto() {
 
@@ -75,6 +76,16 @@ export default function CriarProduto() {
           </div>
           <button type="submit" className="cadastrar-produto">Cadastrar Produto</button>
         </form>
+
+        {Produto && (
+          <div className="produto-criado">
+            <h2>Produto Criado:</h2>
+            <p>Nome: {Produto.nome}</p>
+            <p>Descrição: {Produto.descricao}</p>
+            <p>Preço: {Produto.preco} R$</p>
+            <img src={Produto.img} alt={Produto.nome} />
+          </div>
+        )}
       </div>
     </div>
   );
