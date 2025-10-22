@@ -21,15 +21,16 @@ export default function Navbar() {
     return (
         <>
             <nav className="navbar">
-                <div>
+                <div className='left-section-navbar'>
                     <button onClick={() => navigate(-1)} className="back-btn">
                         <IoIosArrowRoundBack size={40} color="#fff" />
                     </button>
+                
+                <div className="logo">Logo</div>
                 </div>
 
-                <div className="logo">Logo</div>
 
-                <div className="category-wrapper">
+                {/* <div className="category-wrapper">
                     <div className="category-filter" onClick={() => setIsOpen(!isOpen)}>
                         <span>{selectedCategory}</span>
                         <FaChevronDown className={`arrow ${isOpen ? "open" : ""}`} size={12} />
@@ -42,13 +43,13 @@ export default function Navbar() {
                             <p onClick={() => handleCategorySelect("Preço")}>Preço</p>
                         </div>
                     )}
-                </div>
+                </div> */}
 
                 {/* Barra de pesquisa */}
                 <div className="search-bar">
                     <input type="text" placeholder="Pesquisar..." />
                     <button type="submit">
-                        <IoSearchOutline size={20} color="#fff" />
+                        <IoSearchOutline size={20} color="#5F6368" />
                     </button>
                 </div>
 

@@ -23,14 +23,13 @@ export default function Cadastro() {
   const [nome, setNome] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [aceitouTermos, setAceitouTermos] = useState(false);
+  const [logado, setLogado] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        "http://localhost:3000/api/usuario/cadastro",
-        {
+      const response = await fetch("http://localhost:3000/api/usuario/cadastro", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -56,6 +55,17 @@ export default function Cadastro() {
     if (senha !== confirmarSenha) {
       alert("As senhas não coincidem!");
       return;
+    }
+
+    if (!aceitouTermos) {
+      alert("Você deve aceitar os termos de uso para continuar.");
+      return;
+    }
+
+    setLogado(true);
+
+    if (logado) {
+      navigate("/");
     }
   };
 
