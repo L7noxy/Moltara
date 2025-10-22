@@ -11,20 +11,16 @@ import CriarProduto from "../pages/Js/CriarProduto";
 
 const router = createBrowserRouter([
 
-    {/*Rotas de Home*/},
     { path: "/", element: <Home /> },
 
-    {/*Rotas de cadastro*/},
     { path: "/cadastro", element: <Cadastro /> },
     { path: "/login", element: <Login /> },
     { path: "/perfil", element: <Perfil /> },
 
-    {/*Rotas de carrinho*/},
     { path: "/carrinho", element: <Carrinho /> },
-    { path: "/confirmacao", element: <Confirmacao /> },    
+    { path: "/confirmacao", element: <Confirmacao /> },
     { path: "/pagamento", element: <Pagamento /> },
 
-    {/*Rotas de produto*/},
     { path: "/produtoDetalhada", element: <ProdutoDetalhada /> },
     { path: "/criarProduto", element: <CriarProduto /> },
 

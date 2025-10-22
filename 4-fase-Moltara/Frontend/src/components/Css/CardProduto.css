@@ -1,13 +1,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Istok+Web:wght@400;700&display=swap");
 
+.container-produtos-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 90px;
+  flex-wrap: wrap;
+  padding: 40px 0;
+}
 
 .card {
   position: relative;
-  width: 300px;
-  height: 400px;
+  width: 200px;
+  height: 310px;
   background: #191919;
   border-radius: 20px;
   overflow: hidden;
+}
+
+.btn-curtir {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 3;
 }
 
 .card::before {
@@ -16,7 +34,7 @@
   top: -50%;
   width: 100%;
   height: 100%;
-  background: #ffce00;
+  background: var(--color4);
   transform: skewY(345deg);
   transition: 0.5s;
 }
@@ -45,6 +63,7 @@
   padding-top: 20px;
   z-index: 1;
 }
+
 /*
 .card .imgBox img {
     max-width: 100%;
@@ -59,7 +78,7 @@
 */
 .card .contentBox {
   position: relative;
-  padding: 20px;
+  padding: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,7 +88,7 @@
 }
 
 .card .contentBox h3 {
-  font-size: 18px;
+  font-size: 12px;
   color: white;
   font-weight: 500;
   text-transform: uppercase;
@@ -77,7 +96,7 @@
 }
 
 .card .contentBox .price {
-  font-size: 20px;
+  font-size: 15px;
   color: white;
   font-weight: 700;
   letter-spacing: 1px;
@@ -85,10 +104,10 @@
 
 .card .contentBox .buy {
   position: relative;
-  top: 100px;
+  top: 10px;
   opacity: 0;
-  padding: 10px 30px;
-  margin-top: 15px;
+  padding: 5px 15px;
+  margin-top: 5px;
   color: #000000;
   text-decoration: none;
   background: #ffce00;

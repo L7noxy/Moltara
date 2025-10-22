@@ -11,31 +11,37 @@ export default function CardProduto() {
     const [curtir, setCurtir] = useState({})
 
 
+
     const produtos = [
         {
             id: 1,
             nome: "Mouse Corsair M65",
-            preco: 30.99
+            preco: 30.99,
+            img: "https://www.invidcomputers.com/images/0000000000412169000440548Corsair-Mouse-M65-RGB-Elite-White-5.png"
         },
         {
             id: 2,
             nome: "Mouse Corsair M65",
-            preco: 30.99
+            preco: 30.99,
+            img: "./img/crosair_azul.webp"
         },
         {
             id: 3,
             nome: "Mouse Corsair M65",
-            preco: 30.99
+            preco: 30.99,
+            img: "./img/logitech_vermelho.png"
         },
         {
             id: 4,
             nome: "Mouse Corsair M65",
-            preco: 30.99
+            preco: 30.99,
+            img: "./img/crosair_azul.webp"
         },
         {
             id: 5,
             nome: "Mouse Corsair M65",
-            preco: 30.99
+            preco: 30.99,
+            img: "./img/logitech_vermelho.png"
         },
     ]
 
@@ -45,14 +51,14 @@ export default function CardProduto() {
                 <div className='container-produtos-home'>
                     {produtos.map((produto) => (
                         <div key={produto.id} className="card">
-                            {/* <button className='btn-curtir' onClick={() => setCurtir(!curtir)}>{curtir ? (
+                            <button key={produto.id} className='btn-curtir' onClick={() => setCurtir(!curtir)}>{curtir ? (
                                 <FaHeart color='#BB252F' />
                             ) : (
                                 <FaRegHeart />
 
-                            )}</button> */}
+                            )}</button>
                             <div className='imgBox'>
-                                <img src="https://www.invidcomputers.com/images/0000000000412169000440548Corsair-Mouse-M65-RGB-Elite-White-5.png" />
+                                <img src={produto.img} alt={produto.nome} />
                             </div>
                             <div className='contentBox'>
                                 <h3>{produto.nome}</h3>
@@ -63,21 +69,6 @@ export default function CardProduto() {
                     ))}
                 </div>
             </div>
-
-            <div className="card">
-
-                <div className="imgBox">
-                    <img src="https://www.invidcomputers.com/images/0000000000412169000440548Corsair-Mouse-M65-RGB-Elite-White-5.png" alt="mouse corsair" className="mouse" />
-                </div>
-
-                <div className="contentBox">
-                    <h3>Mouse Corsair M65</h3>
-                    <h2 className="price">{produtos[0].preco} R$</h2>
-                    <Link to={""} className="buy">Comprar</Link>
-                </div>
-
-            </div>
         </div>
-
     )
 }
