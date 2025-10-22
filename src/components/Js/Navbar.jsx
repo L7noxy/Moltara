@@ -47,13 +47,13 @@ export default function Navbar() {
                     )}
                 </div>
 
-                {/* Barra de pesquisa */}
-                <div className="search-bar">
-                    <input type="text" placeholder="Pesquisar..." />
-                    <button type="submit">
-                        <IoSearchOutline size={20} color="#fff" />
-                    </button>
-                </div>
+                        {}
+                        <div className="search-bar">
+                            <input type="text" placeholder="Pesquisar..." />
+                            <button type="submit">
+                                <IoSearchOutline size={20} color="#fff" />
+                            </button>
+                        </div>
 
                 {/* Botões e links */}
                 <div className="buttons">
