@@ -126,7 +126,6 @@
 
 .search-bar button {
     border: none;
-    background: transparent;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -156,7 +155,7 @@
 }
 
 .back-btn {
-    background-color: transparent;
+        background-color: transparent;
     border: none;
     cursor: pointer;
     border-radius: 50px;
