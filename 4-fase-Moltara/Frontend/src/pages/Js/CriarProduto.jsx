@@ -1,7 +1,6 @@
 import React, { use, useEffect, useState } from "react";
 import "../Css/CriarProduto.css";
 import Navbar from "../../components/Js/Navbar";
-import Produto from "../../../../Backend/src/Modules/Product/product.schema";
 
 export default function CriarProduto() {
 

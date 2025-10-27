@@ -123,35 +123,38 @@ export default function ProdutoDetalhada() {
                   <p className='text-personalizacao'>Símbolos (Selecionado: {personalizacaoSelecionada.simbolo || 'Nenhum'})</p>
                   <div className='checkbox-container'>
                     
+                    {/* Botão Estrela */}
                     <button 
                       className={`simbolo-button ${personalizacaoSelecionada.simbolo === "Estrela" ? 'selected' : ''}`}
                       onClick={() => handlePersonalizacaoChange('simbolo', 'Estrela')}
                       aria-label="Selecionar símbolo Estrela"
                     >
                       <img 
-                        src={personalizacaoSelecionada.simbolo === "Estrela" ? icones.Estrela.preenchido : icones.Estrela.contorno} 
+                        src={personalizacaoSelecionada.simbolo === "Estrela" ? icones.Estrela.filled : icones.Estrela.outline} 
                         alt="Estrela" 
                       />
                     </button>
 
+                    {/* Botão Casa */}
                     <button 
                       className={`simbolo-button ${personalizacaoSelecionada.simbolo === "Casa" ? 'selected' : ''}`}
                       onClick={() => handlePersonalizacaoChange('simbolo', 'Casa')}
                       aria-label="Selecionar símbolo Casa"
                     >
                       <img 
-                        src={personalizacaoSelecionada.simbolo === "Casa" ? icones.Casinha.preenchido : icones.Casinha.contorno} 
+                        src={personalizacaoSelecionada.simbolo === "Casa" ? icones.Casa.filled : icones.Casa.outline} 
                         alt="Casa" 
                       />
                     </button>
                     
+                    {/* Botão Círculo */}
                     <button 
                       className={`simbolo-button ${personalizacaoSelecionada.simbolo === "Circulo" ? 'selected' : ''}`}
                       onClick={() => handlePersonalizacaoChange('simbolo', 'Circulo')}
                       aria-label="Selecionar símbolo Círculo"
                     >
                       <img 
-                        src={personalizacaoSelecionada.simbolo === "Circulo" ? icones.Circulo.preenchido : icones.Circulo.contorno} 
+                        src={personalizacaoSelecionada.simbolo === "Circulo" ? icones.Circulo.filled : icones.Circulo.outline} 
                         alt="Círculo" 
                       />
                     </button>
