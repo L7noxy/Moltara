@@ -97,7 +97,7 @@ const Footer = () => {
                 <a
                   key={index}
                   href={social.url}
-                  className="text-gray-400 hover:text-[#2c9c49] transition-all duration-300 hover:scale-125"
+                  className="text-gray-400 hover:text-[#a71111]"
                 >
                   {social.icon}
                 </a>
