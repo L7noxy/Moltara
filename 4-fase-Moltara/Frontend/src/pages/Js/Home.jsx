@@ -24,12 +24,6 @@ export default function Home() {
             <Carrosel />
           </div>
           <CardProduto />
-
-          <div className='banner-produto-home'>
-            <a href="https://www.pichau.com.br/marca/benq"><img src="./img/Zowie.jpg" alt="" /></a>
-            <a href="https://www.pichau.com.br/regrasintel">  <img src="./img/Banner_900x100.png" alt="" srcset="" /></a>
-          </div>
-
           <CardProduto />
           <Footer />
         </div>

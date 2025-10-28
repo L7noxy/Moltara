@@ -10,8 +10,6 @@ export default function CardProduto() {
 
     const [curtir, setCurtir] = useState({})
 
-
-
     const produtos = [
         {
             id: 1,
