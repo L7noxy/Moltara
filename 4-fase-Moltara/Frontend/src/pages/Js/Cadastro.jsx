@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Css/Cadastro.css";
 import Navbar from "../../components/Js/Navbar";
-import MaskedInput from 'react-text-mask'
+
 
 import {
   FaEye,
