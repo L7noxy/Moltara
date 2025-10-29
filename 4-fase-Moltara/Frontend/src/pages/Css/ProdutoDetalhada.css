@@ -146,7 +146,6 @@
  color: #263238;
 }
 
-
 .tamanho-pequeno {
  width: 40px; 
  font-size: 10px; 
@@ -195,9 +194,13 @@
  background-color: #ffc107;
 }
 
+.cor-verde{
+ background-color: #21d15c;
+}
+
 .simbolo-button {
- width: 40px;
- height: 40px;
+ width: 35px;
+ height: 35px;
  border: 2px solid #ccc; 
  background-color: #f8f8f8; 
  border-radius: 8px; 

@@ -88,6 +88,12 @@ export default function ProdutoDetalhada() {
                     aria-label="Selecionar cor Amarela"
                   />
 
+                  <button
+                    className={`cor-button cor-verde ${personalizacaoSelecionada.cor === "Verde" ? 'selected' : ''}`}
+                    onClick={() => handlePersonalizacaoChange('cor', 'Verde')}
+                    aria-label="Selecionar cor Verde"
+                  />
+
                 </div>
               </div>
 
@@ -126,8 +132,7 @@ export default function ProdutoDetalhada() {
                     <button
                       className={`simbolo-button ${personalizacaoSelecionada.simbolo === "Estrela" ? 'selected' : ''}`}
                       onClick={() => handlePersonalizacaoChange('simbolo', 'Estrela')}
-                      aria-label="Selecionar símbolo Estrela"
-                    >
+                      aria-label="Selecionar símbolo Estrela">
                       <img
                         src={personalizacaoSelecionada.simbolo === "Estrela" ? icones.Estrela.preenchido : icones.Estrela.contorno}
                         alt="Estrela"
@@ -137,8 +142,7 @@ export default function ProdutoDetalhada() {
                     <button
                       className={`simbolo-button ${personalizacaoSelecionada.simbolo === "Casa" ? 'selected' : ''}`}
                       onClick={() => handlePersonalizacaoChange('simbolo', 'Casa')}
-                      aria-label="Selecionar símbolo Casa"
-                    >
+                      aria-label="Selecionar símbolo Casa">
                       <img
                         src={personalizacaoSelecionada.simbolo === "Casa" ? icones.Casinha.preenchido: icones.Casinha.contorno}
                         alt="Casa"
