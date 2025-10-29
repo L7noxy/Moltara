@@ -7,6 +7,7 @@ export default function CriarProduto() {
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
   const [preco, setPreco] = useState(0);
+  const [Produto, setProduto] = useState(null);
 
   const handleSubmit = async (e) => { 
     e.preventDefault();
