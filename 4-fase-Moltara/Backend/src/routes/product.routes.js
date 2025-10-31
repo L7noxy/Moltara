@@ -1,8 +1,10 @@
 import express from 'express';
-import { productController } from '../Modules/Product/product.controller.js';
-
 const router = express.Router();
+import { cadastrarProduto, getProduto } from '../Modules/Product/product.controller.js';
 
-router.post('/criar', productController);
+
+
+router.post('/criar', cadastrarProduto);
+router.get('/buscar', getProduto);
 
 export default router;

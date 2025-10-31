@@ -7,4 +7,4 @@ app.post("/usuario", async(req, res) => {
         res.status(400).json({ error: error.message });
         console.error("Ocorreu um erro ao salvar os dados:", error);
     }
-})
+});
