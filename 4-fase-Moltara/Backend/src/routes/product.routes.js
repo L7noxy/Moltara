@@ -1,7 +1,6 @@
 import express from 'express';
-import { productController } from '../Modules/Product/product.controller.js';
-
 const router = express.Router();
+import { productController } from '../Modules/Product/product.controller.js';
 
 router.post('/criar', productController);
 

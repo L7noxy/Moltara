@@ -4,23 +4,18 @@ import Usuario from '../User/user.schema.js';
 const SALT_ROUNDS = 10;
 
 export const cadastrarUsuario = async (req, res) => {
-    const { nome, cpf, email, senha } = req.body;
-    if (!nome || !cpf || !email || !senha) {
+    const { nome, email, senha } = req.body;
+    if (!nome || !email || !senha) {
         return res.status(400).json({
-            message: "Todos os campos (nome, CPF, email, senha) são obrigatórios."
+            message: "Todos os campos (nome, email, senha) são obrigatórios."
         });
     }
 
     try {
-        const usuarioExistente = await Usuario.findOne({ $or: [{ email }, { cpf }] });
+        const usuarioExistente = await Usuario.findOne({ email });
 
         if (usuarioExistente) {
-            if (usuarioExistente.email === email) {
-                return res.status(409).json({ message: "Este e-mail já está cadastrado." });
-            }
-            if (usuarioExistente.cpf === cpf) {
-                return res.status(409).json({ message: "Este CPF já está cadastrado." });
-            }
+            return res.status(409).json({ message: "Este email já está cadastrado." });
         }
     } catch (dbError) {
         console.error("Erro ao verificar usuário existente:", dbError);
@@ -32,20 +27,19 @@ export const cadastrarUsuario = async (req, res) => {
 
         const novoUsuario = new Usuario({
             nome,
-            cpf,
             email,
             senha: hashSenha,
         });
 
     } catch (error) {
-        console.error("Erro no cadastro:", error);
+        console.error("Erro na criação do usuário:", error);
         return res.status(500).json({
             message: "Erro interno do servidor ao tentar finalizar o cadastro."
         });
     }
 };
 
-export const getUsuario = async (req, res) => { 
+export const getUsuario = async (req, res) => {
     try {
         const usuarios = await Usuario.find();
         return res.status(200).json(usuarios);
