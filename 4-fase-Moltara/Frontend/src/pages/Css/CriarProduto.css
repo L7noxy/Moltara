@@ -22,6 +22,7 @@
     margin: 2rem 0;
     padding: 2.5rem;
     border-radius: 0.75rem;
+    overflow: hidden;
 }
 
 .criar-produto h1 {
