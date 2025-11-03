@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #F5F5F5; 
+  background-color: #F5F5F5;
   padding: 20px;
 }
 
@@ -20,7 +20,7 @@
   text-align: center;
   font-size: 1.6rem;
   font-weight: bold;
-  color: #263238; 
+  color: #263238;
   margin-bottom: 4px;
 }
 
@@ -28,7 +28,7 @@
   grid-column: 1 / -1;
   text-align: center;
   font-size: 1rem;
-  color: #37474F; 
+  color: #37474F;
   margin-bottom: 16px;
 }
 
@@ -49,8 +49,8 @@
 
 .input-icon input:focus {
   outline: none;
-  border-color: #A71111; 
-  }
+  border-color: #A71111;
+}
 
 .input-icon .icon {
   position: absolute;
@@ -99,6 +99,24 @@
 }
 
 .botao-cadastro:hover {
-  background: #BB252F; 
+  background: #BB252F;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.label-termos{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.renders-termos {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+  color: #37474F;
+  justify-content: center;
+  flex-direction: column;
 }

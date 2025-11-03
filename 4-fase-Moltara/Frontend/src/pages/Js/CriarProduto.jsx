@@ -21,7 +21,7 @@ export default function CriarProduto() {
         body: JSON.stringify({
           nome,
           descricao,
-          preco
+          preco,
         }),
       });
 

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../Css/Cadastro.css";
 import Navbar from "../../components/Js/Navbar";
 
-
 import {
   FaEye,
   FaEyeSlash,
@@ -24,12 +23,20 @@ export default function Cadastro() {
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [aceitouTermos, setAceitouTermos] = useState(false);
   const [logado, setLogado] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (senha !== confirmarSenha) {
+      alert("As senhas não coincidem!");
+      return;
+    }
+
     try {
-      const response = await fetch("http://localhost:3000/api/usuario/cadastro", {
+      const response = await fetch(
+        "http://localhost:3000/api/usuario/cadastro",
+        {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -52,20 +59,12 @@ export default function Cadastro() {
       console.error("Ocorreu um erro:", erro);
     }
 
-    if (senha !== confirmarSenha) {
-      alert("As senhas não coincidem!");
-      return;
-    }
-
-    if (!aceitouTermos) {
-      alert("Você deve aceitar os termos de uso para continuar.");
-      return;
-    }
-
     setLogado(true);
 
     if (logado) {
-      navigate("/");
+      setTimeout(() => {
+        navigate("/");
+      }, 4000);
     }
   };
 
@@ -91,14 +90,13 @@ export default function Cadastro() {
           </div>
 
           <div className="input-icon">
-            <MaskedInput  
+            <input
               type="text"
               placeholder="CPF"
               required
               value={cpf}
               onChange={(e) => setCpf(e.target.value)}
-              mask={[/\d/, /\d/, /\d/, "." , /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]}
-
+              maxLength={11}
             />
             <FaIdCard className="icon" />
           </div>
@@ -169,14 +167,23 @@ export default function Cadastro() {
               checked={aceitouTermos}
               onChange={(e) => setAceitouTermos(e.target.checked)}
             />
-            <label htmlFor="termos">
-              Li e aceito os{" "}
-              <a
-                rel="noopener"
-                href="https://www.moltara.com.br/termos-de-uso/"
-              >
-                Termos de Uso
-              </a>
+            <label htmlFor="termos" className="label-termos">
+              <div>
+                Li e aceito os{" "}
+                <a
+                  rel="noopener"
+                  href="https://www.moltara.com.br/termos-de-uso/"
+                >
+                  Termos de Uso
+                </a>
+              </div>
+
+              <div className="renders-termos">
+                {!aceitouTermos && (
+                  <p>aceite os termos de uso para continuar</p>
+                )}
+                {senha !== confirmarSenha && <p>as senhas nao coincidem</p>}
+              </div>
             </label>
           </div>
 
