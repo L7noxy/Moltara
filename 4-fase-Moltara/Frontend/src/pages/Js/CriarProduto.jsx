@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import "../Css/CriarProduto.css";
 import Navbar from "../../components/Js/Navbar";
+import { useNavigate } from "react-router";
 
 export default function CriarProduto() {
 
@@ -8,8 +9,10 @@ export default function CriarProduto() {
   const [descricao, setDescricao] = useState("");
   const [preco, setPreco] = useState(0);
   const [Produto, setProduto] = useState(null);
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => { 
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -31,6 +34,10 @@ export default function CriarProduto() {
     } catch (erro) {
       console.error("Ocorreu um erro:", erro);
     }
+
+    setTimeout(() => {
+      navigate("/");
+    }, 2000);
   };
 
   return (
