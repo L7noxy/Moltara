@@ -1,13 +1,17 @@
 import * as cartRepository from "./cart.repository.js";
 import productRepository from "../product/product.repository.js";
-const cartService = {};
+const cartService = {
+  pegarCarrinho,
+  adicionarProduto,
+  removerProduto
+};
 
-export const getCart = async (userId) => {
+export const pegarCarrinho = async (userId) => {
   const cart = await cartRepository.findCartByUserId(userId);
   return cart || (await cartRepository.createCart(userId));
 };
 
-export const addItem = async (userId, productId, quantity) => {
+export const adicionarProduto = async (userId, productId, quantity) => {
   const cart = await getCart(userId);
   const product = await productRepository.findById(productId);
 
@@ -28,7 +32,7 @@ export const addItem = async (userId, productId, quantity) => {
   return await cartRepository.updateCart(cart);
 };
 
-export const removeItem = async (userId, productId) => {
+export const removerProduto = async (userId, productId) => {
   const cart = await this.getCart(userId);
 
   cart.items = cart.items.filter(

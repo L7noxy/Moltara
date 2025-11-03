@@ -1,7 +1,9 @@
 import express from 'express';
-import { cartController } from '../Modules/Cart/cart.controller.js'; 
 const router = express.Router();
+import {  cartController } from '../Modules/Cart/cart.controller.js';
 
-router.post('/criar', cartController);
+router.post('/adicionar', cartController.addItem);
+router.get('/buscarCompra', cartController.getCart);
+router.delete('/remover/:productId', cartController.removeItem);
 
 export default router;

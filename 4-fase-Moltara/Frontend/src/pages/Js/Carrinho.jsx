@@ -1,42 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import "../Css/Carrinho.css";
 import Navbar from "../../components/Js/Navbar";
 import Nav_carrinho from "../../components/Js/Nav_carrinho";
 
 export default function Carrinho() {
-  const [carrinho, setCarrinho] = useState([
-    {
-      id: 1,
-      nome: "Gabinete Gamer Mid Tower",
-      preco: 158.89,
-      descricao: "Descrição do produto",
-    },
-    {
-      id: 2,
-      nome: "teclado Mecanico Gamer",
-      preco: 405.69,
-      descricao: "Descrição do produto",
-    },
-    {
-      id: 3,
-      nome: "Mouse Gamer",
-      preco: 155.66,
-      descricao: "Descrição do produto",
-    },
-    {
-      id: 4,
-      nome: "Mouse Gamer",
-      preco: 155.66,
-      descricao: "Descrição do produto",
-    },
-    {
-      id: 5,
-      nome: "Mouse Gamer",
-      preco: 153.66,
-      descricao: "Descrição do produto",
-    },
-  ]);
+
+  useEffect(() => {
+
+    try {
+      const fetchData = async () => {
+        const response = await fetch(
+          "http://localhost:3000/api/produto/listar-carrinho",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+
+            body: JSON.stringify({
+              
+            }),
+          }
+        );
+
+        const data = await response.json();
+        setCarrinho(data);
+      };
+      fetchData();
+    } catch (erro) {
+      console.error("Ocorreu um erro:", erro);
+    }
+  }, []);
+  const [carrinho, setCarrinho] = useState([]);
 
   return (
     <div>
@@ -65,7 +61,7 @@ export default function Carrinho() {
             <div className="resumo-da-compra">
               <div className="infos-resumo-compra">
                 <h2>Resumo da compra </h2>
-                <p>Quantidade de produtos: 4 </p> 
+                <p>Quantidade de produtos: 4 </p>
                 <p>Valor do subtotal: $723,24 </p>
                 <p>valor total: $723,24 </p>
                 <p></p>

@@ -5,21 +5,24 @@ export const cadastrarProduto = async (req, res) => {
   const { nome, descricao, preco } = req.body;
 
   try {
-    const hashSenha = await bcrypt.hash(senha, SALT_ROUNDS);
-
-    const novoProduto = new Usuario({
+    const novoProduto = new Produto({
       nome,
-      descricao,
       preco,
+      descricao,
+
     });
 
     await novoProduto.save();
 
     return res.status(201).json({
-      id: novoProduto._id,
       nome: novoProduto.nome,
       preco: novoProduto.preco,
+      descricao: novoProduto.descricao,
+
     });
+
+    console.log("Produto cadastrado com sucesso:", novoProduto);
+
   } catch (error) {
     console.error("Erro no cadastro", error);
 
@@ -35,12 +38,12 @@ export const cadastrarProduto = async (req, res) => {
 
 export const getProduto = async (req, res) => {
   try {
-    const Produto = await Produto.find();
+    const produtos = await Produto.find();
     return res.status(200).json(produtos);
   } catch (error) {
-    console.error("Erro ao buscar usuários:", error);
+    console.error("Erro ao buscar produtos:", error);
     return res.status(500).json({
-      message: "Erro interno do servidor ao buscar usuários.",
+      message: "Erro interno do servidor ao buscar o produto.",
     });
   }
 };
