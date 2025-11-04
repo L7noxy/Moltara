@@ -111,15 +111,13 @@ export default function ProdutoDetalhada() {
 
                     <button
                       className={`tamanho-button tamanho-medio ${personalizacaoSelecionada.tamanho === "Médio" ? 'selected' : ''}`}
-                      onClick={() => handlePersonalizacaoChange('tamanho', 'Médio')}
-                    >
+                      onClick={() => handlePersonalizacaoChange('tamanho', 'Médio')}>
                       M
                     </button>
 
                     <button
                       className={`tamanho-button tamanho-grande ${personalizacaoSelecionada.tamanho === "Grande" ? 'selected' : ''}`}
-                      onClick={() => handlePersonalizacaoChange('tamanho', 'Grande')}
-                    >
+                      onClick={() => handlePersonalizacaoChange('tamanho', 'Grande')}>
                       G
                     </button>
                   </div>
@@ -152,8 +150,7 @@ export default function ProdutoDetalhada() {
                     <button
                       className={`simbolo-button ${personalizacaoSelecionada.simbolo === "Circulo" ? 'selected' : ''}`}
                       onClick={() => handlePersonalizacaoChange('simbolo', 'Circulo')}
-                      aria-label="Selecionar símbolo Círculo"
-                    >
+                      aria-label="Selecionar símbolo Círculo">
                       <img
                         src={personalizacaoSelecionada.simbolo === "Circulo" ? icones.Circulo.preenchido : icones.Circulo.contorno}
                         alt="Círculo"
