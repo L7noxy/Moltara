@@ -1,22 +1,29 @@
- import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const productSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema(
+  {
+    // id: {
+    //   type: String,
+    //   required: [true, "O id do produto é obrigatório."],
+    // },
+
     nome: {
-        type: String,
-        required: [true, 'O nome do produto é obrigatório.'],
-        unique: true,
-        trim: true,
-        maxlength: [100, 'O nome não pode exceder 100 caracteres.']
+      type: String,
+      required: [true, "O nome do produto é obrigatório."],
+      trim: true,
+      maxlength: [100, "O nome não pode exceder 100 caracteres."],
     },
+    
     descricao: {
-        type: String,
-        required: [true, 'A descrição do produto é obrigatória.'],
-        maxlength: [5000, 'A descrição não pode exceder 5000 caracteres.']
+      type: String,
+      required: [true, "A descrição do produto é obrigatória."],
+      maxlength: [5000, "A descrição não pode exceder 5000 caracteres."],
     },
+
     preco: {
-        type: Number,
-        required: [true, 'O preço é obrigatório.'],
-        min: [0, 'O preço não pode ser negativo.']
+      type: Number,
+      required: [true, "O preço é obrigatório."],
+      min: [0, "O preço não pode ser negativo."],
     },
     // estoque: {
     //     type: Number,
@@ -33,8 +40,11 @@ const productSchema = new mongoose.Schema({
     //     trim: true,
     //     default: 'Geral'
     // }
-}, {
-    timestamps: true
-});
-const Produto = mongoose.model('Produto', productSchema);
+  },
+  {
+    timestamps: true,
+  }
+);
+
+const Produto = mongoose.model("Produto", productSchema);
 export default Produto;

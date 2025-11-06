@@ -1,27 +1,26 @@
-import bcrypt from "bcrypt";
-import Produto from "../Product/product.schema.js";
+import Produto from '../Product/product.schema.js';
 
 export const cadastrarProduto = async (req, res) => {
-  const { nome, descricao, preco } = req.body;
+  const { nome, descricao, preco, estoque, id } = req.body;
 
   try {
-    const hashSenha = await bcrypt.hash(senha, SALT_ROUNDS);
-
-    const novoProduto = new Usuario({
+    const novoProduto = new Produto({
       nome,
       descricao,
       preco,
+      // estoque
     });
 
     await novoProduto.save();
 
     return res.status(201).json({
-      id: novoProduto._id,
       nome: novoProduto.nome,
+      descricao: novoProduto.descricao,
       preco: novoProduto.preco,
+      // estoque: novoProduto.estoque
     });
   } catch (error) {
-    console.error("Erro no cadastro", error);
+    console.error("Erro no cadastro do produto", error);
 
     if (error.name === "ValidationError") {
       return res.status(400).json({ message: error.message });
@@ -34,11 +33,11 @@ export const cadastrarProduto = async (req, res) => {
 };
 
 export const getProduto = async (req, res) => {
-  try {
-    const Produto = await Produto.find();
-    return res.status(200).json(produtos);
+  try { 
+    const Produtos = await novoProduto.find();
+    return res.status(200).json(Produtos);
   } catch (error) {
-    console.error("Erro ao buscar usuários:", error);
+    console.error("Erro ao buscar os produtos:", error);
     return res.status(500).json({
       message: "Erro interno do servidor ao buscar usuários.",
     });

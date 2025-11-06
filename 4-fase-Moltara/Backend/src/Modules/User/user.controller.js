@@ -22,7 +22,6 @@ export const cadastrarUsuario = async (req, res) => {
       id: novoUsuario._id,
       nome: novoUsuario.nome,
       email: novoUsuario.email,
-      // etc.
     });
   } catch (error) {
     console.error("Erro no cadastro (salvamento/hash):", error);
