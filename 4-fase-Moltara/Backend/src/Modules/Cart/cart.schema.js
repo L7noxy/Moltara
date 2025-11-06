@@ -1,25 +1,28 @@
 import mongoose from "mongoose";
 
 const cartItemSchema = new mongoose.Schema({
-  
+
   productId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
 
-  name: {
+  nome_produto: {
     type: String,
     required: true,
   },
-  quantity:  {
-    type: Number,
-    required: true,
-  },
+
+  // quantity:  {
+  //   type: Number,
+  //   required: true,
+  // },
 
   price: {
     type: Number,
     required: true,
   },
+}, {
+  timestamps: true
 });
 
 const cartSchema = new mongoose.Schema({
@@ -37,6 +40,8 @@ const cartSchema = new mongoose.Schema({
     enum: ["pending", "processing", "completed", "cancelled"],
     default: "pending",
   },
+
+
 });
 
 export default mongoose.model("Order", cartSchema);

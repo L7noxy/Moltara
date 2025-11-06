@@ -1,5 +1,4 @@
 import express from "express";
-const router = express.Router();
 import cors from "cors";
 import checkoutRoutes from "./routes/checkout.js";
 import userRoutes from "./routes/user.routes.js";

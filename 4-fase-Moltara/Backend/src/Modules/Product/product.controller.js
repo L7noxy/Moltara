@@ -6,9 +6,9 @@ export const cadastrarProduto = async (req, res) => {
   try {
     const novoProduto = new Produto({
       nome,
-      descricao,
       preco,
-      // estoque
+      descricao,
+
     });
 
     await novoProduto.save();
@@ -17,8 +17,12 @@ export const cadastrarProduto = async (req, res) => {
       nome: novoProduto.nome,
       descricao: novoProduto.descricao,
       preco: novoProduto.preco,
-      // estoque: novoProduto.estoque
+      descricao: novoProduto.descricao,
+
     });
+
+    console.log("Produto cadastrado com sucesso:", novoProduto);
+
   } catch (error) {
     console.error("Erro no cadastro do produto", error);
 
@@ -33,13 +37,13 @@ export const cadastrarProduto = async (req, res) => {
 };
 
 export const getProduto = async (req, res) => {
-  try { 
-    const Produtos = await novoProduto.find();
-    return res.status(200).json(Produtos);
+  try {
+    const produtos = await Produto.find();
+    return res.status(200).json(produtos);
   } catch (error) {
-    console.error("Erro ao buscar os produtos:", error);
+    console.error("Erro ao buscar produtos:", error);
     return res.status(500).json({
-      message: "Erro interno do servidor ao buscar usuários.",
+      message: "Erro interno do servidor ao buscar o produto.",
     });
   }
 };
