@@ -38,7 +38,7 @@ export const cadastrarProduto = async (req, res) => {
 
 export const getProduto = async (req, res) => {
   try {
-    const produtos = await Produto.find();
+    const produtos = await Produto.find({});
     return res.status(200).json(produtos);
   } catch (error) {
     console.error("Erro ao buscar produtos:", error);

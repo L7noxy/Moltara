@@ -12,12 +12,12 @@ const cartItemSchema = new mongoose.Schema({
     required: true,
   },
 
-  // quantity:  {
+  // quantidade:  {
   //   type: Number,
   //   required: true,
   // },
 
-  price: {
+  preco: {
     type: Number,
     required: true,
   },
