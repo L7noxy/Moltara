@@ -15,10 +15,8 @@ export const cadastrarProduto = async (req, res) => {
 
     return res.status(201).json({
       nome: novoProduto.nome,
-      descricao: novoProduto.descricao,
       preco: novoProduto.preco,
       descricao: novoProduto.descricao,
-
     });
 
     console.log("Produto cadastrado com sucesso:", novoProduto);

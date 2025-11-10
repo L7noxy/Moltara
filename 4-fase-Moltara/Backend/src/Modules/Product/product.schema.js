@@ -29,7 +29,7 @@ const productSchema = new mongoose.Schema(
         type: Number,
         required: [true, 'A quantidade em estoque é obrigatória.'],
         min: [0, 'O estoque não pode ser negativo.'],
-        default: 0
+        default: 1
     },
     // imagemUrl: {
     //     type: String,
