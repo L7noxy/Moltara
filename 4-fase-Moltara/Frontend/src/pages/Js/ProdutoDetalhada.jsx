@@ -2,10 +2,67 @@ import React from 'react'
 import Navbar from '../../components/Js/Navbar'
 import Footer from '../../components/Js/Footer'
 import '../Css/ProdutoDetalhada.css'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 export default function ProdutoDetalhada() {
-  // Estado para a quantidade do produto
+  const { id } = useParams();
+  const [produto, setProduto] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  useEffect(() => {
+    const fetchProduto = async () => {
+      if (!id) {
+        setError('ID do produto não fornecido.');
+        setLoading(false);
+        return;
+      }
+
+      try {
+
+        const response = await fetch(`http://localhost:3000/api/produto/buscar/${id}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+
+          body: JSON.stringify({
+            id,
+            preco,
+            nome,
+            descricao
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Erro ao buscar produto: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setProduto(data);
+      } catch (err) {
+        setError('Erro ao buscar produto: ' + err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProduto();
+  }, [id]);
+
+  if (loading) {
+    return <div>Carregando detalhes do produto...</div>;
+  }
+
+  if (error) {
+    return <div>Erro: {error}</div>;
+  }
+
+  if (!produto) {
+    return <div>Produto não encontrado.</div>;
+  }
+
   const [quantidade, SetQuantidade] = useState(1)
   const aumentar = () => SetQuantidade(quantidade + 1)
   const diminuir = () => {
@@ -142,7 +199,7 @@ export default function ProdutoDetalhada() {
                       onClick={() => handlePersonalizacaoChange('simbolo', 'Casa')}
                       aria-label="Selecionar símbolo Casa">
                       <img
-                        src={personalizacaoSelecionada.simbolo === "Casa" ? icones.Casinha.preenchido: icones.Casinha.contorno}
+                        src={personalizacaoSelecionada.simbolo === "Casa" ? icones.Casinha.preenchido : icones.Casinha.contorno}
                         alt="Casa"
                       />
                     </button>

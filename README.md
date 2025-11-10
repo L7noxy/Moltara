@@ -13,7 +13,7 @@ A plataforma conta com recursos como carrinho de compras, avaliações de produt
 | **RF 01** |O sistema deve permitir que o usuário realize seu cadastro perfeitamente.     |Tela de cadastro para novos usuários.                                                        |
 | **RF 02** |O sistema deve permitir que o usuário realize seu login perfeitamente.        |Tela de login após novos usuários se cadastrar.                                              | 
 | **RF 03** |O sistema deve permitir modificação do perfil.                                |Funcionalidades para editar foto, nome, biografia, entre outros.                             | 
-| **RF 04** |O sistema deve exibir uma aba de pesquisa.                                    |Na home do usuário cliente, quando for pesquisar um produto, eibe os produtos na tela.       |  
+| **RF 04** |O sistema deve exibir uma aba de pesquisa.                                    |Na home do usuário cliente, quando for pesquisar um produto, exibe os produtos na tela.       |  
 | **RF 05** |O sistema deve oferecer um filtro que possa seleciona produtos específicos.   |Ao pesquisar algum produto, terá um filtro avançado, podendo específicar ainda mais a busca. |   
 | **RF 06** | O sistema deve mostrar os produtos adicionados no carrinho do cliente.       |No Carrinho do usuário cliente, exibe os produtos adicionados na tela. Podendo remover,      |                                                                                                                       adicionar, confirmar e finalizar a compra.
 | **RF 07** |O sistema deve fornecer cupoms de desconto antes de finalizar a compra.       |Na página de carrinho, terá uma função que possa adicionar cupoms no valor total da compra.  |

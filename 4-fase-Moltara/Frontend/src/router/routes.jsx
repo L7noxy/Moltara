@@ -22,6 +22,8 @@ const router = createBrowserRouter([
     { path: "/pagamento", element: <Pagamento /> },
 
     { path: "/produtoDetalhada", element: <ProdutoDetalhada /> },
+    { path: "/produtoDetalhada/:id", element: <ProdutoDetalhada /> },
+
     { path: "/criarProduto", element: <CriarProduto /> },
 
 ])
