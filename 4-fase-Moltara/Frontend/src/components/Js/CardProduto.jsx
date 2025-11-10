@@ -99,10 +99,9 @@ export default function CardProduto() {
                                     <h3>{produto.nome}</h3>
                                     <h2 className="price">{produto.preco} R$</h2>
                                     
-                                    {/* Botão COMPRAR com ID ÚNICO */}
                                     <button 
-                                        id={`btn-comprar-${produto.id}`} // <--- ID ÚNICO
-                                        className="buy" 
+                                        id={`btn-comprar-${produto.id}`}
+                                        className="buy"
                                         onClick={() => handleSubmit(produto)}
                                     >
                                         Comprar
