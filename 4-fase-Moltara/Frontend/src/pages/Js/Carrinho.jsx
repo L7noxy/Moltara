@@ -61,9 +61,9 @@ export default function Carrinho() {
             <div className="resumo-da-compra">
               <div className="infos-resumo-compra">
                 <h2>Resumo da compra </h2>
-                <p>Quantidade de produtos: 4 </p>
-                <p>Valor do subtotal: $723,24 </p>
-                <p>valor total: $723,24 </p>
+                <p>Quantidade de produtos: {carrinho.length} </p>
+                <p>Valor do subtotal: {carrinho.length} </p>
+                <p>valor total: {carrinho.length} </p>
                 <p></p>
               </div>
               <div className="botoes-resumo-compra">

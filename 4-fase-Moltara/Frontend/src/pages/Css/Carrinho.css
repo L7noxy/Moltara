@@ -59,7 +59,14 @@
     overflow: hidden;
 }
 
+.infos-resumo-compra p{
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
 .infos-resumo-compra h2 {
+    
     display: flex;
     justify-content: center;
     overflow: hidden;
