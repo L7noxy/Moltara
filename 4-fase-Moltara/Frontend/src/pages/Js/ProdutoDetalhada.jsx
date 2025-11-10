@@ -182,7 +182,29 @@ export default function ProdutoDetalhada() {
           </div>
         </div>
       </div>
-      <Footer />
+
+      <div className='container-descricao-total'>
+        <div className='secao-detalhe'>
+          <h3>Características do produto:</h3>
+          <p>Características do produto exemplo...</p>
+        </div>
+
+        <hr className='divisor' />
+
+        <div className='secao-detalhe'>
+          <h3>Detalhes do produto:</h3>
+          <p>Detalhes do produto com imagens e etc...</p>
+        </div>
+
+        <hr className='divisor' />
+
+        <div className='secao-detalhe'>
+         <h3>Descrição do produto:</h3>
+         <p>Descrição aprofundada do produto exemplo...</p>
+        </div>
+      </div>
+
+     <Footer />
     </div>
   )
 }
