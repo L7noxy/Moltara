@@ -23,7 +23,7 @@ export default function Navbar() {
             <nav className="navbar">
                 <div className='left-section-navbar'>
                     <button onClick={() => navigate(-1)} className="back-btn">
-                        <IoIosArrowRoundBack size={40} color="#fff" />
+                     <IoIosArrowRoundBack size={40} color="#fff" />
                     </button>
                 
                 <div className="logo">Logo</div>
@@ -64,12 +64,8 @@ export default function Navbar() {
                     <Link to="/cadastro" className="signup-btn">Cadastrar-se</Link>
 
                     <Link to="/carrinho">
-                        <HiShoppingCart color="#fff" size={20} />
+                      <HiShoppingCart color="#fff" size={20} />
                     </Link>
-
-                    <Link to="/produtoDetalhada" className="signup-btn">produtos</Link>
-
-                    
                 </div>
             </nav>
         </>
