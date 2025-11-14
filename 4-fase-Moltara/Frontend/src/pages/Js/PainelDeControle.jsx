@@ -1,15 +1,12 @@
-import React from 'react'
-import "../css/PainelDeControle"
+import React from "react";
+import "../Css/PainelDeControle.css";
 
 function PainelDeControle() {
-    return (
-        <div className='container-painel'>
-            <div className='container-um'>
-
-            </div>
-
-        </div>
-    )
+  return (
+    <div className="container-painel">
+      <div className="container-um"></div>
+    </div>
+  );
 }
 
-export default PainelDeControle
+export default PainelDeControle;

@@ -7,7 +7,7 @@ import "../../components/Css/Carrosel.css";
 const slides = [
   {
     img: "./img/banner.webp",
-    title: "Porno do Dia Gamer",
+    title: "Promo do Dia Gamer",
     caption: "Descontos incríveis por tempo limitado!",
     cta: "Ver Oferta"
   },

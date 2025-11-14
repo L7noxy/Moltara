@@ -40,6 +40,7 @@ export default function CriarProduto() {
     }, 4000);
   };
 
+
   return (
     <div className="container-criarProduto">
       <Navbar />

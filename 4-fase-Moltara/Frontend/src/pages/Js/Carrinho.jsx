@@ -5,34 +5,24 @@ import Navbar from "../../components/Js/Navbar";
 import Nav_carrinho from "../../components/Js/Nav_carrinho";
 
 export default function Carrinho() {
+  const [produtos, setProdutos] = useState([]);
+  const [carrinho, setCarrinho] = useState([]);
 
   useEffect(() => {
-
-    try {
+    const buscarCart = async () => {
       const fetchData = async () => {
-        const response = await fetch(
-          "http://localhost:3000/api/produto/listar-carrinho",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-
-            body: JSON.stringify({
-              
-            }),
-          }
-        );
+        try {
+          const response = await fetch("http://localhost:3000/api/cart");
+        } catch (erro) {
+          console.error("Ocorreu um erro:", erro);
+        }
 
         const data = await response.json();
         setCarrinho(data);
       };
       fetchData();
-    } catch (erro) {
-      console.error("Ocorreu um erro:", erro);
-    }
+    };
   }, []);
-  const [carrinho, setCarrinho] = useState([]);
 
   return (
     <div>
@@ -68,7 +58,9 @@ export default function Carrinho() {
               </div>
               <div className="botoes-resumo-compra">
                 <button className="cupom">Adicionar cupom</button>
-                <Link to={'/confirmacao'}><button className="comprar"> Confirmar compra</button></Link>
+                <Link to={"/confirmacao"}>
+                  <button className="comprar"> Confirmar compra</button>
+                </Link>
               </div>
             </div>
           </div>
