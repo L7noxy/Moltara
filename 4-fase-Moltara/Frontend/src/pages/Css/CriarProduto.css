@@ -72,9 +72,8 @@ label {
 }
 
 .descricao {
-    min-height: 120px;
-    max-height: 300px;
-    resize: vertical;
+
+    resize: none;
 }
 
 

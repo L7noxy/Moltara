@@ -15,18 +15,20 @@ export default function CriarProduto() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const formData = new formData();
+    formData.append("nome", nome);
+    formData.append("descricao", descricao);
+    formData.append("preco", preco);
+
     try {
       const response = await fetch("http://localhost:3000/api/produto/criar", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nome,
-          descricao,
-          preco,
-        }),
+        body: formData,
       });
+
+      if (!response.ok) {
+        throw new Error(`Erro ao criar produto: ${response.status}`);
+      }
 
       setNome("");
       setDescricao("");
@@ -80,6 +82,18 @@ export default function CriarProduto() {
               min={1}
               value={preco}
               onChange={(e) => setPreco(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="img">Imagem:</label>
+            <input
+              type="file"
+              id="img"
+              name="img"
+              accept="image/*"
+              required
+              className="img"
             />
           </div>
           <button type="submit" className="cadastrar-produto">Cadastrar Produto</button>
