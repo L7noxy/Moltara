@@ -11,8 +11,12 @@ export const cadastrarProduto = async (req, res) => {
 
     try {
         if (file) {
-            const result = await cloudinary.uploader.upload(file.buffer.toString('base64'), {
-                folder: "produtos-api", // Pasta de destino no Cloudinary
+
+            const b64 = Buffer.from(file.buffer).toString("base64");
+            const dataURI = "data:" + file.mimetype + ";base64," + b64;
+
+            const result = await cloudinary.uploader.upload(dataURI, {
+                folder: "produtos-api",
                 resource_type: "auto"
             });
 
