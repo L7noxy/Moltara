@@ -1,4 +1,4 @@
-import { getDb } from "../../config/database.js";
+import { getDb } from "../../Config/database.js";
 
 export async function createUser(userData) {
   const db = getDb();
