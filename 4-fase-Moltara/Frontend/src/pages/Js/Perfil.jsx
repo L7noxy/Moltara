@@ -1,7 +1,5 @@
-import React from "react";
 import "../Css/Perfil.css";
-import Navbar from "../../components/Js/Navbar";
-import { HiPencil } from "react-icons/hi2";
+import Navbar from "../../components/Js/Navbar.jsx";
 
 import { useState } from "react";
 

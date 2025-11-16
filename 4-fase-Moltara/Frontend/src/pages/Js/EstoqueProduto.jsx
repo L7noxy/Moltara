@@ -1,4 +1,3 @@
-import React from 'react'
 import '../Css/EstoqueProduto.css'
 
 export default function EstoqueProduto() {

@@ -1,6 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import "../Css/Cadastro.css";
-import Navbar from "../../components/Js/Navbar";
+import Navbar from "../../components/Js/Navbar.jsx";
 
 import {
   FaEye,
@@ -11,7 +12,7 @@ import {
   FaQuestionCircle,
 } from "react-icons/fa";
 
-import { useNavigate } from "react-router-dom";
+
 
 export default function Cadastro() {
   const [showSenha, setShowSenha] = useState(false);
@@ -34,7 +35,7 @@ export default function Cadastro() {
     }
 
     try {
-      const response = await fetch(
+      const response = await fetch( 
         "http://localhost:3000/api/usuario/cadastro",
         {
           method: "POST",

@@ -1,75 +1,61 @@
 import React, { useState } from "react";
-import "../Css/CriarProduto.css";
-import Navbar from "../../components/Js/Navbar";
 import { useNavigate } from "react-router";
+import Navbar from "../../components/Js/Navbar.jsx";
+import "../Css/CriarProduto.css";
 
 export default function CriarProduto() {
     const [nome, setNome] = useState("");
     const [descricao, setDescricao] = useState("");
     const [preco, setPreco] = useState(0);
-    // 🌟 1. NOVO ESTADO: Para armazenar o arquivo de imagem selecionado
     const [imagemFile, setImagemFile] = useState(null); 
     const [Produto, setProduto] = useState(null);
     const navigate = useNavigate();
 
-    // Função para lidar com a seleção do arquivo
     const handleFileChange = (e) => {
-        // Pega o primeiro arquivo do input de tipo "file"
         setImagemFile(e.target.files[0]);
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // 🌟 2. CORREÇÃO: "F" e "D" devem ser maiúsculos
         const formData = new FormData(); 
         formData.append("nome", nome);
         formData.append("descricao", descricao);
         formData.append("preco", preco);
         
-        // 🌟 3. ADICIONA O ARQUIVO ao FormData
         if (imagemFile) {
-            // 'imageFile' deve CORRESPONDER ao nome do campo usado no Multer do backend
             formData.append("imageFile", imagemFile); 
         }
 
         try {
-            // Quando você envia um FormData que contém um arquivo,
-            // o cabeçalho Content-Type é automaticamente definido como 'multipart/form-data' pelo navegador.
             const response = await fetch("http://localhost:3000/api/produto/criar", {
                 method: "POST",
-                body: formData, // Envia o FormData
-                // NÃO adicione o cabeçalho 'Content-Type', deixe o navegador fazer isso.
+                body: formData, 
             });
 
-            const data = await response.json(); // Tenta ler a resposta JSON
+            const data = await response.json();
 
             if (!response.ok) {
-                // Se a resposta não for OK, lança o erro, possivelmente com a mensagem do backend
                 throw new Error(data.message || `Erro ao criar produto: ${response.status}`);
             }
 
             console.log("Produto criado com sucesso:", data);
             
-            // 4. Limpar o formulário e redirecionar
             setNome("");
             setDescricao("");
             setPreco(0);
-            setImagemFile(null); // Limpa o estado do arquivo
+            setImagemFile(null); 
 
-            // Você pode exibir uma mensagem de sucesso aqui antes de navegar
             
         } catch (erro) {
             console.error("Ocorreu um erro:", erro);
             alert(`Erro ao cadastrar: ${erro.message}`);
-            // Removendo o setTimeout de navegação em caso de erro.
             return; 
         }
 
-        // Navega após sucesso
         setTimeout(() => {
             navigate("/");
-        }, 1500); // Reduzi o tempo para 1.5s para navegação mais rápida.
+        }, 1500);
     };
 
 

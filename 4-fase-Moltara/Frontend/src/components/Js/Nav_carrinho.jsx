@@ -1,4 +1,3 @@
-import React from 'react'
 import '../Css/Nav_carrinho.css'
 import { IoCartOutline } from "react-icons/io5";
 import { FaCheck } from "react-icons/fa6";

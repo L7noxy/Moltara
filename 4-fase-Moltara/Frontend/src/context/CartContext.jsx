@@ -1,5 +1,4 @@
 import react, { createContext, useState, useContext } from "react";
-import { set } from "../../../Backend/src/app";
 
 export const CartContext = createContext();
 

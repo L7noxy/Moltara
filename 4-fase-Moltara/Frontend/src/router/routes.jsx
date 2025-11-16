@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../pages/Js/Home";
-import Cadastro from "../pages/Js/Cadastro";
-import Login from "../pages/Js/Login";
-import Perfil from "../pages/Js/Perfil";
-import Carrinho from "../pages/Js/Carrinho";
-import Confirmacao from "../pages/Js/Confirmacao";
-import ProdutoDetalhada from "../pages/Js/ProdutoDetalhada";
-import Pagamento from "../pages/Js/Pagamento";
-import CriarProduto from "../pages/Js/CriarProduto";
-import PainelDeControle from "../pages/Js/PainelDeControle";
+import Home from "../pages/Js/Home.jsx";
+import Cadastro from "../pages/Js/Cadastro.jsx";
+import Login from "../pages/Js/Login.jsx";
+import Perfil from "../pages/Js/Perfil.jsx";
+import Carrinho from "../pages/Js/Carrinho.jsx";
+import Confirmacao from "../pages/Js/Confirmacao.jsx";
+import ProdutoDetalhada from "../pages/Js/ProdutoDetalhada.jsx";
+import Pagamento from "../pages/Js/Pagamento.jsx";
+import CriarProduto from "../pages/Js/CriarProduto.jsx";
+import PainelDeControle from "../pages/Js/PainelDeControle.jsx";
 
 const router = createBrowserRouter([
 

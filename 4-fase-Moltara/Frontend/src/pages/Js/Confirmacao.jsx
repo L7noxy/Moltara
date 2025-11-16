@@ -1,9 +1,9 @@
+import { Link } from "react-router";
+import Navbar from "../../components/Js/Navbar.jsx";
+import Nav_confirm from "../../components/Js/Nav_confirm.jsx";
 import "../Css/Confirmacao.css";
 import { FaClipboardUser } from "react-icons/fa6";
 import { BsBasket2Fill } from "react-icons/bs";
-import Navbar from "../../components/Js/Navbar";
-import Nav_confirm from "../../components/Js/Nav_confirm";
-import { Link } from "react-router";
 
 export default function Confirmacao() {
 

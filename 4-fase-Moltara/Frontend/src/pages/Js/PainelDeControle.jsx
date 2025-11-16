@@ -1,4 +1,3 @@
-import React from "react";
 import "../Css/PainelDeControle.css";
 
 function PainelDeControle() {

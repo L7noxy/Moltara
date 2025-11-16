@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
+import Navbar from "../../components/Js/Navbar.jsx";
+import Nav_carrinho from "../../components/Js/Nav_carrinho.jsx";
 import "../Css/Carrinho.css";
-import Navbar from "../../components/Js/Navbar";
-import Nav_carrinho from "../../components/Js/Nav_carrinho";
 
 export default function Carrinho() {
   const [produtos, setProdutos] = useState([]);

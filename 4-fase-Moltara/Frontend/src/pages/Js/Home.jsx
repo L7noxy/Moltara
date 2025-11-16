@@ -1,11 +1,12 @@
+
+import Navbar from "../../components/Js/Navbar.jsx";
+import CardProduto from "../../components/Js/CardProduto.jsx";
+import Carrosel from "../../components/Js/Carrosel.jsx";
+import Footer from "../../components/Js/Footer.jsx";
 import "../Css/Home.css";
-import Navbar from "../../components/Js/Navbar";
-import CardProduto from "../../components/Js/CardProduto";
-import Carrosel from "../../components/Js/carrosel";
+import "../Css/GlobalStyle.css";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaArrowRightLong } from "react-icons/fa6";
-import Footer from "../../components/Js/Footer";
-import "../Css/GlobalStyle.css";
 
 export default function Home() {
   return (

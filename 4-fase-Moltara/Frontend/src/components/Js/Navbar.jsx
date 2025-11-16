@@ -4,7 +4,6 @@ import { IoSearchOutline } from "react-icons/io5";
 import { LuCircleUserRound } from "react-icons/lu";
 import { HiShoppingCart } from "react-icons/hi";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import { FaChevronDown } from "react-icons/fa";
 
 import '../Css/Navbar.css';
 
