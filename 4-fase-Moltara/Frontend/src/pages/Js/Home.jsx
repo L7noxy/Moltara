@@ -1,4 +1,3 @@
-import React from "react";
 import "../Css/Home.css";
 import Navbar from "../../components/Js/Navbar";
 import CardProduto from "../../components/Js/CardProduto";
@@ -26,7 +25,6 @@ export default function Home() {
 
             <Carrosel />
           </div>
-          <CardProduto />
           <CardProduto />
           <Footer />
         </div>

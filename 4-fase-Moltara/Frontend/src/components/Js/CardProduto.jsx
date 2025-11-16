@@ -73,10 +73,10 @@ export default function CardProduto() {
                 </button>
 
                 <div className="imgBox">
-                  <img src={produto.img} alt={produto.nome} />
+                  <img src={produto.imagemUrl} alt={produto.nome} />
                 </div>
                 <div className="contentBox">
-                  <h3>{produto.nome}</h3>
+                  <h3 className="card-nome-produto">{produto.nome}</h3>
                   <h2 className="price">{produto.preco} R$</h2>
 
                   <button
