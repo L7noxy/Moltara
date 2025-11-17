@@ -1,99 +1,127 @@
-import React, { useEffect, useState } from "react";
-import "../Css/CriarProduto.css";
-import Navbar from "../../components/Js/Navbar";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import Navbar from "../../components/Js/Navbar.jsx";
+import "../Css/CriarProduto.css";
 
 export default function CriarProduto() {
+    const [nome, setNome] = useState("");
+    const [descricao, setDescricao] = useState("");
+    const [preco, setPreco] = useState(0);
+    const [imagemFile, setImagemFile] = useState(null); 
+    const [Produto, setProduto] = useState(null);
+    const navigate = useNavigate();
 
-  const [nome, setNome] = useState("");
-  const [descricao, setDescricao] = useState("");
-  const [preco, setPreco] = useState(0);
-  const [Produto, setProduto] = useState(null);
-  const navigate = useNavigate();
+    const handleFileChange = (e) => {
+        setImagemFile(e.target.files[0]);
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(); 
+        formData.append("nome", nome);
+        formData.append("descricao", descricao);
+        formData.append("preco", preco);
+        
+        if (imagemFile) {
+            formData.append("imageFile", imagemFile); 
+        }
+
+        try {
+            const response = await fetch("http://localhost:3000/api/produto/criar", {
+                method: "POST",
+                body: formData, 
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || `Erro ao criar produto: ${response.status}`);
+            }
+
+            console.log("Produto criado com sucesso:", data);
+            
+            setNome("");
+            setDescricao("");
+            setPreco(0);
+            setImagemFile(null); 
+
+            
+        } catch (erro) {
+            console.error("Ocorreu um erro:", erro);
+            alert(`Erro ao cadastrar: ${erro.message}`);
+            return; 
+        }
+
+        setTimeout(() => {
+            navigate("/");
+        }, 1500);
+    };
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    return (
+        <div className="container-criarProduto">
+            <Navbar />
+            <div className="criar-produto">
+                <h1>CRIAR PRODUTO</h1>
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor="nome">Nome:</label>
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            required className="preco"
+                            value={nome}
+                            onChange={(e) => setNome(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="descricao">Descrição:</label>
+                        <textarea
+                            id="descricao"
+                            name="descricao"
+                            required
+                            className="descricao"
+                            value={descricao}
+                            onChange={(e) => setDescricao(e.target.value)}
+                        ></textarea>
+                    </div>
+                    <div>
+                        <label htmlFor="preco">Preço:</label>
+                        <input
+                            type="number"
+                            id="preco"
+                            name="preco"
+                            required
+                            className="preco"
+                            min={1}
+                            value={preco}
+                            // Garante que o valor seja tratado como string no input, mas o formData o converte corretamente
+                            onChange={(e) => setPreco(e.target.value)} 
+                        />
+                    </div>
 
-    try {
-      const response = await fetch("http://localhost:3000/api/produto/criar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nome,
-          descricao,
-          preco,
-        }),
-      });
+                    <div>
+                        <label htmlFor="imageFile">Imagem:</label>
+                        <input
+                            type="file"
+                            // Mudei o ID para refletir o 'name' ou para ser mais claro
+                            id="imageFile" 
+                            name="imageFile" 
+                            accept="image/*"
+                            required
+                            className="img"
+                            // 🌟 4. NOVO EVENTO: Captura o arquivo selecionado
+                            onChange={handleFileChange} 
+                        />
+                    </div>
+                    <button type="submit" className="cadastrar-produto">Cadastrar Produto</button>
+                </form>
 
-      setNome("");
-      setDescricao("");
-      setPreco(0);
-    } catch (erro) {
-      console.error("Ocorreu um erro:", erro);
-    }
-
-    setTimeout(() => {
-      navigate("/");
-    }, 4000);
-  };
-
-  return (
-    <div className="container-criarProduto">
-      <Navbar />
-      <div className="criar-produto">
-        <h1>CRIAR PRODUTO</h1>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="nome">Nome:</label>
-            <input
-              type="text"
-              id="nome"
-              name="nome"
-              required className="preco"
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="descricao">Descrição:</label>
-            <textarea
-              id="descricao"
-              name="descricao"
-              required
-              className="descricao"
-              value={descricao}
-              onChange={(e) => setDescricao(e.target.value)}
-            ></textarea>
-          </div>
-          <div>
-            <label htmlFor="preco">Preço:</label>
-            <input
-              type="number"
-              id="preco"
-              name="preco"
-              required
-              className="preco"
-              min={1}
-              value={preco}
-              onChange={(e) => setPreco(e.target.value)}
-            />
-          </div>
-          <button type="submit" className="cadastrar-produto">Cadastrar Produto</button>
-        </form>
-
-        {Produto && (
-          <div className="produto-criado">
-            <h2>Produto Criado:</h2>
-            <p>Nome: {Produto.nome}</p>
-            <p>Descrição: {Produto.descricao}</p>
-            <p>Preço: {Produto.preco} R$</p>
-            <img src={Produto.img} alt={Produto.nome} />
-          </div>
-        )}
-      </div>
-    </div>
-  );
+                {/* Você pode manter o preview do produto, mas verifique o nome da variável, que está como 'Produto' (maiúsculo) */}
+                {/* Produto (com 'P' maiúsculo) pode estar causando confusão. Considere mudar o nome do estado para 'produtoCriado' */}
+            </div>
+        </div>
+    );
 }

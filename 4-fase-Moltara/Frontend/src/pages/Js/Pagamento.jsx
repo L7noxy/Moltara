@@ -1,8 +1,6 @@
-import React from 'react'
 import '../../pages/Css/Pagamento.css'
-import Navbar from '../../components/Js/Navbar'
-import Nav_pagamento from '../../components/Js/Nav_pagamento'
-import { FaPix } from "react-icons/fa6";
+import Navbar from '../../components/Js/Navbar.jsx'
+import Nav_pagamento from '../../components/Js/Nav_pagamento.jsx'
 
 export default function Pagamento() {
   return (

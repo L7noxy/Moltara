@@ -2,13 +2,13 @@ import 'dotenv/config';
 
 import mongoose from "mongoose";
 import app from "./app.js";
-import connectDB from "./config/database.js";
+import connectDB from "./Config/database.js";
 
 const PORT = process.env.PORT || 3000;
 
 connectDB()
   .then(() => {
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`rodando na porta ${PORT}`);
     });
   })

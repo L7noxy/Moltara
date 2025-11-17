@@ -7,7 +7,7 @@ import "../../components/Css/Carrosel.css";
 const slides = [
   {
     img: "./img/banner.webp",
-    title: "Porno do Dia Gamer",
+    title: "Promo do Dia Gamer",
     caption: "Descontos incríveis por tempo limitado!",
     cta: "Ver Oferta"
   },
@@ -31,7 +31,6 @@ export default function Carousel() {
   const next = () => setIndex((prev) => (prev + 1) % slides.length);
   const prev = () => setIndex((prev) => (prev - 1 + slides.length) % slides.length);
 
-  // Autoplay
   useEffect(() => {    
     const timer = setInterval(next, 5000); 
     return () => clearInterval(timer);

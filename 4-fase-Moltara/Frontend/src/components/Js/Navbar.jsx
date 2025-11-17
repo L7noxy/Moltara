@@ -4,7 +4,6 @@ import { IoSearchOutline } from "react-icons/io5";
 import { LuCircleUserRound } from "react-icons/lu";
 import { HiShoppingCart } from "react-icons/hi";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import { FaChevronDown } from "react-icons/fa";
 
 import '../Css/Navbar.css';
 
@@ -23,7 +22,7 @@ export default function Navbar() {
             <nav className="navbar">
                 <div className='left-section-navbar'>
                     <button onClick={() => navigate(-1)} className="back-btn">
-                        <IoIosArrowRoundBack size={40} color="#fff" />
+                     <IoIosArrowRoundBack size={40} color="#fff" />
                     </button>
                 
                 <div className="logo">Logo</div>
@@ -64,12 +63,8 @@ export default function Navbar() {
                     <Link to="/cadastro" className="signup-btn">Cadastrar-se</Link>
 
                     <Link to="/carrinho">
-                        <HiShoppingCart color="#fff" size={20} />
+                      <HiShoppingCart color="#fff" size={20} />
                     </Link>
-
-                    <Link to="/produtoDetalhada" className="signup-btn">produtos</Link>
-
-                    
                 </div>
             </nav>
         </>

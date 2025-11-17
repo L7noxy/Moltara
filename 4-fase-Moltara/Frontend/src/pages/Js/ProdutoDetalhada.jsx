@@ -1,6 +1,5 @@
-import React from 'react'
-import Navbar from '../../components/Js/Navbar'
-import Footer from '../../components/Js/Footer'
+import Navbar from '../../components/Js/Navbar.jsx'
+import Footer from '../../components/Js/Footer.jsx'
 import '../Css/ProdutoDetalhada.css'
 import { useState,useEffect } from 'react'
 import { useParams } from 'react-router-dom'

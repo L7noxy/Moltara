@@ -1,8 +1,12 @@
 import mongoose from 'mongoose';
 
+const uri = process.env.MONGODB_URI;
+
+console.log("URI lida no Docker:", uri);
+
 const connectDB = async () => {
   try {
-    mongoose.connect(process.env.MONGODB_URI)
+    mongoose.connect(uri)
       .then(() => console.log("MongoDB conectado"))
       .catch(err => console.error("Erro ao conectar no MongoDB:", err));
 

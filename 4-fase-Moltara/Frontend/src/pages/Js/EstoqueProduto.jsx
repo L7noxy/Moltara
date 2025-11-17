@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react'
 import '../Css/EstoqueProduto.css'
 
 export default function EstoqueProduto() {
