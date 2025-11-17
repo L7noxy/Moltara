@@ -8,6 +8,7 @@ import Confirmacao from "../pages/Js/Confirmacao";
 import ProdutoDetalhada from "../pages/Js/ProdutoDetalhada";
 import Pagamento from "../pages/Js/Pagamento";
 import CriarProduto from "../pages/Js/CriarProduto";
+import EstoqueProduto from "../pages/Js/EstoqueProduto";
 
 const router = createBrowserRouter([
 
@@ -23,8 +24,9 @@ const router = createBrowserRouter([
 
     { path: "/produtoDetalhada", element: <ProdutoDetalhada /> },
     { path: "/produtoDetalhada/:id", element: <ProdutoDetalhada /> },
-
     { path: "/criarProduto", element: <CriarProduto /> },
+    { path: "/estoque", element: <EstoqueProduto /> },
+
 
 ])
 

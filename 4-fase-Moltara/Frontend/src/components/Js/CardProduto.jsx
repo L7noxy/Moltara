@@ -9,14 +9,14 @@ export default function CardProduto() {
     e.preventDefault();
     try {
       fetch("http://localhost:3000/api/", {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          price,
+          preco,
           nome,
-          productId,
+          descricao,
         }),
       });
     } catch (error) {
@@ -25,8 +25,7 @@ export default function CardProduto() {
   };
 
   const handleCurtir = (idProduto) => {
-    // Atualiza o objeto 'curtidos' invertendo o valor atual (true/false) para o ID específico
-    setCurtidos((prevCurtidos) => ({
+      setCurtidos((prevCurtidos) => ({
       ...prevCurtidos,
       [idProduto]: !prevCurtidos[idProduto],
     }));
