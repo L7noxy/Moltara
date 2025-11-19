@@ -24,6 +24,28 @@ export default function Carrinho() {
     };
   }, []);
 
+  if(carrinho.length === 0) {
+    return (
+      <div>
+        <Navbar />
+        <div className="container-carrinho">
+          <div className="itens-carrinho">
+            <div className="itens-da-compra">
+              <Nav_carrinho />
+              <div className="container-produtos">
+                <div className="lista-produtos">
+                  <div className="produtos-carrinho">
+                    <p>Seu carrinho esta vazio</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div>
       <Navbar />
@@ -59,7 +81,7 @@ export default function Carrinho() {
               <div className="botoes-resumo-compra">
                 <button className="cupom">Adicionar cupom</button>
                 <Link to={"/confirmacao"}>
-                  <button className="comprar"> Confirmar compra</button>
+                  <button className="comprar">Confirmar compra</button>
                 </Link>
               </div>
             </div>

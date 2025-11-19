@@ -1,50 +1,47 @@
-import '../Css/EstoqueProduto.css'
+import "../Css/EstoqueProduto.css";
+import { useEffect, useState } from "react";
 
 export default function EstoqueProduto() {
-const [produtos, setProducts] = useState([]);
+  const [produtos, setProducts] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const buscarProdutos = async () => {
       try {
-        const response = await fetchProduto('http://localhost:3000/api/produto/buscar');
-        const data = await response.json(); 
-        setProducts(data);
-      } catch (error) {
-        console.error('Erro ao buscar dados dos produtos:', error);
+        const response = await fetch("http://localhost:3000/api/produto/buscar");
+
+        if (!response.ok) {
+          throw new Error(`Erro ao buscar produtos: ${response.status}`);
+        }
+
+        const dados = await response.json();
+        setProdutos(dados);
+      } catch (erro) {
+        console.error("Ocorreu um erro:", erro);
       }
-    }
+    };
+
+    buscarProdutos();
   }, []);
-
-
+  
   return (
     <div>
-      <div className='container-estoque'>
-        <h2>produtos no estoque: </h2>
-        <table className='tabela-estoque'>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>Categoria</th>
-              <th>Quantidade</th>
-              <th>Preço (R$)</th>
-            </tr>
-          </thead>
+      <div className="container-estoque">
+        <h2>produtos no estoqueqsqsqsqsqsq: </h2>
+        <table className="tabela-estoque">
           <tbody>
-            {produtos.map((produto) => (
-              <tr key={produto.id}>
-                <td>{produto.id}</td>
-                <td>{produto.nome}</td>
-                <td>{produto.estoque}</td>
-                <td>{produto.preco}</td>
-                <td className={produto.baixoEstoque ? 'low-stock' : 'in-stock'}>
-                  {produto.baixoEstoque ? 'Estoque Baixo' : 'Em Estoque'}
-                </td>
-              </tr>
-            ))}
+            <thead>
+              {produtos.map((produto) => {
+                <tr>
+                  <th>ID{produto.id}</th>
+                  <th>Nome{produto.nome}</th>
+                  <th>Estoque{produto.estoque}</th>
+                  <th>Preço {produto.preco}(R$)</th>
+                </tr>;
+              })}
+            </thead>
           </tbody>
         </table>
       </div>
     </div>
-  )
+  );
 }
