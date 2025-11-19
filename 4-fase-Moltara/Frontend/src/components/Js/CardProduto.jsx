@@ -11,13 +11,8 @@ export default function CardProduto() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-<<<<<<< HEAD
-      fetch("http://localhost:3000/api/", {
-        method: "GET",
-=======
       fetch("http://localhost:3000/api/compra", {
         method: "POST",
->>>>>>> 2c956aa0f94f532a13b34acbdc9e1848b16a8368
         headers: {
           "Content-Type": "application/json",
         },

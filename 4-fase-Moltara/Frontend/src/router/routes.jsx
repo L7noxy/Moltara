@@ -8,6 +8,7 @@ import Confirmacao from "../pages/Js/Confirmacao.jsx";
 import ProdutoDetalhada from "../pages/Js/ProdutoDetalhada.jsx";
 import Pagamento from "../pages/Js/Pagamento.jsx";
 import CriarProduto from "../pages/Js/CriarProduto.jsx";
+import EstoqueProduto from "../pages/Js/EstoqueProduto.jsx";
 import PainelDeControle from "../pages/Js/PainelDeControle.jsx";
 
 const router = createBrowserRouter([

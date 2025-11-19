@@ -28,23 +28,6 @@ export default function Navbar() {
                 <div className="logo">Logo</div>
                 </div>
 
-
-                {/* <div className="category-wrapper">
-                    <div className="category-filter" onClick={() => setIsOpen(!isOpen)}>
-                        <span>{selectedCategory}</span>
-                        <FaChevronDown className={`arrow ${isOpen ? "open" : ""}`} size={12} />
-                    </div>
-
-                    {isOpen && (
-                        <div className="dropdown">
-                            <p onClick={() => handleCategorySelect("Marca")}>Marca</p>
-                            <p onClick={() => handleCategorySelect("Tamanho")}>Tamanho</p>
-                            <p onClick={() => handleCategorySelect("Preço")}>Preço</p>
-                        </div>
-                    )}
-                </div> */}
-
-                {/* Barra de pesquisa */}
                 <div className="search-bar">
                     <input type="text" placeholder="Pesquisar..." />
                     <button type="submit">

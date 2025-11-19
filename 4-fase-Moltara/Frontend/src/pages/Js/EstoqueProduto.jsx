@@ -7,7 +7,7 @@ const [produtos, setProducts] = useState([]);
     const fetchData = async () => {
       try {
         const response = await fetchProduto('http://localhost:3000/api/produto/buscar');
-        const data = await response.json();
+        const data = await response.json(); 
         setProducts(data);
       } catch (error) {
         console.error('Erro ao buscar dados dos produtos:', error);
