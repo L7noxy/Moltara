@@ -1,35 +1,12 @@
+import { Link } from "react-router";
+import Navbar from "../../components/Js/Navbar.jsx";
+import Nav_confirm from "../../components/Js/Nav_confirm.jsx";
 import "../Css/Confirmacao.css";
 import { FaClipboardUser } from "react-icons/fa6";
 import { BsBasket2Fill } from "react-icons/bs";
-import Navbar from "../../components/Js/Navbar";
-import Nav_confirm from "../../components/Js/Nav_confirm";
-import { Link } from "react-router";
 
 export default function Confirmacao() {
-
-  const produtos_confirmacao = [
-    { 
-      id: 1, 
-      nome: "Produto 1", 
-      preco: 100.00 
-    },
-    { 
-      id: 2, 
-      nome: "Produto 2", 
-      preco: 200.00 
-    },
-    { 
-      id: 3, 
-      nome: "Produto 3", 
-      preco: 150.00 
-    },
-    { 
-      id: 4, 
-      nome: "Produto 4", 
-      preco: 273.24 
-    }
-  ]
-
+  
   return (
     <div>
       <Navbar />
@@ -52,7 +29,7 @@ export default function Confirmacao() {
                   <ul>
                     {produtos_confirmacao.map((produtos) => (
                       <div className="produto">
-                        <img src="./img/cadeira.png" alt="" />
+                        <img src={produtos.img} alt="" />
                         <button className="deletar-produto">Remover</button>
                         <p>{produtos.nome}</p>
                         <p>{produtos.preco}</p>

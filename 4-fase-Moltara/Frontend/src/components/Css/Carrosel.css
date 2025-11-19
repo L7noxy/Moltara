@@ -4,6 +4,7 @@
   max-width: 100%;
   height: 400px;
   overflow: hidden;
+;
 }
 
 .kb-slide {
@@ -14,6 +15,7 @@
   background-position: center;
   opacity: 0;
   transition: opacity 1s ease;
+  box-shadow: inset 0px 0px 20px 0px rgb(0, 0, 0);
 }
 
 .kb-slide.active {

@@ -161,7 +161,6 @@
  font-size: 14px; 
 }
 
-
 .tamanho-button.selected {
  border-color: #BB252F; 
  background-color: #FF414E; 
@@ -324,7 +323,6 @@
  padding: 0;
 }
 
-
 .alinhamento-quantidade-produto input {
  width: 40px;
  height: 30px;
@@ -333,7 +331,6 @@
 
  border: 1px solid #BB252F;
 }
-
 
 .descricao h3 {
  font-family: 'Albert Sans', sans-serif;
@@ -349,4 +346,41 @@
  color: #263238;
 
  margin-top: 1%;
+}
+
+.container-descricao-total {
+ background-color: #ffffff;
+ border-radius: 8px;
+ width: 855px; 
+ margin-top: 30px;
+ margin-left: 8%; 
+ padding: 20px;
+}
+
+.container-descricao-total:hover{
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.secao-detalhe {
+ margin-bottom: 20px;
+}
+
+.secao-detalhe h3 {
+ color: #ce254a;
+ font-weight: bold;
+ font-family: 'Urbanist', sans-serif;
+ margin-bottom: 5px;
+}
+
+.secao-detalhe p {
+ font-family: 'Albert Sans', sans-serif;
+ color: #263238;
+ margin-top: 5px;
+ line-height: 1.5;
+}
+
+.divisor {
+ border: none;
+ border-top: 1px solid #e0e0e0;
+ margin: 20px 0;
 }

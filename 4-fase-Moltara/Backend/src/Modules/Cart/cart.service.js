@@ -1,5 +1,5 @@
 import * as cartRepository from "./cart.repository.js";
-import productRepository from "../product/product.repository.js";
+import productRepository from "../Product/product.repository.js";
 
 export const pegarCarrinho = async (userId) => {
   const cart = await cartRepository.findCartByUserId(userId);

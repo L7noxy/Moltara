@@ -4,7 +4,6 @@ import { IoSearchOutline } from "react-icons/io5";
 import { LuCircleUserRound } from "react-icons/lu";
 import { HiShoppingCart } from "react-icons/hi";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import { FaChevronDown } from "react-icons/fa";
 
 import '../Css/Navbar.css';
 
@@ -23,29 +22,12 @@ export default function Navbar() {
             <nav className="navbar">
                 <div className='left-section-navbar'>
                     <button onClick={() => navigate(-1)} className="back-btn">
-                        <IoIosArrowRoundBack size={40} color="#fff" />
+                     <IoIosArrowRoundBack size={40} color="#fff" />
                     </button>
                 
                 <div className="logo">Logo</div>
                 </div>
 
-
-                {/* <div className="category-wrapper">
-                    <div className="category-filter" onClick={() => setIsOpen(!isOpen)}>
-                        <span>{selectedCategory}</span>
-                        <FaChevronDown className={`arrow ${isOpen ? "open" : ""}`} size={12} />
-                    </div>
-
-                    {isOpen && (
-                        <div className="dropdown">
-                            <p onClick={() => handleCategorySelect("Marca")}>Marca</p>
-                            <p onClick={() => handleCategorySelect("Tamanho")}>Tamanho</p>
-                            <p onClick={() => handleCategorySelect("Preço")}>Preço</p>
-                        </div>
-                    )}
-                </div> */}
-
-                {/* Barra de pesquisa */}
                 <div className="search-bar">
                     <input type="text" placeholder="Pesquisar..." />
                     <button type="submit">
@@ -64,10 +46,8 @@ export default function Navbar() {
                     <Link to="/cadastro" className="signup-btn">Cadastrar-se</Link>
 
                     <Link to="/carrinho">
-                        <HiShoppingCart color="#fff" size={20} />
+                      <HiShoppingCart color="#fff" size={20} />
                     </Link>
-
-                    
                 </div>
             </nav>
         </>
