@@ -15,13 +15,16 @@ services:
 
   backend:
     build:
-      context: ./Backend 
-      dockerfile: Dockerfile
+      context: ./Backend
+      dockerfile: Dockerfile.dev   
     container_name: node_backend
     ports:
       - "3000:3000"
     environment:
       - .env
+    volumes:
+      - ./Backend:/app           
+      - /app/node_modules
     depends_on:
       - mongodb
     restart: always
@@ -29,12 +32,17 @@ services:
   frontend:
     build:
       context: ./Frontend
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev  
     container_name: react_frontend
     ports:
-      - "80:80"
+      - "5173:5173"              
+    volumes:
+      - ./Frontend:/app          
+      - /app/node_modules
     depends_on:
       - backend
+    environment:
+      - CHOKIDAR_USEPOLLING=true
     restart: always
 
 volumes:

@@ -26,7 +26,7 @@ export default function EstoqueProduto() {
   return (
     <div>
       <div className="container-estoque">
-        <h2>produtos no estoqueqsqsqsqsqsq: </h2>
+        <h2>produtos no estoques: </h2>
         <table className="tabela-estoque">
           <tbody>
             <thead>
