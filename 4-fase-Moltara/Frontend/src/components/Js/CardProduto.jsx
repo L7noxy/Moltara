@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaHeart } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 import "../Css/CardProduto.css";
 
@@ -8,31 +9,46 @@ export default function CardProduto() {
   const [curtidos, setCurtidos] = useState({});
   const [produtos, setProdutos] = useState([]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      fetch("http://localhost:3000/api/compra", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          preco,
-          nome,
-          descricao,
-        }),
-      });
-    } catch (error) {
-      console.error("Erro ao criar nova compra:", error);
-    }
-  };
+  // const handleAddToCart = async (produto) => {
+  //   const { _id, nome } = produto;
 
+  //   try {
+  //     const response = await fetch(
+  //       "http://localhost:3000/api/carrinho/adicionar",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({
+  //           produtoId: _id,
+  //           quantidade: 1,
+  //         }),
+  //       }
+  //     );
 
+  //     const data = await response.json();
+
+  //     if (!response.ok) {
+  //       throw new Error(
+  //         data.message ||
+  //           `Erro ${response.status}: Falha ao adicionar produto ao carrinho.`
+  //       );
+  //     }
+
+  //     alert(`✅ "${nome}" adicionado ao carrinho!`);
+  //   } catch (error) {
+  //     console.error("Erro ao adicionar produto ao carrinho:", error);
+  //     alert(`⚠️ Não foi possível adicionar ao carrinho: ${error.message}`);
+  //   }
+  // };
 
   useEffect(() => {
     const buscarProdutos = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/produto/buscar");
+        const response = await fetch(
+          "http://localhost:3000/api/produto/buscar"
+        );
 
         if (!response.ok) {
           throw new Error(`Erro ao buscar produtos: ${response.status}`);
@@ -59,35 +75,29 @@ export default function CardProduto() {
     <div>
       <div>
         <div className="container-produtos-home">
-          {produtos.map(produto => {
+          {produtos.map((produto) => {
             const estaCurtido = curtidos[produto._id];
 
             return (
-              <div key={produto._id} className="card">
-                <button
-                id={`btn-curtir-${produto._id}`}
-                  className="btn-curtir"
-                  onClick={() => handleCurtir(produto._id)}
-                >
-                  {estaCurtido ? <FaHeart color="#A9A9A9" /> : <FaRegHeart />}
-                </button>
-
-                <div className="imgBox">
-                  <img src={produto.imagemUrl} alt={produto.nome} />
-                </div>
-                <div className="contentBox">
-                  <h3 className="card-nome-produto">{produto.nome}</h3>
-                  <h2 className="price">{produto.preco} R$</h2>
-
+              <Link to={`/produtoDetalhada/${produto._id}`}  >
+                <div key={produto._id} className="card">
                   <button
-                    id={`btn-comprar-${produto.id}`}
-                    className="buy"
-                    onClick={() => handleSubmit(produto)}
+                    id={`btn-curtir-${produto._id}`}
+                    className="btn-curtir"
+                    onClick={() => handleCurtir(produto._id)}
                   >
-                    Comprar
+                    {estaCurtido ? <FaHeart color="#A9A9A9" /> : <FaRegHeart />}
                   </button>
+
+                  <div className="imgBox">
+                    <img src={produto.imagemUrl} alt={produto.nome} />
+                  </div>
+                  <div className="contentBox">
+                    <h3 className="card-nome-produto">{produto.nome}</h3>
+                    <h2 className="price">{produto.preco} R$</h2>
+                  </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

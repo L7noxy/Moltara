@@ -4,7 +4,7 @@ import '../Css/ProdutoDetalhada.css'
 import { useState,useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-export default function ProdutoDetalhada() {
+export default function   ProdutoDetalhada() {
   const { id } = useParams();
   const [produto, setProduto] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -25,13 +25,6 @@ export default function ProdutoDetalhada() {
           headers: {
             'Content-Type': 'application/json',
           },
-
-          body: JSON.stringify({
-            id,
-            preco,
-            nome,
-            descricao
-          }),
         });
 
         if (!response.ok) {

@@ -65,6 +65,28 @@ export const getProduto = async (req, res) => {
   }
 };
 
+export const getProdutoPorId = async (req, res) => {
+  try {
+    const { id } = req.params; // Captura o ID da URL
+    const produto = await Produto.findById(id);
+
+    if (!produto) {
+      return res.status(404).json({ message: "Produto não encontrado." });
+    }
+
+    return res.status(200).json(produto); // Retorna o objeto do produto
+  } catch (error) {
+    console.error("Erro ao buscar produto por ID:", error);
+    if (error.name === "CastError") {
+      return res.status(400).json({ message: "Formato de ID inválido." });
+    }
+
+    return res.status(500).json({
+      message: "Erro interno do servidor ao buscar o produto.",
+    });
+  }
+};
+
 export const deletarProduto = async (req, res) => {
   try {
     const { id } = req.params;
