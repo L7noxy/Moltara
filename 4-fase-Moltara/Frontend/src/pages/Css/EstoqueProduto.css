@@ -1,8 +1,8 @@
 .estoque-container {
     padding: 20px;
-    background-color: #f4f7f9;
-    border-radius: 8px;
+    background-color: var(--color6);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    height: 100vh;
 }
 
 .estoque-container h2 {
@@ -15,12 +15,11 @@
 
 table {
     width: 100%;
-    border-collapse: collapse;
     margin-top: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.204);
     background-color: #ffffff;
-    border-radius: 6px;
     overflow: hidden;
+    border-collapse: separate;
 }
 
 thead tr {
@@ -136,12 +135,14 @@ tbody td:last-child {
 /* Coluna de Ações */
 .actions-col {
     text-align: center;
-    width: 100px; /* Ajuda a centralizar melhor */
+    width: 100px;
+    /* Ajuda a centralizar melhor */
 }
 
 /* Estilo do Botão de Excluir */
 .delete-button {
-    background-color: #dc3545; /* Vermelho padrão para ações de risco */
+    background-color: #dc3545;
+    /* Vermelho padrão para ações de risco */
     color: white;
     border: none;
     padding: 8px 12px;
@@ -153,7 +154,8 @@ tbody td:last-child {
 }
 
 .delete-button:hover {
-    background-color: #c82333; /* Tom mais escuro no hover */
+    background-color: #c82333;
+    /* Tom mais escuro no hover */
 }
 
 .delete-button:active {
