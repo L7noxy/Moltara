@@ -35,7 +35,6 @@ export default function Navbar() {
                     </button>
                 </div>
 
-                {/* Botões e links */}
                 <div className="buttons">
                     <Link to="/perfil">
                         <LuCircleUserRound size={25} color="#fff" />

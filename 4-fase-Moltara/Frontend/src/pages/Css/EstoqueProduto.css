@@ -132,3 +132,31 @@ tbody td:last-child {
 .status-col {
     text-align: center;
 }
+
+/* Coluna de Ações */
+.actions-col {
+    text-align: center;
+    width: 100px; /* Ajuda a centralizar melhor */
+}
+
+/* Estilo do Botão de Excluir */
+.delete-button {
+    background-color: #dc3545; /* Vermelho padrão para ações de risco */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Tom mais escuro no hover */
+}
+
+.delete-button:active {
+    background-color: #bd2130;
+    transform: translateY(1px);
+}
