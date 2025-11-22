@@ -1,24 +1,134 @@
-.container-estoque {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.estoque-container {
+    padding: 20px;
+    background-color: #f4f7f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.tabela-estoque {
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-    border: 1px solid black;
+.estoque-container h2 {
+    color: #334e68;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #e0e6ed;
+    padding-bottom: 10px;
 }
 
-.tabela-estoque table {
+table {
+    width: 100%;
     border-collapse: collapse;
-    width: 80%;
+    margin-top: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+    border-radius: 6px;
+    overflow: hidden;
 }
 
-.tabela-estoque th,
-.tabela-estoque td {
-    border: 1px solid black;
-    padding: 8px;
+thead tr {
+    background-color: #007bff;
+    color: white;
+    text-align: left;
+    height: 50px;
+}
+
+thead th {
+    padding: 12px 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e6ed;
+    color: #4a5568;
+    font-size: 0.95rem;
+}
+
+tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: #f7f9fc;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+tbody td:first-child {
+    text-align: center;
+    width: 80px;
+    font-weight: bold;
+    color: #0056b3;
+}
+
+tbody td:last-child {
+    text-align: right;
+    font-weight: 500;
+    color: #28a745;
+}
+
+.loading-message {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.1rem;
+    color: #5a6a7c;
+}
+
+.error-title {
+    color: #dc3545;
+    margin-bottom: 5px;
+}
+
+.error-message {
+    text-align: center;
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.no-products-message {
+    text-align: center;
+    padding: 30px;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.estoque-baixo-alerta {
+    background-color: #fff3cd !important;
+    border-left: 5px solid #ffc107;
+    font-weight: 500;
+}
+
+.alerta-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #ffc107;
+    color: #343a40;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.ok-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.qty-col {
+    text-align: center;
+    font-weight: bold;
+}
+
+.status-col {
     text-align: center;
 }
