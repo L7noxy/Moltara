@@ -34,7 +34,6 @@ export default function CriarProduto() {
             });
 
             const data = await response.json();
-
             if (!response.ok) {
                 throw new Error(data.message || `Erro ao criar produto: ${response.status}`);
             }
@@ -97,7 +96,6 @@ export default function CriarProduto() {
                             className="preco"
                             min={1}
                             value={preco}
-                            // Garante que o valor seja tratado como string no input, mas o formData o converte corretamente
                             onChange={(e) => setPreco(e.target.value)} 
                         />
                     </div>
@@ -106,21 +104,16 @@ export default function CriarProduto() {
                         <label htmlFor="imageFile">Imagem:</label>
                         <input
                             type="file"
-                            // Mudei o ID para refletir o 'name' ou para ser mais claro
                             id="imageFile" 
                             name="imageFile" 
                             accept="image/*"
                             required
                             className="img"
-                            // 🌟 4. NOVO EVENTO: Captura o arquivo selecionado
                             onChange={handleFileChange} 
                         />
                     </div>
                     <button type="submit" className="cadastrar-produto">Cadastrar Produto</button>
                 </form>
-
-                {/* Você pode manter o preview do produto, mas verifique o nome da variável, que está como 'Produto' (maiúsculo) */}
-                {/* Produto (com 'P' maiúsculo) pode estar causando confusão. Considere mudar o nome do estado para 'produtoCriado' */}
             </div>
         </div>
     );

@@ -3,10 +3,19 @@ import { useEffect, useState } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 
+
 export default function EstoqueProduto() {
   const [produtos, setProdutos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  
+  // NOVO ESTADO: Controla o pop-up
+  const [modal, setModal] = useState({
+    isVisible: false,
+    type: 'confirm',
+    produtoToDelete: null,
+    message: ''
+  });
 
   useEffect(() => {
     const buscarProdutos = async () => {
@@ -33,33 +42,79 @@ export default function EstoqueProduto() {
     buscarProdutos();
   }, []);
 
-  const handleDelete = async (produtoId) => {
-    if (!window.confirm("Tem certeza que deseja excluir este produto?")) {
-      return;
-    }
+  const handleConfirmDelete = (produto) => {
+    setModal({
+      isVisible: true,
+      type: 'confirm',
+      produtoToDelete: produto,
+      message: `Tem certeza que deseja excluir o produto "${produto.nome}"? Esta ação é irreversível.`,
+    });
+  };
+
+  const handleCloseModal = () => {
+    setModal({
+      isVisible: false,
+      type: 'confirm',
+      produtoToDelete: null,
+      message: ''
+    });
+  };
+
+  const handleDelete = async () => {
+    const { produtoToDelete } = modal;
+    if (!produtoToDelete) return;
+    const produtoId = produtoToDelete._id;
+    
+    setModal({
+      isVisible: true,
+      type: 'loading',
+      produtoToDelete: produtoToDelete,
+      message: 'Excluindo produto...  ',
+    });
+
+    const minDurationPromise = new Promise(resolve => setTimeout(resolve, 3000));
+
+    const deleteOperationPromise = fetch(
+      `http://localhost:3000/api/produto/deletar/${produtoId}`,
+      { method: "DELETE" }
+    ).then(response => {
+      if (!response.ok) {
+        throw new Error(`Falha ao excluir o produto. Código: ${response.status}`);
+      }
+      return true; 
+    });
 
     try {
-      const response = await fetch(
-        `http://localhost:3000/api/produto/deletar/${produtoId}`,
-        {
-          method: "DELETE",
-        }
-      );
+      await Promise.all([minDurationPromise, deleteOperationPromise]);
 
-      if (!response.ok) {
-        throw new Error(`Erro ${response.status}: Falha ao excluir o produto.`);
-      }
       setProdutos((prevProdutos) =>
         prevProdutos.filter((p) => p._id !== produtoId)
       );
 
-      alert("Produto excluído com sucesso!");
+      setModal({
+        isVisible: true,
+        type: 'success',
+        produtoToDelete: null,
+        message: '✅ Produto excluído com sucesso!',
+      });
+      
+      setTimeout(() => {
+        setModal(prev => ({ ...prev, isVisible: false }));
+      }, 1500);
+
     } catch (erro) {
-      console.error("Ocorreu um erro na exclusão:", erro.message);
-      alert(`Falha ao excluir produto: ${erro.message}`);
+      // 5. Erro: Mudar para o estado de Erro
+      console.error("Ocorreu um erro na exclusão:", erro);
+      setModal({
+        isVisible: true,
+        type: 'error',
+        produtoToDelete: produtoToDelete,
+        message: `❌ Falha ao excluir produto: ${erro.message || 'Erro desconhecido.'}`,
+      });
     }
   };
 
+  // ... (Seu JSX de carregamento e erro permanece o mesmo) ...
   if (isLoading) {
     return (
       <div className="estoque-container">
@@ -81,8 +136,10 @@ export default function EstoqueProduto() {
 
   return (
     <div className="estoque-container">
+      {/* ... (Seu JSX da navbar e título permanece o mesmo) ... */}
       <div className="left-section-navbar">
-        <button onClick={() => navigate(-1)} className="back-btn">
+        {/* Usando window.history.back() pois 'navigate' não está definido */}
+        <button onClick={() => window.history.back()} className="back-btn">
           <IoIosArrowRoundBack size={40} color="#000000ff" />
         </button>
       </div>
@@ -94,6 +151,7 @@ export default function EstoqueProduto() {
         </p>
       ) : (
         <table>
+          {/* ... (Seu thead permanece o mesmo) ... */}
           <thead>
             <tr>
               <th>ID</th>
@@ -101,6 +159,7 @@ export default function EstoqueProduto() {
               <th>Preço</th>
               <th>Quantidade em Estoque</th>
               <th>Status</th>
+              <th>Ações</th> {/* Certifique-se de que a coluna "Ações" existe */}
             </tr>
           </thead>
           <tbody>
@@ -114,16 +173,13 @@ export default function EstoqueProduto() {
                 >
                   <td className="id-col">{produto._id}</td>
                   <td>{produto.nome}</td>
-
                   <td className="price-col">
                     R${" "}
                     {produto.preco
                       ? produto.preco.toFixed(2).replace(".", ",")
                       : "N/A"}
                   </td>
-
                   <td className="qty-col">{produto.estoque || 0}</td>
-
                   <td className="status-col">
                     {estoqueBaixo ? (
                       <span className="alerta-tag">⚠️ Baixo</span>
@@ -131,12 +187,13 @@ export default function EstoqueProduto() {
                       <span className="ok-tag">✅ Ok</span>
                     )}
                   </td>
-
                   <td className="actions-col">
                     <button
                       className="delete-button"
-                      onClick={() => handleDelete(produto._id)}
+                      // IMPORTANTE: Chamando a nova função para abrir o modal de confirmação
+                      onClick={() => handleConfirmDelete(produto)}
                       title={`Excluir ${produto.nome}`}
+                      disabled={modal.isVisible} // Desabilita botões enquanto o modal estiver aberto
                     >
                       Excluir
                     </button>
@@ -146,6 +203,45 @@ export default function EstoqueProduto() {
             })}
           </tbody>
         </table>
+      )}
+
+      {/* NOVO: JSX do Pop-up Customizado */}
+      {modal.isVisible && (
+        <div className="custom-modal-overlay">
+          <div className={`custom-modal-content ${modal.type}`}>
+            <div className="modal-body">
+              {modal.type === 'loading' && (
+                <div className="loading-spinner-container">
+                    <div className="loading-spinner"></div>
+                </div>
+              )}
+              
+              <p>{modal.message}</p>
+            </div>
+
+            {/* Ações só são visíveis para confirmação e erro */}
+            {(modal.type === 'confirm' || modal.type === 'error') && (
+              <div className="modal-actions">
+                <button 
+                    onClick={handleCloseModal} 
+                    className="modal-btn cancel-btn"
+                >
+                  {modal.type === 'confirm' ? 'Cancelar' : 'Fechar'}
+                </button>
+                {modal.type === 'confirm' && (
+                  <button 
+                    onClick={handleDelete} 
+                    className="modal-btn confirm-btn"
+                  >
+                    Excluir
+                  </button>
+                )}
+              </div>
+            )}
+            
+            {/* O modal de sucesso e carregamento fecham sozinhos ou não precisam de botões */}
+          </div>
+        </div>
       )}
     </div>
   );

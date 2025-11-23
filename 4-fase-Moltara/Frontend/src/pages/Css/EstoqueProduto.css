@@ -162,3 +162,108 @@ tbody td:last-child {
     background-color: #bd2130;
     transform: translateY(1px);
 }
+
+/* --- Overlay do Modal (Fundo Escuro) --- */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+}
+
+/* --- Conteúdo Principal do Modal --- */
+.custom-modal-content {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Estilos específicos para o tipo de modal */
+.custom-modal-content.success {
+    border-top: 5px solid #4CAF50; /* Borda verde para sucesso */
+}
+
+.custom-modal-content.error {
+    border-top: 5px solid #f44336; /* Borda vermelha para erro */
+}
+
+.custom-modal-content.loading {
+    padding: 50px 30px; /* Mais espaço para o spinner */
+}
+
+/* --- Corpo da Mensagem --- */
+.modal-body p {
+    font-size: 1.1em;
+    font-weight: 500;
+    margin: 0;
+    color: #333;
+}
+
+/* --- Botões de Ação --- */
+.modal-actions {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.modal-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s;
+    flex-grow: 1;
+}
+
+.confirm-btn {
+    background-color: #f44336; /* Cor de exclusão */
+    color: white;
+}
+
+.confirm-btn:hover {
+    background-color: #d32f2f;
+}
+
+.cancel-btn {
+    background-color: #cccccc;
+    color: #333;
+}
+
+.cancel-btn:hover {
+    background-color: #b3b3b3;
+}
+
+.loading-spinner-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.loading-spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db; 
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}   
