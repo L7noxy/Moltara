@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Js/Navbar.jsx"; 2
 import Footer from "../../components/Js/Footer.jsx";
-import { FaUserCircle, FaShoppingBag, FaMapMarkerAlt, FaCreditCard, FaCog, FaSignOutAlt } from 'react-icons/fa';
+import { FaUserCircle, FaShoppingBag, FaMapMarkerAlt, FaCreditCard, FaCog, FaSignOutAlt, FaUser } from 'react-icons/fa';
 
 import "../Css/Perfil.css";
 
@@ -14,7 +14,6 @@ export default function Perfil() {
     email: "maria.silva@example.com",
     telefone: "(11) 98765-4321",
     enderecoPrincipal: "Rua das Flores, 123 - Apt 45, Centro - São Paulo, SP",
-    avatarUrl: "https://via.placeholder.com/150/FFDDC1/000000?text=MS",
   });
 
   const [isLoading, setIsLoading] = useState(true);
@@ -50,7 +49,7 @@ export default function Perfil() {
 
   const handleLogout = () => {
     alert("Você foi desconectado!");
-    navigate("/login");
+    navigate("/");
   };
 
   if (isLoading) {
@@ -81,7 +80,6 @@ export default function Perfil() {
           <div className="perfil-avatar-section">
             <img
               src={usuario.avatarUrl}
-              alt="Avatar do Usuário"
               className="perfil-avatar"
             />
             <label htmlFor="avatar-upload" className="avatar-upload-label">
