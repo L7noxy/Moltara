@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../components/Js/Navbar.jsx"; 2
+import Navbar from "../../components/Js/Navbar.jsx";
+2;
 import Footer from "../../components/Js/Footer.jsx";
-import { FaUserCircle, FaShoppingBag, FaMapMarkerAlt, FaCreditCard, FaCog, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import {
+  FaUserCircle,
+  FaShoppingBag,
+  FaMapMarkerAlt,
+  FaCreditCard,
+  FaCog,
+  FaSignOutAlt,
+  FaUser,
+} from "react-icons/fa";
 
 import "../Css/Perfil.css";
 
@@ -57,7 +66,6 @@ export default function Perfil() {
       <div className="perfil-container">
         <Navbar />
         <div className="perfil-loading">Carregando perfil...</div>
-        <Footer />
       </div>
     );
   }
@@ -78,10 +86,7 @@ export default function Perfil() {
       <div className="perfil-content-wrapper">
         <aside className="perfil-sidebar">
           <div className="perfil-avatar-section">
-            <img
-              src={usuario.avatarUrl}
-              className="perfil-avatar"
-            />
+            <img src={usuario.avatarUrl} className="perfil-avatar" />
             <label htmlFor="avatar-upload" className="avatar-upload-label">
               Alterar Avatar
               <input
@@ -141,7 +146,6 @@ export default function Perfil() {
             <button className="perfil-edit-button">Gerenciar Endereços</button>
           </section>
 
-          {/* Você pode adicionar mais seções aqui, como "Últimos Pedidos" */}
           <section className="perfil-info-section">
             <h3>Últimos Pedidos</h3>
             <p className="no-data">Nenhum pedido recente.</p>

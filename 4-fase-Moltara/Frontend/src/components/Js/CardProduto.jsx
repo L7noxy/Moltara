@@ -79,8 +79,8 @@ export default function CardProduto() {
             const estaCurtido = curtidos[produto._id];
 
             return (
-              <Link to={`/produtoDetalhada/${produto._id}`}  >
-                <div key={produto._id} className="card">
+              <div>
+                <div>
                   <button
                     id={`btn-curtir-${produto._id}`}
                     className="btn-curtir"
@@ -88,16 +88,20 @@ export default function CardProduto() {
                   >
                     {estaCurtido ? <FaHeart color="#A9A9A9" /> : <FaRegHeart />}
                   </button>
-
-                  <div className="imgBox">
-                    <img src={produto.imagemUrl} alt={produto.nome} />
-                  </div>
-                  <div className="contentBox">
-                    <h3 className="card-nome-produto">{produto.nome}</h3>
-                    <h2 className="price">{produto.preco} R$</h2>
-                  </div>
                 </div>
-              </Link>
+
+                <Link to={`/produtoDetalhada/${produto._id}`}>
+                  <div key={produto._id} className="card">
+                    <div className="imgBox">
+                      <img src={produto.imagemUrl} alt={produto.nome} />
+                    </div>
+                    <div className="contentBox">
+                      <h3 className="card-nome-produto">{produto.nome}</h3>
+                      <h2 className="price">{produto.preco} R$</h2>
+                    </div>
+                  </div>
+                </Link>
+              </div>
             );
           })}
         </div>
