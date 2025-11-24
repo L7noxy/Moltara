@@ -47,6 +47,9 @@ export default function Navbar() {
                     <Link to="/carrinho">
                       <HiShoppingCart color="#fff" size={20} />
                     </Link>
+
+                   {/* Provisoriooo */}
+                    <Link to="/painelDeControle">Adm</Link>
                 </div>
             </nav>
         </>
