@@ -1,65 +1,109 @@
+import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import "../Css/Login.css";
+import "../Css/login.css";
+import Navbar from "../../components/Js/Navbar.jsx";
 
-const Login = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
+import {
+  FaEye,
+  FaEyeSlash,
+  FaEnvelope,
+  FaUser,
+  FaIdCard,
+  FaQuestionCircle,
+} from "react-icons/fa";
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Login:", { username, password });
-    };
+export default function Login() {
+  const [showSenha, setShowSenha] = useState(false);
+  const [showConfirma, setShowConfirma] = useState(false);
+  const [cpf, setCpf] = useState("");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [nome, setNome] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
+  const [aceitouTermos, setAceitouTermos] = useState(false);
+  const [logado, setLogado] = useState(false);
+  const navigate = useNavigate();
 
-    return (
-        <div className="container-login">
-            <div className="login-wrapper">
-                <h2>Welcome</h2>
-                <div className="login-avatar"></div>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-                <form className="login-form" onSubmit={handleSubmit}>
-                    <div className="input-group">
-                        <label htmlFor="username">Username</label>
-                        <input
-                            type="text"
-                            id="username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            required
-                        />
-                    </div>
+    if (senha !== confirmarSenha) {
+      alert("As senhas não coincidem!");
+      return;
+    }
 
-                    <div className="input-group">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type={showPassword ? "text" : "password"}
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                        <span
-                            className="password-toggle-icon"
-                            onClick={() => setShowPassword(!showPassword)}
-                        >
-                            {showPassword ? <FaEyeSlash /> : <FaEye />}
-                        </span>
-                    </div>
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/usuario/cadastro",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nome,
+            email,
+            senha,
+            cpf,
+          }),
+        }
+      );
 
-                    <button type="submit" className="btn-login">
-                        LOGIN
-                    </button>
-                </form>
+      setNome("");
+      setSenha("");
+      setCpf("");
+      setConfirmarSenha("");
+      setEmail("");
+    } catch (erro) {
+      console.error("Ocorreu um erro:", erro);
+    }
 
-                <div className="login-links">
-                    <Link to="/forgot-password">Forgot Username / Password?</Link>
-                    <Link to="/signup">Don't have an account? Sign up</Link>
-                </div>
-            </div>
-        </div>
-    );
-};
+    setLogado(true);
 
-export default Login;
+    if (logado) {
+      setTimeout(() => {
+        navigate("/");
+      }, 4000);
+    }
+  };
+
+  return (
+    <div>
+      <Navbar />
+      <div className="container-cadastro">
+        <form className="formulario-login" onSubmit={handleSubmit}>
+          <div className="subtitulo-cadastro">
+            Informe seus dados para continuar o Login
+          </div>
+
+          <div className="input-icon">
+            <input
+              type="text"
+              placeholder="Nome"
+              required
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+            />
+            <FaUser className="icon" />
+          </div>
+
+
+          <div className="input-icon">
+            <input
+              type="email"
+              placeholder="Insira seu email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <FaEnvelope className="icon" />
+          </div>
+
+          <button type="submit" className="botao-cadastro">
+            CONTINUAR
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}

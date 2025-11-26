@@ -1,122 +1,92 @@
-
-/* Card de Login */
-.login-wrapper {
-    width: 100%;
-    max-width: 360px; /* Mais compacto */
-    padding: 50px 30px;
-    background: #ffffff;
-    border-radius: 8px; /* Bordas mais sutis */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    text-align: center;
-}
-
-/* Título "Welcome" */
-.login-wrapper h2 {
-    font-size: 24px;
-    font-weight: 600;
-    color: #212529;
-    margin-bottom: 20px;
-}
-
-/* Avatar circular */
-.login-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%; /* Transforma em círculo */
-    background-image: url('https://i.pravatar.cc/150?u=a042581f4e29026704d'); /* Imagem de placeholder. SUBSTITUA! */
-    background-size: cover;
-    background-position: center;
-    margin: 0 auto 30px auto; /* Centraliza e adiciona espaço abaixo */
-    border: 3px solid #f1f1f1;
-}
-
-/* Formulário */
-.login-form {
+.container-criarProduto {
     display: flex;
     flex-direction: column;
-    gap: 25px; /* Espaçamento entre os campos */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--color5);
 }
 
-/* Grupo de Input: Label + Input */
-.input-group {
-    position: relative; /* Essencial para posicionar o ícone do olho */
-    text-align: left; /* Alinha a label à esquerda */
+.main-content-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem;
 }
 
-.input-group label {
-    font-size: 14px;
-    color: #6c757d;
-    margin-bottom: 5px;
-    display: block; /* Garante que a label fique acima */
-}
-
-/* Estilo do input com a linha inferior */
-.input-group input {
+.criar-produto {
     width: 100%;
-    border: none; /* Remove todas as bordas */
-    border-bottom: 2px solid #dee2e6; /* Adiciona apenas a borda inferior */
-    background: transparent; /* Sem fundo */
-    padding: 8px 30px 8px 2px; /* Espaçamento: 30px à direita para o ícone */
-    font-size: 16px;
-    color: #212529;
-    outline: none; /* Remove o contorno azul ao focar */
-    transition: border-color 0.3s ease;
+    max-width: 544px;
+    margin: 2rem 0;
+    padding: 2.5rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
 }
 
-/* Efeito ao focar no input */
-.input-group input:focus {
-    border-bottom-color: #28a745; /* Cor verde de destaque */
-}
-
-/* Estilo e posicionamento do ícone de olho */
-.password-toggle-icon {
-    position: absolute;
-    right: 5px;
-    bottom: 8px; /* Alinha verticalmente com o input */
-    cursor: pointer;
-    color: #adb5bd; /* Cor cinza sutil */
-    transition: color 0.3s ease;
-}
-
-.password-toggle-icon:hover {
-    color: #495057; /* Escurece um pouco no hover */
-}
-
-/* Botão de Login */
-.btn-login {
-    background: #28a745; /* Cor verde */
-    border: none;
-    padding: 12px;
-    border-radius: 50px; /* Totalmente arredondado */
-    font-weight: 600;
-    color: #fff;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 15px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2);
-}
-
-.btn-login:hover {
-    background: #218838; /* Verde mais escuro */
-    transform: translateY(-2px);
-}
-
-/* Links abaixo do formulário */
-.login-links {
-    margin-top: 30px;
+.criar-produto h1 {
     text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #263238;
+    margin-bottom: 4px;
 }
 
-.login-links a {
-    color: #6c757d;
-    font-size: 13px;
-    text-decoration: none;
-    display: block;
-    margin-top: 8px;
-    transition: color 0.3s ease;
+.form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.login-links a:hover {
-    color: #28a745;
+.form-login>div {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.preco[type="text"],
+.preco[type="number"],
+.descricao {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+}
+
+.preco[type="text"]:focus,
+.preco[type="number"]:focus,
+.descricao:focus {
+    outline: none;
+    border-color: #A71111;
+}
+
+.descricao {
+
+    resize: none;
+}
+
+
+.cadastrar-produto[type="submit"] {
+    background-color: #A71111;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #fff;
+    border: none;
+}
+
+.cadastrar-produto[type="submit"]:hover {
+    cursor: pointer;
+    background-color: #8e0e0e;
 }

@@ -4,33 +4,19 @@ import Navbar from "../../components/Js/Navbar.jsx";
 import Nav_carrinho from "../../components/Js/Nav_carrinho.jsx";
 import "../Css/Carrinho.css";
 
-// URL base para facilitar futuras mudanças
 const API_URL = "http://localhost:3000/api/cart";
 
-// Note: Este componente DEVE ser renderizado em uma rota protegida 
-// ou onde o productId (prop) seja fornecido
 export default function Carrinho({ produtoId }) {
   
-  // 1. Estado para o objeto de carrinho (Order) e para o loading
-  // Inicializamos com null para melhor checagem de estado vazio/carregando
   const [carrinho, setCarrinho] = useState(null); 
-  const [loading, setLoading] = useState(true); // Começa como true para a busca inicial
+  const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
 
-  // 2. Simulação Temporária de Autenticação
-  // Removido 'produtos' pois não é usado
-  // O token deve vir de onde você o armazena (localStorage/Contexto real)
-  const token = "SEU_TOKEN_OU_ID_FIXO_DE_TESTE"; 
-  const isAuthenticated = true; // Simulação: Assume que o usuário está "logado"
+  const token = "60a123b4c5d6e7f8g9h0i1j2";
+  const isAuthenticated = true;
 
-  /* --------------------------------------
-     FUNÇÕES DE AÇÃO (BUSCAR, ADICIONAR)
-     -------------------------------------- */
-
-  // Função centralizada para buscar o carrinho no Back-end
   const buscarCart = async () => {
     if (!isAuthenticated || !token) {
-      // Se não estiver autenticado (mesmo na simulação), para a busca
       setLoading(false); 
       return; 
     }
@@ -39,7 +25,7 @@ export default function Carrinho({ produtoId }) {
     setError(null);
 
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch(API_URL, {   
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -49,10 +35,10 @@ export default function Carrinho({ produtoId }) {
       const data = await response.json();
 
       if (response.ok) {
-        // O Back-end deve retornar o objeto { user, items, total, ... } ou null/{} se vazio
+  
         setCarrinho(data);
       } else {
-        // Trata erros específicos da API (ex: "Carrinho não encontrado")
+
         setError(data.error || "Erro desconhecido ao buscar o carrinho.");
         setCarrinho(null);
       }
@@ -65,8 +51,6 @@ export default function Carrinho({ produtoId }) {
     }
   };
 
-  // Função para adicionar produto (Geralmente chamada de um componente filho/irmão)
-  // Certifique-se de passar o productId para este componente onde o botão estiver
   const adicionarAoCarrinho = async () => {
     if (!isAuthenticated || !token || !produtoId) {
       alert("Erro: ID do produto ou autenticação ausente.");
@@ -92,7 +76,7 @@ export default function Carrinho({ produtoId }) {
 
       if (response.ok) {
         alert("Produto adicionado com sucesso!");
-        // Após adicionar, atualiza o estado do carrinho
+
         await buscarCart(); 
       } else {
         alert(`Erro ao adicionar: ${data.error}`);
@@ -105,19 +89,10 @@ export default function Carrinho({ produtoId }) {
     }
   };
   
-  /* --------------------------------------
-     LIFECYCLE HOOKS
-     -------------------------------------- */
 
-  // Chama a busca inicial do carrinho
   useEffect(() => {
     buscarCart();
-    // Vazio, pois a simulação de token não muda, mas chamar a busca faz sentido
   }, []); 
-
-  /* --------------------------------------
-     LÓGICA DE RENDERIZAÇÃO
-     -------------------------------------- */
 
   if (loading) {
     return (
@@ -128,10 +103,8 @@ export default function Carrinho({ produtoId }) {
     );
   }
   
-  // Variável para facilitar a renderização, assumindo que o Back-end retorna { items: [...] }
   const itensDoCarrinho = carrinho?.items || [];
   
-  // ⚠️ CORREÇÃO: Verifica se o array de itens está vazio ou se carrinho é nulo
   if (!carrinho || itensDoCarrinho.length === 0) {
     return (
       <div>
@@ -155,7 +128,6 @@ export default function Carrinho({ produtoId }) {
     );
   }
 
-  // Renderização do Carrinho Preenchido
   return (
     <div>
       <Navbar />
@@ -167,13 +139,10 @@ export default function Carrinho({ produtoId }) {
               <div className="lista-produtos">
                 <div className="produtos-carrinho">
                   {itensDoCarrinho.map((item, index) => (
-                    // O item.produto está populado pelo Back-end
                     <div className="produto" key={index}>
                       <img src="./img/cadeira.png" alt="" />
-                      {/* TODO: Criar função removerProduto e ligar ao botão */}
                       <button className="deletar-produto">Remover</button>
                       
-                      {/* ⚠️ CORREÇÃO: Usar item.produto.propriedade */}
                       <p>Nome: {item.produto?.nome || 'Produto Indefinido'}</p>{" "}
                       <p>Preço: R$ {item.produto?.price ? item.produto.price.toFixed(2) : '0.00'}</p>{" "}
                       <p>Quantidade: {item.quantidade}</p> <hr />
@@ -188,7 +157,6 @@ export default function Carrinho({ produtoId }) {
               <p>Quantidade de produtos: {itensDoCarrinho.length} </p>
               <p>
                 Valor total: R${" "}
-                {/* Usa o total calculado pelo Back-end */}
                 {carrinho.total ? carrinho.total.toFixed(2) : "0.00"}{" "}
               </p>
               <div className="botoes-resumo-compra">
