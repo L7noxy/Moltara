@@ -53,6 +53,43 @@ export default function ProdutoDetalhada() {
     fetchProduto();
   }, [id]);
 
+  const handleSubmitCarrinho = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/cart/adicionar",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nome,
+            email,
+            senha,
+            cpf,
+          }),
+        }
+      );
+
+      setNome("");
+      setSenha("");
+      setCpf("");
+      setConfirmarSenha("");
+      setEmail("");
+    } catch (erro) {
+      console.error("Ocorreu um erro:", erro);
+    }
+
+    setLogado(true);
+
+    if (logado) {
+      setTimeout(() => {
+        navigate("/");
+      }, 4000);
+    }
+  };
   if (loading) {
     return <div>Carregando detalhes do produto...</div>;
   }
@@ -313,7 +350,9 @@ export default function ProdutoDetalhada() {
           </div>
 
           <div className="botoes-compra">
-            <button className="button-adicionar">Adicionar ao Carrinnho</button>
+            <button className="button-adicionar" onClick={handleSubmitCarrinho}>
+              Adicionar ao Carrinnho
+            </button>
             <button className="button-confirmar">Confirmar Compra</button>
           </div>
         </div>

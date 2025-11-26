@@ -16,6 +16,13 @@ const cartItemSchema = new mongoose.Schema({
 });
 
 const cartSchema = new mongoose.Schema({
+
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  
   items: [cartItemSchema],
   total: {
     type: Number,
@@ -34,4 +41,4 @@ const cartSchema = new mongoose.Schema({
 
 });
 
-export default mongoose.model("Order", cartSchema);
+export default mongoose.model("Carrinho", cartSchema);
