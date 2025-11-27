@@ -8,19 +8,27 @@ function PainelDeControle() {
       <div className="container-um">
 
         <div className="card">
-          <Link to="/criarProduto">Adicionar Produto</Link>
+          <Link to="/criarProduto" className="card-link">
+            <span className="card-text">Adicionar Produto</span>
+          </Link>
         </div>
 
         <div className="card">
-          <Link to="/estoque">Adicionar Produto</Link>
+          <Link to="/estoque" className="card-link">
+            <span className="card-text">Gestão de Estoque</span>
+          </Link>
         </div>
 
         <div className="card">
-         <p>Editar Perfil</p>
+           <Link to="/" className="card-link"> 
+            <span className="card-text">Editar Perfil</span>
+          </Link>
         </div>
 
         <div className="card">
-         <p>Sair do Modo ADM</p>
+          <Link to="/" className="card-link sair-adm-btn">
+            <span className="card-text">Sair do modo adm</span>
+          </Link>
         </div>
 
       </div>

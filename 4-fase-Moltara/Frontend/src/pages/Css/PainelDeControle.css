@@ -1,0 +1,90 @@
+.container-painel {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Ocupa a altura total da viewport */
+    background-color: #f5f5f5; /* Fundo cinza claro */
+    padding: 20px;
+}
+
+/* Container dos Cards (Centralizado no fundo branco/claro) */
+.container-um {
+    display: grid;
+    /* 2 colunas e 2 linhas para o layout 2x2 */
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px; /* Espaço entre os cards */
+    padding: 60px; /* Espaço interno para o container */
+    background-color: white; /* Fundo dos cards */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave ao redor do container dos cards */
+    width: fit-content; /* Ajusta a largura ao conteúdo */
+}
+
+/* Estilo do Card individual */
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 150px; /* Largura fixa do card */
+    height: 150px; /* Altura fixa do card (para ser quadrado) */
+    background-color: white;
+    border-radius: 8px;
+    /* Sombra interna/destaque sutil conforme o protótipo */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 0 1px #e0e0e0; /* Sombra e borda sutil */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efeito de hover no card */
+.card:hover {
+    transform: translateY(-5px); /* Efeito sutil de elevação */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 0 0 1px #d0d0d0;
+    cursor: pointer;
+}
+
+/* Estilo do Link (dentro do card) */
+.card-link {
+    display: flex;
+    flex-direction: column; /* Ícone em cima do texto */
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* Remove sublinhado do link */
+    color: #333; /* Cor do texto padrão */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px; /* Preenchimento interno para o link */
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilo do Ícone */
+.card-icon {
+    font-size: 3.5em; /* Tamanho grande do ícone */
+    color: #d12c2c; /* Cor vermelha vibrante para os ícones */
+    margin-bottom: 8px; /* Espaço entre o ícone e o texto */
+}
+
+/* Estilo do Texto */
+.card-text {
+    /* Pode adicionar mais estilos de texto aqui se necessário */
+    line-height: 1.2;
+}
+
+/* Estilizando o <p> (Se usar <p> ao invés de <Link>) */
+/* Se você voltar a usar as tags <p> no JSX para os cards 3 e 4, use este estilo: */
+.card p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px;
+    margin: 0; /* Remove margem padrão do parágrafo */
+    width: 100%;
+    height: 100%;
+}
