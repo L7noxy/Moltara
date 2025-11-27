@@ -1,92 +1,145 @@
-.container-criarProduto {
+:root {
+    /* Mantenha ou ajuste conforme as cores do seu tema */
+    --color5: #f4f4f4;
+    /* Cor de fundo principal */
+    --primary-color: #A71111;
+    /* Cor de destaque (vermelho) */
+}
+
+/* 1. CONTAINER PRINCIPAL (Substitui .container-criarProduto) */
+.container-login {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    /* Ajuste: Se houver Navbar no topo, use min-height ou ajuste o height */
+    min-height: calc(100vh - 60px);
+    /* Exemplo: subtrai a altura da Navbar */
     width: 100vw;
     background-color: var(--color5);
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.main-content-wrapper {
-    flex-grow: 1;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 1rem;
-}
 
-.criar-produto {
+/* 2. FORMULÁRIO (Substitui .criar-produto) */
+.formulario-login {
     width: 100%;
-    max-width: 544px;
+    max-width: 400px;
+    /* Um formulário de login costuma ser mais estreito */
     margin: 2rem 0;
     padding: 2.5rem;
     border-radius: 0.75rem;
+    background-color: #fff;
+    /* Fundo branco para o formulário */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
     overflow: hidden;
 }
 
-.criar-produto h1 {
+.titulo-login {
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: #263238;
-    margin-bottom: 4px;
-}
-
-.form-login {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.form-login>div {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    font-size: 0.875rem;
-    font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
-.preco[type="text"],
-.preco[type="number"],
-.descricao {
+.subtitulo-login {
+    text-align: center;
+    font-size: 0.95rem;
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+
+/* 3. INPUTS E ÍCONES (Mantido o estilo de entrada/label) */
+.formulario-login>div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    /* Espaço entre os grupos de input */
+}
+
+.input-icon {
+    display: flex;
+    align-items: center;
+    position: relative;
+    /* Resetando o display flex-column para o div pai */
+    flex-direction: row;
+    gap: 0;
+    margin-bottom: 1.5rem;
+}
+
+.formulario-login input[type="email"],
+.formulario-login input[type="password"] {
     width: 100%;
     padding: 0.75rem 1rem;
+    padding-left: 2.5rem;
+    /* Espaço para o ícone */
     border: 1px solid #d1d5db;
     border-radius: 0.75rem;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     box-sizing: border-box;
-    border: 1px solid #ccc;
     font-size: 0.95rem;
+    transition: border-color 0.15s ease-in-out;
 }
 
-.preco[type="text"]:focus,
-.preco[type="number"]:focus,
-.descricao:focus {
+.formulario-login input[type="email"]:focus,
+.formulario-login input[type="password"]:focus {
     outline: none;
-    border-color: #A71111;
+    border-color: var(--primary-color);
 }
 
-.descricao {
-
-    resize: none;
+.input-icon .icon {
+    position: absolute;
+    left: 10px;
+    color: #888;
+    font-size: 1.1rem;
 }
 
 
-.cadastrar-produto[type="submit"] {
-    background-color: #A71111;
+/* 4. BOTÃO DE LOGIN (Substitui .cadastrar-produto[type="submit"]) */
+.botao-login {
+    background-color: var(--primary-color);
     padding: 14px;
     border-radius: 8px;
     font-size: 1rem;
     color: #fff;
     border: none;
+    width: 100%;
+    margin-top: 0.5rem;
+    transition: background-color 0.2s ease-in-out;
 }
 
-.cadastrar-produto[type="submit"]:hover {
+.botao-login:hover {
     cursor: pointer;
     background-color: #8e0e0e;
+}
+
+.botao-login:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* 5. MENSAGENS E LINKS */
+.status-message {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+.links-adicionais {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.links-adicionais a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.links-adicionais a:hover {
+    text-decoration: underline;
 }

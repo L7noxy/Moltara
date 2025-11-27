@@ -1,57 +1,72 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 import { LuCircleUserRound } from "react-icons/lu";
 import { HiShoppingCart } from "react-icons/hi";
 import { IoIosArrowRoundBack } from "react-icons/io";
 
-import '../Css/Navbar.css';
+import "../Css/Navbar.css";
+import { useGlobalContext } from "../../context/GlobalContext";
 
 export default function Navbar() {
-    const navigate = useNavigate();
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedCategory, setSelectedCategory] = useState("Departamentos");
+  const navigate = useNavigate();
 
-    const handleCategorySelect = (categoria) => {
-        setSelectedCategory(categoria);
-        setIsOpen(false);
-    };
+  const {estaAutenticado, setEstaAutenticado} = useGlobalContext();
 
-    return (
-        <>
-            <nav className="navbar">
-                <div className='left-section-navbar'>
-                    <button onClick={() => navigate(-1)} className="back-btn">
-                     <IoIosArrowRoundBack size={40} color="#fff" />
-                    </button>
-                
-                <div className="logo">Logo</div>
-                </div>
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
 
-                <div className="search-bar">
-                    <input type="text" placeholder="Pesquisar..." />
-                    <button type="submit">
-                        <IoSearchOutline size={20} color="#5F6368" />
-                    </button>
-                </div>
+  return (
+    <>
+      <nav className="navbar">
+        <div className="left-section-navbar">
+          <button onClick={() => navigate(-1)} className="back-btn">
+            <IoIosArrowRoundBack size={40} color="#fff" />
+          </button>
 
-                <div className="buttons">
-                    <Link to="/perfil">
-                        <LuCircleUserRound size={25} color="#fff" />
-                    </Link>
+          <div className="logo">Logo</div>
+        </div>
 
-                    <Link to="/login" className="login-btn">Entrar</Link>
-                    <p>ou</p>
-                    <Link to="/cadastro" className="signup-btn">Cadastrar-se</Link>
+        <div className="search-bar">
+          <input type="text" placeholder="Pesquisar..." />
+          <button type="submit">
+            <IoSearchOutline size={20} color="#5F6368" />
+          </button>
+        </div>
 
-                    <Link to="/carrinho">
-                      <HiShoppingCart color="#fff" size={20} />
-                    </Link>
+        <div>
+          {estaAutenticado ? (
+            <>
+              <button onClick={handleLogout}>Sair</button>
+            </>
+          ) : (
+            <Link to="/login">Entrar</Link>
+          )}
+        </div>
 
-                   {/* Provisoriooo */}
-                    <Link to="/painelDeControle">Adm</Link>
-                </div>
-            </nav>
-        </>
-    );
+        <div className="buttons">
+          <Link to="/perfil">
+            <LuCircleUserRound size={25} color="#fff" />
+          </Link>
+
+          <Link to="/login" className="login-btn">
+            Entrar
+          </Link>
+          <p>ou</p>
+          <Link to="/cadastro" className="signup-btn">
+            Cadastrar-se
+          </Link>
+
+          <Link to="/carrinho">
+            <HiShoppingCart color="#fff" size={20} />
+          </Link>
+
+          {/* Provisoriooo */}
+          <Link to="/painelDeControle">Adm</Link>
+        </div>
+      </nav>
+    </>
+  );
 }

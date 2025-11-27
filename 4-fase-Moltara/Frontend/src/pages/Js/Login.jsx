@@ -1,23 +1,21 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import React, { useState } from "react";
-import { useGlobalContext } from "../../context/GlobalContext.jsx";
-import "../Css/login.css";
+import { useGlobalContext } from "../../context/GlobalContext.jsx"; 
+import "../Css/login.css"; 
 import Navbar from "../../components/Js/Navbar.jsx";
-import { FaEye, FaEyeSlash, FaEnvelope, FaUser, FaIdCard } from "react-icons/fa";
+import { FaEye, FaEnvelope, FaLock } from "react-icons/fa"; // Trocado FaUser/FaIdCard por FaLock
 
-export default function Register() { // 👈 Renomeado para Register
+export default function Login() {
   
-  // 1. Estados
-  const [nome, setNome] = useState("");
-  const [cpf, setCpf] = useState("");
+  // 1. Estados essenciais para o Login
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [confirmarSenha, setConfirmarSenha] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   
   // 2. Contexto e Navegação
-  const { register } = useGlobalContext(); // 🔑 Obtendo a função de registro
+  // 🔑 Usa a função 'login' do GlobalContext
+  const { login } = useGlobalContext(); 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -25,116 +23,71 @@ export default function Register() { // 👈 Renomeado para Register
     setMessage(""); // Limpa mensagens anteriores
     setLoading(true);
 
-    if (senha !== confirmarSenha) {
-      setMessage("As senhas não coincidem!");
-      setLoading(false);
-      return;
-    }
-    
-    // ⚠️ Removido: A API de cadastro é agora a função do Contexto (Backend/src/controllers/auth.controller.js)
-    // O seu GlobalContext.register já faz o fetch e lida com o token!
+    // ⚠️ Não precisa de 'confirmarSenha' no login
+    // ❌ Removido: if (senha !== confirmarSenha) { ... }
 
-    const result = await register(nome, email, senha);
+    // 🔑 Chama a função login(email, password) do contexto
+    // O backend só precisa de email e senha para autenticar
+    const result = await login(email, senha);
 
     if (result.success) {
-      setMessage("Cadastro realizado com sucesso! Redirecionando...");
-      // Após o sucesso, o token já está salvo no GlobalContext.
+      setMessage("Login bem-sucedido! Redirecionando...");
+      // Após o sucesso, o token já está salvo.
       // Navega para a página principal (ou carrinho)
       navigate('/'); 
     } else {
       // Exibe o erro retornado pelo backend
-      setMessage(`Erro no cadastro: ${result.error}`);
+      setMessage(`Erro ao fazer login: ${result.error}`);
     }
 
     setLoading(false);
-    
-    // ❌ REMOVIDO: Limpeza de campos desnecessária e lógica de login/setTimeout errada.
-    /* setNome("");
-    setSenha("");
-    setCpf("");
-    setConfirmarSenha("");
-    setEmail("");
-    setLogin(true);
-    if (login) { ... }
-    */
   };
 
   return (
     <div>
       <Navbar />
-      <div className="container-cadastro">
-        <form className="formulario-cadastro" onSubmit={handleSubmit}> 
-          <div className="subtitulo-cadastro">
-            Informe seus dados para criar sua conta
-          </div>
-
-          {/* NOME */}
-          <div className="input-icon">
-            <input
-              type="text"
-              placeholder="Nome"
-              required
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-            />
-            <FaUser className="icon" />
+      {/* ⚠️ Alterada a classe container-cadastro para container-login */}
+      <div className="container-login">
+        {/* ⚠️ Alterada a classe formulario-cadastro para formulario-login */}
+        <form className="formulario-login" onSubmit={handleSubmit}> 
+          <h2 className="titulo-login">Faça seu Login</h2>
+          <div className="subtitulo-login">
+            Entre com seus dados para continuar
           </div>
 
           {/* EMAIL */}
           <div className="input-icon">
             <input
               type="email"
-              placeholder="Insira seu email"
+              placeholder="Email"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <FaEnvelope className="icon" />
           </div>
-          
-          {/* CPF - ADICIONADO PARA CADASTRO COMPLETO */}
-          <div className="input-icon">
-            <input
-              type="text"
-              placeholder="CPF"
-              required
-              value={cpf}
-              onChange={(e) => setCpf(e.target.value)}
-              maxLength={14} // Máximo 14 para CPF formatado
-            />
-            <FaIdCard className="icon" />
-          </div>
 
           {/* SENHA */}
           <div className="input-icon">
             <input
-              type="password" // Tipo password para ocultar
+              type="password"
               placeholder="Senha"
               required
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
             />
-            <FaEye className="icon" /> 
+            <FaLock className="icon" /> {/* Ícone de cadeado */}
           </div>
 
-          {/* CONFIRMAR SENHA */}
-          <div className="input-icon">
-            <input
-              type="password" // Tipo password para ocultar
-              placeholder="Confirme a Senha"
-              required
-              value={confirmarSenha}
-              onChange={(e) => setConfirmarSenha(e.target.value)}
-            />
-            <FaEyeSlash className="icon" /> 
-          </div>
-
-          <button type="submit" className="botao-cadastro" disabled={loading}>
-            {loading ? "CADASTRANDO..." : "CRIAR CONTA"}
+          <button type="submit" className="botao-login" disabled={loading}>
+            {loading ? "ENTRANDO..." : "ENTRAR"}
           </button>
           
-          {/* Mensagens de Sucesso/Erro */}
           {message && <p className="status-message">{message}</p>}
+
+          <div className="links-adicionais">
+            <Link to="/cadastro">Não tem conta? Cadastre-se aqui</Link>
+          </div>
 
         </form>
       </div>
