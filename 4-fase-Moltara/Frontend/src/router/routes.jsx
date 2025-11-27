@@ -9,11 +9,13 @@ import ProdutoDetalhada from "../pages/Js/ProdutoDetalhada.jsx";
 import Pagamento from "../pages/Js/Pagamento.jsx";
 import CriarProduto from "../pages/Js/CriarProduto.jsx";
 import EstoqueProduto from "../pages/Js/EstoqueProduto.jsx";
+import PerilAdm from "../pages/Js/PerilAdm.jsx";
+
 import PainelDeControle from "../pages/Js/PainelDeControle.jsx";
 
 const router = createBrowserRouter([
 
-    { path: "/", element: <Home /> },
+    { path: "/", element: <Home />},
 
     { path: "/cadastro", element: <Cadastro /> },
     { path: "/login", element: <Login /> },
@@ -28,7 +30,8 @@ const router = createBrowserRouter([
 
     { path: "/criarProduto", element: <CriarProduto /> },
     { path: "/estoque", element: <EstoqueProduto /> },
-    { path: "/painelDeControle", element: <PainelDeControle /> },
+    { path: "/perilAdm", element: <PerilAdm/>},
+    { path: "/painelDeControle", element: <PainelDeControle/> },
 
 ])
 
