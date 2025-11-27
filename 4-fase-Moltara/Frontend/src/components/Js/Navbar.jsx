@@ -11,7 +11,6 @@ import { useGlobalContext } from "../../context/GlobalContext";
 export default function Navbar() {
   const navigate = useNavigate();
 
-  const {estaAutenticado, setEstaAutenticado} = useGlobalContext();
 
   const handleLogout = () => {
     logout();
@@ -34,16 +33,6 @@ export default function Navbar() {
           <button type="submit">
             <IoSearchOutline size={20} color="#5F6368" />
           </button>
-        </div>
-
-        <div>
-          {estaAutenticado ? (
-            <>
-              <button onClick={handleLogout}>Sair</button>
-            </>
-          ) : (
-            <Link to="/login">Entrar</Link>
-          )}
         </div>
 
         <div className="buttons">

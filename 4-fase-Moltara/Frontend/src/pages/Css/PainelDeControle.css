@@ -22,7 +22,7 @@
 }
 
 /* Estilo do Card individual */
-.card {
+.card-painel {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,7 +37,7 @@
 }
 
 /* Efeito de hover no card */
-.card:hover {
+.card-painel:hover {
     transform: translateY(-5px); /* Efeito sutil de elevação */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 0 0 1px #d0d0d0;
     cursor: pointer;
@@ -74,7 +74,7 @@
 
 /* Estilizando o <p> (Se usar <p> ao invés de <Link>) */
 /* Se você voltar a usar as tags <p> no JSX para os cards 3 e 4, use este estilo: */
-.card p {
+.card-painel p {
     display: flex;
     flex-direction: column;
     align-items: center;

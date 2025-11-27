@@ -23,20 +23,12 @@ export default function Login() {
     setMessage(""); // Limpa mensagens anteriores
     setLoading(true);
 
-    // ⚠️ Não precisa de 'confirmarSenha' no login
-    // ❌ Removido: if (senha !== confirmarSenha) { ... }
-
-    // 🔑 Chama a função login(email, password) do contexto
-    // O backend só precisa de email e senha para autenticar
     const result = await login(email, senha);
 
     if (result.success) {
       setMessage("Login bem-sucedido! Redirecionando...");
-      // Após o sucesso, o token já está salvo.
-      // Navega para a página principal (ou carrinho)
       navigate('/'); 
     } else {
-      // Exibe o erro retornado pelo backend
       setMessage(`Erro ao fazer login: ${result.error}`);
     }
 

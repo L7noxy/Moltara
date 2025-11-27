@@ -1,5 +1,3 @@
-import jwt from "jsonwebtoken";
-// Use a mesma chave secreta usada no controller
 const JWT_SECRET = process.env.JWT_SECRET;
 const SALT_ROUNDS = 10;
 
