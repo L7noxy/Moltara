@@ -7,7 +7,11 @@ function PainelDeControle() {
     <div className="container-painel">
       <div className="container-um">
 
+
         <div className="card-adm">
+
+        <div className="card-painel">
+
           <Link to="/criarProduto" className="card-link">
            <img src='/img/mais.png'/>
            <span className="card-text">Adicionar Produto</span>
@@ -51,6 +55,7 @@ function PainelDeControle() {
         </div>
 
       </div>
+    </div>
     </div>
   );
 }
