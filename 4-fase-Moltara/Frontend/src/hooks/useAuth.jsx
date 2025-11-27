@@ -1,29 +1,30 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, createContext } from 'react';
 
 const TOKEN_KEY = 'jwtToken'; 
+const AuthContext = createContext(null);
 
-const API_URL = 'http://localhost:3000/api/auth';
+export const useAuth = () => {
+    return useContext(AuthContext);
+};
 
-export const GlobalContext = createContext(null);
-
-export const GlobalContextProvider = ({ children }) => {
-    
-    // 🔑 Estados de Autenticação
+export const AuthProvider = ({ children }) => {
     const [token, setToken] = useState(localStorage.getItem(TOKEN_KEY));
     const [isAuthenticated, setIsAuthenticated] = useState(!!token);
-    const [userId, setUserId] = useState(null); 
-    
+
+    // Endpoint base
+    const API_URL = 'http://localhost:3000/api/auth';
+
     useEffect(() => {
         if (token) {
             localStorage.setItem(TOKEN_KEY, token);
             setIsAuthenticated(true);
-
         } else {
             localStorage.removeItem(TOKEN_KEY);
             setIsAuthenticated(false);
-            setUserId(null);
         }
     }, [token]);
+
+    // Funções de Ação
 
     const login = async (email, password) => {
         try {
@@ -45,7 +46,7 @@ export const GlobalContextProvider = ({ children }) => {
             return { success: false, error: 'Erro de conexão com o servidor.' };
         }
     };
-    
+
     const register = async (name, email, password) => {
         try {
             const response = await fetch(`${API_URL}/register`, {
@@ -57,7 +58,7 @@ export const GlobalContextProvider = ({ children }) => {
             const data = await response.json();
 
             if (response.ok) {
-                setToken(data.token);
+                setToken(data.token); 
                 return { success: true, message: 'Registro bem-sucedido.' };
             } else {
                 return { success: false, error: data.error || 'Erro ao registrar usuário.' };
@@ -69,24 +70,15 @@ export const GlobalContextProvider = ({ children }) => {
 
     const logout = () => {
         setToken(null);
-        setUserId(null);
     };
-
 
     const value = {
         token,
         isAuthenticated,
-        userId,
-        
-
         login,
         register,
         logout,
     };
 
-    return (
-        <GlobalContext.Provider value={value}>
-            {children}
-        </GlobalContext.Provider>
-    );
+    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

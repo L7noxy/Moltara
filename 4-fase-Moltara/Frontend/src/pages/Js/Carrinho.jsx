@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useGlobalContext } from "../../context/GlobalContext.jsx";
 import { Link } from "react-router";
 import Navbar from "../../components/Js/Navbar.jsx";
 import Nav_carrinho from "../../components/Js/Nav_carrinho.jsx";
@@ -7,38 +8,33 @@ import "../Css/Carrinho.css";
 const API_URL = "http://localhost:3000/api/cart";
 
 export default function Carrinho({ produtoId }) {
-  
-  const [carrinho, setCarrinho] = useState(null); 
-  const [loading, setLoading] = useState(true); 
+  const [carrinho, setCarrinho] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const token = "60a123b4c5d6e7f8g9h0i1j2";
-  const isAuthenticated = true;
+  const { token, isAuthenticated } = useGlobalContext();
 
   const buscarCart = async () => {
     if (!isAuthenticated || !token) {
-      setLoading(false); 
-      return; 
+      setLoading(false);
+      return;
     }
-    
+
     setLoading(true);
     setError(null);
 
     try {
-      const response = await fetch(API_URL, {   
+      const response = await fetch(API_URL, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      
+
       const data = await response.json();
 
       if (response.ok) {
-  
         setCarrinho(data);
       } else {
-
         setError(data.error || "Erro desconhecido ao buscar o carrinho.");
         setCarrinho(null);
       }
@@ -77,7 +73,7 @@ export default function Carrinho({ produtoId }) {
       if (response.ok) {
         alert("Produto adicionado com sucesso!");
 
-        await buscarCart(); 
+        await buscarCart();
       } else {
         alert(`Erro ao adicionar: ${data.error}`);
       }
@@ -88,11 +84,10 @@ export default function Carrinho({ produtoId }) {
       setLoading(false);
     }
   };
-  
 
   useEffect(() => {
     buscarCart();
-  }, []); 
+  }, []);
 
   if (loading) {
     return (
@@ -102,9 +97,9 @@ export default function Carrinho({ produtoId }) {
       </div>
     );
   }
-  
+
   const itensDoCarrinho = carrinho?.items || [];
-  
+
   if (!carrinho || itensDoCarrinho.length === 0) {
     return (
       <div>
@@ -142,9 +137,15 @@ export default function Carrinho({ produtoId }) {
                     <div className="produto" key={index}>
                       <img src="./img/cadeira.png" alt="" />
                       <button className="deletar-produto">Remover</button>
-                      
-                      <p>Nome: {item.produto?.nome || 'Produto Indefinido'}</p>{" "}
-                      <p>Preço: R$ {item.produto?.price ? item.produto.price.toFixed(2) : '0.00'}</p>{" "}
+                      <p>
+                        Nome: {item.produto?.nome || "Produto Indefinido"}
+                      </p>{" "}
+                      <p>
+                        Preço: R${" "}
+                        {item.produto?.price
+                          ? item.produto.price.toFixed(2)
+                          : "0.00"}
+                      </p>{" "}
                       <p>Quantidade: {item.quantidade}</p> <hr />
                     </div>
                   ))}

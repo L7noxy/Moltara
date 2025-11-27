@@ -1,81 +1,74 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import { useGlobalContext } from "../../context/GlobalContext.jsx";
 import "../Css/login.css";
 import Navbar from "../../components/Js/Navbar.jsx";
+import { FaEye, FaEyeSlash, FaEnvelope, FaUser, FaIdCard } from "react-icons/fa";
 
-import {
-  FaEye,
-  FaEyeSlash,
-  FaEnvelope,
-  FaUser,
-  FaIdCard,
-  FaQuestionCircle,
-} from "react-icons/fa";
-
-export default function Login() {
-  const [showSenha, setShowSenha] = useState(false);
-  const [showConfirma, setShowConfirma] = useState(false);
+export default function Register() { // 👈 Renomeado para Register
+  
+  // 1. Estados
+  const [nome, setNome] = useState("");
   const [cpf, setCpf] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [nome, setNome] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
-  const [aceitouTermos, setAceitouTermos] = useState(false);
-  const [logado, setLogado] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+  
+  // 2. Contexto e Navegação
+  const { register } = useGlobalContext(); // 🔑 Obtendo a função de registro
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setMessage(""); // Limpa mensagens anteriores
+    setLoading(true);
 
     if (senha !== confirmarSenha) {
-      alert("As senhas não coincidem!");
+      setMessage("As senhas não coincidem!");
+      setLoading(false);
       return;
     }
+    
+    // ⚠️ Removido: A API de cadastro é agora a função do Contexto (Backend/src/controllers/auth.controller.js)
+    // O seu GlobalContext.register já faz o fetch e lida com o token!
 
-    try {
-      const response = await fetch(
-        "http://localhost:3000/api/usuario/cadastro",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            nome,
-            email,
-            senha,
-            cpf,
-          }),
-        }
-      );
+    const result = await register(nome, email, senha);
 
-      setNome("");
-      setSenha("");
-      setCpf("");
-      setConfirmarSenha("");
-      setEmail("");
-    } catch (erro) {
-      console.error("Ocorreu um erro:", erro);
+    if (result.success) {
+      setMessage("Cadastro realizado com sucesso! Redirecionando...");
+      // Após o sucesso, o token já está salvo no GlobalContext.
+      // Navega para a página principal (ou carrinho)
+      navigate('/'); 
+    } else {
+      // Exibe o erro retornado pelo backend
+      setMessage(`Erro no cadastro: ${result.error}`);
     }
 
-    setLogado(true);
-
-    if (logado) {
-      setTimeout(() => {
-        navigate("/");
-      }, 4000);
-    }
+    setLoading(false);
+    
+    // ❌ REMOVIDO: Limpeza de campos desnecessária e lógica de login/setTimeout errada.
+    /* setNome("");
+    setSenha("");
+    setCpf("");
+    setConfirmarSenha("");
+    setEmail("");
+    setLogin(true);
+    if (login) { ... }
+    */
   };
 
   return (
     <div>
       <Navbar />
       <div className="container-cadastro">
-        <form className="formulario-login" onSubmit={handleSubmit}>
+        <form className="formulario-cadastro" onSubmit={handleSubmit}> 
           <div className="subtitulo-cadastro">
-            Informe seus dados para continuar o Login
+            Informe seus dados para criar sua conta
           </div>
 
+          {/* NOME */}
           <div className="input-icon">
             <input
               type="text"
@@ -87,7 +80,7 @@ export default function Login() {
             <FaUser className="icon" />
           </div>
 
-
+          {/* EMAIL */}
           <div className="input-icon">
             <input
               type="email"
@@ -98,10 +91,51 @@ export default function Login() {
             />
             <FaEnvelope className="icon" />
           </div>
+          
+          {/* CPF - ADICIONADO PARA CADASTRO COMPLETO */}
+          <div className="input-icon">
+            <input
+              type="text"
+              placeholder="CPF"
+              required
+              value={cpf}
+              onChange={(e) => setCpf(e.target.value)}
+              maxLength={14} // Máximo 14 para CPF formatado
+            />
+            <FaIdCard className="icon" />
+          </div>
 
-          <button type="submit" className="botao-cadastro">
-            CONTINUAR
+          {/* SENHA */}
+          <div className="input-icon">
+            <input
+              type="password" // Tipo password para ocultar
+              placeholder="Senha"
+              required
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+            />
+            <FaEye className="icon" /> 
+          </div>
+
+          {/* CONFIRMAR SENHA */}
+          <div className="input-icon">
+            <input
+              type="password" // Tipo password para ocultar
+              placeholder="Confirme a Senha"
+              required
+              value={confirmarSenha}
+              onChange={(e) => setConfirmarSenha(e.target.value)}
+            />
+            <FaEyeSlash className="icon" /> 
+          </div>
+
+          <button type="submit" className="botao-cadastro" disabled={loading}>
+            {loading ? "CADASTRANDO..." : "CRIAR CONTA"}
           </button>
+          
+          {/* Mensagens de Sucesso/Erro */}
+          {message && <p className="status-message">{message}</p>}
+
         </form>
       </div>
     </div>
