@@ -3,19 +3,27 @@ import "../Css/PerfilAdm.css"
 
 function PerilAdm() {
   return (
-    <div className='Container-adm'>
-        <div className='Container-formulario'>
+    <div className='Container-admPerfil'>
+      <div className='Container-formulario'>
+
+        <img src='/img/userAdm.png' className='iconPerfilAdm'/>
+        <div className='alinhamento-form'>
          <label>Nome</label>
-         <input type='text' value={nome}/>
-
-         <label>Email</label>
-         <input type='email' value={email}/>
-
-         <label>Senha</label>
-         <input type='password' value={senha}/>
-
-         <button onClick={SalvarEdicao} className='button-salvar'>Salvar</button>
+         <input type='text' value=''/>
         </div>
+        
+        <div className='alinhamento-form'>
+         <label>Email</label>
+         <input type='email' value=''/>
+        </div>
+
+        <div className='alinhamento-form'>
+         <label>Senha</label>
+         <input type='password' value=''/>
+        </div>
+
+        <button className='button-salvar'>Salvar</button>
+      </div>
     </div>
   )
 }

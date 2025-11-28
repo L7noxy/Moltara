@@ -7,26 +7,22 @@ function PainelDeControle() {
     <div className="container-painel">
       <div className="container-um">
 
-
         <div className="card-adm">
-
-        <div className="card-painel">
-
           <Link to="/criarProduto" className="card-link">
-           <img src='/img/mais.png'/>
+           <img src='/img/mais.png' className='img-iconMais'/>
            <span className="card-text">Adicionar Produto</span>
           </Link>
         </div>
 
         <div className="card-adm">
           <Link to="/estoque" className="card-link">
-            <img src='/img/GestorEstoque.png'/>
+            <img src='/img/GestorEstoque.png' className="img-iconGestor"/>
             <span className="card-text">Gestão de Estoque</span>
           </Link>
         </div>
 
         <div className="card-adm">
-          <Link to="/perfilAdm" className="card-link"> 
+          <Link to="/perilAdm" className="card-link"> 
            <img src= "/img/IconAdm.png" className='img-iconAdm'/>
            <span className="card-text">Editar Perfil</span>
           </Link>
@@ -34,28 +30,12 @@ function PainelDeControle() {
 
         <div className="card-adm">
           <Link to="/" className="card-link">
-           <img src='/img/S
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           
-           aida.png' className='img-saida'/>
+           <img src='/img/Saida.png' className='img-iconSaida'/>
             <span className="card-text">Sair do modo adm</span>
           </Link>
         </div>
 
       </div>
-    </div>
     </div>
   );
 }

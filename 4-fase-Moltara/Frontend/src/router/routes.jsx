@@ -10,7 +10,6 @@ import Pagamento from "../pages/Js/Pagamento.jsx";
 import CriarProduto from "../pages/Js/CriarProduto.jsx";
 import EstoqueProduto from "../pages/Js/EstoqueProduto.jsx";
 import PerilAdm from "../pages/Js/PerilAdm.jsx";
-
 import PainelDeControle from "../pages/Js/PainelDeControle.jsx";
 
 const router = createBrowserRouter([
