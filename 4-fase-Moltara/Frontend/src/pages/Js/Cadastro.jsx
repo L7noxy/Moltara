@@ -12,8 +12,6 @@ import {
   FaQuestionCircle,
 } from "react-icons/fa";
 
-
-
 export default function Cadastro() {
   const [showSenha, setShowSenha] = useState(false);
   const [showConfirma, setShowConfirma] = useState(false);
@@ -35,7 +33,7 @@ export default function Cadastro() {
     }
 
     try {
-      const response = await fetch( 
+      const response = await fetch(
         "http://localhost:3000/api/usuario/cadastro",
         {
           method: "POST",
@@ -62,7 +60,7 @@ export default function Cadastro() {
 
     setLogado(true);
 
-    if (logado) {
+    if (logado === true) {
       setTimeout(() => {
         navigate("/");
       }, 4000);
@@ -99,7 +97,7 @@ export default function Cadastro() {
               onChange={(e) => setCpf(e.target.value)}
               maxLength={11}
             />
-            <FaIdCard className="icon" />
+              <FaIdCard className="icon" />
           </div>
 
           <div className="input-icon">

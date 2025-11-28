@@ -5,7 +5,7 @@ import { RouterProvider } from "react-router-dom";
 import "./twindSetup";
 
 createRoot(document.getElementById("root")).render(
-    <GlobalContextProvider>
-      <RouterProvider router={router}></RouterProvider>
-    </GlobalContextProvider>  
+  <GlobalContextProvider>
+    <RouterProvider router={router}></RouterProvider>
+  </GlobalContextProvider>
 );

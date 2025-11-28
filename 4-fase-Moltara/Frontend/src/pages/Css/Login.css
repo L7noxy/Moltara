@@ -60,15 +60,6 @@
     /* Espaço entre os grupos de input */
 }
 
-.input-icon {
-    display: flex;
-    align-items: center;
-    position: relative;
-    /* Resetando o display flex-column para o div pai */
-    flex-direction: row;
-    gap: 0;
-    margin-bottom: 1.5rem;
-}
 
 .formulario-login input[type="email"],
 .formulario-login input[type="password"] {
@@ -90,12 +81,6 @@
     border-color: var(--primary-color);
 }
 
-.input-icon .icon {
-    position: absolute;
-    left: 10px;
-    color: #888;
-    font-size: 1.1rem;
-}
 
 
 /* 4. BOTÃO DE LOGIN (Substitui .cadastrar-produto[type="submit"]) */

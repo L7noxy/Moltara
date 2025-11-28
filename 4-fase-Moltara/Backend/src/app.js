@@ -4,6 +4,7 @@ import checkoutRoutes from "./routes/checkout.js";
 import userRoutes from "./routes/user.routes.js";
 import productRoutes from "./routes/product.routes.js";
 import cartRoutes from "./routes/cart.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/cart", cartRoutes);
 app.use("/api/checkout", checkoutRoutes);
 app.use("/api/usuario", userRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api/produto", productRoutes);
 
 export default app;

@@ -5,5 +5,6 @@ import { getUsuario } from "../Modules/User/user.controller.js";
 
 router.post('/cadastro', cadastrarUsuario);
 router.get('/buscar', getUsuario);
+router.get('/login', getUsuario);
 
 export default router;

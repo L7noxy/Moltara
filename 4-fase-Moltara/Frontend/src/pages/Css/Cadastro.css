@@ -12,7 +12,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   width: 100%;
-  max-width: 480px;
+  max-width: 550px;
 }
 
 .titulo-cadastro {
@@ -32,10 +32,6 @@
   margin-bottom: 16px;
 }
 
-.input-icon {
-  position: relative;
-}
-
 .input-icon input {
   width: 100%;
   padding: 14px 40px 14px 16px;
@@ -50,15 +46,6 @@
 .input-icon input:focus {
   outline: none;
   border-color: #A71111;
-}
-
-.input-icon .icon {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #37474F;
-  cursor: pointer;
 }
 
 .confirm-password {
@@ -103,7 +90,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.label-termos{
+.label-termos {
   display: flex;
   align-items: center;
   justify-content: center;

@@ -13,7 +13,6 @@
 
 
 #root {
-    /*CORES*/ 
     --color1: #263238;
     --color2: #37474F;
     --color3: #A71111;
@@ -21,8 +20,6 @@
     --color5: #F5F5F5;
     --color6: #FFFFFF;
     --color7: #111111;
-
-    /*FONTES*/
     --font1: "Urbanist", sans-serif;
     --font2: "Roboto", sans-serif;
 }
