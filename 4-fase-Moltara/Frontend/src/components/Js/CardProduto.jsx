@@ -89,18 +89,19 @@ export default function CardProduto() {
                     {estaCurtido ? <FaHeart color="#A9A9A9" /> : <FaRegHeart />}
                   </button>
                 </div>
-
-                <Link to={`/produtoDetalhada/${produto._id}`}>
-                  <div key={produto._id} className="card">
-                    <div className="imgBox">
-                      <img src={produto.imagemUrl} alt={produto.nome} />
-                    </div>
-                    <div className="contentBox">
-                      <h3 className="card-nome-produto">{produto.nome}</h3>
-                      <h2 className="price">{produto.preco} R$</h2>
-                    </div>
+                <div key={produto._id} className="card">
+                  <div>
+                    <Link to={`/produtoDetalhada/${produto._id}`}>
+                      <div className="imgBox">
+                        <img src={produto.imagemUrl} alt={produto.nome} />
+                      </div>
+                      <div className="contentBox">
+                        <h3 className="card-nome-produto">{produto.nome}</h3>
+                        <h2 className="price">{produto.preco} R$</h2>
+                      </div>
+                    </Link>
                   </div>
-                </Link>
+                </div>
               </div>
             );
           })}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useGlobalContext } from "../../context/GlobalContext.jsx";
-import { Link } from "react-router";
+import { Link } from "react-router-dom"; 
 import Navbar from "../../components/Js/Navbar.jsx";
 import Nav_carrinho from "../../components/Js/Nav_carrinho.jsx";
 import "../Css/Carrinho.css";
@@ -8,7 +8,7 @@ import "../Css/Carrinho.css";
 const API_URL = "http://localhost:3000/api/cart";
 
 export default function Carrinho({ produtoId }) {
-  const [carrinho, setCarrinho] = useState(null);
+const [carrinho, setCarrinho] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { token, isAuthenticated } = useGlobalContext();
@@ -48,6 +48,7 @@ export default function Carrinho({ produtoId }) {
   };
 
   const adicionarAoCarrinho = async () => {
+    setCarrinho([...carrinho, { productId: produtoId, quantity: 1 }]);
     if (!isAuthenticated || !token || !produtoId) {
       alert("Erro: ID do produto ou autenticação ausente.");
       return;
@@ -85,22 +86,52 @@ export default function Carrinho({ produtoId }) {
     }
   };
 
-  useEffect(() => {
-    buscarCart();
-  }, []);
+  function ListaDeProdutos() {
+    const [produtos, setProdutos] = useState([]);
 
-  if (loading) {
-    return (
-      <div>
-        <Navbar />
-        <p className="loading-message">Carregando carrinho...</p>
-      </div>
-    );
-  }
+    useEffect(() => {
+      axios
+        .get("http://localhost:3000/api/produtos")
+        .then((response) => {
+          setProdutos(response.data);
+        })
+        .catch((error) => console.error("Erro ao buscar produtos:", error));
+    }, []);
 
-  const itensDoCarrinho = carrinho?.items || [];
+    if (loading) {
+      return (
+        <div>
+          <Navbar />
+          <p className="loading-message">Carregando carrinho...</p>
+        </div>
+      );
+    }
 
-  if (!carrinho || itensDoCarrinho.length === 0) {
+    const itensDoCarrinho = carrinho?.items || [];
+
+    if (!carrinho || itensDoCarrinho.length === 0) {
+      return (
+        <div>
+          <Navbar />
+          <div className="container-carrinho">
+            <div className="itens-carrinho">
+              <div className="itens-da-compra">
+                <Nav_carrinho />
+                <div className="container-produtos">
+                  <div className="lista-produtos">
+                    <div className="produtos-carrinho">
+                      <p>Seu carrinho está vazio</p>
+                      {error && <p className="error-message">Erro: {error}</p>}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div>
         <Navbar />
@@ -111,9 +142,38 @@ export default function Carrinho({ produtoId }) {
               <div className="container-produtos">
                 <div className="lista-produtos">
                   <div className="produtos-carrinho">
-                    <p>Seu carrinho está vazio</p>
-                    {error && <p className="error-message">Erro: {error}</p>}
+                    {itensDoCarrinho.map((item, index) => (
+                      <div className="produto" key={index}>
+                        <img src="./img/cadeira.png" alt="" />
+                        <button className="deletar-produto">Remover</button>
+                        <p>
+                          Nome: {item.produto?.nome || "Produto Indefinido"}
+                        </p>{" "}
+                        <p>
+                          Preço: R${" "}
+                          {item.produto?.price
+                            ? item.produto.price.toFixed(2)
+                            : "0.00"}
+                        </p>{" "}
+                        <p>Quantidade: {item.quantidade}</p> <hr />
+                      </div>
+                    ))}
                   </div>
+                </div>
+              </div>
+
+              <div className="resumo-da-compra">
+                <h2>Resumo da compra </h2>
+                <p>Quantidade de produtos: {itensDoCarrinho.length} </p>
+                <p>
+                  Valor total: R${" "}
+                  {carrinho.total ? carrinho.total.toFixed(2) : "0.00"}{" "}
+                </p>
+                <div className="botoes-resumo-compra">
+                  <button className="cupom">Adicionar cupom</button>
+                  <Link to={"/confirmacao"}>
+                    <button className="comprar">Confirmar compra</button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -122,54 +182,4 @@ export default function Carrinho({ produtoId }) {
       </div>
     );
   }
-
-  return (
-    <div>
-      <Navbar />
-      <div className="container-carrinho">
-        <div className="itens-carrinho">
-          <div className="itens-da-compra">
-            <Nav_carrinho />
-            <div className="container-produtos">
-              <div className="lista-produtos">
-                <div className="produtos-carrinho">
-                  {itensDoCarrinho.map((item, index) => (
-                    <div className="produto" key={index}>
-                      <img src="./img/cadeira.png" alt="" />
-                      <button className="deletar-produto">Remover</button>
-                      <p>
-                        Nome: {item.produto?.nome || "Produto Indefinido"}
-                      </p>{" "}
-                      <p>
-                        Preço: R${" "}
-                        {item.produto?.price
-                          ? item.produto.price.toFixed(2)
-                          : "0.00"}
-                      </p>{" "}
-                      <p>Quantidade: {item.quantidade}</p> <hr />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="resumo-da-compra">
-              <h2>Resumo da compra </h2>
-              <p>Quantidade de produtos: {itensDoCarrinho.length} </p>
-              <p>
-                Valor total: R${" "}
-                {carrinho.total ? carrinho.total.toFixed(2) : "0.00"}{" "}
-              </p>
-              <div className="botoes-resumo-compra">
-                <button className="cupom">Adicionar cupom</button>
-                <Link to={"/confirmacao"}>
-                  <button className="comprar">Confirmar compra</button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
 }

@@ -1,53 +1,45 @@
 import { useNavigate, Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth.js";
 import React, { useState } from "react";
 import { useGlobalContext } from "../../context/GlobalContext.jsx"; 
 import "../Css/login.css"; 
 import Navbar from "../../components/Js/Navbar.jsx";
 import { FaEye, FaEnvelope, FaLock } from "react-icons/fa"; // Trocado FaUser/FaIdCard por FaLock
 
+
 export default function Login() {
+  const { signin } = useAuth();
   
-  // 1. Estados essenciais para o Login
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  
-  // 2. Contexto e Navegação
-  // 🔑 Usa a função 'login' do GlobalContext
-  const { login } = useGlobalContext(); 
-  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setMessage(""); // Limpa mensagens anteriores
-    setLoading(true);
-
-    const result = await login(email, senha);
-
-    if (result.success) {
-      setMessage("Login bem-sucedido! Redirecionando...");
-      navigate('/'); 
-    } else {
-      setMessage(`Erro ao fazer login: ${result.error}`);
+  const handleLogin = () => {
+    if(!email || !senha) {
+      setError("Prencha os campos de email e senha");
+      return;
     }
 
-    setLoading(false);
-  };
+    const res = signin(email, senha);
 
+    if(res){
+      setError(res)
+      return;
+    }
+    Navigate("/")
+  }
   return (
     <div>
       <Navbar />
-      {/* ⚠️ Alterada a classe container-cadastro para container-login */}
       <div className="container-login">
-        {/* ⚠️ Alterada a classe formulario-cadastro para formulario-login */}
-        <form className="formulario-login" onSubmit={handleSubmit}> 
+        <form className="formulario-login" onSubmit={handleLogin}> 
           <h2 className="titulo-login">Faça seu Login</h2>
           <div className="subtitulo-login">
             Entre com seus dados para continuar
           </div>
 
-          {/* EMAIL */}
           <div className="input-icon">
             <input
               type="email"
@@ -59,7 +51,6 @@ export default function Login() {
             <FaEnvelope className="icon" />
           </div>
 
-          {/* SENHA */}
           <div className="input-icon">
             <input
               type="password"
@@ -68,7 +59,7 @@ export default function Login() {
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
             />
-            <FaLock className="icon" /> {/* Ícone de cadeado */}
+            <FaLock className="icon" /> 
           </div>
 
           <button type="submit" className="botao-login" disabled={loading}>
