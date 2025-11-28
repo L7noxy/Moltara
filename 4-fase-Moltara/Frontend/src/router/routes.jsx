@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import { AuthProvider, useAuth }  from "../context/Auth.jsx";
 import Home from "../pages/Js/Home.jsx";
 import Cadastro from "../pages/Js/Cadastro.jsx";
 import Login from "../pages/Js/Login.jsx";
@@ -13,6 +14,12 @@ import PerilAdm from "../pages/Js/PerilAdm.jsx";
 
 import PainelDeControle from "../pages/Js/PainelDeControle.jsx";
 
+const Privado = ({ Item }) => {
+    const { logado } = useAuth();
+
+    return logado > 0 ? <Item /> : <Login />
+}
+
 const router = createBrowserRouter([
 
     { path: "/", element: <Home />},
@@ -21,7 +28,7 @@ const router = createBrowserRouter([
     { path: "/login", element: <Login /> },
     { path: "/perfil", element: <Perfil /> },
 
-    { path: "/carrinho", element: <Carrinho /> },
+    { path: "/carrinho", element: <Privado Item={<Carrinho />} /> },
     { path: "/confirmacao", element: <Confirmacao /> },
     { path: "/pagamento", element: <Pagamento /> },
 

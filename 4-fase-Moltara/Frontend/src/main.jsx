@@ -1,12 +1,11 @@
-import { createRoot } from 'react-dom/client';
-import { GlobalContextProvider } from './context/GlobalContext.jsx'
-import router from './router/routes.jsx'
-import {  RouterProvider } from 'react-router-dom';
+import { createRoot } from "react-dom/client";
+import { GlobalContextProvider } from "./context/GlobalContext.jsx";
+import router from "./router/routes.jsx";
+import { RouterProvider } from "react-router-dom";
 import "./twindSetup";
 
-createRoot(document.getElementById('root')).render(
-  <GlobalContextProvider>
-      <RouterProvider router={router}>
-      </RouterProvider>
-  </GlobalContextProvider>  
+createRoot(document.getElementById("root")).render(
+    <GlobalContextProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </GlobalContextProvider>  
 );
