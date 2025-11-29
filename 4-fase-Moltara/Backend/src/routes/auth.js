@@ -1,9 +1,9 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import User from "../models/User";
 
+import bcrypt from "bcrypt";
+import jwt from 'jsonwebtoken';
+import User from "../Modules/User/user.schema.js";  
 const JWT_SECRET = process.env.JWT_SECRET;
 const SALT_ROUNDS = 10;
 
@@ -34,4 +34,5 @@ export const login = async (req, res) => {
     res.status(500).json({ error: "Erro no servidor" });
   }
 };
-module.exports = router;
+
+export default router;
