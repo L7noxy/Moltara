@@ -19,6 +19,7 @@
     "@twind/preset-autoprefix": "^1.0.7",
     "@twind/preset-tailwind": "^1.1.4",
     "axios": "^1.13.2",
+    "connect-mongo": "^5.1.0",
     "lucide-react": "^0.544.0",
     "mongose": "^0.0.2-security",
     "multer": "^2.0.2",

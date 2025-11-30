@@ -1,0 +1,94 @@
+/* Container principal do LoginAdm */
+.login-adm-container {
+    /* Centraliza o formulário na tela */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Usa a cor de fundo clara da paleta */
+    background-color: var(--color5); /* #F5F5F5 */
+    /* Altura total da viewport */
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Card/Box do Formulário de Login */
+.login-box {
+    /* Cor de fundo branca */
+    background-color: var(--color6); /* #FFFFFF */
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+}
+
+.login-box h1 {
+    font-family: var(--font1);
+    font-weight: 700;
+    color: var(--color1); /* #263238 */
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+.login-box input {
+    background-color: var(--color5); 
+    color: var(--color1);
+    padding: 12px 15px;
+    border: 1px solid var(--color2);
+    border-radius: 4px;
+    font-family: var(--font1);
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.login-box input::placeholder {
+    color: var(--color2);
+}
+
+.login-box input:focus {
+    border-color: var(--color4);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(187, 37, 47, 0.2);
+}
+
+.login-box button {
+    background-color: var(--color3);
+    color: var(--color6);
+    font-family: var(--font1);
+    font-weight: 600;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.login-box button:hover {
+    background-color: var(--color4);
+}
+
+.login-box button:active {
+    transform: translateY(1px);
+}
+
+.login-box p {
+    text-align: center;
+    font-family: var(--font1);
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.login-box .msg-sucesso {
+    color: green; 
+}
+
+.login-box .msg-erro {
+    color: var(--color3);
+    font-weight: 500;
+}

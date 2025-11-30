@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
-import "../Css/PerfilAdm.css"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import "../Css/PerfilAdm.css";
 
 function PerilAdm() {
   const [nome, setNome]= useState('')
@@ -12,7 +12,7 @@ function PerilAdm() {
 
   useEffect(() => {
     const carregarDadosPerfil = async () => {
-      setIsLoading(true); 
+      setIsLoading(true);
       setStatusMessage(null);
 
       try {
@@ -22,17 +22,17 @@ function PerilAdm() {
        setNome(dadosAdm.nome);
        setEmail(dadosAdm.email);
 
-       } catch (error) {
-       console.error("Erro ao carregar o perfil:", error);
-       const msg = error.response?.data?.message || 'Não foi possível carregar os dados do perfil. Verifique a conexão.';
-       setStatusMessage({ type: 'error', text: msg });
-       } finally {
-       setIsLoading(false);
+      } catch (error) {
+        console.error("Erro ao carregar o perfil:", error);
+        const msg = error.response?.data?.message || "Não foi possível carregar o perfil.";
+        setStatusMessage({ type: "error", text: msg });
+      } finally {
+        setIsLoading(false);
       }
-    
     };
-     carregarDadosPerfil();
-    }, [])
+
+    carregarDadosPerfil(); 
+  }, []);
 
     const salvarDados = async () => {
     if (!nome.trim() || !email.trim()) {
@@ -69,11 +69,17 @@ function PerilAdm() {
     }
   };
 
-   return (
-    <div className='Container-admPerfil'>
-      <div className='Container-formulario'>
+  return (
+    <div className="Container-admPerfil">
+      <div className="Container-formulario">
 
         <img src='/img/userAdm.png' className='iconPerfilAdm'/>
+        
+        {statusMessage && (
+          <p className={`message message-${statusMessage.type}`}>
+           {statusMessage.text}
+          </p>
+        )}
         <div className='alinhamento-form'>
          <label>Nome</label>
           <input type='text' value={nome} 
@@ -99,18 +105,12 @@ function PerilAdm() {
           />
         </div>
 
-        {statusMessage && (
-          <p className={`message message-${statusMessage.type}`}>
-           {statusMessage.text}
-          </p>
-        )}
-
         <button className='button-salvar' onClick={salvarDados} disabled={isLoading}>
          {isLoading ? 'Aguarde...' : 'Salvar'}
         </button>
       </div>
     </div>
-  )
+  );
 }
 
-export default PerilAdm
+export default PerilAdm;

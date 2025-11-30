@@ -16,6 +16,7 @@ export const cadastrarUsuario = async (req, res) => {
       cpf,
       email,
       senha: hashSenha,
+      role: "user",
     });
 
     await novoUsuario.save();
@@ -56,7 +57,7 @@ export const getUsuario = async (req, res) => {
 export const login = async (req, res) => {
   const { email, senha } = req.body;
 
-  const user = await User.findOne({ email });
+  const user = await Usuario.findOne({ email });
   if (!user) return res.status(400).json({ message: "Usuário não encontrado" });
 
   const match = await bcrypt.compare(senha, user.senha);
@@ -69,7 +70,7 @@ export const login = async (req, res) => {
 };
 
 export const me = async (req, res) => {
-  const user = await User.findById(req.session.userId).select("-senha");
+  const user = await Usuario.findById(req.session.userId).select("-senha");
   res.json(user);
 };
 
