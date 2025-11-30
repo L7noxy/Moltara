@@ -11,12 +11,12 @@ import { useGlobalContext } from "../../context/GlobalContext";
 export default function Navbar() {
   const navigate = useNavigate();
 
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
+  const handleLogout = async () => {
+    await fetch("http://localhost:3000/api/logout", {
+      method: "POST",
+      credentials: "include",
+    });
   };
-
   return (
     <>
       <nav className="navbar">

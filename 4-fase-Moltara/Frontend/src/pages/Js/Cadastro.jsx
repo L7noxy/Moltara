@@ -24,54 +24,25 @@ export default function Cadastro() {
   const [logado, setLogado] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (senha !== confirmarSenha) {
-      alert("As senhas não coincidem!");
-      return;
-    }
+    const res = await fetch("http://localhost:3000/api/usuario/cadastro", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nome, email, senha, cpf }),
+    });
 
-    try {
-      const response = await fetch(
-        "http://localhost:3000/api/usuario/cadastro",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            nome,
-            email,
-            senha,
-            cpf,
-          }),
-        }
-      );
-
-      setNome("");
-      setSenha("");
-      setCpf("");
-      setConfirmarSenha("");
-      setEmail("");
-    } catch (erro) {
-      console.error("Ocorreu um erro:", erro);
-    }
-
-    setLogado(true);
-
-    if (logado === true) {
-      setTimeout(() => {
-        navigate("/");
-      }, 4000);
-    }
+    const data = await res.json();
+    setMensagem(data.message || "");
   };
 
   return (
     <div>
       <Navbar />
       <div className="container-cadastro">
-        <form className="formulario-cadastro" onSubmit={handleSubmit}>
+        <form className="formulario-cadastro" onSubmit={handleRegister}>
           <h1 className="titulo-cadastro">CRIAR CONTA</h1>
           <div className="subtitulo-cadastro">
             Informe seus dados para continuar a compra
@@ -97,7 +68,7 @@ export default function Cadastro() {
               onChange={(e) => setCpf(e.target.value)}
               maxLength={11}
             />
-              <FaIdCard className="icon" />
+            <FaIdCard className="icon" />
           </div>
 
           <div className="input-icon">

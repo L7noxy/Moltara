@@ -1,6 +1,8 @@
 import bcrypt from "bcrypt";
 import Usuario from "../User/user.schema.js";
+import { Router } from "express";
 
+const router = Router();
 const SALT_ROUNDS = 10;
 
 export const cadastrarUsuario = async (req, res) => {
@@ -47,3 +49,35 @@ export const getUsuario = async (req, res) => {
     });
   }
 };
+
+
+// Login de usuario
+
+export const login = async (req, res) => {
+  const { email, senha } = req.body;
+
+  const user = await User.findOne({ email });
+  if (!user) return res.status(400).json({ message: "Usuário não encontrado" });
+
+  const match = await bcrypt.compare(senha, user.senha);
+  if (!match) return res.status(400).json({ message: "Senha inválida" });
+
+  // Criar sessão
+  req.session.userId = user._id;
+
+  res.status(200).json({ message: "Logado com sucesso" });
+};
+
+export const me = async (req, res) => {
+  const user = await User.findById(req.session.userId).select("-senha");
+  res.json(user);
+};
+
+// export const logout = (req, res) => {
+//   req.session.destroy(() => {
+//     res.clearCookie("connect.sid");
+//     res.json({ message: "Deslogado" });
+//   });
+// };
+
+export default router;
