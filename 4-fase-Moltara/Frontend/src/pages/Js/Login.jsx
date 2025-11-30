@@ -1,8 +1,11 @@
 import { useNavigate, Link } from "react-router-dom";
-import React, { useState } from "react";
+import { useState } from "react";
 import "../Css/login.css";
 import Navbar from "../../components/Js/Navbar.jsx";
-import { FaEnvelope, FaLock } from "react-icons/fa"; // Removida FaEye, pois não foi usada na lógica
+import { FaEnvelope, FaLock } from "react-icons/fa";
+
+import axios from "axios";
+axios.defaults.withCredentials = true;
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -12,28 +15,32 @@ export default function Login() {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  const fazerLogin = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/usuario/login",
+        {
+          email,
+          senha,
+        },
+        { withCredentials: true }
+      );
 
-    const res = await fetch("http://localhost:3000/api/login", {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email,
-        senha,
-      }),
-    });
-
-    const data = await res.json();
-    console.log(data);
+      if (response.data.role === "user") {
+        navigate("/home");
+      } else if (response.data.role === "admin") {
+        navigate("/painelDeControle");
+      }
+    } catch (error) {
+      alert("Erro ao fazer login");
+    }
   };
 
   return (
     <div>
       <Navbar />
       <div className="container-login">
-        <form className="formulario-login" onSubmit={handleLogin}>
+        <form className="formulario-login" onSubmit={fazerLogin}>
           <h2 className="titulo-login">Faça seu Login</h2>
           <div className="subtitulo-login">
             Entre com seus dados para continuar
