@@ -15,13 +15,15 @@ import {
 export default function Cadastro() {
   const [showSenha, setShowSenha] = useState(false);
   const [showConfirma, setShowConfirma] = useState(false);
-  const [cpf, setCpf] = useState("");
+  const [mensagem, setMensagem] = useState("");
+
+  const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [nome, setNome] = useState("");
+  const [cpf, setCpf] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [aceitouTermos, setAceitouTermos] = useState(false);
-  const [logado, setLogado] = useState(false);
+
   const navigate = useNavigate();
 
   const handleRegister = async (e) => {
@@ -31,11 +33,20 @@ export default function Cadastro() {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nome, email, senha, cpf }),
+      body: JSON.stringify({
+        nome,
+        email,
+        senha,
+        cpf,
+      }),
     });
 
     const data = await res.json();
     setMensagem(data.message || "");
+
+    if (res.ok) {
+      navigate("/login");
+    } 
   };
 
   return (

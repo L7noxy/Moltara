@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
 
 export default function ProtectedAdmin({ children }) {
   const [autorizado, setAutorizado] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const verificar = async () => {
@@ -21,7 +24,7 @@ export default function ProtectedAdmin({ children }) {
   if (autorizado === null) return <p>Carregando...</p>;
 
   if (autorizado === false) {
-    window.location.href = "/loginAdm";
+    navigate("/loginAdm");
     return null;
   }
 

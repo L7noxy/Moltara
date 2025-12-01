@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import '../Css/loginAdm.css';
+import "../Css/loginAdm.css";
 import axios from "axios";
 
 axios.defaults.withCredentials = true;
@@ -20,23 +20,25 @@ export default function LoginAdm() {
         },
         { withCredentials: true }
       );
-
-      
     } catch (error) {
       alert("Credenciais inválidas ou sem permissão");
     }
   };
-
   return (
-    <div>
-      <h1>Login Admin</h1>
-      <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-      <input
-        placeholder="Senha"
-        type="password"
-        onChange={(e) => setSenha(e.target.value)}
-      />
-      <button onClick={fazerLogin}>Entrar</button>
+    <div className="login-container">
+      <div className="login-box">
+        <h1>Login Admin</h1>
+
+        <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+
+        <input
+          placeholder="Senha"
+          type="password"
+          onChange={(e) => setSenha(e.target.value)}
+        />
+
+        <button onClick={fazerLogin}>Entrar</button>
+      </div>
     </div>
   );
 }

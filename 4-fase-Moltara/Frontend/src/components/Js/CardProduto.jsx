@@ -79,7 +79,7 @@ export default function CardProduto() {
             const estaCurtido = curtidos[produto._id];
 
             return (
-              <div>
+              <div key={produto._id} >
                 <div>
                   <button
                     id={`btn-curtir-${produto._id}`}
@@ -89,7 +89,7 @@ export default function CardProduto() {
                     {estaCurtido ? <FaHeart color="#A9A9A9" /> : <FaRegHeart />}
                   </button>
                 </div>
-                <div key={produto._id} className="card">
+                <div className="card">
                   <div>
                     <Link to={`/produtoDetalhada/${produto._id}`}>
                       <div className="imgBox">
