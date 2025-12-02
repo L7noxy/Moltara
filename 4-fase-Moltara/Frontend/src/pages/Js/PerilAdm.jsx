@@ -16,7 +16,7 @@ function PerilAdm() {
       setStatusMessage(null);
 
       try {
-       const response = await axios.get('');
+       const response = await axios.get('http://localhost:3000/api/admin/perfil');
        const dadosAdm = response.data;
         
        setNome(dadosAdm.nome);
@@ -56,7 +56,7 @@ function PerilAdm() {
     }
 
     try {
-      await axios.put('', dadosAtualizados);
+      await axios.put('http://localhost:3000/api/admin/perfil', dadosAtualizados);
       setStatusMessage({ type: 'success', text: 'Perfil atualizado com sucesso!' });
       setSenha(''); 
 
