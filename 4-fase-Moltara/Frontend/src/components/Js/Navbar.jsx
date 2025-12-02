@@ -7,46 +7,53 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 
 import "../Css/Navbar.css";
 import { useGlobalContext } from "../../context/GlobalContext";
+
+
+
+
+
+
+export default function Navbar() {
+
+  const navigate = useNavigate();
 const { user, setUser, setIsLoggedIn, isLoggedIn } = useGlobalContext();
 
-const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
-const handleLogout = async () => {
+  const handleLogout = async () => {
     try {
-        await fetch("http://localhost:3000/api/logout", {
-            method: "POST",
-            credentials: "include",
-        });
+      await fetch("http://localhost:3000/api/logout", {
+        method: "POST",
+        credentials: "include",
+      });
 
-        setUser(null);
-        setIsLoggedIn(false);
+      setUser(null);
+      setIsLoggedIn(false);
 
-        navigate("/");
-      
-      } catch (error) {
-        console.error("Erro ao fazer logout:", error);
-      
+      navigate("/");
+
+    } catch (error) {
+      console.error("Erro ao fazer logout:", error);
+
     }
   }
 
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-        console.log(`Pesquisando por: ${searchTerm}`);
-        navigate(`/pesquisa?q=${encodeURIComponent(searchTerm.trim())}`);
+      console.log(`Pesquisando por: ${searchTerm}`);
+      navigate(`/pesquisa?q=${encodeURIComponent(searchTerm.trim())}`);
     }
   };
 
 
-export default function Navbar() {
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    await fetch("http://localhost:3000/api/logout", {
-      method: "POST",
-      credentials: "include",
-    });
-  };
+  // const handleLogout = async () => {
+  //   await fetch("http://localhost:3000/api/logout", {
+  //     method: "POST",
+  //     credentials: "include",
+  //   });
+  // };
+  
   return (
     <>
       <nav className="navbar">
@@ -59,9 +66,9 @@ export default function Navbar() {
         </div>
 
         <div className="search-bar">
-          <input type="text" placeholder="Pesquisar..." 
-          value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}/>
+          <input type="text" placeholder="Pesquisar..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)} />
           <button type="submit">
             <IoSearchOutline size={20} color="#5F6368" />
           </button>
@@ -72,7 +79,7 @@ export default function Navbar() {
             <>
               <Link to="/perfil" className="profile-link">
                 <LuCircleUserRound size={25} color="#fff" />
-                <span className="user-name">{user?.nome || "Meu Perfil"}</span> 
+                <span className="user-name">{user?.nome || "Meu Perfil"}</span>
               </Link>
 
               <button onClick={handleLogout} className="logout-btn">
@@ -80,9 +87,9 @@ export default function Navbar() {
               </button>
             </>
           ) : (
-          <>
+            <>
 
-         <Link to="/login" className="login-btn">
+              <Link to="/login" className="login-btn">
                 Entrar
               </Link>
               <p>ou</p>
@@ -91,7 +98,7 @@ export default function Navbar() {
               </Link>
             </>
           )}
-          
+
           <Link to="/carrinho">
             <HiShoppingCart color="#fff" size={20} />
           </Link>
