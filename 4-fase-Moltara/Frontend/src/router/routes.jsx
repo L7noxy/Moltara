@@ -40,9 +40,9 @@ const router = createBrowserRouter([
   {
     path: "/criarProduto",
     element: (
-      <ProtectedAdmin>
+      // <ProtectedAdmin>
         <CriarProduto />
-      </ProtectedAdmin>
+      // </ProtectedAdmin>
     ),
   },
 

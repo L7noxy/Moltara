@@ -7,7 +7,7 @@ export default function CriarProduto() {
     const [nome, setNome] = useState("");
     const [descricao, setDescricao] = useState("");
     const [preco, setPreco] = useState(0);
-    const [imagemFile, setImagemFile] = useState(null); 
+    const [imagemFile, setImagemFile] = useState(null);
     const [Produto, setProduto] = useState(null);
     const navigate = useNavigate();
 
@@ -18,19 +18,19 @@ export default function CriarProduto() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const formData = new FormData(); 
+        const formData = new FormData();
         formData.append("nome", nome);
         formData.append("descricao", descricao);
         formData.append("preco", preco);
-        
+
         if (imagemFile) {
-            formData.append("imageFile", imagemFile); 
+            formData.append("imageFile", imagemFile);
         }
 
         try {
             const response = await fetch("http://localhost:3000/api/produto/criar", {
                 method: "POST",
-                body: formData, 
+                body: formData,
             });
 
             const data = await response.json();
@@ -39,17 +39,17 @@ export default function CriarProduto() {
             }
 
             console.log("Produto criado com sucesso:", data);
-            
+
             setNome("");
             setDescricao("");
             setPreco(0);
-            setImagemFile(null); 
+            setImagemFile(null);
 
-            
+
         } catch (erro) {
             console.error("Ocorreu um erro:", erro);
             alert(`Erro ao cadastrar: ${erro.message}`);
-            return; 
+            return;
         }
 
         setTimeout(() => {
@@ -96,7 +96,7 @@ export default function CriarProduto() {
                             className="preco"
                             min={1}
                             value={preco}
-                            onChange={(e) => setPreco(e.target.value)} 
+                            onChange={(e) => setPreco(e.target.value)}
                         />
                     </div>
 
@@ -104,13 +104,50 @@ export default function CriarProduto() {
                         <label htmlFor="imageFile">Imagem:</label>
                         <input
                             type="file"
-                            id="imageFile" 
-                            name="imageFile" 
+                            id="imageFile"
+                            name="imageFile"
                             accept="image/*"
                             required
                             className="img"
-                            onChange={handleFileChange} 
+                            onChange={handleFileChange}
                         />
+                    </div>
+
+                    <div className="personalizacao">
+                        <div className="title-personalizacao">
+                            <h1>Personalizações</h1>
+                            <p>(Coloque pelo menos 3 de cada)</p>
+                        </div>
+
+                        <hr />
+
+                        <div className="btns-personalizacao">
+                            <h2>Cores: </h2>
+                            <ul>
+                                <li><button >Azul</button></li>
+                                <li><button>Verde</button></li>
+                                <li><button>Vermelho</button></li>
+                            </ul>
+                        </div>
+                        <hr />
+                        <div className="btns-personalizacao">
+                            <h2>Tamanhos: </h2>
+                            <ul>
+                                <li><button>Pequeno</button></li>
+                                <li><button>Médio</button></li>
+                                <li><button>Grande</button></li>
+                            </ul>
+                        </div>
+                        <hr />
+                        <div className="btns-personalizacao">
+                            <h2>Simbolos: </h2>
+                            <ul>
+                                <li><button>Estrela</button></li>
+                                <li><button>Casa</button></li>
+                                <li><button>Circulo</button></li>
+                            </ul>
+                        </div>
+                        <hr />
                     </div>
                     <button type="submit" className="cadastrar-produto">Cadastrar Produto</button>
                 </form>
