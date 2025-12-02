@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import '../Css/PaginaResultados.css'; // Crie este CSS para estilização
+import '../Css/PaginaResultados.css'; 
 
 function PaginaResultados() {
   const [produtos, setProdutos] = useState([]);
@@ -74,6 +74,10 @@ function PaginaResultados() {
                 <h3>{produto.nome}</h3> 
 
                 <p className="produto-descricao">{produto.descricao}</p>
+
+                <p className="produto-preco">
+                  R$ {produto.preco ? produto.preco.toFixed(2).replace('.', ',') : 'Preço indisponível'}
+                </p>
                 
                 <button className="btn-comprar">Ver Detalhes</button>
               </div>
