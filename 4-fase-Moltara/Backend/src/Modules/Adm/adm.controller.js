@@ -1,29 +1,29 @@
-import asyncHandler from 'express-async-handler'
-import {getProfile, updateProfile} from './adm.service.js'
+import asyncHandler from "express-async-handler";
+import { getProfile, updateProfile } from "./adm.service.js";
+import bcrypt from "bcrypt";
+import Usuario from "../User/user.schema.js";
 
-const getAdminProfile= asyncHandler(async (req, res) => {
- try {
- const profileData= await getProfile(req.user._id)
- res.json(profileData)
-
- }catch (error){
-  res.status(error.status || 500)
-  throw new error (error.message || 'Falha ao buscar perfil')
- }
+const getAdminProfile = asyncHandler(async (req, res) => {
+  try {
+    const profileData = await getProfile(req.user._id);
+    res.json(profileData);
+  } catch (error) {
+    res.status(error.status || 500);
+    throw new error(error.message || "Falha ao buscar perfil");
+  }
 });
 
-const updateAdminProfile= asyncHandler(async (req, res) => {
- try{
-  const {nome, email, senha}= req.body
+const updateAdminProfile = asyncHandler(async (req, res) => {
+  try {
+    const { nome, email, senha } = req.body;
 
-  const result= await updateProfile(req.user._id, {nome, email, senha})
+    const result = await updateProfile(req.user._id, { nome, email, senha });
 
-  res.json(result)
-
- }catch (error) {
-  res.status(error.status || 500)
-  throw new error(error.message || 'Falha ao atualizar perfil')
- }
+    res.json(result);
+  } catch (error) {
+    res.status(error.status || 500);
+    throw new error(error.message || "Falha ao atualizar perfil");
+  }
 });
 
 export const loginAdmin = async (req, res) => {
@@ -55,11 +55,10 @@ export const loginAdmin = async (req, res) => {
       email: user.email,
       role: user.role,
     });
-
   } catch (error) {
     console.error("Erro no login admin:", error);
     return res.status(500).json({ message: "Erro interno no login admin" });
   }
 };
 
-export {getAdminProfile, updateAdminProfile}
+export { getAdminProfile, updateAdminProfile };
