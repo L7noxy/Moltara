@@ -79,7 +79,7 @@ export default function Navbar() {
                 Sair
               </button>
             </>
-          ) : (
+        ) : (
           <>
 
          <Link to="/login" className="login-btn">
@@ -101,4 +101,5 @@ export default function Navbar() {
       </nav>
     </>
   );
+  
 }
