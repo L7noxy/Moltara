@@ -124,18 +124,18 @@ export default function CriarProduto() {
                         <div className="btns-personalizacao">
                             <h2>Cores: </h2>
                             <ul>
-                                <li><button >Azul</button></li>
-                                <li><button>Verde</button></li>
-                                <li><button>Vermelho</button></li>
+                                <li><button className="btn-azul" >Azul</button></li>
+                                <li><button className="btn-verde">Verde</button></li>
+                                <li><button className="btn-vermelho">Vermelho</button></li>
                             </ul>
                         </div>
                         <hr />
                         <div className="btns-personalizacao">
                             <h2>Tamanhos: </h2>
                             <ul>
-                                <li><button>Pequeno</button></li>
-                                <li><button>Médio</button></li>
-                                <li><button>Grande</button></li>
+                                <li><button className="btn-pequeno">Pequeno</button></li>
+                                <li><button className="btn-medio">Médio</button></li>
+                                <li><button className="btn-grande">Grande</button></li>
                             </ul>
                         </div>
                         <hr />

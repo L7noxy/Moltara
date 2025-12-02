@@ -19,7 +19,7 @@ export default function ProdutoDetalhada() {
   });
 
   useEffect(() => {
-    const fetchProduto = async () => {
+    const buscarProduto = async () => {
       if (!id) {
         setError("ID do produto não fornecido.");
         setLoading(false);
@@ -50,11 +50,11 @@ export default function ProdutoDetalhada() {
       }
     };
 
-    fetchProduto();
+    buscarProduto();
   }, [id]);
 
-  const handleSubmitCarrinho = async (e) => {
-    e.preventDefault();
+  const handleAddToCart = async (produto) => {
+    const { _id, nome } = produto;
 
     try {
       const response = await fetch(
@@ -65,31 +65,29 @@ export default function ProdutoDetalhada() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            nome,
-            email,
-            senha,
-            cpf,
+            produtoId: _id,
+            quantidade: 0,
           }),
         }
       );
 
-      setNome("");
-      setSenha("");
-      setCpf("");
-      setConfirmarSenha("");
-      setEmail("");
-    } catch (erro) {
-      console.error("Ocorreu um erro:", erro);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.message ||
+          `Erro ${response.status}: Falha ao adicionar produto ao carrinho.`
+        );
+      }
+
+      alert(`✅ "${nome}" adicionado ao carrinho!`);
+    } catch (error) {
+      console.error("Erro ao adicionar produto ao carrinho:", error);
+      alert(`Não foi possível adicionar ao carrinho: ${error.message}`);
     }
 
-    setLogado(true);
-
-    if (logado) {
-      setTimeout(() => {
-        navigate("/");
-      }, 4000);
-    }
   };
+
   if (loading) {
     return <div>Carregando detalhes do produto...</div>;
   }
@@ -166,11 +164,10 @@ export default function ProdutoDetalhada() {
                 </p>
                 <div className="checkbox-container">
                   <button
-                    className={`cor-button cor-vermelho ${
-                      personalizacaoSelecionada.cor === "Vermelho"
-                        ? "selected"
-                        : ""
-                    }`}
+                    className={`cor-button cor-vermelho ${personalizacaoSelecionada.cor === "Vermelho"
+                      ? "selected"
+                      : ""
+                      }`}
                     onClick={() =>
                       handlePersonalizacaoChange("cor", "Vermelho")
                     }
@@ -178,29 +175,26 @@ export default function ProdutoDetalhada() {
                   />
 
                   <button
-                    className={`cor-button cor-azul ${
-                      personalizacaoSelecionada.cor === "Azul" ? "selected" : ""
-                    }`}
+                    className={`cor-button cor-azul ${personalizacaoSelecionada.cor === "Azul" ? "selected" : ""
+                      }`}
                     onClick={() => handlePersonalizacaoChange("cor", "Azul")}
                     aria-label="Selecionar cor Azul"
                   />
 
                   <button
-                    className={`cor-button cor-amarelo ${
-                      personalizacaoSelecionada.cor === "Amarelo"
-                        ? "selected"
-                        : ""
-                    }`}
+                    className={`cor-button cor-amarelo ${personalizacaoSelecionada.cor === "Amarelo"
+                      ? "selected"
+                      : ""
+                      }`}
                     onClick={() => handlePersonalizacaoChange("cor", "Amarelo")}
                     aria-label="Selecionar cor Amarela"
                   />
 
                   <button
-                    className={`cor-button cor-verde ${
-                      personalizacaoSelecionada.cor === "Verde"
-                        ? "selected"
-                        : ""
-                    }`}
+                    className={`cor-button cor-verde ${personalizacaoSelecionada.cor === "Verde"
+                      ? "selected"
+                      : ""
+                      }`}
                     onClick={() => handlePersonalizacaoChange("cor", "Verde")}
                     aria-label="Selecionar cor Verde"
                   />
@@ -216,11 +210,10 @@ export default function ProdutoDetalhada() {
                 <div className="checkbox-container">
                   <div className="checkbox-container">
                     <button
-                      className={`tamanho-button tamanho-pequeno ${
-                        personalizacaoSelecionada.tamanho === "Pequeno"
-                          ? "selected"
-                          : ""
-                      }`}
+                      className={`tamanho-button tamanho-pequeno ${personalizacaoSelecionada.tamanho === "Pequeno"
+                        ? "selected"
+                        : ""
+                        }`}
                       onClick={() =>
                         handlePersonalizacaoChange("tamanho", "Pequeno")
                       }
@@ -229,11 +222,10 @@ export default function ProdutoDetalhada() {
                     </button>
 
                     <button
-                      className={`tamanho-button tamanho-medio ${
-                        personalizacaoSelecionada.tamanho === "Médio"
-                          ? "selected"
-                          : ""
-                      }`}
+                      className={`tamanho-button tamanho-medio ${personalizacaoSelecionada.tamanho === "Médio"
+                        ? "selected"
+                        : ""
+                        }`}
                       onClick={() =>
                         handlePersonalizacaoChange("tamanho", "Médio")
                       }
@@ -242,11 +234,10 @@ export default function ProdutoDetalhada() {
                     </button>
 
                     <button
-                      className={`tamanho-button tamanho-grande ${
-                        personalizacaoSelecionada.tamanho === "Grande"
-                          ? "selected"
-                          : ""
-                      }`}
+                      className={`tamanho-button tamanho-grande ${personalizacaoSelecionada.tamanho === "Grande"
+                        ? "selected"
+                        : ""
+                        }`}
                       onClick={() =>
                         handlePersonalizacaoChange("tamanho", "Grande")
                       }
@@ -263,11 +254,10 @@ export default function ProdutoDetalhada() {
                   </p>
                   <div className="checkbox-container">
                     <button
-                      className={`simbolo-button ${
-                        personalizacaoSelecionada.simbolo === "Estrela"
-                          ? "selected"
-                          : ""
-                      }`}
+                      className={`simbolo-button ${personalizacaoSelecionada.simbolo === "Estrela"
+                        ? "selected"
+                        : ""
+                        }`}
                       onClick={() =>
                         handlePersonalizacaoChange("simbolo", "Estrela")
                       }
@@ -284,11 +274,10 @@ export default function ProdutoDetalhada() {
                     </button>
 
                     <button
-                      className={`simbolo-button ${
-                        personalizacaoSelecionada.simbolo === "Casa"
-                          ? "selected"
-                          : ""
-                      }`}
+                      className={`simbolo-button ${personalizacaoSelecionada.simbolo === "Casa"
+                        ? "selected"
+                        : ""
+                        }`}
                       onClick={() =>
                         handlePersonalizacaoChange("simbolo", "Casa")
                       }
@@ -305,11 +294,10 @@ export default function ProdutoDetalhada() {
                     </button>
 
                     <button
-                      className={`simbolo-button ${
-                        personalizacaoSelecionada.simbolo === "Circulo"
-                          ? "selected"
-                          : ""
-                      }`}
+                      className={`simbolo-button ${personalizacaoSelecionada.simbolo === "Circulo"
+                        ? "selected"
+                        : ""
+                        }`}
                       onClick={() =>
                         handlePersonalizacaoChange("simbolo", "Circulo")
                       }
@@ -350,7 +338,7 @@ export default function ProdutoDetalhada() {
           </div>
 
           <div className="botoes-compra">
-            <button className="button-adicionar" onClick={handleSubmitCarrinho}>
+            <button className="button-adicionar" onClick={handleAddToCart}>
               Adicionar ao Carrinnho
             </button>
             <button className="button-confirmar">Confirmar Compra</button>
