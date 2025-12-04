@@ -40,13 +40,13 @@ router.post("/login", async (req, res) => {
     res.json({
       message: "Login realizado com sucesso",
       role: user.role,
+      nome: user.nome,
+      email: user.email, 
     });
   } catch (error) {
     console.error("Erro no login:", error);
     res.status(500).json({ error: "Erro interno no servidor" });
   }
 });
-
-
 
 export default router;

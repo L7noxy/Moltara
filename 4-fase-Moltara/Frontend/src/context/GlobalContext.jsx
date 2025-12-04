@@ -1,98 +1,99 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
+import axios from "axios";
 
-const TOKEN_KEY = "jwtToken";
-const API_URL = "http://localhost:3000/api/auth";
+axios.defaults.withCredentials = true;
 
-// 1. O Contexto em si
 export const GlobalContext = createContext(null);
 
-// 2. O Provedor (GlobalContextProvider)
 export const GlobalContextProvider = ({ children }) => {
-  const [token, setToken] = useState(localStorage.getItem(TOKEN_KEY));
-  const [isAuthenticated, setIsAuthenticated] = useState(!!token);
-  const [userId, setUserId] = useState(null);
+  const [user, setUser] = useState(null); // informações do usuário
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // status de login
+  const [loadingUser, setLoadingUser] = useState(true);
+
+  // Carrega o usuário automaticamente ao abrir a aplicação
   useEffect(() => {
-    if (token) {
-      localStorage.setItem(TOKEN_KEY, token);
-      setIsAuthenticated(true);
-    } else {
-      localStorage.removeItem(TOKEN_KEY);
-      setIsAuthenticated(false);
-      setUserId(null);
-    }
-  }, [token]);
+    async function fetchUser() {
+      try {
+        const response = await axios.get(
+          "http://localhost:3000/api/usuario/me",
+          { withCredentials: true }
+        );
 
-  const login = async (email, password) => {
-    try {
-      const response = await fetch(`${API_URL}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setToken(data.token);
-        return { success: true, message: "Login bem-sucedido." };
-      } else {
-        return {
-          success: false,
-          error: data.error || "Credenciais inválidas.",
-        };
+        if (response.data?.usuario) {
+          setUser(response.data.usuario);
+          setIsLoggedIn(true);
+        } else {
+          setUser(null);
+          setIsLoggedIn(false);
+        }
+      } catch (error) {
+        setUser(null);
+        setIsLoggedIn(false);
+      } finally {
+        setLoadingUser(false);
       }
-    } catch (error) {
-      return { success: false, error: "Erro de conexão com o servidor." };
     }
-  };
-  const register = async (name, email, password) => {
+
+    fetchUser();
+  }, []);
+
+  // Login usando sessões
+  const login = async (email, senha) => {
     try {
-      const response = await fetch(`${API_URL}/register`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
-      });
+      const response = await axios.post(
+        "http://localhost:3000/api/usuario/login",
+        { email, senha },
+        { withCredentials: true }
+      );
 
-      const data = await response.json();
+      // Armazena o nome do usuário
+      localStorage.setItem("userName", response.data.nome);
 
-      if (response.ok) {
-        setToken(data.token);
-        return { success: true, message: "Registro bem-sucedido." };
-      } else {
-        return {
-          success: false,
-          error: data.error || "Erro ao registrar usuário.",
-        };
-      }
+      // Atualiza o contexto
+      setUser({ nome: response.data.nome, role: response.data.role });
+      setIsLoggedIn(true);
+
+      return { success: true };
     } catch (error) {
-      return { success: false, error: "Erro de conexão com o servidor." };
+      return { success: false, message: "Credenciais inválidas" };
     }
   };
 
-  const logout = () => {
-    setToken(null);
-    setUserId(null);
-  };
+  // Logout usando sessões
+  const logout = async () => {
+    try {
+      await axios.post(
+        "http://localhost:3000/api/logout",
+        {},
+        { withCredentials: true }
+      );
+    } catch {}
 
-  const value = {
-    token,
-    isAuthenticated,
-    userId,
-    login,
-    register,
-    logout,
+    setUser(null);
+    setIsLoggedIn(false);
   };
 
   return (
-    <GlobalContext.Provider value={value}> {children} </GlobalContext.Provider>
+    <GlobalContext.Provider
+      value={{
+        user,
+        setUser,
+        isLoggedIn,
+        setIsLoggedIn,
+        loadingUser,
+        login,
+        logout,
+      }}
+    >
+      {children}
+    </GlobalContext.Provider>
   );
 };
 
 export const useGlobalContext = () => {
   const context = useContext(GlobalContext);
 
-
-  if (context === null) {
+  if (!context) {
     throw new Error(
       "useGlobalContext deve ser usado dentro de um GlobalContextProvider"
     );

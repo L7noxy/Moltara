@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 import { LuCircleUserRound } from "react-icons/lu";
@@ -8,13 +8,24 @@ import { useGlobalContext } from "../../context/GlobalContext";
 import { useCart } from "../../context/CartContext";
 import "../Css/Navbar.css";
 
-
 export default function Navbar() {
   const navigate = useNavigate();
   const { user, setUser, setIsLoggedIn, isLoggedIn } = useGlobalContext();
   const { cart } = useCart();
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [localName, setLocalName] = useState(null);
+
+  // Carregar nome do localStorage ao abrir a navbar
+  useEffect(() => {
+    
+    const storedName = localStorage.getItem("userName");
+    if (storedName) {
+      setLocalName(storedName);
+      setIsLoggedIn(true);
+      setUser({ nome: storedName });
+    }
+  }, [setIsLoggedIn, setUser]);
 
   const handleLogout = async () => {
     try {
@@ -23,7 +34,10 @@ export default function Navbar() {
         credentials: "include",
       });
 
+      // Limpa estados e localStorage
+      localStorage.removeItem("userName");
       setUser(null);
+      setLocalName(null);
       setIsLoggedIn(false);
 
       navigate("/");
@@ -35,7 +49,6 @@ export default function Navbar() {
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-      console.log(`Pesquisando por: ${searchTerm}`);
       navigate(`/pesquisa?q=${encodeURIComponent(searchTerm.trim())}`);
     }
   };
@@ -58,7 +71,7 @@ export default function Navbar() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button type="submit">
+          <button type="submit" onClick={handleSearch}>
             <IoSearchOutline size={20} color="#5F6368" />
           </button>
         </div>
@@ -68,7 +81,9 @@ export default function Navbar() {
             <>
               <Link to="/perfil" className="profile-link">
                 <LuCircleUserRound size={25} color="#fff" />
-                <span className="user-name">{user?.nome || "Meu Perfil"}</span>
+                <span className="user-name">
+                  {localStorage.getItem("userName") || "Meu Perfil"}{" "}
+                </span>
               </Link>
 
               <button onClick={handleLogout} className="logout-btn">
@@ -91,8 +106,6 @@ export default function Navbar() {
             <HiShoppingCart color="#fff" size={20} />
             {cart.length}
           </Link>
-          {/* Provisoriooo */}
-          {/*<Link to="/painelDeControle">Adm</Link>*/}
         </div>
       </nav>
     </>

@@ -16,7 +16,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const fazerLogin = async (e) => {
-    e.preventDefault(); // impede recarregamento da página
+    e.preventDefault(); 
 
     setLoading(true);
     setError("");
@@ -28,6 +28,8 @@ export default function Login() {
         { email, senha },
         { withCredentials: true }
       );
+
+      localStorage.setItem("userName", response.data.nome);
 
       setMessage("Login realizado com sucesso");
 
