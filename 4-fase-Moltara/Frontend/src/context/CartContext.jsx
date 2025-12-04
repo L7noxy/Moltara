@@ -1,38 +1,43 @@
-import react, { createContext, useState, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
-export const CartContext = createContext();
+const CartContext = createContext();
 
-export const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+export function CartProvider({ children }) {
+  const [cart, setCart] = useState([]);
 
-    const Adicionar = (product) => {
-        setCart((prevCart) => {
+  function addToCart(product) {
+    const exists = cart.find((item) => item._id === product._id);
 
-            const existeItem = prevCart.find((item) => item.id === product.id);
-
-            if(existeItem) {
-                return prevCart.map((item) =>
-                    item.id === product.id ? { ...item, quantidade: item.quantidade + 1 } : item
-                );
-            } else {
-                return [...prevCart, { ...product, quantidade: 1 }];
-            }
-        })
-    };
-
-    const removerIten = (productId) => {
-        setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+    if (exists) {
+      setCart(
+        cart.map((item) =>
+          item._id === product._id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      );
+    } else {
+      setCart([...cart, { ...product, quantity: 1 }]);
     }
+  }
 
-    const getTotal = () => {
-        return cart.reduce((total, item) => total + item.preco * item.quantidade, 0);
-    }
+  function removeFromCart(id) {
+    setCart(cart.filter((item) => item._id !== id));
+  }
 
-    return (
-        <CartContext.Provider value={{ cart, Adicionar, removerIten, getTotal }}>
-            {children}
-        </CartContext.Provider>
-    );
+  function clearCart() {
+    setCart([]);
+  }
+
+  return (
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, clearCart }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
 }
 
-export const useCart = () => useContext(CartContext);
+export function useCart() {
+  return useContext(CartContext);
+}

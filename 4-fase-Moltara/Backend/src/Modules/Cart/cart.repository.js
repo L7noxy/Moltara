@@ -1,21 +1,16 @@
+import Cart from "./cart.schema.js";
 const cartRepository = {};
 
 cartRepository.findCartByUserId = async (userId) => {
-  return await Order.findOne({ 
-    user: userId, 
-    status: "pending"
-  })
-  .populate("items.produto"); 
+  return await Cart.findOne({ user: userId }).populate("items.produto");
 };
 
 cartRepository.createCart = async (userId) => {
-  const newCart = new Order({
+  const newCart = new Cart({
     user: userId,
     items: [],
-    total: 0,
-    status: "pending"
+    total: 0
   });
-  
   return await newCart.save();
 };
 

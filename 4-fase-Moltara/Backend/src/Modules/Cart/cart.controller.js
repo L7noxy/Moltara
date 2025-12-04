@@ -13,13 +13,13 @@ export const cartController = {
 
   addItem: async (req, res) => {
     try {
-      const { productId, quantity } = req.body;
+      const { produtoId, quantidade } = req.body;
       const userId = req.user.id;
 
       const updatedCart = await cartService.adicionarProduto(
         userId,
-        productId,
-        quantity
+        produtoId,
+        quantidade
       );
       res.status(200).json(updatedCart);
     } catch (error) {

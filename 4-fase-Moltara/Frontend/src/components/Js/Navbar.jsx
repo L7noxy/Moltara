@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { IoSearchOutline } from "react-icons/io5";
 import { LuCircleUserRound } from "react-icons/lu";
 import { HiShoppingCart } from "react-icons/hi";
 import { IoIosArrowRoundBack } from "react-icons/io";
-
-import "../Css/Navbar.css";
 import { useGlobalContext } from "../../context/GlobalContext";
+import { useCart } from "../../context/CartContext";
+import "../Css/Navbar.css";
 
 
 export default function Navbar() {
-
   const navigate = useNavigate();
-const { user, setUser, setIsLoggedIn, isLoggedIn } = useGlobalContext();
+  const { user, setUser, setIsLoggedIn, isLoggedIn } = useGlobalContext();
+  const { cart } = useCart();
 
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleLogout = async () => {
     try {
@@ -27,12 +27,10 @@ const { user, setUser, setIsLoggedIn, isLoggedIn } = useGlobalContext();
       setIsLoggedIn(false);
 
       navigate("/");
-
     } catch (error) {
       console.error("Erro ao fazer logout:", error);
-
     }
-  }
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -42,7 +40,6 @@ const { user, setUser, setIsLoggedIn, isLoggedIn } = useGlobalContext();
     }
   };
 
-  
   return (
     <>
       <nav className="navbar">
@@ -55,9 +52,12 @@ const { user, setUser, setIsLoggedIn, isLoggedIn } = useGlobalContext();
         </div>
 
         <div className="search-bar">
-          <input type="text" placeholder="Pesquisar..."
+          <input
+            type="text"
+            placeholder="Pesquisar..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} />
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
           <button type="submit">
             <IoSearchOutline size={20} color="#5F6368" />
           </button>
@@ -75,9 +75,8 @@ const { user, setUser, setIsLoggedIn, isLoggedIn } = useGlobalContext();
                 Sair
               </button>
             </>
-        ) : (
-          <>
-
+          ) : (
+            <>
               <Link to="/login" className="login-btn">
                 Entrar
               </Link>
@@ -90,6 +89,7 @@ const { user, setUser, setIsLoggedIn, isLoggedIn } = useGlobalContext();
 
           <Link to="/carrinho">
             <HiShoppingCart color="#fff" size={20} />
+            {cart.length}
           </Link>
           {/* Provisoriooo */}
           {/*<Link to="/painelDeControle">Adm</Link>*/}
@@ -97,5 +97,4 @@ const { user, setUser, setIsLoggedIn, isLoggedIn } = useGlobalContext();
       </nav>
     </>
   );
-  
 }

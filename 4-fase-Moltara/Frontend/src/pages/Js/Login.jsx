@@ -15,24 +15,31 @@ export default function Login() {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-  const fazerLogin = async () => {
+  const fazerLogin = async (e) => {
+    e.preventDefault(); // impede recarregamento da página
+
+    setLoading(true);
+    setError("");
+    setMessage("");
+
     try {
       const response = await axios.post(
         "http://localhost:3000/api/usuario/login",
-        {
-          email,
-          senha,
-        },
+        { email, senha },
         { withCredentials: true }
       );
 
+      setMessage("Login realizado com sucesso");
+
       if (response.data.role === "user") {
-        navigate("/home");
+        navigate("/");
       } else if (response.data.role === "admin") {
         navigate("/painelDeControle");
       }
-    } catch (error) {
-      alert("Erro ao fazer login");
+    } catch (err) {
+      setError("Email ou senha inválidos");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -40,7 +47,7 @@ export default function Login() {
     <div>
       <Navbar />
       <div className="container-login">
-        <form className="formulario-login" onSubmit={fazerLogin}>
+        <form className="formulario-login" onSubmit={(e) => fazerLogin(e)}>
           <h2 className="titulo-login">Faça seu Login</h2>
           <div className="subtitulo-login">
             Entre com seus dados para continuar

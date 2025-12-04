@@ -2,9 +2,12 @@ import Navbar from "../../components/Js/Navbar.jsx";
 import Footer from "../../components/Js/Footer.jsx";
 import "../Css/ProdutoDetalhada.css";
 import { useState, useEffect } from "react";
+import { useCart } from "../../context/CartContext";
 import { useParams } from "react-router-dom";
 
 export default function ProdutoDetalhada() {
+  const { adicionarAoCarrinho } = useCart();
+
   const { id } = useParams();
   const [produto, setProduto] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -53,39 +56,36 @@ export default function ProdutoDetalhada() {
     buscarProduto();
   }, [id]);
 
-  const handleAddToCart = async (produto) => {
+  const handleAddToCart = async () => {
     const { _id, nome } = produto;
 
     try {
-      const response = await fetch(
-        "http://localhost:3000/api/cart/adicionar",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            produtoId: _id,
-            quantidade: 0,
-          }),
-        }
-      );
+      const response = await fetch("http://localhost:3000/api/cart/adicionar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          productId: produto._id,
+          quantity: quantidade,
+        }),
+      });
 
       const data = await response.json();
 
       if (!response.ok) {
         throw new Error(
           data.message ||
-          `Erro ${response.status}: Falha ao adicionar produto ao carrinho.`
+            `Erro ${response.status}: Falha ao adicionar produto ao carrinho.`
         );
       }
 
-      alert(`✅ "${nome}" adicionado ao carrinho!`);
+      alert(`"${nome}" adicionado ao carrinho!`);
     } catch (error) {
       console.error("Erro ao adicionar produto ao carrinho:", error);
       alert(`Não foi possível adicionar ao carrinho: ${error.message}`);
     }
-
   };
 
   if (loading) {
@@ -164,10 +164,11 @@ export default function ProdutoDetalhada() {
                 </p>
                 <div className="checkbox-container">
                   <button
-                    className={`cor-button cor-vermelho ${personalizacaoSelecionada.cor === "Vermelho"
-                      ? "selected"
-                      : ""
-                      }`}
+                    className={`cor-button cor-vermelho ${
+                      personalizacaoSelecionada.cor === "Vermelho"
+                        ? "selected"
+                        : ""
+                    }`}
                     onClick={() =>
                       handlePersonalizacaoChange("cor", "Vermelho")
                     }
@@ -175,26 +176,29 @@ export default function ProdutoDetalhada() {
                   />
 
                   <button
-                    className={`cor-button cor-azul ${personalizacaoSelecionada.cor === "Azul" ? "selected" : ""
-                      }`}
+                    className={`cor-button cor-azul ${
+                      personalizacaoSelecionada.cor === "Azul" ? "selected" : ""
+                    }`}
                     onClick={() => handlePersonalizacaoChange("cor", "Azul")}
                     aria-label="Selecionar cor Azul"
                   />
 
                   <button
-                    className={`cor-button cor-amarelo ${personalizacaoSelecionada.cor === "Amarelo"
-                      ? "selected"
-                      : ""
-                      }`}
+                    className={`cor-button cor-amarelo ${
+                      personalizacaoSelecionada.cor === "Amarelo"
+                        ? "selected"
+                        : ""
+                    }`}
                     onClick={() => handlePersonalizacaoChange("cor", "Amarelo")}
                     aria-label="Selecionar cor Amarela"
                   />
 
                   <button
-                    className={`cor-button cor-verde ${personalizacaoSelecionada.cor === "Verde"
-                      ? "selected"
-                      : ""
-                      }`}
+                    className={`cor-button cor-verde ${
+                      personalizacaoSelecionada.cor === "Verde"
+                        ? "selected"
+                        : ""
+                    }`}
                     onClick={() => handlePersonalizacaoChange("cor", "Verde")}
                     aria-label="Selecionar cor Verde"
                   />
@@ -210,10 +214,11 @@ export default function ProdutoDetalhada() {
                 <div className="checkbox-container">
                   <div className="checkbox-container">
                     <button
-                      className={`tamanho-button tamanho-pequeno ${personalizacaoSelecionada.tamanho === "Pequeno"
-                        ? "selected"
-                        : ""
-                        }`}
+                      className={`tamanho-button tamanho-pequeno ${
+                        personalizacaoSelecionada.tamanho === "Pequeno"
+                          ? "selected"
+                          : ""
+                      }`}
                       onClick={() =>
                         handlePersonalizacaoChange("tamanho", "Pequeno")
                       }
@@ -222,10 +227,11 @@ export default function ProdutoDetalhada() {
                     </button>
 
                     <button
-                      className={`tamanho-button tamanho-medio ${personalizacaoSelecionada.tamanho === "Médio"
-                        ? "selected"
-                        : ""
-                        }`}
+                      className={`tamanho-button tamanho-medio ${
+                        personalizacaoSelecionada.tamanho === "Médio"
+                          ? "selected"
+                          : ""
+                      }`}
                       onClick={() =>
                         handlePersonalizacaoChange("tamanho", "Médio")
                       }
@@ -234,10 +240,11 @@ export default function ProdutoDetalhada() {
                     </button>
 
                     <button
-                      className={`tamanho-button tamanho-grande ${personalizacaoSelecionada.tamanho === "Grande"
-                        ? "selected"
-                        : ""
-                        }`}
+                      className={`tamanho-button tamanho-grande ${
+                        personalizacaoSelecionada.tamanho === "Grande"
+                          ? "selected"
+                          : ""
+                      }`}
                       onClick={() =>
                         handlePersonalizacaoChange("tamanho", "Grande")
                       }
@@ -254,10 +261,11 @@ export default function ProdutoDetalhada() {
                   </p>
                   <div className="checkbox-container">
                     <button
-                      className={`simbolo-button ${personalizacaoSelecionada.simbolo === "Estrela"
-                        ? "selected"
-                        : ""
-                        }`}
+                      className={`simbolo-button ${
+                        personalizacaoSelecionada.simbolo === "Estrela"
+                          ? "selected"
+                          : ""
+                      }`}
                       onClick={() =>
                         handlePersonalizacaoChange("simbolo", "Estrela")
                       }
@@ -274,10 +282,11 @@ export default function ProdutoDetalhada() {
                     </button>
 
                     <button
-                      className={`simbolo-button ${personalizacaoSelecionada.simbolo === "Casa"
-                        ? "selected"
-                        : ""
-                        }`}
+                      className={`simbolo-button ${
+                        personalizacaoSelecionada.simbolo === "Casa"
+                          ? "selected"
+                          : ""
+                      }`}
                       onClick={() =>
                         handlePersonalizacaoChange("simbolo", "Casa")
                       }
@@ -294,10 +303,11 @@ export default function ProdutoDetalhada() {
                     </button>
 
                     <button
-                      className={`simbolo-button ${personalizacaoSelecionada.simbolo === "Circulo"
-                        ? "selected"
-                        : ""
-                        }`}
+                      className={`simbolo-button ${
+                        personalizacaoSelecionada.simbolo === "Circulo"
+                          ? "selected"
+                          : ""
+                      }`}
                       onClick={() =>
                         handlePersonalizacaoChange("simbolo", "Circulo")
                       }

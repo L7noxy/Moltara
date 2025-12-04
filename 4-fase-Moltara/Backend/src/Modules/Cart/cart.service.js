@@ -24,8 +24,6 @@ const cartService = {
   },
 
   adicionarProduto: async (userId, productId, quantity) => {
-    // 1. Reutiliza a função interna (usa 'this' ou chama direto do objeto se for factory)
-    // Aqui vamos chamar direto do objeto exportado ou da variável local
     const cart = await cartService.pegarCarrinho(userId);
     
     const product = await productRepository.findById(productId);

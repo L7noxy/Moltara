@@ -2,10 +2,13 @@ import { createRoot } from "react-dom/client";
 import { GlobalContextProvider } from "./context/GlobalContext.jsx";
 import router from "./router/routes.jsx";
 import { RouterProvider } from "react-router-dom";
+import { CartProvider } from "./context/CartContext.jsx";
 import "./twindSetup";
 
 createRoot(document.getElementById("root")).render(
   <GlobalContextProvider>
-    <RouterProvider router={router}></RouterProvider>
+    <CartProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </CartProvider>
   </GlobalContextProvider>
 );
