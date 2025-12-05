@@ -3,14 +3,17 @@ const router = express.Router();
 import bcrypt from "bcrypt";
 import Usuario from "../Modules/User/user.schema.js"; // Import do model
 import { cadastrarUsuario } from "../Modules/User/user.controller.js";
-import { getUsuario } from "../Modules/User/user.controller.js";
+import { getUsuario, updateUsuario, deleteUsuario } from "../Modules/User/user.controller.js";
 import { auth } from "../middlewares/auth.js";
 import { me } from "../Modules/User/user.controller.js";
+
 
 // Rotas básicas
 router.post("/cadastro", cadastrarUsuario);
 router.get("/buscar", getUsuario);
 router.get("/me", auth, me);
+router.put("/atualizar", auth, updateUsuario);
+router.delete("/deletar", auth, deleteUsuario);
 
 // Login
 router.post("/login", async (req, res) => {

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Js/Navbar.jsx";
-2;
 import Footer from "../../components/Js/Footer.jsx";
+import { useGlobalContext } from "../../context/GlobalContext";
+import axios from "axios";
 import {
   FaUserCircle,
   FaShoppingBag,
@@ -11,73 +12,88 @@ import {
   FaCog,
   FaSignOutAlt,
   FaUser,
+  FaEdit,
+  FaTrash
 } from "react-icons/fa";
 
 import "../Css/Perfil.css";
 
 export default function Perfil() {
   const navigate = useNavigate();
+  const { user, setUser, logout, loadingUser } = useGlobalContext();
 
-  const [usuario, setUsuario] = useState({
-    nome: "Maria da Silva",
-    email: "maria.silva@example.com",
-    telefone: "(11) 98765-4321",
-    enderecoPrincipal: "Rua das Flores, 123 - Apt 45, Centro - São Paulo, SP",
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({
+    nome: "",
+    email: "",
   });
-
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+    if (user) {
+      setFormData({
+        nome: user.nome || "",
+        email: user.email || "",
+      });
+    }
+  }, [user]);
 
-        setIsLoading(false);
-      } catch (err) {
-        setError("Não foi possível carregar os dados do usuário.");
-        setIsLoading(false);
-        console.error("Erro ao carregar perfil:", err);
-      }
-    };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
-    fetchUserData();
-  }, []);
+  const handleUpdate = async () => {
+    try {
+      setMessage("");
+      setError("");
+      const response = await axios.put(
+        "http://localhost:3000/api/usuario/atualizar",
+        formData,
+        { withCredentials: true }
+      );
 
-  const handleAvatarChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setUsuario((prev) => ({ ...prev, avatarUrl: reader.result }));
-        alert("Avatar atualizado (somente localmente).");
-      };
-      reader.readAsDataURL(file);
+      setUser(response.data); // Update context with new user data
+      setIsEditing(false);
+      setMessage("Perfil atualizado com sucesso!");
+    } catch (err) {
+      console.error(err);
+      setError("Erro ao atualizar perfil.");
     }
   };
 
-  const handleLogout = () => {
-    alert("Você foi desconectado!");
-    navigate("/");
+  const handleDelete = async () => {
+    if (window.confirm("Tem certeza que deseja apagar sua conta? Esta ação é irreversível.")) {
+      try {
+        await axios.delete("http://localhost:3000/api/usuario/deletar", { withCredentials: true });
+        logout(); // Clear context and redirect
+        navigate("/");
+      } catch (err) {
+        console.error(err);
+        setError("Erro ao deletar conta.");
+      }
+    }
   };
 
-  if (isLoading) {
+  if (loadingUser) {
     return (
       <div className="perfil-container">
         <Navbar />
-        <div className="perfil-loading">Carregando perfil...</div>
+        <div className="perfil-loading">Carregando...</div>
       </div>
     );
   }
 
-  if (error) {
-    return (
-      <div className="perfil-container">
-        <Navbar />
-        <div className="perfil-error">Erro: {error}</div>
-        <Footer />
-      </div>
-    );
+  if (!user) {
+     return (
+        <div className="perfil-container">
+            <Navbar />
+            <div className="perfil-content-wrapper" style={{display:'flex', justifyContent:'center', padding: '50px'}}>
+                <h2>Você não está logado.</h2>
+            </div>
+        </div>
+     )
   }
 
   return (
@@ -86,18 +102,8 @@ export default function Perfil() {
       <div className="perfil-content-wrapper">
         <aside className="perfil-sidebar">
           <div className="perfil-avatar-section">
-            <img src={usuario.avatarUrl} className="perfil-avatar" />
-            <label htmlFor="avatar-upload" className="avatar-upload-label">
-              Alterar Avatar
-              <input
-                id="avatar-upload"
-                type="file"
-                accept="image/*"
-                onChange={handleAvatarChange}
-                className="hidden-input"
-              />
-            </label>
-            <h2 className="perfil-nome">{usuario.nome}</h2>
+            <FaUserCircle size={80} color="#ccc" />
+            <h2 className="perfil-nome">{user.nome}</h2>
           </div>
 
           <nav className="perfil-navigation">
@@ -106,15 +112,9 @@ export default function Perfil() {
                 <FaShoppingBag /> <span>Meus Pedidos</span>
               </li>
               <li>
-                <FaMapMarkerAlt /> <span>Endereços de Entrega</span>
+                <FaMapMarkerAlt /> <span>Endereços</span>
               </li>
-              <li>
-                <FaCreditCard /> <span>Métodos de Pagamento</span>
-              </li>
-              <li>
-                <FaCog /> <span>Configurações da Conta</span>
-              </li>
-              <li onClick={handleLogout} className="perfil-nav-item logout">
+               <li onClick={logout} className="perfil-nav-item logout" style={{cursor:'pointer'}}>
                 <FaSignOutAlt /> <span>Sair</span>
               </li>
             </ul>
@@ -124,35 +124,70 @@ export default function Perfil() {
         <main className="perfil-main-content">
           <h1 className="perfil-main-title">Meu Perfil</h1>
 
-          <section className="perfil-info-section">
-            <h3>Informações Pessoais</h3>
-            <div className="info-item">
-              <strong>Nome:</strong> <span>{usuario.nome}</span>
-            </div>
-            <div className="info-item">
-              <strong>Email:</strong> <span>{usuario.email}</span>
-            </div>
-            <div className="info-item">
-              <strong>Telefone:</strong> <span>{usuario.telefone}</span>
-            </div>
-            <button className="perfil-edit-button">Editar Informações</button>
-          </section>
+          {message && <p className="status-success" style={{color: 'green', marginBottom: '10px'}}>{message}</p>}
+          {error && <p className="status-error" style={{color: 'red', marginBottom: '10px'}}>{error}</p>}
 
           <section className="perfil-info-section">
-            <h3>Endereço Principal</h3>
-            <div className="info-item">
-              <span>{usuario.enderecoPrincipal}</span>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                <h3>Informações Pessoais</h3>
+                {!isEditing && (
+                    <button onClick={() => setIsEditing(true)} className="perfil-edit-button" style={{width: 'auto', padding: '5px 15px'}}>
+                        <FaEdit /> Editar
+                    </button>
+                )}
             </div>
-            <button className="perfil-edit-button">Gerenciar Endereços</button>
+
+            <div className="info-item">
+              <strong>Nome:</strong>
+              {isEditing ? (
+                  <input
+                    type="text"
+                    name="nome"
+                    value={formData.nome}
+                    onChange={handleInputChange}
+                    className="perfil-input"
+                    style={{marginLeft: '10px', padding: '5px'}}
+                  />
+              ) : (
+                  <span>{user.nome}</span>
+              )}
+            </div>
+            <div className="info-item">
+              <strong>Email:</strong>
+               {isEditing ? (
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="perfil-input"
+                    style={{marginLeft: '10px', padding: '5px'}}
+                  />
+              ) : (
+                  <span>{user.email}</span>
+              )}
+            </div>
+             <div className="info-item">
+              <strong>CPF:</strong> <span>{user.cpf}</span>
+            </div>
+
+            {isEditing && (
+                <div style={{marginTop: '20px'}}>
+                    <button onClick={handleUpdate} className="perfil-edit-button" style={{marginRight: '10px'}}>Salvar</button>
+                    <button onClick={() => setIsEditing(false)} className="perfil-edit-button" style={{backgroundColor: '#ccc'}}>Cancelar</button>
+                </div>
+            )}
           </section>
 
-          <section className="perfil-info-section">
-            <h3>Últimos Pedidos</h3>
-            <p className="no-data">Nenhum pedido recente.</p>
-            <button className="perfil-edit-button">Ver Todos os Pedidos</button>
+           <section className="perfil-info-section" style={{marginTop: '30px', borderTop: '1px solid #eee', paddingTop: '20px'}}>
+            <h3>Zona de Perigo</h3>
+            <button onClick={handleDelete} className="perfil-edit-button" style={{backgroundColor: '#ff4444', color: 'white'}}>
+                <FaTrash /> Deletar Conta
+            </button>
           </section>
         </main>
       </div>
+       <Footer />
     </div>
   );
 }

@@ -7,7 +7,10 @@ import { FaEnvelope, FaLock } from "react-icons/fa";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
+import { useGlobalContext } from "../../context/GlobalContext";
+
 export default function Login() {
+  const { login } = useGlobalContext();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
@@ -23,20 +26,18 @@ export default function Login() {
     setMessage("");
 
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/usuario/login",
-        { email, senha },
-        { withCredentials: true }
-      );
+      const result = await login(email, senha);
 
-      localStorage.setItem("userName", response.data.nome);
-
-      setMessage("Login realizado com sucesso");
-
-      if (response.data.role === "user") {
-        navigate("/");
-      } else if (response.data.role === "admin") {
-        navigate("/painelDeControle");
+      if (result.success) {
+        setMessage("Login realizado com sucesso");
+        
+        if (result.role === "admin") {
+          navigate("/painelDeControle");
+        } else {
+          navigate("/");
+        }
+      } else {
+        setError(result.message || "Email ou senha inválidos");
       }
     } catch (err) {
       setError("Email ou senha inválidos");

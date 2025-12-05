@@ -19,8 +19,8 @@ export const GlobalContextProvider = ({ children }) => {
           { withCredentials: true }
         );
 
-        if (response.data?.usuario) {
-          setUser(response.data.usuario);
+        if (response.data) {
+          setUser(response.data);
           setIsLoggedIn(true);
         } else {
           setUser(null);
@@ -53,7 +53,7 @@ export const GlobalContextProvider = ({ children }) => {
       setUser({ nome: response.data.nome, role: response.data.role });
       setIsLoggedIn(true);
 
-      return { success: true };
+      return { success: true, role: response.data.role };
     } catch (error) {
       return { success: false, message: "Credenciais inválidas" };
     }
@@ -63,7 +63,7 @@ export const GlobalContextProvider = ({ children }) => {
   const logout = async () => {
     try {
       await axios.post(
-        "http://localhost:3000/api/logout",
+        "http://localhost:3000/api/usuario/logout",
         {},
         { withCredentials: true }
       );

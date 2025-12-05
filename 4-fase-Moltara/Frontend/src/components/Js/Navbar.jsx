@@ -10,31 +10,16 @@ import "../Css/Navbar.css";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const { user, setUser, isLoggedIn, setIsLoggedIn } = useGlobalContext();
+  const { user, setUser, isLoggedIn, setIsLoggedIn, logout } = useGlobalContext();
   const { cart } = useCart();
 
   useEffect(() => {
-    const storedName = localStorage.getItem("userName");
-    if (storedName) {
-      setUser({ nome: storedName });
-      setIsLoggedIn(true);
-    }
-  }, [setUser, setIsLoggedIn]);
+    // A verificação de login agora é feita no GlobalContext
+  }, []);
 
   const handleLogout = async () => {
-    try {
-      await fetch("http://localhost:3000/api/usuario/logout", {
-        method: "POST",
-        credentials: "include",
-      });
-
-      localStorage.removeItem("userName");
-      setUser(null);
-      setIsLoggedIn(false);
-      navigate("/");
-    } catch (error) {
-      console.error("Erro ao fazer logout:", error);
-    }
+    await logout();
+    navigate("/");
   };
 
   return (

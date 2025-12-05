@@ -74,6 +74,62 @@ export const me = async (req, res) => {
   res.json(user);
 };
 
+export const updateUsuario = async (req, res) => {
+  try {
+    const { nome, email } = req.body;
+    const userId = req.session.userId;
+
+    if (!userId) {
+      return res.status(401).json({ error: "Não autorizado" });
+    }
+
+    const updateData = {};
+    if (nome) updateData.nome = nome;
+    if (email) updateData.email = email;
+
+    const user = await Usuario.findByIdAndUpdate(userId, updateData, {
+      new: true,
+      runValidators: true,
+    }).select("-senha");
+
+    if (!user) {
+      return res.status(404).json({ error: "Usuário não encontrado" });
+    }
+
+    res.json(user);
+  } catch (error) {
+    console.error("Erro ao atualizar usuário:", error);
+    res.status(500).json({ error: "Erro ao atualizar usuário" });
+  }
+};
+
+export const deleteUsuario = async (req, res) => {
+  try {
+    const userId = req.session.userId;
+
+    if (!userId) {
+      return res.status(401).json({ error: "Não autorizado" });
+    }
+
+    const user = await Usuario.findByIdAndDelete(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: "Usuário não encontrado" });
+    }
+
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(500).json({ error: "Erro ao destruir sessão" });
+      }
+      res.clearCookie("connect.sid");
+      res.json({ message: "Usuário deletado com sucesso" });
+    });
+  } catch (error) {
+    console.error("Erro ao deletar usuário:", error);
+    res.status(500).json({ error: "Erro ao deletar usuário" });
+  }
+};
+
 // export const logout = (req, res) => {
 //   req.session.destroy(() => {
 //     res.clearCookie("connect.sid");
