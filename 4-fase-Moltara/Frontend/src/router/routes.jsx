@@ -34,15 +34,12 @@ const router = createBrowserRouter([
   { path: "/produtoDetalhada", element: <ProdutoDetalhada /> },
   { path: "/produtoDetalhada/:id", element: <ProdutoDetalhada /> },
 
-  // Rotas protegidas do administrador
-  { path: "/loginAdm", element: <LoginAdm /> },
-
   {
     path: "/criarProduto",
     element: (
-      // <ProtectedAdmin>
+      <ProtectedAdmin>
         <CriarProduto />
-      // </ProtectedAdmin>
+      </ProtectedAdmin>
     ),
   },
 

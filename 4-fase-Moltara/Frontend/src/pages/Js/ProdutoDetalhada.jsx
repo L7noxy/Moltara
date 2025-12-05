@@ -6,7 +6,7 @@ import { useCart } from "../../context/CartContext";
 import { useParams } from "react-router-dom";
 
 export default function ProdutoDetalhada() {
-  const { adicionarAoCarrinho } = useCart();
+  const { addToCart } = useCart();
 
   const { id } = useParams();
   const [produto, setProduto] = useState(null);
@@ -57,35 +57,12 @@ export default function ProdutoDetalhada() {
   }, [id]);
 
   const handleAddToCart = async () => {
-    const { _id, nome } = produto;
-
-    try {
-      const response = await fetch("http://localhost:3000/api/cart/adicionar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          productId: produto._id,
-          quantity: quantidade,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(
-          data.message ||
-            `Erro ${response.status}: Falha ao adicionar produto ao carrinho.`
-        );
-      }
-
-      alert(`"${nome}" adicionado ao carrinho!`);
-    } catch (error) {
-      console.error("Erro ao adicionar produto ao carrinho:", error);
-      alert(`Não foi possível adicionar ao carrinho: ${error.message}`);
-    }
+    if (!produto) return;
+    
+    // Opcional: Validar se personalização foi escolhida se for obrigatório
+    // Por enquanto, enviamos apenas ID e quantidade, conforme suporte atual do backend
+    
+    const success = await addToCart(produto._id, quantidade);
   };
 
   if (loading) {

@@ -13,13 +13,35 @@
 
 
 #root {
+    /* Mapeamento de Cores */
+    --primary-color: #263238;
+    /* Dark Blue/Grey for text or primary elements */
+    --accent-color: #e00000;
+    /* Vibrant Red for highlights/prices */
+    --bg-color: #f5f5f5;
+    /* Light Grey Background */
+    --card-bg: #ffffff;
+    /* White for cards */
+    --text-color: #333333;
+    /* Dark Grey for body text */
+
+    /* Cores legadas (apenas para compatibilidade se necessário, mas idealmente substituir) */
     --color1: #263238;
     --color2: #37474F;
     --color3: #A71111;
-    --color4: #BB252F;
-    --color5: #F5F5F5;
-    --color6: #FFFFFF;
+    --color4: #e00000;
+    /* Atualizado para o novo vermelho */
+    --color5: #f5f5f5;
+    --color6: #ffffff;
     --color7: #111111;
-    --font1: "Urbanist", sans-serif;
-    --font2: "Roboto", sans-serif;
+
+    /* Fontes */
+    --font-primary: "Urbanist", sans-serif;
+    --font-secondary: "Roboto", sans-serif;
+
+    /* Sombras */
+    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+    /* Layout Spacing for Fixed Navbar */
+    padding-top: 60px;
 }

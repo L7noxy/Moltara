@@ -1,130 +1,97 @@
-:root {
-    /* Mantenha ou ajuste conforme as cores do seu tema */
-    --color5: #f4f4f4;
-    /* Cor de fundo principal */
-    --primary-color: #A71111;
-    /* Cor de destaque (vermelho) */
-}
-
-/* 1. CONTAINER PRINCIPAL (Substitui .container-criarProduto) */
+/* Container Login Standardized */
 .container-login {
+    background-color: var(--bg-color);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    /* Ajuste: Se houver Navbar no topo, use min-height ou ajuste o height */
-    min-height: calc(100vh - 60px);
-    /* Exemplo: subtrai a altura da Navbar */
-    width: 100vw;
-    background-color: var(--color5);
+    align-items: center;
     padding: 20px;
-    box-sizing: border-box;
 }
 
-
-/* 2. FORMULÁRIO (Substitui .criar-produto) */
 .formulario-login {
+    background-color: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    border-radius: 10px;
+    padding: 40px;
     width: 100%;
     max-width: 400px;
-    /* Um formulário de login costuma ser mais estreito */
-    margin: 2rem 0;
-    padding: 2.5rem;
-    border-radius: 0.75rem;
-    background-color: #fff;
-    /* Fundo branco para o formulário */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .titulo-login {
+    font-size: 28px;
     text-align: center;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #263238;
-    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
 }
 
 .subtitulo-login {
+    font-size: 14px;
     text-align: center;
-    font-size: 0.95rem;
-    color: #6c757d;
-    margin-bottom: 2rem;
+    color: #666;
+    margin-bottom: 20px;
 }
 
-
-/* 3. INPUTS E ÍCONES (Mantido o estilo de entrada/label) */
-.formulario-login>div {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.5rem;
-    /* Espaço entre os grupos de input */
+.formulario-login label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 5px;
+    display: block;
 }
 
-
-.formulario-login input[type="email"],
-.formulario-login input[type="password"] {
+.formulario-login input {
     width: 100%;
-    padding: 0.75rem 1rem;
-    padding-left: 2.5rem;
-    /* Espaço para o ícone */
-    border: 1px solid #d1d5db;
-    border-radius: 0.75rem;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    box-sizing: border-box;
-    font-size: 0.95rem;
-    transition: border-color 0.15s ease-in-out;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
 }
 
-.formulario-login input[type="email"]:focus,
-.formulario-login input[type="password"]:focus {
+.formulario-login input:focus {
     outline: none;
-    border-color: var(--primary-color);
+    border-color: var(--accent-color);
 }
 
-
-
-/* 4. BOTÃO DE LOGIN (Substitui .cadastrar-produto[type="submit"]) */
 .botao-login {
     background-color: var(--primary-color);
+    color: white;
     padding: 14px;
-    border-radius: 8px;
-    font-size: 1rem;
-    color: #fff;
+    border-radius: 6px;
     border: none;
-    width: 100%;
-    margin-top: 0.5rem;
-    transition: background-color 0.2s ease-in-out;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    margin-top: 10px;
 }
 
 .botao-login:hover {
-    cursor: pointer;
-    background-color: #8e0e0e;
-}
-
-.botao-login:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-/* 5. MENSAGENS E LINKS */
-.status-message {
-    text-align: center;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: var(--primary-color);
+    opacity: 0.9;
 }
 
 .links-adicionais {
     text-align: center;
-    margin-top: 1.5rem;
+    margin-top: 15px;
+    font-size: 14px;
 }
 
 .links-adicionais a {
-    color: #007bff;
-    text-decoration: none;
-    font-size: 0.9rem;
+    color: var(--text-color);
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .links-adicionais a:hover {
-    text-decoration: underline;
+    color: var(--accent-color);
+}
+
+.status-message {
+    color: var(--accent-color);
+    text-align: center;
+    font-size: 14px;
 }

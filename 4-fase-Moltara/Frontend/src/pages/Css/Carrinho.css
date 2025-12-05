@@ -1,142 +1,139 @@
 .container-carrinho {
     background-color: #f5f5f5;
-    display: flex;
+    min-height: 100vh;
+    display: flex;  
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.itens-carrinho {
-    height: 90vh;
-    width: 80vw;
-    overflow: hidden;
 }
 
 .itens-da-compra {
     display: flex;
-    padding: 20px;
-    height: 90vh;
-    width: 80vw;
-    overflow: hidden;
-    gap: 20px;
+    justify-content: center;
+    padding: 40px;
+    gap: 40px;
+    margin-top: 20px;
 }
 
 .lista-produtos {
-    padding: 20px;
-    height: max-content;
-    width: 60vw;
-    height: 100vh;
-    margin: 1px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    width: 60%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+}
 
+.lista-produtos h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .produtos-carrinho {
-    margin: 1px;
-    height: 485px;
-    width: 820px;
-    overflow-x: hidden;
-}
-
-.resumo-da-compra {
-    height: 250px;
-    width: 350px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 20px;
-    overflow: hidden;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
-    background-color: #fff;
-    border-radius: 10px;
-    margin-top: 80px;
-}
-
-.infos-resumo-compra {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;  
-    overflow: hidden;
-}
-
-.infos-resumo-compra p{
-    display: flex;
-    justify-content: space-between;
-    overflow: hidden;
-}
-
-.infos-resumo-compra h2 {
-    
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
+    margin-top: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 60vh;
 }
 
 .produto {
-    height: 25vh;
-    width: 85%;
-    margin: 1px;
-    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
 }
 
 .produto img {
-    height: 120px;
-    width: 120px;
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
-.produto hr {
-    height: 1px;
-    border: none;
-    background-color: #263238;
-    margin-top: 15px;
+.info-produto h3 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
 }
 
-.container-produtos {
-    margin-top: 80px;
-    background-color: #ffffff;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    height: 530px;
-    width: 55vw;
-    overflow: hidden;
-}
-
-.deletar-produto {
+.preco-produto {
+    font-weight: bold;
     color: #e00000;
-    font-weight: 700;
+}
+
+.deletar-produto-btn {
+    background: none;
+    border: none;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.deletar-produto-btn:hover {
+    color: #e00000;
+}
+
+.resumo-da-compra {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    width: 30%;
+    max-width: 350px;
+    height: fit-content;
+}
+
+.infos-resumo-compra {
+    margin-bottom: 30px;
+}
+
+.infos-resumo-compra p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 16px;
 }
 
 .botoes-resumo-compra {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    overflow: hidden;
-}
-
-.botoes-resumo-compra a {
-    background-color: #e00000;
-    color: #fff;
-    font-size: 17px;
-    width: 250px;
-    padding: 10px;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.cupom {
-    background-color: #FF3535;
-    width: 190px;
-    color: #fff;
-    font-size: 17px;
-    padding: 5px;
-    border-radius: 5px;
-    overflow: hidden;
+    gap: 15px;
 }
 
 .comprar {
     color: #fff;
-    font-size: 17px;
-    width: 250px;
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    transition: opacity 0.3s;
+    width: 100%;
+}
+
+.comprar:hover {
+    opacity: 0.9;
+}
+
+.limpar-carrinho-btn {
+    margin-top: 20px;
+    background: none;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
     border-radius: 5px;
-    overflow: hidden;
+    cursor: pointer;
+}
+
+.empty-cart-message {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.back-to-shop {
+    color: #000;
+    text-decoration: underline;
+    margin-top: 10px;
+    display: inline-block;
 }

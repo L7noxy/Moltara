@@ -15,14 +15,7 @@ export default function Home() {
         <Navbar />
         <div>
           <div>
-            <div className="botoes-carrosel">
-              <button className="botao-carrosel-esquerdo">
-                <FaArrowLeftLong color="#ffffffff" size={20} />
-              </button>
-              <button className="botao-carrosel-direito">
-                <FaArrowRightLong color="#ffffffff" size={20} />
-              </button>
-            </div>
+
 
             <Carrosel />
           </div>

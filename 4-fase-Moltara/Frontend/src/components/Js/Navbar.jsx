@@ -11,7 +11,7 @@ import "../Css/Navbar.css";
 export default function Navbar() {
   const navigate = useNavigate();
   const { user, setUser, isLoggedIn, setIsLoggedIn, logout } = useGlobalContext();
-  const { cart } = useCart();
+  const { cart, totalItems } = useCart();
 
   useEffect(() => {
     // A verificação de login agora é feita no GlobalContext
@@ -63,7 +63,7 @@ export default function Navbar() {
 
         <Link to="/carrinho">
           <HiShoppingCart color="#fff" size={20} />
-          {cart.length}
+          {totalItems}
         </Link>
       </div>
     </nav>
