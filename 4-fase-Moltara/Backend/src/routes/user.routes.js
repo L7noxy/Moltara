@@ -1,18 +1,18 @@
 import express from "express";
 const router = express.Router();
 import bcrypt from "bcrypt";
-
-import Usuario from "../Modules/User/user.schema.js"; // <-- FALTAVA IMPORTAR O MODEL
-
+import Usuario from "../Modules/User/user.schema.js"; // Import do model
 import { cadastrarUsuario } from "../Modules/User/user.controller.js";
 import { getUsuario } from "../Modules/User/user.controller.js";
 import { auth } from "../middlewares/auth.js";
 import { me } from "../Modules/User/user.controller.js";
 
+// Rotas básicas
 router.post("/cadastro", cadastrarUsuario);
 router.get("/buscar", getUsuario);
 router.get("/me", auth, me);
 
+// Login
 router.post("/login", async (req, res) => {
   try {
     const { email, senha } = req.body;
@@ -21,6 +21,7 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ error: "Email e senha são obrigatórios" });
     }
 
+    // Busca a senha explicitamente
     const user = await Usuario.findOne({ email }).select("+senha");
 
     if (!user) {
@@ -28,25 +29,35 @@ router.post("/login", async (req, res) => {
     }
 
     const senhaValida = await bcrypt.compare(senha, user.senha);
-
     if (!senhaValida) {
       return res.status(400).json({ error: "Email ou senha inválidos" });
     }
 
-    // CRIA A SESSÃO
+    // Cria sessão
     req.session.userId = user._id;
     req.session.role = user.role;
 
+    // Retorna nome e role
     res.json({
       message: "Login realizado com sucesso",
       role: user.role,
       nome: user.nome,
-      email: user.email, 
     });
   } catch (error) {
     console.error("Erro no login:", error);
     res.status(500).json({ error: "Erro interno no servidor" });
   }
+});
+
+// Logout
+router.post("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      return res.status(500).json({ error: "Erro ao fazer logout" });
+    }
+    res.clearCookie("connect.sid"); // Limpa cookie da sessão
+    res.json({ message: "Logout realizado com sucesso" });
+  });
 });
 
 export default router;

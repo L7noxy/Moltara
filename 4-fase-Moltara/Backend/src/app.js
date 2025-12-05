@@ -17,6 +17,8 @@ app.use(cors({
   credentials: true
 }));
 
+app.use(express.json());
+
 app.use(
   session({
     secret: "meu-segredo-secreto",
@@ -35,7 +37,6 @@ app.use(
   })
 );
 
-app.use(express.json());
 
 app.use("/api/admin", adminRoutes);
 app.use("/api/cart", cartRoutes);
