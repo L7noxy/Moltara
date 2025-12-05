@@ -60,11 +60,14 @@ export default function Navbar() {
             </Link>
           </>
         )}
-
-        <Link to="/carrinho">
-          <HiShoppingCart color="#fff" size={20} />
-          {totalItems}
-        </Link>
+        <div className="cart-icon-container">
+          <Link to="/carrinho">
+            <HiShoppingCart color="#fff" size={20} />
+            <div className="cart-count">
+              {totalItems}
+            </div>
+          </Link>
+        </div>
       </div>
     </nav>
   );
