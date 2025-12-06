@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express.Router();
-import { cadastrarProduto, getProduto, deletarProduto, getProdutoPorId, getSearchProducts } from '../Modules/Product/product.controller.js';
+import { cadastrarProduto, getProduto, deletarProduto, getProdutoPorId, getSearchProduct } from '../Modules/Product/product.controller.js';
 import upload from '../middlewares/multer.middleware.js';
 
 router.post('/criar', upload.single('imageFile'), cadastrarProduto);

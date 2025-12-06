@@ -135,7 +135,7 @@ export const deletarProduto = async (req, res) => {
 *@param {string} searchTerm 
 */
  
-export const searchProducts = async (searchTerm) => {
+export const getSearchProducts = async (searchTerm) => {
   if (!searchTerm || searchTerm.trim().length < 2) {
    throw { status: 400, message: 'O termo de busca deve ter pelo menos 2 caracteres.' };
   }
