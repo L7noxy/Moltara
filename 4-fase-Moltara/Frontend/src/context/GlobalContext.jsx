@@ -55,7 +55,9 @@ export const GlobalContextProvider = ({ children }) => {
 
       return { success: true, role: response.data.role };
     } catch (error) {
-      return { success: false, message: "Credenciais inválidas" };
+      console.error("Erro no login (frontend):", error);
+      const msg = error.response?.data?.error || "Credenciais inválidas";
+      return { success: false, message: msg };
     }
   };
 
@@ -67,7 +69,7 @@ export const GlobalContextProvider = ({ children }) => {
         {},
         { withCredentials: true }
       );
-    } catch {}
+    } catch { }
 
     setUser(null);
     setIsLoggedIn(false);

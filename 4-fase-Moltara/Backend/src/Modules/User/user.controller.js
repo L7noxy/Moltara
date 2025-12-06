@@ -9,13 +9,11 @@ export const cadastrarUsuario = async (req, res) => {
   const { nome, cpf, email, senha } = req.body;
 
   try {
-    const hashSenha = await bcrypt.hash(senha, SALT_ROUNDS);
-
     const novoUsuario = new Usuario({
       nome,
       cpf,
       email,
-      senha: hashSenha,
+      senha, // Store plain password; model will hash it
       role: "user",
     });
 
@@ -56,17 +54,35 @@ export const getUsuario = async (req, res) => {
 
 export const login = async (req, res) => {
   const { email, senha } = req.body;
+  
+  console.log("=== LOGIN DEBUG ===");
+  console.log("Email recebido:", email);
+  console.log("Senha recebida:", senha ? "[PRESENTE]" : "[AUSENTE]");
 
-  const user = await Usuario.findOne({ email });
-  if (!user) return res.status(400).json({ message: "Usuário não encontrado" });
+  const user = await Usuario.findOne({ email }).select("+senha");
+  console.log("Usuário encontrado:", user ? "SIM" : "NÃO");
+  
+  if (!user) {
+    console.log("Erro: usuário não existe no banco");
+    return res.status(400).json({ error: "Email ou senha inválidos" });
+  }
 
+  console.log("Hash armazenado:", user.senha ? user.senha.substring(0, 20) + "..." : "[VAZIO]");
+  
   const match = await bcrypt.compare(senha, user.senha);
-  if (!match) return res.status(400).json({ message: "Senha inválida" });
+  console.log("Resultado bcrypt.compare:", match);
+  
+  if (!match) {
+    console.log("Erro: senha não confere");
+    return res.status(400).json({ error: "Email ou senha inválidos" });
+  }
 
   // Criar sessão
   req.session.userId = user._id;
+  console.log("Login bem-sucedido! Session userId:", req.session.userId);
+  console.log("=== FIM LOGIN DEBUG ===");
 
-  res.status(200).json({ message: "Logado com sucesso" });
+  res.status(200).json({ message: "Logado com sucesso", nome: user.nome, role: user.role });
 };
 
 export const me = async (req, res) => {

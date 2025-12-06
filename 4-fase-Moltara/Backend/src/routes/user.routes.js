@@ -19,6 +19,8 @@ router.delete("/deletar", auth, deleteUsuario);
 router.post("/login", async (req, res) => {
   try {
     const { email, senha } = req.body;
+    console.log("LOGIN ATTEMPT DEBUG:", { body: req.body, emailType: typeof email, senhaType: typeof senha });
+
 
     if (!email || !senha) {
       return res.status(400).json({ error: "Email e senha são obrigatórios" });
