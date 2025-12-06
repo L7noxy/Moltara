@@ -2,8 +2,8 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  /* margin-bottom: 30px; Removed to let Home control spacing */
   box-shadow: var(--card-shadow);
+  margin-top: 70px;
 }
 
 .carousel-track {

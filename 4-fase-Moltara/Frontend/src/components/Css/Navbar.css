@@ -29,7 +29,6 @@
     text-decoration: none;
 }
 
-/* ----------- CATEGORY FILTER ----------- */
 .category-wrapper {
     position: relative;
 }
@@ -183,8 +182,6 @@
 .buttons a {
     color: var(--card-bg);
     text-decoration: none;
-    font-size: 20px;
-    /* Icons size */
     transition: color 0.2s;
     display: flex;
     align-items: center;
@@ -236,4 +233,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.logout-btn {
+    color: var(--card-bg);
+    text-decoration: none;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.logout-btn:hover {
+    color: var(--accent-color);
 }

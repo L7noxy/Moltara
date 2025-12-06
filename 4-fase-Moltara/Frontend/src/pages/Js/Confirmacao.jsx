@@ -1,14 +1,16 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom"; // Corrigido para "react-router-dom"
 import Navbar from "../../components/Js/Navbar.jsx";
 import Nav_confirm from "../../components/Js/Nav_confirm.jsx";
 import "../Css/Confirmacao.css";
 import { FaClipboardUser } from "react-icons/fa6";
 import { BsBasket2Fill } from "react-icons/bs";
+import { useCart } from "../../context/CartContext";
 
 export default function Confirmacao() {
-  
+
+  const { cart } = useCart();
   return (
-    <div>
+    <>
       <Navbar />
       <div className="container-confirm">
         <div className="produtos-confirm">
@@ -27,15 +29,14 @@ export default function Confirmacao() {
                 <h2><BsBasket2Fill color="#BB2630" />Lista de Compras</h2>
                 <div className="itens-compras">
                   <ul>
-                    {produtos_confirmacao.map((produtos) => (
-                      <div className="produto">
-                        <img src={produtos.img} alt="" />
+                    {cart.map((produto, index) => (
+                      <li key={index} className="produto">
+                        <img src={produto.img} alt={produto.nome} />
+                        <p>{produto.nome}</p>
+                        <p>{produto.preco}</p>
                         <button className="deletar-produto">Remover</button>
-                        <p>{produtos.nome}</p>
-                        <p>{produtos.preco}</p>
-
                         <hr />
-                      </div>
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -56,12 +57,7 @@ export default function Confirmacao() {
             </div>
           </div>
         </div>
-
-        <div className="">
-
-        </div>
-
       </div>
-    </div>
+    </>
   );
 }

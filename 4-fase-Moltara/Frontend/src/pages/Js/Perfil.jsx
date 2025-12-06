@@ -54,7 +54,7 @@ export default function Perfil() {
         { withCredentials: true }
       );
 
-      setUser(response.data); // Update context with new user data
+      setUser(response.data);
       setIsEditing(false);
       setMessage("Perfil atualizado com sucesso!");
     } catch (err) {
@@ -67,7 +67,7 @@ export default function Perfil() {
     if (window.confirm("Tem certeza que deseja apagar sua conta? Esta ação é irreversível.")) {
       try {
         await axios.delete("http://localhost:3000/api/usuario/deletar", { withCredentials: true });
-        logout(); // Clear context and redirect
+        logout();
         navigate("/");
       } catch (err) {
         console.error(err);
@@ -86,14 +86,14 @@ export default function Perfil() {
   }
 
   if (!user) {
-     return (
-        <div className="perfil-container">
-            <Navbar />
-            <div className="perfil-content-wrapper" style={{display:'flex', justifyContent:'center', padding: '50px'}}>
-                <h2>Você não está logado.</h2>
-            </div>
+    return (
+      <div className="perfil-container">
+        <Navbar />
+        <div className="perfil-content-wrapper" style={{ display: 'flex', justifyContent: 'center', padding: '50px' }}>
+          <h2>Você não está logado.</h2>
         </div>
-     )
+      </div>
+    )
   }
 
   return (
@@ -114,7 +114,7 @@ export default function Perfil() {
               <li>
                 <FaMapMarkerAlt /> <span>Endereços</span>
               </li>
-               <li onClick={logout} className="perfil-nav-item logout" style={{cursor:'pointer'}}>
+              <li onClick={logout} className="perfil-nav-item logout" style={{ cursor: 'pointer' }}>
                 <FaSignOutAlt /> <span>Sair</span>
               </li>
             </ul>
@@ -124,70 +124,70 @@ export default function Perfil() {
         <main className="perfil-main-content">
           <h1 className="perfil-main-title">Meu Perfil</h1>
 
-          {message && <p className="status-success" style={{color: 'green', marginBottom: '10px'}}>{message}</p>}
-          {error && <p className="status-error" style={{color: 'red', marginBottom: '10px'}}>{error}</p>}
+          {message && <p className="status-success" style={{ color: 'green', marginBottom: '10px' }}>{message}</p>}
+          {error && <p className="status-error" style={{ color: 'red', marginBottom: '10px' }}>{error}</p>}
 
           <section className="perfil-info-section">
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                <h3>Informações Pessoais</h3>
-                {!isEditing && (
-                    <button onClick={() => setIsEditing(true)} className="perfil-edit-button" style={{width: 'auto', padding: '5px 15px'}}>
-                        <FaEdit /> Editar
-                    </button>
-                )}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <h3>Informações Pessoais</h3>
+              {!isEditing && (
+                <button onClick={() => setIsEditing(true)} className="perfil-edit-button" style={{ width: 'auto', padding: '5px 15px' }}>
+                  <FaEdit /> Editar
+                </button>
+              )}
             </div>
 
             <div className="info-item">
               <strong>Nome:</strong>
               {isEditing ? (
-                  <input
-                    type="text"
-                    name="nome"
-                    value={formData.nome}
-                    onChange={handleInputChange}
-                    className="perfil-input"
-                    style={{marginLeft: '10px', padding: '5px'}}
-                  />
+                <input
+                  type="text"
+                  name="nome"
+                  value={formData.nome}
+                  onChange={handleInputChange}
+                  className="perfil-input"
+                  style={{ marginLeft: '10px', padding: '5px' }}
+                />
               ) : (
-                  <span>{user.nome}</span>
+                <span>{user.nome}</span>
               )}
             </div>
             <div className="info-item">
               <strong>Email:</strong>
-               {isEditing ? (
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="perfil-input"
-                    style={{marginLeft: '10px', padding: '5px'}}
-                  />
+              {isEditing ? (
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="perfil-input"
+                  style={{ marginLeft: '10px', padding: '5px' }}
+                />
               ) : (
-                  <span>{user.email}</span>
+                <span>{user.email}</span>
               )}
             </div>
-             <div className="info-item">
+            <div className="info-item">
               <strong>CPF:</strong> <span>{user.cpf}</span>
             </div>
 
             {isEditing && (
-                <div style={{marginTop: '20px'}}>
-                    <button onClick={handleUpdate} className="perfil-edit-button" style={{marginRight: '10px'}}>Salvar</button>
-                    <button onClick={() => setIsEditing(false)} className="perfil-edit-button" style={{backgroundColor: '#ccc'}}>Cancelar</button>
-                </div>
+              <div style={{ marginTop: '20px' }}>
+                <button onClick={handleUpdate} className="perfil-edit-button" style={{ marginRight: '10px' }}>Salvar</button>
+                <button onClick={() => setIsEditing(false)} className="perfil-edit-button" style={{ backgroundColor: '#ccc' }}>Cancelar</button>
+              </div>
             )}
           </section>
 
-           <section className="perfil-info-section" style={{marginTop: '30px', borderTop: '1px solid #eee', paddingTop: '20px'}}>
+          <section className="perfil-info-section" style={{ marginTop: '30px', borderTop: '1px solid #eee', paddingTop: '20px' }}>
             <h3>Zona de Perigo</h3>
-            <button onClick={handleDelete} className="perfil-edit-button" style={{backgroundColor: '#ff4444', color: 'white'}}>
-                <FaTrash /> Deletar Conta
+            <button onClick={handleDelete} className="perfil-edit-button" style={{ backgroundColor: '#ff4444', color: 'white' }}>
+              <FaTrash /> Deletar Conta
             </button>
           </section>
         </main>
       </div>
-       <Footer />
+      <Footer />
     </div>
   );
 }

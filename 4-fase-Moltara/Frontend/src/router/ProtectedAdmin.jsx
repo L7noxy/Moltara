@@ -24,7 +24,7 @@ export default function ProtectedAdmin({ children }) {
   if (autorizado === null) return <p>Carregando...</p>;
 
   if (autorizado === false) {
-    navigate("/loginAdm");
+    navigate("/login");
     return null;
   }
 

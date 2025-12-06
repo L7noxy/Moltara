@@ -231,6 +231,7 @@ export default function ProdutoDetalhada() {
         </div>
       </div>
 
+      {/* --- Seção de Descrição e Detalhes --- */}
       <div className="container-descricao-total">
         <div className="secao-detalhe">
           <h3>Descrição</h3>
@@ -243,18 +244,21 @@ export default function ProdutoDetalhada() {
         </div>
       </div>
 
+      {/* --- Seção de Comentários e Avaliações --- */}
       <div className="container-descricao-total container-comentarios">
         <div className="secao-detalhe">
           <h3>Avaliações e Comentários</h3>
 
           <form className="form-comentario" onSubmit={handleEnviarComentario}>
             <textarea
-              placeholder="O que você achou deste produto?"
+              placeholder="O que você achou deste produto? (Necessário estar logado para comentar)"
               value={novoComentario}
               onChange={(e) => setNovoComentario(e.target.value)}
               rows="3"
             />
-            <button type="submit" className="button-enviar-comentario">Avaliar</button>
+            <button type="submit" className="button-enviar-comentario">
+              Avaliar
+            </button>
           </form>
 
           <div className="lista-comentarios">
@@ -278,7 +282,6 @@ export default function ProdutoDetalhada() {
             )}
           </div>
         </div>
-
       </div >
 
       <Footer />

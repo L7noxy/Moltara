@@ -12,9 +12,9 @@ export default function Navbar() {
   const navigate = useNavigate();
   const { user, setUser, isLoggedIn, setIsLoggedIn, logout } = useGlobalContext();
   const { cart, totalItems } = useCart();
+  const isAdmin = user?.role === 'admin';
 
   useEffect(() => {
-    // A verificação de login agora é feita no GlobalContext
   }, []);
 
   const handleLogout = async () => {
@@ -41,8 +41,12 @@ export default function Navbar() {
       <div className="buttons">
         {isLoggedIn ? (
           <>
+            {isAdmin && (
+              <Link to={'/painelDeControle'} className="admin-link">
+                Admin
+              </Link>
+            )}
             <Link to="/perfil" className="profile-link">
-              <LuCircleUserRound size={25} color="#fff" />
               <span className="user-name">{user?.nome || "Meu Perfil"}</span>
             </Link>
             <button onClick={handleLogout} className="logout-btn">
