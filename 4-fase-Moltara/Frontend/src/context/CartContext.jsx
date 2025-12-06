@@ -1,38 +1,145 @@
-import react, { createContext, useState, useContext } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
+import { useGlobalContext } from "./GlobalContext";
 
-export const CartContext = createContext();
+const CartContext = createContext();
 
-export const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+export function CartProvider({ children }) {
+  const [cart, setCart] = useState([]);
+  const { isLoggedIn } = useGlobalContext();
 
-    const Adicionar = (product) => {
-        setCart((prevCart) => {
+  const fetchCart = async () => {
+    if (!isLoggedIn) {
+      setCart([]);
+      return;
+    }
+    try {
+      const response = await axios.get("http://localhost:3000/api/cart/buscarCompra", {
+        withCredentials: true,
+      });
+      // O backend retorna a estrutura do carrinho, precisamos extrair os itens
+      // Supondo que o backend retorne { _id, usuarioId, produtos: [...] }
+      // Ajuste conforme o retorno real do backend. Se retornar array direto de itens, ok.
+      // Olhando cart.service.js (não vi o código mas controller diz json(cart))
+      // Vamos assumir que retorna o objeto Carrinho com .produtos
+      
+      // Se o carrinho não existir ou estiver vazio, array vazio
+      const backendItems = response.data && response.data.items ? response.data.items : [];
+      
+      const mappedCart = backendItems.map(item => {
+        const prod = item.produto || {};
+        return {
+          ...prod,
+          _id: prod._id,
+          quantity: item.quantidade
+        };
+      }).filter(item => item._id);
 
-            const existeItem = prevCart.find((item) => item.id === product.id);
+      const uniqueCart = mappedCart.filter((item, index, self) =>
+        index === self.findIndex((t) => (
+          t._id === item._id
+        ))
+      );
 
-            if(existeItem) {
-                return prevCart.map((item) =>
-                    item.id === product.id ? { ...item, quantidade: item.quantidade + 1 } : item
-                );
-            } else {
-                return [...prevCart, { ...product, quantidade: 1 }];
-            }
-        })
-    };
+      setCart(uniqueCart);
+      
+    } catch (error) {
+      console.error("Erro ao buscar carrinho:", error);
+    }
+  };
 
-    const removerIten = (productId) => {
-        setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+  useEffect(() => {
+    fetchCart();
+  }, [isLoggedIn]);
+
+  async function addToCart(productId, quantity = 1) {
+    if (!isLoggedIn) {
+      alert("Faça login para adicionar ao carrinho.");
+      return;
     }
 
-    const getTotal = () => {
-        return cart.reduce((total, item) => total + item.preco * item.quantidade, 0);
-    }
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/cart/adicionar",
+        { produtoId: productId, quantidade: quantity },
+        { withCredentials: true }
+      );
 
-    return (
-        <CartContext.Provider value={{ cart, Adicionar, removerIten, getTotal }}>
-            {children}
-        </CartContext.Provider>
-    );
+      // Mapeia os dados do backend (items) para o formato que o frontend espera (flat)
+      const backendItems = response.data && response.data.items ? response.data.items : [];
+      
+      const mappedCart = backendItems.map(item => {
+        // item = { _id, produto: { ... }, quantidade }
+        // Se produto for null (deletado), tratar
+        const prod = item.produto || {};
+        return {
+          ...prod,
+          _id: prod._id, // Garante que o ID principal seja do produto
+          quantity: item.quantidade
+        };
+      }).filter(item => item._id); // Remove itens sem produto associado
+
+      // Remove duplicatas (caso o backend tenha sujado o banco)
+      const uniqueCart = mappedCart.filter((item, index, self) =>
+        index === self.findIndex((t) => (
+          t._id === item._id
+        ))
+      );
+
+      setCart(uniqueCart);
+      return true;
+    } catch (error) {
+      console.error("Erro ao adicionar ao carrinho:", error);
+      alert("Erro ao adicionar ao carrinho");
+      return false;
+    }
+  }
+
+  async function removeFromCart(productId) {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/api/cart/remover/${productId}`,
+        { withCredentials: true }
+      );
+      
+      const backendItems = response.data && response.data.items ? response.data.items : [];
+      
+      const mappedCart = backendItems.map(item => {
+        const prod = item.produto || {};
+        return {
+          ...prod,
+          _id: prod._id,
+          quantity: item.quantidade
+        };
+      }).filter(item => item._id);
+
+      const uniqueCart = mappedCart.filter((item, index, self) =>
+        index === self.findIndex((t) => (
+          t._id === item._id
+        ))
+      );
+
+      setCart(uniqueCart);
+    } catch (error) {
+      console.error("Erro ao remover do carrinho:", error);
+    }
+  }
+
+  function clearCart() {
+    setCart([]);
+  }
+
+  const totalItems = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+
+  return (
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, clearCart, totalItems }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
 }
 
-export const useCart = () => useContext(CartContext);
+export function useCart() {
+  return useContext(CartContext);
+}

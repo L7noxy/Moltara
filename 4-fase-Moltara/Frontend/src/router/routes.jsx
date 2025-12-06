@@ -18,33 +18,33 @@ import CriarProduto from "../pages/Js/CriarProduto.jsx";
 import EstoqueProduto from "../pages/Js/EstoqueProduto.jsx";
 import PerilAdm from "../pages/Js/PerilAdm.jsx";
 import PainelDeControle from "../pages/Js/PainelDeControle.jsx";
-import LoginAdm from "../pages/Js/LoginAdm.jsx";
 import ProtectedAdmin from "./ProtectedAdmin.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/pesquisa", element: <PaginaResultados /> },
 
+  // Páginas do usuário
   { path: "/cadastro", element: <Cadastro /> },
   { path: "/login", element: <Login /> },
   { path: "/perfil", element: <Perfil /> },
 
+  // Páginas do carrinho
   { path: "/carrinho", element: <Carrinho /> },
   { path: "/confirmacao", element: <Confirmacao /> },
   { path: "/pagamento", element: <Pagamento /> },
 
+  // Páginas do produto
   { path: "/produtoDetalhada", element: <ProdutoDetalhada /> },
   { path: "/produtoDetalhada/:id", element: <ProdutoDetalhada /> },
 
-  // Rotas protegidas do administrador
-  { path: "/loginAdm", element: <LoginAdm /> },
-
+  // Páginas do administrador
   {
     path: "/criarProduto",
     element: (
-      // <ProtectedAdmin>
+      <ProtectedAdmin>
         <CriarProduto />
-      // </ProtectedAdmin>
+      </ProtectedAdmin>
     ),
   },
 

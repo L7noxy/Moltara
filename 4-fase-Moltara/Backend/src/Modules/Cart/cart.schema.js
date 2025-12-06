@@ -1,44 +1,30 @@
 import mongoose from "mongoose";
 
-const cartItemSchema = new mongoose.Schema({
-  produto: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Product",
-    required: true,
-  },
-  
-  quantidade:  {
-    type: Number,
-    required: true,
-  },
-}, {
-  timestamps: true
-});
-
-const cartSchema = new mongoose.Schema({
-
+const CartSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: true,
+    required: true
   },
-  
-  items: [cartItemSchema],
+  items: [
+    {
+      produto: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Produto",
+        required: true
+      },
+      quantidade: {
+        type: Number,
+        default: 1,
+        required: true
+      }
+    }
+  ],
   total: {
     type: Number,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  status: {
-    type: String,
-    enum: ["pending", "processing", "completed", "cancelled"],
-    default: "pending",
-  },
-
-
+    default: 0,
+    required: true
+  }
 });
 
-export default mongoose.model("Carrinho", cartSchema);
+export default mongoose.model("Cart", CartSchema);

@@ -10,6 +10,7 @@ import productRoutes from "./routes/product.routes.js";
 import cartRoutes from "./routes/cart.routes.js";
 import orderRoutes from './routes/order.routes.js';
 import adminRoutes from "./routes/admin.routes.js";
+import commentRoutes from "./Modules/Comment/comment.routes.js";
 
 const app = express();
 
@@ -17,6 +18,8 @@ app.use(cors({
   origin: "http://localhost:5173",
   credentials: true
 }));
+
+app.use(express.json());
 
 app.use(
   session({
@@ -36,13 +39,13 @@ app.use(
   })
 );
 
-app.use(express.json());
 
 app.use("/api/admin", adminRoutes);
 app.use("/api/cart", cartRoutes);
 app.use('/api/pedidos', orderRoutes);
 app.use("/api/usuario", userRoutes);
 app.use("/api/produto", productRoutes);
+app.use("/api/comentarios", commentRoutes);
 
 // app.use("/api/checkout", checkoutRoutes);
 

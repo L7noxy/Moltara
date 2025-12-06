@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema(
   {
@@ -18,7 +19,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       minlength: 6,
-      select: false,
     },
 
     cpf: {
@@ -44,6 +44,13 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+// Hash antes de salvar
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("senha")) return next();
+  this.senha = await bcrypt.hash(this.senha, 10);
+  next();
+});
 
 const ModeloUser = mongoose.model("Usuario", userSchema);
 export default ModeloUser;

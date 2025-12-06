@@ -1,31 +1,34 @@
 .navbar {
     z-index: 1000;
     width: 100%;
-    background-color: var(--color1);
-    padding: 8px 20px;
+    background-color: var(--primary-color);
+    padding: 10px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: "Urbanist", sans-serif;
+    font-family: var(--font-primary);
     position: fixed;
     top: 0;
-    height: auto;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    left: 0;
+    height: 70px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .left-section-navbar {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 30px;
 }
 
 .logo {
-    color: var(--color6);
-    font-size: 24px;
-    font-weight: bold;
+    color: var(--card-bg);
+    font-size: 26px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
 }
 
-/* ----------- CATEGORY FILTER ----------- */
 .category-wrapper {
     position: relative;
 }
@@ -33,20 +36,20 @@
 .category-filter {
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--color6);
-    border: 1px solid var(--color6);
-    border-radius: 20px;
-    padding: 6px 15px;
-    font-size: 15px;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 8px 15px;
+    font-size: 14px;
     cursor: pointer;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .category-filter:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .arrow {
@@ -62,32 +65,39 @@
     position: absolute;
     top: 45px;
     left: 0;
-    background: rgba(20, 20, 20, 0.9);
-    border-radius: 15px;
-    border: 1px solid var(--color6);
+    background: var(--card-bg);
+    border-radius: 6px;
+    box-shadow: var(--card-shadow);
     overflow: hidden;
-    animation: fadeIn 0.25s ease;
-    backdrop-filter: blur(10px);
+    animation: fadeIn 0.2s ease;
+    min-width: 180px;
+    z-index: 1001;
 }
 
 .dropdown p {
     margin: 0;
-    padding: 10px 18px;
+    padding: 12px 20px;
     font-size: 14px;
-    color: var(--color6);
+    color: var(--text-color);
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.2s;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown p:last-child {
+    border-bottom: none;
 }
 
 .dropdown p:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: scale(1.03);
+    background-color: var(--bg-color);
+    color: var(--accent-color);
+    padding-left: 25px;
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(-5px);
     }
 
     to {
@@ -100,28 +110,46 @@
 .search-bar {
     display: flex;
     align-items: center;
-    gap: 5px;
-    border: 1px solid var(--color6);
-    border-radius: 20px;
-    background-color: var(--color5);
-    padding: 0 10px;
-    height: 35px;
-    width: 300px;
+    gap: 10px;
+    background-color: #f0f2f5;
+    /* Lighter background for search input on dark navbar? No, wait navbar is dark */
+    /* Actually standard design: White input on dark navbar */
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 5px 15px;
+    height: 40px;
+    width: 350px;
     transition: 0.3s;
+}
+
+.search-bar:focus-within {
+    background-color: var(--card-bg);
+    border-color: var(--card-bg);
 }
 
 .search-bar input {
     background-color: transparent;
     outline: none;
-    font-size: 15px;
-    width: 250px;
+    font-size: 14px;
+    width: 100%;
     border: none;
-    color: var(--color1);
+    color: var(--card-bg);
+    /* White text initially */
+    transition: 0.3s;
+}
+
+.search-bar:focus-within input {
+    color: var(--text-color);
+    /* Dark text on focus (white background) */
 }
 
 .search-bar input::placeholder {
-    color: var(--color2);
-    opacity: 0.7;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.search-bar:focus-within input::placeholder {
+    color: #999;
 }
 
 .search-bar button {
@@ -130,33 +158,91 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background: transparent;
+    color: var(--card-bg);
+}
+
+.search-bar:focus-within button {
+    color: var(--primary-color);
 }
 
 /* ----------- BUTTONS ----------- */
 .buttons {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 .buttons p {
-    color: var(--color6);
+    color: var(--card-bg);
+    margin: 0;
+    font-size: 14px;
 }
 
 .buttons a {
-    color: var(--color4);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: midle;
+    color: var(--card-bg);
     text-decoration: none;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
 }
 
-.back-btn {
-        background-color: transparent;
-    border: none;
-    cursor: pointer;
-    border-radius: 50px;
+.buttons a:hover {
+    color: var(--accent-color);
+}
+
+.cart-counter {
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 10px;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    font-weight: bold;
+}
+
+.cart-icon-container {
+    position: relative;
+}
+
+.navbar .cart-count {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 10px;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.cart-icon-container {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-btn {
+    color: var(--card-bg);
+    text-decoration: none;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.logout-btn:hover {
+    color: var(--accent-color);
 }

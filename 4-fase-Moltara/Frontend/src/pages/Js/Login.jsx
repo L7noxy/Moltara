@@ -7,7 +7,10 @@ import { FaEnvelope, FaLock } from "react-icons/fa";
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
+import { useGlobalContext } from "../../context/GlobalContext";
+
 export default function Login() {
+  const { login } = useGlobalContext();
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
@@ -15,24 +18,31 @@ export default function Login() {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
-  const fazerLogin = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/api/usuario/login",
-        {
-          email,
-          senha,
-        },
-        { withCredentials: true }
-      );
+  const fazerLogin = async (e) => {
+    e.preventDefault(); 
 
-      if (response.data.role === "user") {
-        navigate("/home");
-      } else if (response.data.role === "admin") {
-        navigate("/painelDeControle");
+    setLoading(true);
+    setError("");
+    setMessage("");
+
+    try {
+      const result = await login(email, senha);
+
+      if (result.success) {
+        setMessage("Login realizado com sucesso");
+        
+        if (result.role === "admin") {
+          navigate("/painelDeControle");
+        } else {
+          navigate("/");
+        }
+      } else {
+        setError(result.message || "Email ou senha inválidos");
       }
-    } catch (error) {
-      alert("Erro ao fazer login");
+    } catch (err) {
+      setError("Email ou senha inválidos");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -40,7 +50,7 @@ export default function Login() {
     <div>
       <Navbar />
       <div className="container-login">
-        <form className="formulario-login" onSubmit={fazerLogin}>
+        <form className="formulario-login" onSubmit={(e) => fazerLogin(e)}>
           <h2 className="titulo-login">Faça seu Login</h2>
           <div className="subtitulo-login">
             Entre com seus dados para continuar

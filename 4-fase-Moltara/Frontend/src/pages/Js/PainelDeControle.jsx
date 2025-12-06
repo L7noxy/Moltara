@@ -22,7 +22,7 @@ function PainelDeControle() {
         </div>
 
         <div className="card-adm">
-          <Link to="/perilAdm" className="card-link"> 
+          <Link to="/perfilAdm" className="card-link"> 
            <img src= "/img/IconAdm.png" className='img-iconAdm'/>
            <span className="card-text">Editar Perfil</span>
           </Link>

@@ -1,4 +1,4 @@
-import * as cartRepository from "./cart.repository.js";
+import cartRepository from "./cart.repository.js";
 import productRepository from "../Product/product.repository.js";
 
 // Função auxiliar interna para calcular total
@@ -8,7 +8,7 @@ const calcularTotalCarrinho = async (cartItems) => {
     // Precisamos buscar o preço atualizado do produto
     const product = await productRepository.findById(item.produto);
     if (product) {
-      total += product.price * item.quantidade;
+      total += product.preco * item.quantidade;
     }
   }
   return total;
@@ -24,8 +24,6 @@ const cartService = {
   },
 
   adicionarProduto: async (userId, productId, quantity) => {
-    // 1. Reutiliza a função interna (usa 'this' ou chama direto do objeto se for factory)
-    // Aqui vamos chamar direto do objeto exportado ou da variável local
     const cart = await cartService.pegarCarrinho(userId);
     
     const product = await productRepository.findById(productId);
@@ -34,14 +32,21 @@ const cartService = {
     }
 
     // 2. Procura item usando o nome correto do Schema: 'produto'
+    console.log("Procurando produto ID:", productId);
+    console.log("Itens no carrinho:", cart.items.map(i => ({ id: i.produto._id || i.produto, qtd: i.quantidade })));
+
     const existingItem = cart.items.find(
-      (item) => item.produto.toString() === productId
+      (item) => (item.produto._id || item.produto).toString() === productId
     );
+
+    console.log("Item existente encontrado?", !!existingItem);
 
     // 3. Atualiza quantidade ou dá push usando nomes do Schema ('produto', 'quantidade')
     if (existingItem) {
+      console.log("Atualizando quantidade. Antes:", existingItem.quantidade, "Adicionar:", quantity);
       existingItem.quantidade += quantity;
     } else {
+      console.log("Adicionando novo item.");
       cart.items.push({ produto: productId, quantidade: quantity });
     }
 
@@ -56,7 +61,7 @@ const cartService = {
 
     // Filtra usando 'produto'
     cart.items = cart.items.filter(
-      (item) => item.produto.toString() !== productId
+      (item) => (item.produto._id || item.produto).toString() !== productId
     );
 
     // Recalcula total
