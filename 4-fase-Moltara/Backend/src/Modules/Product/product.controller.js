@@ -1,6 +1,13 @@
 import Produto from "../Product/product.schema.js";
 import cloudinary from "../../Config/cloudinary.config.js";
 
+//alguns import para barra de pesquisa
+import { 
+  createProduct, 
+  updateProductInventory, 
+  findProductsByTerm
+} from './product.repository.js';
+
 export const cadastrarProduto = async (req, res) => {
   const { nome, descricao, preco, estoque } = req.body;
 
@@ -121,6 +128,20 @@ export const deletarProduto = async (req, res) => {
       message: "Erro interno do servidor ao deletar o produto.",
     });
   }
+};
+
+//Barra de pesquisa ;)
+/**
+*@param {string} searchTerm 
+*/
+ 
+export const searchProducts = async (searchTerm) => {
+  if (!searchTerm || searchTerm.trim().length < 2) {
+   throw { status: 400, message: 'O termo de busca deve ter pelo menos 2 caracteres.' };
+  }
+    
+  const products = await findProductsByTerm(searchTerm.trim());
+  return products;
 };
 
 export default cadastrarProduto;

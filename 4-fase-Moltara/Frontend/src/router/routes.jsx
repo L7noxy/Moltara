@@ -5,6 +5,7 @@ import Home from "../pages/Js/Home.jsx";
 import Cadastro from "../pages/Js/Cadastro.jsx";
 import Login from "../pages/Js/Login.jsx";
 import Perfil from "../pages/Js/Perfil.jsx";
+import PaginaResultados from "../pages/Js/PaginaResultados.jsx";
 
 // imports de páginas relacionadas com o carrinho
 import Carrinho from "../pages/Js/Carrinho.jsx";
@@ -22,6 +23,7 @@ import ProtectedAdmin from "./ProtectedAdmin.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
+  { path: "/pesquisa", element: <PaginaResultados /> },
 
   { path: "/cadastro", element: <Cadastro /> },
   { path: "/login", element: <Login /> },

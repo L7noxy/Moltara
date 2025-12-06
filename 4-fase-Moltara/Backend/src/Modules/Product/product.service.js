@@ -1,5 +1,15 @@
 import Produto from "../Product/product.schema.js";
 
+//alguns import para barra de pesquisa
+import { 
+    findAllProducts,
+    findProductById,
+    createProduct, 
+    updateProduct,
+    deleteProduct,
+    findProductsByTerm 
+} from './product.repository.js';
+
 export const findAllProducts = async () => {
     const products = await Produto.find().lean();
     return products;
@@ -40,4 +50,16 @@ export const deleteProduct = async (id) => {
         throw new Error("Produto não encontrado para exclusão.");
     }
     return deletedProduct;
+};
+
+//Barra de pesquisa ;)
+export const searchProducts = async (searchTerm) => {
+    if (!searchTerm || searchTerm.trim().length < 2) {
+        throw { status: 400, message: 'O termo de busca deve ter pelo menos 2 caracteres.' };
+    }
+    
+    // Chama a função do Repository
+    const products = await findProductsByTerm(searchTerm.trim());
+
+    return products;
 };

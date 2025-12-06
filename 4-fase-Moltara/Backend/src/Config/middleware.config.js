@@ -1,0 +1,1 @@
+export const MAQUINA_BASE_URL = 'http://52.72.137.244:3000';
