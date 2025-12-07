@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import express from "express";
 
 import morgan from "morgan";
 import logger from "./Config/logger.js";
@@ -39,5 +40,7 @@ if (process.env.NODE_ENV !== "production") {
 
 // Ambiente de produção: log estruturado no winston
 app.use(morgan("combined", { stream }));
+
+
 
 export default app;

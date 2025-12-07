@@ -47,4 +47,5 @@ app.use("/api/usuario", userRoutes);
 app.use("/api/produto", productRoutes);
 app.use("/api/comentarios", commentRoutes);
 app.use("/api/pedidos", orderRoutes);
+
 export default app;
