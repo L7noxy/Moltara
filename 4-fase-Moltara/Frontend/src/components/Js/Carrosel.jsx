@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { HiOutlineArrowSmallLeft, HiOutlineArrowSmallRight } from "react-icons/hi2";
-import "../../components/Css/Carrosel.css";
+import "../Css/Carrosel.css"; // Alterei o caminho para relativo
 
 const slides = [
   {
@@ -18,7 +18,7 @@ const slides = [
   {
     img: "/img/banner3.webp",
     title: "Intel Gamer Days",
-    caption: "Ganhe o Battlefield 6 ao compar produtos da Intel!",
+    caption: "Ganhe o Battlefield 6 ao comprar produtos da Intel!",
     cta: "Saiba Mais"
   }
 ];
@@ -35,42 +35,42 @@ export default function Carousel() {
   }, []);
 
   return (
-    <div className="container-carrosel">
+    <div className="carousel-container">
       <div
         className="carousel-track"
         style={{
           transform: `translateX(-${index * 100}%)`
         }}
       >
-        {slides.map((s, i) => (
+        {slides.map((slide, i) => (
           <div key={i} className="carousel-slide">
-            <img src={s.img} alt={s.title} />
+            <img src={slide.img} alt={slide.title} className="carousel-image" />
             <div className="carousel-caption">
-              <h2>{s.title}</h2>
-              <p>{s.caption}</p>
+              <h2 className="carousel-title">{slide.title}</h2>
+              <p className="carousel-text">{slide.caption}</p>
+              <button className="carousel-cta">{slide.cta}</button>
             </div>
           </div>
         ))}
       </div>
 
-
-
-      <button className="carousel-btn prev" onClick={prev}>
+      <button className="carousel-btn prev" onClick={prev} aria-label="Slide anterior">
         <HiOutlineArrowSmallLeft size={30} />
       </button>
-      <button className="carousel-btn next" onClick={next}>
+      <button className="carousel-btn next" onClick={next} aria-label="Próximo slide">
         <HiOutlineArrowSmallRight size={30} />
       </button>
 
       <div className="carousel-indicators">
         {slides.map((_, i) => (
-          <span
+          <button
             key={i}
             className={`carousel-dot ${i === index ? "active" : ""}`}
             onClick={() => setIndex(i)}
+            aria-label={`Ir para slide ${i + 1}`}
           />
         ))}
       </div>
-    </div >
+    </div>
   );
 }

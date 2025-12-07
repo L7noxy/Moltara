@@ -7,7 +7,6 @@
     font-weight: 100;
     font-style: normal;
     scrollbar-color: #ffffff #263238;
-    overflow-x: hidden;
     border: none;
 }
 
@@ -16,7 +15,7 @@
 
     --card-bg: #ffffff;     
     --bg-color: #f5f5f5;
-    --accent-color: #e00000;    
+    --accent-color: #e00000;
     --color3: #A71111;
     --color2: #37474F;
     --text-color: #333333;
