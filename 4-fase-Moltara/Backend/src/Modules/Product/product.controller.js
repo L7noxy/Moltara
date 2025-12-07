@@ -2,11 +2,7 @@ import Produto from "../Product/product.schema.js";
 import cloudinary from "../../Config/cloudinary.config.js";
 
 //alguns import para barra de pesquisa
-import { 
-  createProduct, 
-  updateProductInventory, 
-  findProductsByTerm
-} from './product.repository.js';
+import { findProductsByTerm } from './product.repository.js';
 
 export const cadastrarProduto = async (req, res) => {
   const { nome, descricao, preco, estoque } = req.body;

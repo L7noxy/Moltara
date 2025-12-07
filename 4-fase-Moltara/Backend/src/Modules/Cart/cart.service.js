@@ -1,11 +1,10 @@
 import cartRepository from "./cart.repository.js";
-import productRepository from "../Product/product.repository.js";
+import { productRepository } from "../Product/product.repository.js";
 
 // Função auxiliar interna para calcular total
 const calcularTotalCarrinho = async (cartItems) => {
   let total = 0;
   for (const item of cartItems) {
-    // Precisamos buscar o preço atualizado do produto
     const product = await productRepository.findById(item.produto);
     if (product) {
       total += product.preco * item.quantidade;

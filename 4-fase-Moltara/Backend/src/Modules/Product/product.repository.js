@@ -1,4 +1,10 @@
-import Product from "./product.model";
+import Product from "./product.model.js";
+
+const findById = async (id) => {
+    // Adicione o .lean() se você quiser apenas o objeto JavaScript simples,
+    // o que é mais rápido para leitura.
+    return await Product.findById(id).select('-__v'); 
+};
 
 export const findProductsByTerm = async (searchTerm) => {
     const regex = new RegExp(searchTerm, 'i');
@@ -9,4 +15,10 @@ export const findProductsByTerm = async (searchTerm) => {
             { descricao: { $regex: regex } } 
         ]
     }).select('-__v');
+};
+
+export const productRepository = {
+    findById,            // Adiciona a função findById
+    findProductsByTerm,  // Adiciona a função de busca
+    // Adicione aqui qualquer outra função CRUD (create, update, delete)
 };
