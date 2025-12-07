@@ -25,19 +25,13 @@ const productSchema = new mongoose.Schema(
         type: Number,
         required: [true, 'A quantidade em estoque é obrigatória.'],
         min: 0,
-        default: 0
+        default: 10
     },
 
     imagemUrl: {
         type: String,
         default: 'https://placehold.co/400x400/D0D0D0/333333?text=Sem+Imagem'
     },
-    
-    // categoria: {
-    //     type: String,
-    //     trim: true,
-    //     default: 'Geral'
-    // }
   },
   {
     timestamps: true,

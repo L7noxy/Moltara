@@ -28,7 +28,7 @@ export default function Navbar() {
         <button onClick={() => navigate(-1)} className="back-btn">
           <IoIosArrowRoundBack size={40} color="#fff" />
         </button>
-        <div className="logo">Logo</div>
+        <div className="logo"><img src="./public/img/logo.jpg" alt="" /></div>
       </div>
 
       <div className="search-bar">

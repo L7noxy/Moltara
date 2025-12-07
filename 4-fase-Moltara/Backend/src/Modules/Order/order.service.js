@@ -1,6 +1,6 @@
 // order.service.js
 import Order from './order.schema.js';
-import Product from '../product/product.schema.js'; // Assumindo que você tem um model Product
+import Produto from '../product/product.schema.js';
 import axios from 'axios';
 import mongoose from 'mongoose';
 import { MAQUINA_BASE_URL } from '../../Config/middleware.config.js';
@@ -20,7 +20,7 @@ export const finalizarCompra = async (usuarioId, itemsDoCarrinho, callbackURLCli
     let valorTotal = 0;
     
     for (const item of itemsDoCarrinho) {
-      const produto = await Product.findById(item.produtoId).session(session);
+      const produto = await Produto.findById(item.produtoId).session(session);
       if (!produto) {
         throw new Error(`Produto ${item.produtoId} não encontrado`);
       }

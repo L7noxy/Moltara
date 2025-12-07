@@ -1,6 +1,3 @@
-// src/Modules/Order/order.service.js
-
-import Order from './order.schema.js';
 import axios from 'axios';
 import { createOrder, findOrderByItemIdMaquina } from './order.repository.js'; 
 

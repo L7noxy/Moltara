@@ -1,4 +1,4 @@
-import Product from "./product.model.js";
+import Product from "./product.schema.js";
 
 const findById = async (id) => {
     // Adicione o .lean() se você quiser apenas o objeto JavaScript simples,
@@ -18,7 +18,6 @@ export const findProductsByTerm = async (searchTerm) => {
 };
 
 export const productRepository = {
-    findById,            // Adiciona a função findById
-    findProductsByTerm,  // Adiciona a função de busca
-    // Adicione aqui qualquer outra função CRUD (create, update, delete)
+    findById,
+    findProductsByTerm,  
 };

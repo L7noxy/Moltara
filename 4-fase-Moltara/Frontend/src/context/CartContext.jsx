@@ -17,13 +17,6 @@ export function CartProvider({ children }) {
       const response = await axios.get("http://localhost:3000/api/cart/buscarCompra", {
         withCredentials: true,
       });
-      // O backend retorna a estrutura do carrinho, precisamos extrair os itens
-      // Supondo que o backend retorne { _id, usuarioId, produtos: [...] }
-      // Ajuste conforme o retorno real do backend. Se retornar array direto de itens, ok.
-      // Olhando cart.service.js (não vi o código mas controller diz json(cart))
-      // Vamos assumir que retorna o objeto Carrinho com .produtos
-      
-      // Se o carrinho não existir ou estiver vazio, array vazio
       const backendItems = response.data && response.data.items ? response.data.items : [];
       
       const mappedCart = backendItems.map(item => {

@@ -20,13 +20,8 @@
     gap: 30px;
 }
 
-.logo {
-    color: var(--card-bg);
-    font-size: 26px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-decoration: none;
+.logo img   {
+    height: 20px;
 }
 
 .category-wrapper {
