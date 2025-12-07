@@ -8,10 +8,15 @@ import { useParams } from "react-router-dom";
 export default function ProdutoDetalhada() {
   const { addToCart } = useCart();
   const { id } = useParams();
+
   const [produto, setProduto] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [quantidade, SetQuantidade] = useState(1);
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
+  const [alertType, setAlertType] = useState('');
 
   const [personalizacaoSelecionada, setPersonalizacaoSelecionada] = useState({
     cor: null,
@@ -52,7 +57,6 @@ export default function ProdutoDetalhada() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // Assumindo que credenciais sao enviadas via cookie automaticamente
         },
         credentials: "include",
         body: JSON.stringify({
@@ -63,7 +67,7 @@ export default function ProdutoDetalhada() {
 
       if (response.ok) {
         setNovoComentario("");
-        buscarComentarios(); // Recarrega a lista
+        buscarComentarios();
       } else {
         const err = await response.json();
         alert(err.message || "Erro ao enviar comentário (Talvez precise logar)");
@@ -97,8 +101,27 @@ export default function ProdutoDetalhada() {
 
   const handleAddToCart = async () => {
     if (!produto) return;
+
+    // Opcional: Esconder qualquer alerta anterior antes de tentar a nova ação
+    setShowAlert(false);
+
     const success = await addToCart(produto._id, quantidade);
-    if (success) alert("Produto adicionado ao carrinho!");
+
+    if (success) {
+      setAlertMessage(`O produto ${produto.nome} foi adicionado ao carrinho!`);
+      setAlertType('success');
+    } else {
+      setAlertMessage('Erro ao adicionar ao carrinho!');
+      setAlertType('danger');
+    }
+
+    // 2. Mostrar o alerta após a lógica ser concluída
+    setShowAlert(true);
+
+    // Opcional: Esconder o alerta automaticamente após X segundos
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 3000); // 3000 milissegundos = 3 segundos
   };
 
   const aumentar = () => SetQuantidade(quantidade + 1);
@@ -124,14 +147,20 @@ export default function ProdutoDetalhada() {
     <div className="container-produto-detalhada">
       <Navbar />
 
+      {showAlert && (
+        <div className="alert-container">
+          <div className={`alert alert-${alertType}`}>
+            {alertMessage}
+          </div>
+        </div>
+      )}
       <div className="produto-content-wrapper">
-        {/* Lado Esquerdo: Imagens */}
+
         <div className="produto-imagem-section">
           <div className="imagem-principal">
             <img src={produto.imagemUrl} alt={produto.nome} />
           </div>
           <div className="galeria-imagens">
-            {/* Simulação de galeria (usando a mesma imagem por enquanto) */}
             <img src={produto.imagemUrl} alt="Vista 1" />
             <img src={produto.imagemUrl} alt="Vista 2" />
             <img src={produto.imagemUrl} alt="Vista 3" />
@@ -225,6 +254,8 @@ export default function ProdutoDetalhada() {
               <button className="button-adicionar" onClick={handleAddToCart}>
                 Adicionar ao Carrinho - R$ {(produto.preco * quantidade).toFixed(2).replace('.', ',')}
               </button>
+
+
             </div>
           </div>
 

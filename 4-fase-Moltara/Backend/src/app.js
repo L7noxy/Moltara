@@ -39,10 +39,8 @@ app.use(
   })
 );
 
-
 app.use("/api/admin", adminRoutes);
 app.use("/api/cart", cartRoutes);
-app.use('/api/pedidos', orderRoutes);
 app.use("/api/usuario", userRoutes);
 app.use("/api/produto", productRoutes);
 app.use("/api/comentarios", commentRoutes);
