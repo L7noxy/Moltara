@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "CHOKIDAR_USEPOLLING=true react-scripts start",
-    "dev": "WATCHPACK_POLLING=true vite",
+    "start": "react-scripts start",
+    "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

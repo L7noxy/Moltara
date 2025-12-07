@@ -19,7 +19,7 @@ const orderSchema = new mongoose.Schema({
   items: [{
     produtoId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Product',
+      ref: 'Produto',
       required: true
     },
     nomeProduto: String,

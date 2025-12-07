@@ -35,3 +35,23 @@ export const receberCallbackMaquina = async (req, res) => {
      return res.status(500).json({ message: "Erro interno no processamento do callback." });
     }
 };
+
+export const criarPedido = async (req, res) => {
+    const { usuarioId, items } = req.body;
+
+    try {
+        const pedido = new Order({
+            usuarioId,
+            items,
+            statusPedido: 'PENDENTE',
+            createdAt: new Date(),
+            updatedAt: new Date()
+        });
+
+        await pedido.save();
+        return res.status(201).json({ message: "Pedido criado com sucesso.", pedido });
+    } catch (error) {
+        console.error("Erro ao criar pedido:", error);
+        return res.status(500).json({ message: "Erro interno ao criar pedido." });
+    }
+};
