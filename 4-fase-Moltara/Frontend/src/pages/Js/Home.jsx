@@ -14,14 +14,12 @@ export default function Home() {
       <div className="container-home">
         <Navbar />
         <div>
-          <div>
-
-
-            <Carrosel />
-          </div>
-          <CardProduto />
-          <Footer />
+          <Carrosel />
         </div>
+        <div>
+          <CardProduto />
+        </div>
+        <Footer />
       </div>
     </>
   );

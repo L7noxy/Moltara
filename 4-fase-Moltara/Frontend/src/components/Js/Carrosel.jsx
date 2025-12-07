@@ -10,17 +10,17 @@ const slides = [
     cta: "Ver Oferta"
   },
   {
-    img: "/img/banner.webp",
-    title: "Promo do Dia Gamer",
-    caption: "Descontos incríveis por tempo limitado!",
-    cta: "Ver Oferta"
+    img: "/img/banner2.webp",
+    title: "Promoções gamer",
+    caption: "Potência e desempenho pra você dominar o jogo!",
+    cta: "Confira"
   },
   {
-    img: "/img/banner.webp",
-    title: "Promo do Dia Gamer",
-    caption: "Descontos incríveis por tempo limitado!",
-    cta: "Ver Oferta"
-  },
+    img: "/img/banner3.webp",
+    title: "Intel Gamer Days",
+    caption: "Ganhe o Battlefield 6 ao compar produtos da Intel!",
+    cta: "Saiba Mais"
+  }
 ];
 
 export default function Carousel() {
