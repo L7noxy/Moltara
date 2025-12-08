@@ -281,6 +281,7 @@
   font-weight: bold;
   cursor: pointer;
   width: 100%;
+  margin-bottom: 5%;
   transition: opacity 0.2s;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -291,7 +292,7 @@
 }
 
 .button-confirmar {
-  background-color: var(--primary-color);
+  background-color: #db1630;
   color: white;
   padding: 15px;
   border: none;
@@ -300,6 +301,11 @@
   font-weight: bold;
   cursor: pointer;
   width: 100%;
+  
+}
+
+.button-confirmar:hover{
+  opacity: 0.9;
 }
 
 /* --- Description Section --- */

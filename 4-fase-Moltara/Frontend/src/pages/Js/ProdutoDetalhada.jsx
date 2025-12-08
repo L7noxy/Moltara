@@ -254,9 +254,9 @@ export default function ProdutoDetalhada() {
               <button className="button-adicionar" onClick={handleAddToCart}>
                 Adicionar ao Carrinho - R$ {(produto.preco * quantidade).toFixed(2).replace('.', ',')}
               </button>
-
-
             </div>
+
+            <buton className='button-confirmar' onClick={ConfirmarPersonalizacao}>Confirmar Pagamento</buton>
           </div>
 
         </div>
