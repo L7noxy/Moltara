@@ -15,7 +15,6 @@ export const finalizarCompra = async (usuarioId, itemsDoCarrinho, callbackURLCli
   try {
     console.log(`Iniciando finalização de compra para usuário: ${usuarioId}`);
     
-    // 1. Validar e calcular itens
     const itemsCompletos = [];
     let valorTotal = 0;
     

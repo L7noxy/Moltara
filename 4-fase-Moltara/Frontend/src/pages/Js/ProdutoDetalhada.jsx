@@ -262,20 +262,13 @@ export default function ProdutoDetalhada() {
         </div>
       </div>
 
-      {/* --- Seção de Descrição e Detalhes --- */}
       <div className="container-descricao-total">
         <div className="secao-detalhe">
           <h3>Descrição</h3>
           <p>{produto.descricao || "Sem descrição disponível."}</p>
         </div>
-        <div className="divisor"></div>
-        <div className="secao-detalhe">
-          <h3>Detalhes Técnicos</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
       </div>
 
-      {/* --- Seção de Comentários e Avaliações --- */}
       <div className="container-descricao-total container-comentarios">
         <div className="secao-detalhe">
           <h3>Avaliações e Comentários</h3>

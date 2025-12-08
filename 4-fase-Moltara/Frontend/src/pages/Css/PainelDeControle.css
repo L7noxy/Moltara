@@ -9,10 +9,9 @@
 
 .container-um {
  display: grid;
- grid-template-columns: repeat(2, 1fr); 
- grid-template-rows: repeat(2, 1fr);
+ grid-template-columns: repeat(3, 1fr); 
  gap: 30px; 
- padding: 60px; 
+ padding: 40px; 
 
  background-color: white; 
  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
