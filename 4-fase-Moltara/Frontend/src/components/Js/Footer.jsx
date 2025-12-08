@@ -40,7 +40,7 @@ const Footer = () => {
     { icon: <FaTwitter />, url: "#" },
     { icon: <FaInstagram />, url: "#" },
     { icon: <FaLinkedin />, url: "#" },
-    { icon: <FaGithub />, url: "#" },
+    { icon: <FaGithub />, url: "https://github.com/L7noxy/Montara" },
   ];
 
   return (

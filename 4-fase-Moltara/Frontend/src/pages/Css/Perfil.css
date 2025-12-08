@@ -1,6 +1,7 @@
 .perfil-container {
     background-color: var(--bg-color);
     min-height: 100vh;
+    margin-top: 90px;
 }
 
 .perfil-content-wrapper {
@@ -21,7 +22,6 @@
     margin: 20px;
 }
 
-/* Sidebar */
 .perfil-sidebar {
     width: 300px;
     background-color: #FAFAFA;
