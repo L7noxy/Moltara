@@ -17,7 +17,7 @@
 .criar-produto {
     width: 100%;
     max-width: 544px;
-    margin-top: 20px;
+    margin-top: 60px;
     padding: 2.5rem;
     border-radius: 0.75rem;
     overflow: hidden;
@@ -70,7 +70,7 @@ label {
 }
 
 .descricao {
-
+    height: 250px;
     resize: none;
 }
 

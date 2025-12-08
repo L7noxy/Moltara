@@ -47,7 +47,7 @@ const Footer = () => {
     <footer className="container-footer">
       <div className="footer-content">
         <div className="footer-brand">
-          <h2>MOLTARA</h2>
+          <h2>MONTARA</h2>
           <p>
             Mais do que vender computadores, nós oferecemos soluções que
             impulsionam o seu potencial.
@@ -71,7 +71,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>© {currentYear} Moltara, Inc. All rights reserved.</p>
+        <p>© {currentYear} Montara, Inc. All rights reserved.</p>
         <div className="social-links">
           {socialLinks.map((social, index) => (
             <a key={index} href={social.url}>

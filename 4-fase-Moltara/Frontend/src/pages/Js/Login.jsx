@@ -64,7 +64,6 @@ export default function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <FaEnvelope className="icon" />
           </div>
 
           <div className="input-icon">
@@ -75,7 +74,6 @@ export default function Login() {
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
             />
-            <FaLock className="icon" />
           </div>
 
           <button type="submit" className="botao-login" disabled={loading}>

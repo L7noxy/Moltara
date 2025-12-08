@@ -113,7 +113,7 @@ export default function CriarProduto() {
                         />
                     </div>
 
-                    <div className="personalizacao">
+                    {/* <div className="personalizacao">
                         <div className="title-personalizacao">
                             <h1>Personalizações</h1>
                             <p>(Coloque pelo menos 3 de cada)</p>
@@ -148,7 +148,7 @@ export default function CriarProduto() {
                             </ul>
                         </div>
                         <hr />
-                    </div>
+                    </div> */}
                     <button type="submit" className="cadastrar-produto">Cadastrar Produto</button>
                 </form>
             </div>

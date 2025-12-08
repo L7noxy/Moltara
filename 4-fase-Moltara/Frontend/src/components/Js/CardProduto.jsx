@@ -96,7 +96,7 @@ export default function CardProduto() {
                         <img src={produto.imagemUrl} alt={produto.nome} />
                       </div>
                       <div className="contentBox">
-                        <h3 className="card-nome-produto">{produto.nome}</h3>
+                        <hp className="card-nome-produto">{produto.nome}</hp>
                         <h2 className="price">{produto.preco} R$</h2>
                       </div>
                     </Link>

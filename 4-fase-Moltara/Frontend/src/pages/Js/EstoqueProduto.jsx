@@ -8,8 +8,78 @@ export default function EstoqueProduto() {
   const [produtos, setProdutos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  
-  // NOVO ESTADO: Controla o pop-up
+  const [qtyToAdd, setQtyToAdd] = useState(1);
+
+  const handleConfirmIncrease = (produto) => {
+    setQtyToAdd(1); // Resetar a quantidade para 1 ao abrir
+    setModal({
+      isVisible: true,
+      type: 'increase', // Novo tipo de modal
+      produtoToUpdate: produto, // Usar 'produtoToUpdate' para ser mais claro
+      message: `Adicionar estoque ao produto "${produto.nome}"`,
+    });
+  };
+
+  const handleIncreaseStock = async () => {
+    const { produtoToUpdate } = modal;
+    if (!produtoToUpdate || qtyToAdd <= 0) return;
+    const produtoId = produtoToUpdate._id;
+
+    // 1. Mudar para estado de Loading
+    setModal(prev => ({
+      ...prev,
+      type: 'loading',
+      message: `Atualizando estoque de ${produtoToUpdate.nome}...`,
+    }));
+
+    const minDurationPromise = new Promise(resolve => setTimeout(resolve, 1500));
+
+    const updateOperationPromise = fetch(
+      `http://localhost:3000/api/produto/adicionarEstoque/${produtoId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ quantidade: qtyToAdd }), // Envia a quantidade a ser adicionada
+      }
+    ).then(async response => {
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || `Falha ao adicionar estoque. Código: ${response.status}`);
+      }
+      return response.json(); // Espera-se que o backend retorne o produto atualizado
+    });
+
+    try {
+      const [_, updatedProduto] = await Promise.all([minDurationPromise, updateOperationPromise]);
+
+      // 3. Sucesso: Atualiza o estado local 'produtos'
+      setProdutos(prevProdutos =>
+        prevProdutos.map(p =>
+          p._id === updatedProduto._id ? updatedProduto : p
+        )
+      );
+
+      setModal({
+        isVisible: true,
+        type: 'success',
+        produtoToUpdate: null,
+        message: `✅ ${qtyToAdd} unidades adicionadas! Novo estoque: ${updatedProduto.estoque}`,
+      });
+
+      setTimeout(() => {
+        setModal(prev => ({ ...prev, isVisible: false }));
+      }, 2000);
+
+    } catch (erro) {
+      // 4. Erro: Mudar para o estado de Erro
+      console.error("Ocorreu um erro na atualização:", erro);
+    }
+  };
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   const [modal, setModal] = useState({
     isVisible: false,
     type: 'confirm',
@@ -64,7 +134,7 @@ export default function EstoqueProduto() {
     const { produtoToDelete } = modal;
     if (!produtoToDelete) return;
     const produtoId = produtoToDelete._id;
-    
+
     setModal({
       isVisible: true,
       type: 'loading',
@@ -81,7 +151,7 @@ export default function EstoqueProduto() {
       if (!response.ok) {
         throw new Error(`Falha ao excluir o produto. Código: ${response.status}`);
       }
-      return true; 
+      return true;
     });
 
     try {
@@ -97,7 +167,7 @@ export default function EstoqueProduto() {
         produtoToDelete: null,
         message: '✅ Produto excluído com sucesso!',
       });
-      
+
       setTimeout(() => {
         setModal(prev => ({ ...prev, isVisible: false }));
       }, 1500);
@@ -212,25 +282,25 @@ export default function EstoqueProduto() {
             <div className="modal-body">
               {modal.type === 'loading' && (
                 <div className="loading-spinner-container">
-                    <div className="loading-spinner"></div>
+                  <div className="loading-spinner"></div>
                 </div>
               )}
-              
+
               <p>{modal.message}</p>
             </div>
 
             {/* Ações só são visíveis para confirmação e erro */}
             {(modal.type === 'confirm' || modal.type === 'error') && (
               <div className="modal-actions">
-                <button 
-                    onClick={handleCloseModal} 
-                    className="modal-btn cancel-btn"
+                <button
+                  onClick={handleCloseModal}
+                  className="modal-btn cancel-btn"
                 >
                   {modal.type === 'confirm' ? 'Cancelar' : 'Fechar'}
                 </button>
                 {modal.type === 'confirm' && (
-                  <button 
-                    onClick={handleDelete} 
+                  <button
+                    onClick={handleDelete}
                     className="modal-btn confirm-btn"
                   >
                     Excluir
@@ -238,7 +308,7 @@ export default function EstoqueProduto() {
                 )}
               </div>
             )}
-            
+
             {/* O modal de sucesso e carregamento fecham sozinhos ou não precisam de botões */}
           </div>
         </div>

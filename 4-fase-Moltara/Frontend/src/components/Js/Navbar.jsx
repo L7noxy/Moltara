@@ -49,9 +49,6 @@ export default function Navbar() {
             <Link to="/perfil" className="profile-link">
               <span className="user-name">{user?.nome || "Meu Perfil"}</span>
             </Link>
-            <button onClick={handleLogout} className="logout-btn">
-              Sair
-            </button>
           </>
         ) : (
           <>

@@ -3,18 +3,8 @@ import React, { useState } from "react";
 import "../Css/Cadastro.css";
 import Navbar from "../../components/Js/Navbar.jsx";
 
-import {
-  FaEye,
-  FaEyeSlash,
-  FaEnvelope,
-  FaUser,
-  FaIdCard,
-  FaQuestionCircle,
-} from "react-icons/fa";
 
 export default function Cadastro() {
-  const [showSenha, setShowSenha] = useState(false);
-  const [showConfirma, setShowConfirma] = useState(false);
   const [mensagem, setMensagem] = useState("");
 
   const [nome, setNome] = useState("");
@@ -46,7 +36,7 @@ export default function Cadastro() {
 
     if (res.ok) {
       navigate("/login");
-    } 
+    }
   };
 
   return (
@@ -67,7 +57,6 @@ export default function Cadastro() {
               value={nome}
               onChange={(e) => setNome(e.target.value)}
             />
-            <FaUser className="icon" />
           </div>
 
           <div className="input-icon">
@@ -79,7 +68,6 @@ export default function Cadastro() {
               onChange={(e) => setCpf(e.target.value)}
               maxLength={11}
             />
-            <FaIdCard className="icon" />
           </div>
 
           <div className="input-icon">
@@ -90,55 +78,30 @@ export default function Cadastro() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <FaEnvelope className="icon" />
           </div>
 
           <div className="input-icon">
             <input
-              type={showSenha ? "text" : "password"}
+              type='password'
               placeholder="Crie uma senha"
               required
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
             />
-            {showSenha ? (
-              <FaEyeSlash
-                className="icon"
-                onClick={() => setShowSenha(!showSenha)}
-              />
-            ) : (
-              <FaEye
-                className="icon"
-                onClick={() => setShowSenha(!showSenha)}
-                values={senha}
-              />
-            )}
           </div>
 
           <div className="input-icon confirm-password">
             <input
-              type={showConfirma ? "text" : "password"}
+              type='password'
               placeholder="Confirme sua senha"
               required
               value={confirmarSenha}
               onChange={(e) => setConfirmarSenha(e.target.value)}
             />
-            {showConfirma ? (
-              <FaEyeSlash
-                className="icon"
-                onClick={() => setShowConfirma(!showConfirma)}
-              />
-            ) : (
-              <FaEye
-                className="icon"
-                onClick={() => setShowConfirma(!showConfirma)}
-              />
-            )}
           </div>
 
           <div className="input-icon confirm-password">
-            <input type="text" placeholder="Onde você conheceu o Moltara?" />
-            <FaQuestionCircle className="icon" />
+            <input type="text" placeholder="Onde você conheceu o Montara?" />
           </div>
 
           <div className="termos">
@@ -153,7 +116,7 @@ export default function Cadastro() {
                 Li e aceito os{" "}
                 <a
                   rel="noopener"
-                  href="https://www.moltara.com.br/termos-de-uso/"
+                  href="https://www.montara.com.br/termos-de-uso/"
                 >
                   Termos de Uso
                 </a>

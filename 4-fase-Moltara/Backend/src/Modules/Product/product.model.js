@@ -4,11 +4,13 @@ const produtoSchema = mongoose.Schema({
   nome: {
     type: String,
     required: true,
+    maxlength: 100,
   },
 
   preco: {
     type: Number,
     required: true,
+    min: 0,
   },
 
   imagemUrl: {

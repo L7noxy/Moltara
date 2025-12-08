@@ -1,3 +1,14 @@
+/* --- Variáveis (Exemplo: Se você estiver usando CSS Variables) --- */
+/*
+:root {
+  --card-bg: #ffffff;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --primary-color: #333;
+  --accent-color: #ff4500; 
+}
+*/
+
+/* --- 1. Layout Principal dos Produtos --- */
 .container-produtos-home {
   display: flex;
   justify-content: center;
@@ -9,18 +20,20 @@
   margin: 0 auto;
 }
 
+/* --- 2. Estilos do Card --- */
 .card {
-  background-color: var(--card-bg);
+  background-color: var(--card-bg, #ffffff);
   border-radius: 10px;
-  box-shadow: var(--card-shadow);
+  box-shadow: var(--card-shadow, 0 4px 12px rgba(0, 0, 0, 0.05));
   width: 250px;
   padding: 20px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;
-  position: relative;
+  overflow: visible; /* Pode ser hidden, mas 'visible' permite que a sombra do hover não seja cortada */
+  position: relative; /* ESSENCIAL: Define o contexto para o btn-curtir */
 }
 
 .card:hover {
@@ -28,6 +41,7 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
+/* --- 3. Imagem do Produto --- */
 .card .imgBox {
   width: 100%;
   height: 200px;
@@ -49,8 +63,9 @@
   transform: scale(1.05);
 }
 
+/* --- 4. Botão de Curtir (Posicionamento Corrigido) --- */
 .btn-curtir {
-  position: absolute;
+  position: absolute; /* Posicionado absolutamente em relação ao .card */
   top: 15px;
   right: 15px;
   background: white;
@@ -66,18 +81,21 @@
   transition: all 0.2s;
   z-index: 10;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  padding: 0; /* Remove padding extra que pode distorcer o círculo */
 }
 
 .btn-curtir:hover {
-  color: var(--accent-color);
-  border-color: var(--accent-color);
+  color: var(--accent-color, #ff4500);
+  border-color: var(--accent-color, #ff4500);
 }
 
+/* --- 5. Conteúdo do Card --- */
 .card .contentBox {
   width: 100%;
   text-align: center;
 }
 
+/* Categoria/Outras infos (se houver) */
 .card .contentBox h3 {
   font-size: 12px;
   color: #888;
@@ -87,38 +105,42 @@
   margin-bottom: 5px;
 }
 
+/* Nome do Produto com Truncamento em 3 Linhas */
 .card-nome-produto {
   font-size: 16px;
-  color: var(--primary-color);
+  color: var(--primary-color, #333);
   font-weight: bold;
   margin-bottom: 10px;
-  white-space: nowrap;
+  line-height: 1.4; 
+  
+  /* Regras para Truncamento em 3 Linhas */
   overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limita a 3 linhas */
+  -webkit-box-orient: vertical;
 }
 
+/* Preço */
 .card .contentBox .price {
   font-size: 20px;
-  color: var(--accent-color);
+  color: var(--accent-color, #ff4500);
   font-weight: 800;
   margin-bottom: 15px;
 }
 
 .card .contentBox .buy {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color, #333);
   color: white;
   text-decoration: none;
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 14px;
   font-weight: bold;
-  opacity: 1;
-  /* Always visible now, accessible design */
   transition: 0.2s;
   display: inline-block;
+  border: none; /* Garante que é um botão limpo */
 }
 
 .card .contentBox .buy:hover {
-  background-color: var(--accent-color);
+  background-color: var(--accent-color, #ff4500);
 }
