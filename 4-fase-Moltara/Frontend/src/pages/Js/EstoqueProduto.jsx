@@ -8,77 +8,34 @@ export default function EstoqueProduto() {
   const [produtos, setProdutos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [qtyToAdd, setQtyToAdd] = useState(1);
+  const [adicionarQuantidade, setAdicionarQuantidade] = useState(0);
 
-  const handleConfirmIncrease = (produto) => {
-    setQtyToAdd(1); // Resetar a quantidade para 1 ao abrir
-    setModal({
-      isVisible: true,
-      type: 'increase', // Novo tipo de modal
-      produtoToUpdate: produto, // Usar 'produtoToUpdate' para ser mais claro
-      message: `Adicionar estoque ao produto "${produto.nome}"`,
-    });
-  };
+  const handleAdicionarQuantidade = async (quantidade) => {
+      try {
+        const response = await fetch("http://localhost:3000/api/produto/adicionar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(novoProduto),
+        });
 
-  const handleIncreaseStock = async () => {
-    const { produtoToUpdate } = modal;
-    if (!produtoToUpdate || qtyToAdd <= 0) return;
-    const produtoId = produtoToUpdate._id;
+        if (!response.ok) {
+          throw new Error(`Erro ao adicionar produto: ${response.status}`);
+        }
 
-    // 1. Mudar para estado de Loading
-    setModal(prev => ({
-      ...prev,
-      type: 'loading',
-      message: `Atualizando estoque de ${produtoToUpdate.nome}...`,
-    }));
-
-    const minDurationPromise = new Promise(resolve => setTimeout(resolve, 1500));
-
-    const updateOperationPromise = fetch(
-      `http://localhost:3000/api/produto/adicionarEstoque/${produtoId}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ quantidade: qtyToAdd }), // Envia a quantidade a ser adicionada
+        const produtoAdicionado = await response.json();
+        setProdutos((prevProdutos) => [...prevProdutos, produtoAdicionado]);
+        console.log("Produto adicionado com sucesso:", produtoAdicionado);
+        return produtoAdicionado;
+      } catch (error) {
+        console.error("Ocorreu um erro ao adicionar o produto:", error);
+        setError("Não foi possível adicionar o produto.");
+        throw error;
       }
-    ).then(async response => {
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || `Falha ao adicionar estoque. Código: ${response.status}`);
-      }
-      return response.json(); // Espera-se que o backend retorne o produto atualizado
-    });
+    };
 
-    try {
-      const [_, updatedProduto] = await Promise.all([minDurationPromise, updateOperationPromise]);
-
-      // 3. Sucesso: Atualiza o estado local 'produtos'
-      setProdutos(prevProdutos =>
-        prevProdutos.map(p =>
-          p._id === updatedProduto._id ? updatedProduto : p
-        )
-      );
-
-      setModal({
-        isVisible: true,
-        type: 'success',
-        produtoToUpdate: null,
-        message: `✅ ${qtyToAdd} unidades adicionadas! Novo estoque: ${updatedProduto.estoque}`,
-      });
-
-      setTimeout(() => {
-        setModal(prev => ({ ...prev, isVisible: false }));
-      }, 2000);
-
-    } catch (erro) {
-      // 4. Erro: Mudar para o estado de Erro
-      console.error("Ocorreu um erro na atualização:", erro);
-    }
-  };
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const [modal, setModal] = useState({
     isVisible: false,
@@ -229,7 +186,8 @@ export default function EstoqueProduto() {
               <th>Preço</th>
               <th>Quantidade em Estoque</th>
               <th>Status</th>
-              <th>Ações</th> {/* Certifique-se de que a coluna "Ações" existe */}
+              <th>Excluir</th>
+              <th>Adicionar</th>
             </tr>
           </thead>
           <tbody>
@@ -260,12 +218,22 @@ export default function EstoqueProduto() {
                   <td className="actions-col">
                     <button
                       className="delete-button"
-                      // IMPORTANTE: Chamando a nova função para abrir o modal de confirmação
                       onClick={() => handleConfirmDelete(produto)}
                       title={`Excluir ${produto.nome}`}
-                      disabled={modal.isVisible} // Desabilita botões enquanto o modal estiver aberto
+                      disabled={modal.isVisible}
                     >
                       Excluir
+                    </button>
+                  </td>
+
+                  <td className="actions-col">
+                    <button
+                      className="add-button"
+                      onClick={() => handleAdicionarQuantidade(produto)}
+                      title={`Adicionar ${produto.nome}`}
+                      disabled={modal.isVisible}
+                    >
+                      Adicionar
                     </button>
                   </td>
                 </tr>

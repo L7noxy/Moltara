@@ -16,7 +16,6 @@ import Pagamento from "../pages/Js/Pagamento.jsx";
 // Imports de páginas de administrador
 import CriarProduto from "../pages/Js/CriarProduto.jsx";
 import EstoqueProduto from "../pages/Js/EstoqueProduto.jsx";
-import PerilAdm from "../pages/Js/PerilAdm.jsx";
 import PainelDeControle from "../pages/Js/PainelDeControle.jsx";
 import ProtectedAdmin from "./ProtectedAdmin.jsx";
 
@@ -57,14 +56,6 @@ const router = createBrowserRouter([
     ),
   },
 
-  {
-    path: "/perfilAdm",
-    element: (
-      <ProtectedAdmin>
-        <PerilAdm />
-      </ProtectedAdmin>
-    ),
-  },
 
   {
     path: "/painelDeControle",
