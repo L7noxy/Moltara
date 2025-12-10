@@ -39,6 +39,11 @@ const userSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
+
+    conhecimento: {
+      type: String,
+      required: false,
+    },
   },
   {
     timestamps: true,

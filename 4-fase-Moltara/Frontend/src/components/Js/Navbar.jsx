@@ -28,7 +28,9 @@ export default function Navbar() {
         <button onClick={() => navigate(-1)} className="back-btn">
           <IoIosArrowRoundBack size={40} color="#fff" />
         </button>
-        <div className="logo"><img src="./public/img/logo.jpg" alt="" /></div>
+        <Link to="/">
+          <div className="logo"><img src="./public/img/logo.jpg" alt="" /></div>
+        </Link>
       </div>
 
       <div className="search-bar">
@@ -64,8 +66,8 @@ export default function Navbar() {
         <div className="cart-icon-container">
           <Link to="/carrinho">
             <HiShoppingCart color="#fff" size={20} />
-            <div className="cart-count">
-              {totalItems}
+            <div className={`cart-count ${totalItems > 0 ? 'cart-count--active' : 'cart-count--empty'}`}>
+              {totalItems > 0 ? totalItems : ''}
             </div>
           </Link>
         </div>

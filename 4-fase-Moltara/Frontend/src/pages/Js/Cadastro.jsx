@@ -56,6 +56,7 @@ export default function Cadastro() {
               required
               value={nome}
               onChange={(e) => setNome(e.target.value)}
+              maxLength={40}
             />
           </div>
 
@@ -101,7 +102,7 @@ export default function Cadastro() {
           </div>
 
           <div className="input-icon confirm-password">
-            <input type="text" placeholder="Onde você conheceu o Montara?" />
+            <input type="text" placeholder="Onde você conheceu o Montara? (opcional)" />
           </div>
 
           <div className="termos">

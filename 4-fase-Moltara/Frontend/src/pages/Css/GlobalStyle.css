@@ -14,7 +14,10 @@
 #root {
 
     /* Fontes para o texto */
+    --font-primary: "Urbanist", sans-serif;
+    --font-secondary: "Roboto", sans-serif;
 
+    /* Cores gerais */
     --card-bg: #ffffff;
     --bg-color: #f5f5f5;
     --accent-color: #e00000;
@@ -24,8 +27,7 @@
     --primary-color: #263238;
     --color7: #111111;
 
-    --font-primary: "Urbanist", sans-serif;
-    --font-secondary: "Roboto", sans-serif;
+
 
     --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 
@@ -36,6 +38,14 @@
     --botao-login-texto-hover: #ffffff;
     --botao-login-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 
+    --botao-cadastro: #111111;
+    --botao-cadastro-hover: #111111;
+    --botao-cadastro-texto: #ffffff;
+    --botao-cadastro-texto-hover: #ffffff;
+    --botao-cadastro-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+    --botao-border: 10px;
+
     /* Botões de Link */
     --botao-link: #111111;
     --botao-link-hover: #111111;
@@ -44,12 +54,7 @@
     --botao-link-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 
     /* Botões especiais */
-    --botao-especial: #111111;
-    --botao-especial-hover: #111111;
-    --botao-especial-texto: #ffffff;
-    --botao-especial-texto-hover: #ffffff;
-    --botao-especial-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    
+    --border-radius: 10px;
 
 
 }

@@ -13,6 +13,7 @@ export default function ProdutoDetalhada() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [quantidade, SetQuantidade] = useState(1);
+  const [confirmarPersonalizacao, setConfirmarPersonalizacao] = useState(false);
 
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
@@ -256,7 +257,7 @@ export default function ProdutoDetalhada() {
               </button>
             </div>
 
-            <buton className='button-confirmar' onClick={ConfirmarPersonalizacao}>Confirmar Pagamento</buton>
+            <buton className='button-confirmar' onClick={confirmarPersonalizacao}>Confirmar Pagamento</buton>
           </div>
 
         </div>

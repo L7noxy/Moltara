@@ -202,6 +202,11 @@
     font-weight: bold;
 }
 
+.cart-count--empty {
+    display: none;
+    visibility: hidden;
+}
+
 .cart-icon-container {
     position: relative;
 }

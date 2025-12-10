@@ -9,9 +9,7 @@ import PaginaResultados from "../pages/Js/PaginaResultados.jsx";
 
 // imports de páginas relacionadas com o carrinho
 import Carrinho from "../pages/Js/Carrinho.jsx";
-import Confirmacao from "../pages/Js/Confirmacao.jsx";
 import ProdutoDetalhada from "../pages/Js/ProdutoDetalhada.jsx";
-import Pagamento from "../pages/Js/Pagamento.jsx";
 
 // Imports de páginas de administrador
 import CriarProduto from "../pages/Js/CriarProduto.jsx";
@@ -30,8 +28,6 @@ const router = createBrowserRouter([
 
   // Páginas do carrinho
   { path: "/carrinho", element: <Carrinho /> },
-  { path: "/confirmacao", element: <Confirmacao /> },
-  { path: "/pagamento", element: <Pagamento /> },
 
   // Páginas do produto
   { path: "/produtoDetalhada", element: <ProdutoDetalhada /> },
