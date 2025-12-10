@@ -2,9 +2,7 @@ import asyncHandler from 'express-async-handler';
 import { finalizarCompra, handleCallbackUpdate } from './order.service.js';
 import * as cartService from '../Cart/cart.service.js'; 
 
-// ⚠️ Requer middleware de autenticação (protect)
 export const finalizarCheckout = asyncHandler(async (req, res) => {
-    // Assumindo que o ID do usuário está anexado ao req pela autenticação
     const userId = req.user.id; 
     
     const cart = await cartService.pegarCarrinho(userId);
@@ -13,7 +11,6 @@ export const finalizarCheckout = asyncHandler(async (req, res) => {
         res.status(400);
         throw new Error("Carrinho vazio. Adicione produtos antes de finalizar.");
     }
-
 
     const callbackUrl = `http://localhost:3000/.com/api/pedidos/callback`; 
 
@@ -27,7 +24,6 @@ export const finalizarCheckout = asyncHandler(async (req, res) => {
         status: pedido.statusPedido
     });
 });
-
 
 export const receberCallbackMaquina = asyncHandler(async (req, res) => {
     const { id, status, slot } = req.body; 

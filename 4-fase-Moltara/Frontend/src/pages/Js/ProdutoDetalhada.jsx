@@ -3,11 +3,12 @@ import Footer from "../../components/Js/Footer.jsx";
 import "../Css/ProdutoDetalhada.css";
 import { useState, useEffect } from "react";
 import { useCart } from "../../context/CartContext";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function ProdutoDetalhada() {
   const { addToCart } = useCart();
   const { id } = useParams();
+  const navigate = useNavigate
 
   const [produto, setProduto] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -100,13 +101,29 @@ export default function ProdutoDetalhada() {
     buscarProduto();
   }, [id]);
 
+
   const handleAddToCart = async () => {
     if (!produto) return;
 
-    // Opcional: Esconder qualquer alerta anterior antes de tentar a nova ação
     setShowAlert(false);
 
-    const success = await addToCart(produto._id, quantidade);
+    if (!personalizacaoSelecionada.cor || !personalizacaoSelecionada.tamanho || !personalizacaoSelecionada.simbolo) {
+      setAlertMessage('Por favor, selecione a Cor, o Tamanho e o Símbolo para personalizar seu produto.');
+      setAlertType('danger');
+      setShowAlert(true);
+      setTimeout(() => setShowAlert(false), 5000);
+      return; 
+    }
+
+    // Opcional: Esconder qualquer alerta anterior
+    setShowAlert(false);
+
+
+    const success = await addToCart(
+      produto._id, 
+      quantidade, 
+      personalizacaoSelecionada 
+    );
 
     if (success) {
       setAlertMessage(`O produto ${produto.nome} foi adicionado ao carrinho!`);
@@ -130,14 +147,20 @@ export default function ProdutoDetalhada() {
     if (quantidade > 1) SetQuantidade(quantidade - 1);
   };
 
+
   const icones = {
     Estrela: { contorno: "/img/estrela.png", preenchido: "/img/estrela_preenchida.png" },
     Casinha: { contorno: "/img/casinha.png", preenchido: "/img/casinha_preenchida.png" },
     Circulo: { contorno: "/img/circulo.png", preenchido: "/img/circulo_preenchido.png" },
   };
 
+
   const handlePersonalizacaoChange = (categoria, valor) => {
     setPersonalizacaoSelecionada((prev) => ({ ...prev, [categoria]: valor }));
+  };
+
+  const handleConfirmarPagamento = () => {
+    //navigate('/pagamento'); 
   };
 
   if (loading) return <div>Carregando...</div>;
@@ -257,7 +280,7 @@ export default function ProdutoDetalhada() {
               </button>
             </div>
 
-            <buton className='button-confirmar' onClick={confirmarPersonalizacao}>Confirmar Pagamento</buton>
+            <button className='button-confirmar' onClick={handleConfirmarPagamento}>Confirmar Pagamento</button>
           </div>
 
         </div>

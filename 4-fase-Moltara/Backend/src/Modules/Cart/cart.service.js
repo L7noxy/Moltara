@@ -22,7 +22,7 @@ const cartService = {
     return await cartRepository.createCart(userId);
   },
 
-  adicionarProduto: async (userId, productId, quantity) => {
+  adicionarProduto: async (userId, productId, quantity, personalizacao) => {
     const cart = await cartService.pegarCarrinho(userId);
     
     const product = await productRepository.findById(productId);
@@ -32,21 +32,26 @@ const cartService = {
 
     // 2. Procura item usando o nome correto do Schema: 'produto'
     console.log("Procurando produto ID:", productId);
-    console.log("Itens no carrinho:", cart.items.map(i => ({ id: i.produto._id || i.produto, qtd: i.quantidade })));
+    console.log("Personalização:", personalizacao); // Novo log
+    console.log("Itens no carrinho:", cart.items.map(i => ({ id: i.produto._id || i.produto, 
+     qtd: i.quantidade,
+     pers: i.personalizacao
+    })));
 
     const existingItem = cart.items.find(
-      (item) => (item.produto._id || item.produto).toString() === productId
+      (item) => (item.produto._id || item.produto).toString() === productId &&
+      JSON.stringify(item.personalizacao || {}) === JSON.stringify(personalizacao)
     );
 
     console.log("Item existente encontrado?", !!existingItem);
 
     // 3. Atualiza quantidade ou dá push usando nomes do Schema ('produto', 'quantidade')
     if (existingItem) {
-      console.log("Atualizando quantidade. Antes:", existingItem.quantidade, "Adicionar:", quantity);
+      console.log("Atualizando quantidade. Antes:", existingItem.quantidade, "Adicionar:", quantity, );
       existingItem.quantidade += quantity;
     } else {
-      console.log("Adicionando novo item.");
-      cart.items.push({ produto: productId, quantidade: quantity });
+      console.log("Adicionando novo item com personalização.");
+      cart.items.push({ produto: productId, quantidade: quantity, personalizacao: personalizacao });
     }
 
     // 4. IMPORTANTE: Recalcular o total antes de salvar (pois é required no Schema)
@@ -54,6 +59,8 @@ const cartService = {
 
     return await cartRepository.updateCart(cart);
   },
+
+  
 
   removerProduto: async (userId, productId) => {
     const cart = await cartService.pegarCarrinho(userId);

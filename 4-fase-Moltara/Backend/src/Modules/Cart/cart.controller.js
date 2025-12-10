@@ -24,7 +24,7 @@ export const cartController = {
       console.log("BODY:", req.body);
       console.log("SESSION USER:", req.session?.userId);
 
-      const { produtoId, quantidade } = req.body;
+      const { produtoId, quantidade, personalizacao } = req.body;
       const qtd = parseInt(quantidade, 10);
       const userId = req.session?.userId;
 
@@ -43,7 +43,8 @@ export const cartController = {
       const updatedCart = await cartService.adicionarProduto(
         userId,
         produtoId,
-        qtd
+        qtd,
+        personalizacao || {}
       );
 
       res.status(200).json(updatedCart);

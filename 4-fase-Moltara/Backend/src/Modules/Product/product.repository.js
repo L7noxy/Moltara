@@ -1,8 +1,6 @@
 import Product from "./product.schema.js";
 
 const findById = async (id) => {
-    // Adicione o .lean() se você quiser apenas o objeto JavaScript simples,
-    // o que é mais rápido para leitura.
     return await Product.findById(id).select('-__v'); 
 };
 

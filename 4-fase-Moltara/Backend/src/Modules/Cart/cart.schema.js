@@ -17,6 +17,13 @@ const CartSchema = new mongoose.Schema({
         type: Number,
         default: 1,
         required: true
+      },
+
+     personalizacao: {
+       cor: { type: String, default: null },
+       tamanho: { type: String, default: null },
+       simbolo: { type: String, default: null },
+       required: false
       }
     }
   ],

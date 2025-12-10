@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 
 const admSchema = new mongoose.Schema(
   {
-    
     nome: {
       type: String,
       required: true,
