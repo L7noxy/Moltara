@@ -1,57 +1,49 @@
-export const receberCallbackMaquina = async (req, res) => {
-    const { id, status, slot } = req.body;
+import asyncHandler from 'express-async-handler';
+import { finalizarCompra, handleCallbackUpdate } from './order.service.js';
+import * as cartService from '../Cart/cart.service.js'; 
+
+// ⚠️ Requer middleware de autenticação (protect)
+export const finalizarCheckout = asyncHandler(async (req, res) => {
+    // Assumindo que o ID do usuário está anexado ao req pela autenticação
+    const userId = req.user.id; 
+    
+    const cart = await cartService.pegarCarrinho(userId);
+
+    if (!cart || cart.items.length === 0) {
+        res.status(400);
+        throw new Error("Carrinho vazio. Adicione produtos antes de finalizar.");
+    }
+
+
+    const callbackUrl = `http://localhost:3000/.com/api/pedidos/callback`; 
+
+    const pedido = await finalizarCompra(userId, cart.items, cart.total, callbackUrl);
+    
+     await cartService.limparCarrinho(userId); 
+
+    res.status(201).json({ 
+        message: "Pedido recebido e enviado para produção.",
+        pedidoId: pedido._id,
+        status: pedido.statusPedido
+    });
+});
+
+
+export const receberCallbackMaquina = asyncHandler(async (req, res) => {
+    const { id, status, slot } = req.body; 
 
     if (!id || status !== 'ready') {
-        return res.status(200).json({ message: "Notificação recebida, status não é 'ready'." });
+        return res.status(200).json({ message: "Callback recebido, mas status não é 'ready'." });
     }
 
     try {
-        const pedido = await Order.findOne({ 'items.itemIdMaquina': id });
-
-        if (pedido) {
-            const item = pedido.items.find(i => i.itemIdMaquina === id);
-            
-            if (item) {
-             item.statusProducao = 'PRONTO';
-             item.slotExpedicao = slot; 
-
-             const todosProntos = pedido.items.every(i => i.statusProducao === 'PRONTO');
-
-                if (todosProntos) {
-                    pedido.statusPedido = 'CONCLUIDO';
-
-                } else {
-                    pedido.statusPedido = 'PRODUCAO_EM_ANDAMENTO';
-                }
-
-             await pedido.save();
-             return res.status(200).json({ message: "Status do produto atualizado com sucesso." });
-            }
-        }
-        return res.status(404).json({ message: "Item da máquina não encontrado no banco de dados." });
+        await handleCallbackUpdate(id, status, slot);
+        
+        res.status(200).json({ message: "Status de produção atualizado com sucesso." });
 
     } catch (error) {
-     console.error("Erro ao processar callback da máquina:", error);
-     return res.status(500).json({ message: "Erro interno no processamento do callback." });
+        console.error("Erro ao processar callback da máquina:", error.message);
+        res.status(500); 
+        throw new Error("Erro interno ao processar o callback.");
     }
-};
-
-export const criarPedido = async (req, res) => {
-    const { usuarioId, items } = req.body;
-
-    try {
-        const pedido = new Order({
-            usuarioId,
-            items,
-            statusPedido: 'PENDENTE',
-            createdAt: new Date(),
-            updatedAt: new Date()
-        });
-
-        await pedido.save();
-        return res.status(201).json({ message: "Pedido criado com sucesso.", pedido });
-    } catch (error) {
-        console.error("Erro ao criar pedido:", error);
-        return res.status(500).json({ message: "Erro interno ao criar pedido." });
-    }
-};
+});

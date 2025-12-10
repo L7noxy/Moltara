@@ -5,12 +5,8 @@ import { createOrder, findOrderByItemIdMaquina } from './order.repository.js';
 const MAQUINA_BASE_URL = 'http://52.72.137.244:3000';
 const START_PRODUCTION_URL = `${MAQUINA_BASE_URL}/queue/add`;
 
-/**
- * 1. Finaliza a compra, cria o Order e envia cada UNIDADE para a máquina.
- */
 export const finalizarCompra = async (userId, itemsDoCarrinho, total, callbackUrl) => {
     
-    // 1. Criar o Order (Modelo Base)
     const orderData = {
         user: userId,
         items: itemsDoCarrinho.map(item => ({
@@ -25,13 +21,10 @@ export const finalizarCompra = async (userId, itemsDoCarrinho, total, callbackUr
     
     const productionPromises = [];
 
-    // 2. Fatiar e Enviar para Produção
     for (const item of novoPedido.items) {
         for (let i = 0; i < item.quantidade; i++) {
-            // Cria um ID ÚNICO que será usado no callback (itemIdMaquina)
             const itemIdMaquina = `${item.produto.toString()}-${novoPedido._id.toString()}-${i}`; 
             
-            // Encontra o subdocumento no pedido para atualizar o ID da máquina
             const subdocItem = novoPedido.items.find(i => 
                 i.produto.toString() === item.produto.toString() && !i.itemIdMaquina
             );
@@ -45,7 +38,7 @@ export const finalizarCompra = async (userId, itemsDoCarrinho, total, callbackUr
                     try {
                         await axios.post(START_PRODUCTION_URL, {
                             id: itemIdMaquina, 
-                            callbackURL: callbackUrl, // Sua URL pública de callback
+                            callbackURL: callbackUrl, 
                         });
                     } catch (error) {
                         console.error(`Falha ao enviar item ${itemIdMaquina} para a máquina:`, error.message);

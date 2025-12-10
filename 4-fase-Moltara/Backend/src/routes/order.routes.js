@@ -1,24 +1,17 @@
-// order.routes.js
 import express from 'express';
-import * as OrderController from '../Modules/Order/order.controller.js';
-
 const router = express.Router();
 
-// Criar novo pedido
-router.post('/pedidos', OrderController.criarPedido);
+import { 
+    finalizarCheckout, 
+    receberCallbackMaquina 
+} from '../Modules/Order/order.controller.js';
+// Importe o middleware de autenticação (se necessário)
+// import { protect } from '../middlewares/auth.middleware.js'; 
 
-// Callback para receber confirmações de clientes (opcional)
-router.post('/pedidos/callback-maquina', OrderController.receberCallbackMaquina);
-
-// // Rastrear pedido pelo número (substitui GET por ID)
-// router.get('/pedidos/rastrear/:numeroPedido', OrderController.rastrearPedido);
-
-// // Callback das máquinas de produção
-// router.post('/pedidos/callback/:numeroPedido/:itemId', OrderController.callbackProducao);
-
-// // Confirmar entrega (protegido)
-// router.post('/pedidos/:numeroPedido/confirmar-entrega', OrderController.confirmarEntrega);
-
-
+// Rota para o Frontend iniciar o pedido
+// Deve ser protegida por autenticação
+// router.post('/checkout', protect, finalizarCheckout); 
+router.post('/checkout', finalizarCheckout); // Usando sem o protect por enquanto
+router.post('/callback', receberCallbackMaquina);
 
 export default router;

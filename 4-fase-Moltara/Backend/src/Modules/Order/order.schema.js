@@ -1,8 +1,6 @@
-// order.schema.js
 import mongoose from 'mongoose';
 
 const orderSchema = new mongoose.Schema({
-  // Identificação
   numeroPedido: {
     type: String,
     unique: true,
@@ -15,7 +13,6 @@ const orderSchema = new mongoose.Schema({
     required: true
   },
   
-  // Itens do pedido
   items: [{
     produtoId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -34,8 +31,8 @@ const orderSchema = new mongoose.Schema({
       enum: ['PENDENTE', 'EM_PRODUCAO', 'PRODUZIDO', 'FALHA_ENVIO', 'CANCELADO'],
       default: 'PENDENTE'
     },
-    itemIdMaquina: [String], // IDs retornados pela máquina
-    unidades: [{ // Rastreamento individual por unidade
+    itemIdMaquina: [String], 
+    unidades: [{
       idMaquina: String,
       status: String,
       callbackURL: String,
@@ -46,14 +43,12 @@ const orderSchema = new mongoose.Schema({
     }]
   }],
   
-  // Status geral
   status: {
     type: String,
     enum: ['PENDENTE', 'EM_PRODUCAO', 'PRODUZIDO', 'ENVIADO', 'ENTREGUE', 'CANCELADO'],
     default: 'PENDENTE'
   },
   
-  // Produção
   producaoIniciada: Boolean,
   producaoConcluida: Boolean,
   dataProducaoConcluida: Date,
@@ -88,7 +83,7 @@ const orderSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Middleware para gerar número do pedido
+
 orderSchema.pre('save', async function(next) {
   if (!this.numeroPedido) {
     const year = new Date().getFullYear();
@@ -108,7 +103,6 @@ orderSchema.pre('save', async function(next) {
   next();
 });
 
-// Índices para performance
 orderSchema.index({ usuarioId: 1, createdAt: -1 });
 orderSchema.index({ status: 1 });
 orderSchema.index({ 'items.produtoId': 1 });
