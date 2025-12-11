@@ -32,6 +32,10 @@ A plataforma conta com recursos como carrinho de compras, avaliações de produt
 | Pedro Henrique        |RF01, RF02, RF03, RF04        |
 
 
+## Tecnologias usadas
+
+|Tecnologia       | Usabilidade |
+|(.../img/js.png) |             |
 
 ## [Protótipo das Telas](https://www.figma.com/design/XxQfi2UJ4np4bW0mrFN4KB/Moltara?node-id=0-1&t=lDdFtcTyhz01arJj-1)
 
