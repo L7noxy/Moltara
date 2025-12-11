@@ -34,11 +34,11 @@ A plataforma conta com recursos como carrinho de compras, avaliações de produt
 
 ## Tecnologias usadas
 
-|                Tecnologia                                                         |                                   Usabilidade                                  |
-|-----------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
-|
-|<img src="public/img/logotipo.png" alt="Texto Alternativo" width="50" height="100">| Linguagem de programação usada para fazer o frontend e principlamente o backend|
-|
+|                Tecnologia                                                              |                                   Usabilidade                                   |
+|----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+|<img src="public/img/react.png" alt="Framework React" widht="50" height="50">           | Framework usado pra desenvolver as nossas telas                                 |
+|<img src="public/img/javascript.png" alt="Linguagem javascript" width="50" height="100">| Linguagem de programação usada para fazer o frontend e principlamente o backend |
+|||
 
 ## [Protótipo das Telas](https://www.figma.com/design/XxQfi2UJ4np4bW0mrFN4KB/Moltara?node-id=0-1&t=lDdFtcTyhz01arJj-1)
 
